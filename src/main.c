@@ -357,9 +357,6 @@ int main(int argc, char *argv[])
 	 /* Set the window caption to the name of the game. */
 	 SDL_WM_SetCaption("Jody", "Jody");
 
-	 /* Hide the mouse pointer. */
-	 SDL_ShowCursor(0);
-
 	 /* Load the game's data into globals. */
 	 LoadGameData();
 
@@ -370,9 +367,6 @@ int main(int argc, char *argv[])
 	 InitPlayer();
 	 InitOpponent();
 	 PlayGame();
-
-	 /* Unhide the mouse pointer. */
-	 SDL_ShowCursor(1);
 
 	 /* Unload data. */
 	 UnloadGameData();

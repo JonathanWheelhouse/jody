@@ -1,7 +1,4 @@
 
-scripting.h,37
-#define SCRIPTING_HSCRIPTING_H2,20
-
 resources.h,37
 #define RESOURCES_HRESOURCES_H2,20
 
@@ -37,61 +34,42 @@ typedef struct player_s {player_s49,1424
 } player_t, *player_p;player_t56,1763
 } player_t, *player_p;player_p56,1763
 
-main.c,1616
+main.c,1877
 #define _GNU_SOURCE_GNU_SOURCE1,0
-enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;OPP_COMPUTER19,314
-enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;OPP_NETWORK19,314
-enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;opponent_type19,314
-player_t player;		/* the player sitting at the local keyboard */player20,364
-player_t opponent;		/* scripted or networked opponent */opponent21,429
-static int camera_x, camera_y;	/* position of 640x480 viewport within world */camera_x24,521
-static int camera_x, camera_y;	/* position of 640x480 viewport within world */camera_y24,521
-SDL_Surface *screen;		/* global for convenience */screen26,601
-int fullscreen = 0;fullscreen29,688
-int hwsurface = 0;hwsurface30,708
-int doublebuf = 0;doublebuf31,727
-double time_scale = 0;time_scale33,747
-static Sint32 seed = 0;seed53,1443
-static void initrandom()initrandom55,1468
-static unsigned int getrandom()getrandom60,1518
-static void DrawPlayer(player_p p)DrawPlayer73,1742
-static void InitPlayer()InitPlayer112,2686
-static void InitOpponent()InitOpponent123,2964
-static void UpdatePlayer(player_p p)UpdatePlayer138,3428
-static void PlayGame()PlayGame163,4154
-int main(int argc, char *argv[])main276,7227
-void main_prog(int argc, char *argv[])main_prog282,7309
-static char * script_name(char *dir)script_name403,10344
-enum state { ATTACK, EVADE };state414,10572
-enum state { ATTACK, EVADE };ATTACK414,10572
-enum state { ATTACK, EVADE };EVADE414,10572
-int target_x = 0;target_x415,10602
-int target_y = 0;target_y416,10620
-static void play_computer(void)play_computer417,10638
-
-c_builtins.c,1055
-SCM fire_weapon(void)fire_weapon10,138
-SCM player_x(void)player_x16,284
-SCM player_y(void)player_y20,349
-SCM player_angle(void)player_angle24,414
-SCM player_accel(void)player_accel28,481
-SCM computer_x(void)computer_x32,548
-SCM computer_y(void)computer_y36,617
-SCM computer_angle(void)computer_angle40,686
-SCM computer_accel(void)computer_accel44,757
-SCM set_player_x(SCM p_x)set_player_x49,829
-SCM set_player_y(SCM p_y)set_player_y55,932
-SCM set_player_angle(SCM p_an)set_player_angle61,1035
-SCM set_player_accel(SCM p_ac)set_player_accel67,1144
-SCM set_computer_x(SCM c_x)set_computer_x73,1253
-SCM set_computer_y(SCM c_y)set_computer_y79,1360
-SCM set_computer_angle(SCM c_an)set_computer_angle85,1467
-SCM set_computer_accel(SCM c_ac)set_computer_accel91,1580
-SCM world_width(void)world_width98,1694
-SCM world_height(void)world_height103,1773
-SCM player_forward_thrust(void)player_forward_thrust108,1854
-SCM player_reverse_thrust(void)player_reverse_thrust113,1953
-SCM scm_atan2(SCM y, SCM x)scm_atan2119,2053
+enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;OPP_COMPUTER16,268
+enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;OPP_NETWORK16,268
+enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;opponent_type16,268
+player_t player;		/* the player sitting at the local keyboard */player17,318
+player_t opponent;		/* scripted or networked opponent */opponent18,383
+static int camera_x, camera_y;	/* position of 640x480 viewport within world */camera_x21,475
+static int camera_x, camera_y;	/* position of 640x480 viewport within world */camera_y21,475
+SDL_Surface *screen;		/* global for convenience */screen23,555
+int fullscreen = 0;fullscreen26,642
+int hwsurface = 0;hwsurface27,662
+int doublebuf = 0;doublebuf28,681
+double time_scale = 0;time_scale30,701
+static Sint32 seed = 0;seed54,1528
+static void initrandom(void)initrandom56,1553
+static unsigned int getrandom(void)getrandom61,1608
+static void DrawPlayer(player_p p)DrawPlayer74,1840
+static void InitPlayer(void)InitPlayer113,2809
+static void InitOpponent(void)InitOpponent124,3097
+static void UpdatePlayer(player_p p)UpdatePlayer139,3578
+static void PlayGame(void)PlayGame164,4316
+int main(int argc, char *argv[])main273,7435
+static char * script_name(char *dir)script_name383,10363
+enum STATE { ATTACK, EVADE };STATE394,10598
+enum STATE { ATTACK, EVADE };ATTACK394,10598
+enum STATE { ATTACK, EVADE };EVADE394,10598
+enum STATE state = ATTACK;state395,10628
+int target_x = 0;target_x396,10655
+int target_y = 0;target_y397,10673
+static void play_computer(void)play_computer398,10691
+static void attack(void)attack424,11297
+static void evade(void)evade442,11721
+static double dist_to_player(void)dist_to_player458,12184
+static double angle_to_player(void)angle_to_player464,12377
+static void fire_weapon(void)fire_weapon473,12619
 
 img_dir.h,64
 #define IMG_DIR_HIMG_DIR_H3,89
@@ -118,14 +96,6 @@ static unsigned int getrandom()getrandom22,708
 void InitBackground()InitBackground32,961
 void DrawBackground(SDL_Surface *dest, int camera_x, int camera_y)DrawBackground50,1455
 void DrawParallax(SDL_Surface *dest, int camera_x, int camera_y)DrawParallax97,2801
-
-c_builtins.h,0
-
-scripting.c,198
-void InitScripting(void)InitScripting9,149
-void CleanupScripting(void)CleanupScripting39,1559
-int LoadGameScript(char *filename)LoadGameScript43,1592
-int RunGameScript()RunGameScript51,1778
 
 resources.c,537
 #define _GNU_SOURCE_GNU_SOURCE1,0
