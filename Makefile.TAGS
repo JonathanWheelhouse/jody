@@ -1,0 +1,18 @@
+# -*-Makefile-*-
+# Copied from gnucash because automake's make tags doesn't work for xemacs.
+etags.files: $(shell find . -type d)
+	find . -path './debian' -prune -o -name '*.[ch]' -print -o -name '*.scm' -print | sort > etags.files.tmp
+	@if cmp --quiet etags.files etags.files.tmp; \
+        then \
+          echo "TAGS file list hasn't changed."; \
+          rm -f etags.files.tmp; \
+        else \
+          echo "TAGS file list has changed."; \
+          mv etags.files.tmp etags.files; \
+        fi
+
+etags: $(shell cat etags.files)
+	etags `cat etags.files`
+
+ctags: $(shell cat etags.files)
+	ctags `cat etags.files`

@@ -1,0 +1,134 @@
+
+scripting.h,25
+#define SCRIPTING_H2,20
+
+resources.h,25
+#define RESOURCES_H2,20
+
+gamedefs.h,680
+#define GAMEDEFS_H2,19
+#define SCREEN_WIDTH	5,76
+#define SCREEN_HEIGHT	6,101
+#define MAX_PARTICLES	9,186
+#define PLAYER_WIDTH	12,297
+#define PLAYER_HEIGHT	13,321
+#define TILE_WIDTH	16,382
+#define TILE_HEIGHT	17,404
+#define WORLD_WIDTH	20,484
+#define WORLD_HEIGHT	21,509
+#define PLAYER_MAX_VELOCITY	24,564
+#define PLAYER_MIN_VELOCITY	25,599
+#define PLAYER_FORWARD_THRUST	27,636
+#define PLAYER_REVERSE_THRUST	28,670
+#define PARALLAX_BACK_FACTOR	32,830
+#define PARALLAX_FRONT_FACTOR	33,862
+#define PARALLAX_GRID_WIDTH	39,1146
+#define PARALLAX_GRID_HEIGHT	40,1179
+#define PI 42,1214
+typedef struct player_s player_s49,1424
+} player_t, *player_p;player_p56,1763
+
+main.c,871
+#define _GNU_SOURCE1,0
+enum { OPP_COMPUTER,19,314
+enum { OPP_COMPUTER, OPP_NETWORK 19,314
+enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;19,314
+player_t player;20,364
+player_t opponent;21,429
+static int camera_x,24,521
+static int camera_x, camera_y;24,521
+SDL_Surface *screen;26,601
+int fullscreen 29,688
+int hwsurface 30,708
+int doublebuf 31,727
+double time_scale 33,747
+static Sint32 seed 52,1410
+static void initrandom(54,1435
+static unsigned int getrandom(59,1485
+static void DrawPlayer(72,1709
+static void InitPlayer(111,2653
+static void InitOpponent(122,2931
+static void UpdatePlayer(137,3395
+static void PlayGame(162,4121
+int main(275,7194
+void main_prog(281,7276
+	enum { GAME_COMPUTER,283,7317
+	enum { GAME_COMPUTER, GAME_NETWORK,283,7317
+	enum { GAME_COMPUTER, GAME_NETWORK, GAME_UNKNOWN 283,7317
+static char * script_name(402,10311
+
+c_builtins.c,594
+SCM fire_weapon(10,138
+SCM player_x(16,284
+SCM player_y(20,349
+SCM player_angle(24,414
+SCM player_accel(28,481
+SCM computer_x(32,548
+SCM computer_y(36,617
+SCM computer_angle(40,686
+SCM computer_accel(44,757
+SCM set_player_x(49,829
+SCM set_player_y(55,932
+SCM set_player_angle(61,1035
+SCM set_player_accel(67,1144
+SCM set_computer_x(73,1253
+SCM set_computer_y(79,1360
+SCM set_computer_angle(85,1467
+SCM set_computer_accel(91,1580
+SCM world_width(98,1694
+SCM world_height(103,1773
+SCM player_forward_thrust(108,1854
+SCM player_reverse_thrust(113,1953
+SCM scm_atan2(119,2053
+
+img_dir.h,46
+#define IMG_DIR_H3,89
+#define IMG_DIR 5,108
+
+particle.c,260
+particle_t particles[6,83
+int active_particles 7,120
+static void AddParticle(13,325
+static void DeleteParticle(23,612
+void DrawParticles(32,878
+void UpdateParticles(67,1765
+void CreateParticleExplosion(97,2654
+static Uint16 CreateHicolorPixel(121,3279
+
+player.h,0
+
+background.c,239
+static int front_tiles[7,159
+static int back_tiles[8,226
+static Sint32 seed 15,633
+static void initrandom(17,658
+static unsigned int getrandom(22,708
+void InitBackground(32,961
+void DrawBackground(50,1455
+void DrawParallax(97,2801
+
+c_builtins.h,0
+
+scripting.c,112
+void InitScripting(9,149
+void CleanupScripting(39,1559
+int LoadGameScript(43,1592
+int RunGameScript(51,1778
+
+resources.c,246
+#define _GNU_SOURCE1,0
+SDL_Surface *ship_strip;10,147
+SDL_Surface *front_star_tiles;11,215
+SDL_Surface *back_star_tiles;12,283
+int num_star_tiles;13,343
+void LoadGameData(17,453
+void UnloadGameData(80,2752
+static char * file_name(96,3080
+
+particle.h,112
+#define PARTICLE_H2,19
+typedef struct particle_s particle_s7,87
+} particle_t, *particle_p;particle_p12,296
+
+background.h,26
+#define BACKGROUND_H2,21

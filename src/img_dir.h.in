@@ -1,0 +1,7 @@
+/**-*- c -*-*********************************************************/
+#ifndef IMG_DIR_H
+#define IMG_DIR_H
+
+#define IMG_DIR "@-IMG_DIR-@"
+
+#endif

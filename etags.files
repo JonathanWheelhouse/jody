@@ -1,0 +1,15 @@
+./src/background.c
+./src/background.h
+./src/c_builtins.c
+./src/c_builtins.h
+./src/gamedefs.h
+./src/img_dir.h
+./src/jody.scm
+./src/main.c
+./src/particle.c
+./src/particle.h
+./src/player.h
+./src/resources.c
+./src/resources.h
+./src/scripting.c
+./src/scripting.h
