@@ -1,4 +1,4 @@
-cscope 15 $HOME/DEV/games/jody/trunk/src               0000521880
+cscope 15 $HOME/DEV/games/jody/src               0000522986
 	@background.c
 
 1 
@@ -1701,11 +1701,11 @@ maö_¥og
 
 39 
 gëøndom
-();
+();
 
 40 
 öôøndom
-();
+();
 
 41 
 DøwPœyî
@@ -1717,7 +1717,7 @@ p
 
 42 
 InôPœyî
-();
+();
 
 43 
 Upd©ePœyî
@@ -1729,7 +1729,7 @@ p
 
 44 
 PœyGame
-();
+();
 
 45 * 
 s¸ùt_«me
@@ -1737,17 +1737,25 @@ s¸ùt_«me
 ∑th
 );
 
-52 
+46 
+∂ay_compuãr
+();
+
+47 
+™gÀ_to_∂ayî
+();
+
+54 
 Söt32
  
 	g£ed
  = 0;
 
-54 
+56 
 	$öôøndom
-()
+()
 
-56 
+58 
 £ed
  = 
 	`time
@@ -1755,27 +1763,27 @@ Söt32
 NULL
 );
 
-57 
+59 
 	}
 }
 
-59 
+61 
 	$gëøndom
-()
+()
 
-61 
+63 
 Söt32
  
 p1
  = 1103515245;
 
-62 
+64 
 Söt32
  
 p2
  = 12345;
 
-63 
+65 
 £ed
  = (£ed*
 p1
@@ -1783,15 +1791,15 @@ p1
 p2
 ) % 2147483647;
 
-64  ()
+66  ()
 £ed
 /3;
 
-65 
+67 
 	}
 }
 
-72 
+74 
 	$DøwPœyî
 (
 ∂ayî_p
@@ -1799,7 +1807,7 @@ p2
 p
 )
 
-74 
+76 
 SDL_Re˘
  
 §c
@@ -1807,11 +1815,11 @@ SDL_Re˘
 de°
 ;
 
-75 
+77 
 ™gÀ
 ;
 
-78 
+80 
 p
 ->
 s¸ìn_x
@@ -1821,7 +1829,7 @@ w‹ld_x
 ˇmîa_x
 ;
 
-79 
+81 
 p
 ->
 s¸ìn_y
@@ -1831,7 +1839,7 @@ w‹ld_y
 ˇmîa_y
 ;
 
-82 i‡(
+84 i‡(
 p
 ->
 s¸ìn_x
@@ -1839,7 +1847,7 @@ s¸ìn_x
 PLAYER_WIDTH
 /2 ||
 
-83 
+85 
 p
 ->
 s¸ìn_x
@@ -1849,7 +1857,7 @@ SCREEN_WIDTH
 PLAYER_WIDTH
 /2)
 
-86 i‡(
+88 i‡(
 p
 ->
 s¸ìn_y
@@ -1857,7 +1865,7 @@ s¸ìn_y
 PLAYER_HEIGHT
 /2 ||
 
-87 
+89 
 p
 ->
 s¸ìn_y
@@ -1867,17 +1875,17 @@ SCREEN_HEIGHT
 PLAYER_HEIGHT
 /2)
 
-91 
+93 
 ™gÀ
  = 
 p
 ->angle;
 
-92 i‡(
+94 i‡(
 ™gÀ
  < 0)ángle += 360;
 
-93 
+95 
 §c
 .
 x
@@ -1887,13 +1895,13 @@ PLAYER_WIDTH
 ™gÀ
  / 4);
 
-94 
+96 
 §c
 .
 y
  = 0;
 
-95 
+97 
 §c
 .
 w
@@ -1901,7 +1909,7 @@ w
 PLAYER_WIDTH
 ;
 
-96 
+98 
 §c
 .
 h
@@ -1909,7 +1917,7 @@ h
 PLAYER_HEIGHT
 ;
 
-97 
+99 
 de°
 .
 x
@@ -1921,7 +1929,7 @@ s¸ìn_x
 PLAYER_WIDTH
 /2;
 
-98 
+100 
 de°
 .
 y
@@ -1933,7 +1941,7 @@ s¸ìn_y
 PLAYER_HEIGHT
 /2;
 
-99 
+101 
 de°
 .
 w
@@ -1941,7 +1949,7 @@ w
 PLAYER_WIDTH
 ;
 
-100 
+102 
 de°
 .
 h
@@ -1949,7 +1957,7 @@ h
 PLAYER_HEIGHT
 ;
 
-103 
+105 
 	`SDL_BlôSurÁ˚
 (
 shù_°rù
@@ -1961,15 +1969,15 @@ s¸ìn
 de°
 );
 
-104 
+106 
 	}
 }
 
-111 
+113 
 	$InôPœyî
-()
+()
 
-113 
+115 
 ∂ayî
 .
 w‹ld_x
@@ -1979,7 +1987,7 @@ w‹ld_x
 WORLD_WIDTH
 ;
 
-114 
+116 
 ∂ayî
 .
 w‹ld_y
@@ -1989,45 +1997,45 @@ w‹ld_y
 WORLD_HEIGHT
 ;
 
-115 
+117 
 ∂ayî
 .
 ac˚l
  = 0;
 
-116 
+118 
 ∂ayî
 .
 vñocôy
  = 0;
 
-117 
+119 
 ∂ayî
 .
 ™gÀ
  = 0;
 
-118 
+120 
 	`Upd©ePœyî
 (&
 ∂ayî
 );
 
-119 
+121 
 	}
 }
 
-122 
+124 
 	$InôOµ⁄ít
-()
+()
 
-124 i‡(
+126 i‡(
 ›p⁄ít_ty≥
  =
 OPP_COMPUTER
 ) {
 
-125 
+127 
 ›p⁄ít
 .
 w‹ld_x
@@ -2037,7 +2045,7 @@ w‹ld_x
 WORLD_WIDTH
 ;
 
-126 
+128 
 ›p⁄ít
 .
 w‹ld_y
@@ -2047,29 +2055,29 @@ w‹ld_y
 WORLD_HEIGHT
 ;
 
-127 
+129 
 ›p⁄ít
 .
 ac˚l
  = 0;
 
-128 
+130 
 ›p⁄ít
 .
 vñocôy
  = 0;
 
-129 
+131 
 ›p⁄ít
 .
 ™gÀ
  = 0;
 
-132 
+134 
 	}
 }
 
-137 
+139 
 	$Upd©ePœyî
 (
 ∂ayî_p
@@ -2077,17 +2085,17 @@ vñocôy
 p
 )
 
-139 
+141 
 ™gÀ
 ;
 
-141 
+143 
 ™gÀ
  = ()
 p
 ->angle;
 
-143 
+145 
 p
 ->
 vñocôy
@@ -2097,7 +2105,7 @@ ac˚l
 time_sˇÀ
 ;
 
-144 i‡(
+146 i‡(
 p
 ->
 vñocôy
@@ -2105,7 +2113,7 @@ vñocôy
 PLAYER_MAX_VELOCITY
 )Ö->velocity = PLAYER_MAX_VELOCITY;
 
-145 i‡(
+147 i‡(
 p
 ->
 vñocôy
@@ -2113,7 +2121,7 @@ vñocôy
 PLAYER_MIN_VELOCITY
 )Ö->velocity = PLAYER_MIN_VELOCITY;
 
-147 
+149 
 p
 ->
 w‹ld_x
@@ -2129,7 +2137,7 @@ PI
 time_sˇÀ
 ;
 
-148 
+150 
 p
 ->
 w‹ld_y
@@ -2145,13 +2153,13 @@ PI
 time_sˇÀ
 ;
 
-151 i‡(
+153 i‡(
 p
 ->
 w‹ld_x
  < 0)Ö->world_x = 0;
 
-152 i‡(
+154 i‡(
 p
 ->
 w‹ld_x
@@ -2159,13 +2167,13 @@ w‹ld_x
 WORLD_WIDTH
 )Ö->world_x = WORLD_WIDTH-1;
 
-153 i‡(
+155 i‡(
 p
 ->
 w‹ld_y
  < 0)Ö->world_y = 0;
 
-154 i‡(
+156 i‡(
 p
 ->
 w‹ld_y
@@ -2173,51 +2181,51 @@ w‹ld_y
 WORLD_HEIGHT
 )Ö->world_y = WORLD_HEIGHT-1;
 
-156 
+158 
 	}
 }
 
-162 
+164 
 	$PœyGame
-()
+()
 
-164 
+166 
 Uöt8
  *
 key°©e
 ;
 
-165 
+167 
 quô
  = 0;
 
-166 
+168 
 tu∫
 ;
 
-167 
+169 
 ¥ev_ticks
  = 0, 
 cur_ticks
  = 0;
 
-170 
+172 
 °¨t_time
 , 
 íd_time
 ;
 
-171 
+173 
 ‰ames_døwn
  = 0;
 
-173 
+175 
 ¥ev_ticks
  = 
 	`SDL_GëTicks
 ();
 
-175 
+177 
 °¨t_time
  = 
 	`time
@@ -2225,23 +2233,23 @@ cur_ticks
 NULL
 );
 
-176 
+178 
 quô
  == 0) {
 
-181 
+183 
 ¥ev_ticks
  = 
 cur_ticks
 ;
 
-182 
+184 
 cur_ticks
  = 
 	`SDL_GëTicks
 ();
 
-183 
+185 
 time_sˇÀ
  = ()(
 cur_ticks
@@ -2249,11 +2257,11 @@ cur_ticks
 ¥ev_ticks
 )/30.0;
 
-186 
+188 
 	`SDL_PumpEvíts
 ();
 
-189 
+191 
 key°©e
  = 
 	`SDL_GëKeySèã
@@ -2261,7 +2269,7 @@ key°©e
 NULL
 );
 
-192 i‡(
+194 i‡(
 key°©e
 [
 SDLK_q
@@ -2271,11 +2279,11 @@ SDLK_ESCAPE
 quô
  = 1;
 
-195 
+197 
 tu∫
  = 0;
 
-196 i‡(
+198 i‡(
 key°©e
 [
 SDLK_LEFT
@@ -2283,7 +2291,7 @@ SDLK_LEFT
 tu∫
  += 15;
 
-197 i‡(
+199 i‡(
 key°©e
 [
 SDLK_RIGHT
@@ -2291,13 +2299,13 @@ SDLK_RIGHT
 tu∫
  -= 15;
 
-200 
+202 
 ∂ayî
 .
 ac˚l
  = 0;
 
-201 i‡(
+203 i‡(
 key°©e
 [
 SDLK_UP
@@ -2309,7 +2317,7 @@ ac˚l
 PLAYER_FORWARD_THRUST
 ;
 
-202 i‡(
+204 i‡(
 key°©e
 [
 SDLK_DOWN
@@ -2321,35 +2329,23 @@ ac˚l
 PLAYER_REVERSE_THRUST
 ;
 
-205 i‡(
+207 i‡(
 key°©e
 [
 SDLK_SPACE
 ]) {
 
-206 
+208 
 ∂ayî
 .
 vñocôy
  *= 0.8;
 
-210 i‡(
+212 i‡(
 key°©e
 [
 SDLK_e
 ]) {
-
-211 
-	`Cª©eP¨ti˛eEx∂osi⁄
-(
-
-212 
-∂ayî
-.
-w‹ld_x
-,Öœyî.
-w‹ld_y
-, 255, 255, 255, 10, 300);
 
 213 
 	`Cª©eP¨ti˛eEx∂osi⁄
@@ -2361,7 +2357,7 @@ w‹ld_y
 w‹ld_x
 ,Öœyî.
 w‹ld_y
-, 255, 0, 0, 5, 100);
+, 255, 255, 255, 10, 300);
 
 215 
 	`Cª©eP¨ti˛eEx∂osi⁄
@@ -2373,9 +2369,21 @@ w‹ld_y
 w‹ld_x
 ,Öœyî.
 w‹ld_y
+, 255, 0, 0, 5, 100);
+
+217 
+	`Cª©eP¨ti˛eEx∂osi⁄
+(
+
+218 
+∂ayî
+.
+w‹ld_x
+,Öœyî.
+w‹ld_y
 , 255, 255, 0, 2, 50);
 
-220 
+222 
 ∂ayî
 .
 ™gÀ
@@ -2385,51 +2393,51 @@ tu∫
 time_sˇÀ
 ;
 
-221 i‡(
+223 i‡(
 ∂ayî
 .
 ™gÀ
  < 0)Ölayer.angle += 360;
 
-222 i‡(
+224 i‡(
 ∂ayî
 .
 ™gÀ
  >= 360)Ölayer.angle -= 360;
 
-225 i‡(
+227 i‡(
 ›p⁄ít_ty≥
  =
 OPP_COMPUTER
 ) {
 
-226 i‡(
+228 i‡(
 	`RunGameS¸ùt
 () != 0) {
 
-227 
+229 
 	`Ârötf
 (
 °dîr
 , "Ending game dueÅo scriptÉrror.\n");
 
-228 
+230 
 quô
  = 1;
 
-233 
+235 
 	`Upd©ePœyî
 (&
 ∂ayî
 );
 
-234 
+236 
 	`Upd©ePœyî
 (&
 ›p⁄ít
 );
 
-237 
+239 
 ˇmîa_x
  = 
 ∂ayî
@@ -2439,7 +2447,7 @@ w‹ld_x
 SCREEN_WIDTH
 /2;
 
-238 
+240 
 ˇmîa_y
  = 
 ∂ayî
@@ -2449,11 +2457,11 @@ w‹ld_y
 SCREEN_HEIGHT
 /2;
 
-240 i‡(
+242 i‡(
 ˇmîa_x
  < 0) camera_x = 0;
 
-241 i‡(
+243 i‡(
 ˇmîa_x
  >
 WORLD_WIDTH
@@ -2461,7 +2469,7 @@ WORLD_WIDTH
 SCREEN_WIDTH
 )
 
-242 
+244 
 ˇmîa_x
  = 
 WORLD_WIDTH
@@ -2469,11 +2477,11 @@ WORLD_WIDTH
 SCREEN_WIDTH
 -1;
 
-243 i‡(
+245 i‡(
 ˇmîa_y
  < 0) camera_y = 0;
 
-244 i‡(
+246 i‡(
 ˇmîa_y
  >
 WORLD_HEIGHT
@@ -2481,7 +2489,7 @@ WORLD_HEIGHT
 SCREEN_HEIGHT
 )
 
-245 
+247 
 ˇmîa_y
  = 
 WORLD_HEIGHT
@@ -2489,11 +2497,11 @@ WORLD_HEIGHT
 SCREEN_HEIGHT
 -1;
 
-248 
+250 
 	`Upd©eP¨ti˛es
 ();
 
-251 
+253 
 	`DøwBackground
 (
 s¸ìn
@@ -2503,7 +2511,7 @@ s¸ìn
 ˇmîa_y
 );
 
-252 
+254 
 	`DøwP¨Æœx
 (
 s¸ìn
@@ -2513,7 +2521,7 @@ s¸ìn
 ˇmîa_y
 );
 
-253 
+255 
 	`DøwP¨ti˛es
 (
 s¸ìn
@@ -2523,29 +2531,29 @@ s¸ìn
 ˇmîa_y
 );
 
-254 
+256 
 	`DøwPœyî
 (&
 ∂ayî
 );
 
-255 
+257 
 	`DøwPœyî
 (&
 ›p⁄ít
 );
 
-258 
+260 
 	`SDL_Flù
 (
 s¸ìn
 );
 
-260 
+262 
 ‰ames_døwn
 ++;
 
-264 
+266 
 íd_time
  = 
 	`time
@@ -2553,27 +2561,27 @@ s¸ìn
 NULL
 );
 
-265 i‡(
+267 i‡(
 °¨t_time
  =
 íd_time
 )Énd_time++;
 
-268 
+270 
 	`¥ötf
 ("Drew %i frames in %i seconds, forá framerate of %.2f fps.\n",
 
-269 
+271 
 ‰ames_døwn
 ,
 
-270 
+272 
 íd_time
 -
 °¨t_time
 ,
 
-271 ()
+273 ()
 ‰ames_døwn
 /()(
 íd_time
@@ -2581,11 +2589,11 @@ NULL
 °¨t_time
 ));
 
-273 
+275 
 	}
 }
 
-275 
+277 
 	$maö
 (
 ¨gc
@@ -2593,7 +2601,7 @@ NULL
 ¨gv
 [])
 
-277 
+279 
 	`gh_íãr
 (
 ¨gc
@@ -2603,15 +2611,15 @@ NULL
 maö_¥og
 );
 
-278 
+280 
 	`exô
 (0);
 
-279 
+281 
 	}
 }
 
-281 
+283 
 	$maö_¥og
 (
 ¨gc
@@ -2619,7 +2627,7 @@ maö_¥og
 ¨gv
 [])
 
-283 íum { 
+285 íum { 
 GAME_COMPUTER
 , 
 GAME_NETWORK
@@ -2629,69 +2637,69 @@ GAME_UNKNOWN
 game_ty≥
  = GAME_UNKNOWN;
 
-284 *
+286 *
 ªmŸe_addªss
 ;
 
-285 
+287 
 i
 ;
 
-287 i‡(
+289 i‡(
 ¨gc
  < 2) {
 
-288 
+290 
 	`¥ötf
 ("jody\n");
 
-289 
+291 
 	`¥ötf
 ("Usage: jody [ mode ] [ option ... ]\n");
 
-290 
+292 
 	`¥ötf
 (" Game modes (choose one):\n");
 
-291 
+293 
 	`¥ötf
 (" --computer\n");
 
-292 
+294 
 	`¥ötf
 (" --net <remote ipáddress>\n");
 
-293 
+295 
 	`¥ötf
 (" Display options, forÅweakingándÉxperimenting:\n");
 
-294 
+296 
 	`¥ötf
 (" --fullscreen\n");
 
-295 
+297 
 	`¥ötf
 (" --hwsurface (useán SDL hardware surface ifÖossible)\n");
 
-296 
+298 
 	`¥ötf
 (" --doublebuf (use SDL double buffering ifÖossible)\n");
 
-297 
+299 
 	`¥ötf
 (" The display options defaultÅoá windowed, software buffer.\n");
 
-298 
+300 
 	`exô
 (1);
 
-303 
+305 
 i
  = 0; i < 
 ¨gc
 ; i++) {
 
-306 i‡(!
+308 i‡(!
 	`°rcmp
 (
 ¨gv
@@ -2699,13 +2707,13 @@ i
 i
 ], "--computer")) {
 
-307 
+309 
 game_ty≥
  = 
 GAME_COMPUTER
 ;
 
-309 } i‡(!
+311 } i‡(!
 	`°rcmp
 (
 ¨gv
@@ -2713,27 +2721,27 @@ GAME_COMPUTER
 i
 ], "--net")) {
 
-310 
+312 
 game_ty≥
  = 
 GAME_NETWORK
 ;
 
-311 i‡(++
+313 i‡(++
 i
  >
 ¨gc
 ) {
 
-312 
+314 
 	`¥ötf
 ("You must supplyán IPáddress for --net.\n");
 
-313 
+315 
 	`exô
 (1);
 
-315 
+317 
 ªmŸe_addªss
  = 
 ¨gv
@@ -2741,7 +2749,7 @@ i
 i
 ];
 
-319 } i‡(!
+321 } i‡(!
 	`°rcmp
 (
 ¨gv
@@ -2749,20 +2757,8 @@ i
 i
 ], "--hwsurface")) {
 
-320 
-hwsurÁ˚
- = 1;
-
-321 } i‡(!
-	`°rcmp
-(
-¨gv
-[
-i
-], "--doublebuf")) {
-
 322 
-doubÀbuf
+hwsurÁ˚
  = 1;
 
 323 } i‡(!
@@ -2771,59 +2767,71 @@ doubÀbuf
 ¨gv
 [
 i
-], "--fullscreen")) {
+], "--doublebuf")) {
 
 324 
+doubÀbuf
+ = 1;
+
+325 } i‡(!
+	`°rcmp
+(
+¨gv
+[
+i
+], "--fullscreen")) {
+
+326 
 fuŒs¸ìn
  = 1;
 
-328 
+330 
 game_ty≥
 ) {
 
-329 
+331 
 GAME_COMPUTER
 :
 
-330 
+332 
 ›p⁄ít_ty≥
  = 
 OPP_COMPUTER
 ;
 
-331 
+333 
 	`¥ötf
 ("PlayingágainstÅhe computer.\n");
 
-334 
+336 
 GAME_NETWORK
 :
 
-335 
+337 
 	`¥ötf
 ("Sorry,ÇetworkÖlay isÇot implemented... yet!\n");
 
-336 
+338 
 	`exô
 (1);
 
-339 
+341 
 	`¥ötf
 ("You must selectá gameÅype.\n");
 
-340 
+342 
 	`exô
 (1);
 
-344 
+346 
 	`öôøndom
 ();
 
-347 
+349 
 	`InôS¸ùtög
 ();
 
-349 i‡(
+351 i‡(
 	`LﬂdGameS¸ùt
 (
 	`s¸ùt_«me
@@ -2831,39 +2839,39 @@ GAME_NETWORK
 SCRIPTDIR
 )) != 0) {
 
-350 
+352 
 	`Ârötf
 (
 °dîr
 , "Exiting dueÅo scriptÉrror.\n");
 
-351 
+353 
 	`exô
 (1);
 
-355 i‡(
+357 i‡(
 	`SDL_Inô
 (
 SDL_INIT_VIDEO
 ) < 0) {
 
-356 
+358 
 	`¥ötf
 ("U«bÀÅÿöôülizêSDL: %s\n", 
 	`SDL_GëEº‹
 ());
 
-357 
+359 
 	`exô
 (1);
 
-359 
+361 
 	`©exô
 (
 SDL_Quô
 );
 
-362 i‡(
+364 i‡(
 	`SDL_SëVideoMode
 (
 SCREEN_WIDTH
@@ -2871,7 +2879,7 @@ SCREEN_WIDTH
 SCREEN_HEIGHT
 , 16,
 
-363 (
+365 (
 hwsurÁ˚
  ? 
 SDL_HWSURFACE
@@ -2879,13 +2887,13 @@ SDL_HWSURFACE
 SDL_SWSURFACE
 ) |
 
-364 (
+366 (
 doubÀbuf
  ? 
 SDL_DOUBLEBUF
  : 0) |
 
-365 (
+367 (
 fuŒs¸ìn
  ? 
 SDL_FULLSCREEN
@@ -2893,77 +2901,77 @@ SDL_FULLSCREEN
 NULL
 ) {
 
-366 
+368 
 	`¥ötf
 ("U«bÀÅÿ£àvideÿmode: %s\n", 
 	`SDL_GëEº‹
 ());
 
-367 
+369 
 	`exô
 (1);
 
-371 
+373 
 s¸ìn
  = 
 	`SDL_GëVideoSurÁ˚
 ();
 
-374 
+376 
 	`SDL_WM_SëC≠ti⁄
 ("Jody", "Jody");
 
-377 
+379 
 	`SDL_ShowCurs‹
 (0);
 
-380 
+382 
 	`LﬂdGameD©a
 ();
 
-383 
+385 
 	`InôBackground
 ();
 
-386 
+388 
 	`InôPœyî
 ();
 
-387 
+389 
 	`InôOµ⁄ít
 ();
 
-388 
+390 
 	`PœyGame
 ();
 
-391 
+393 
 	`SDL_ShowCurs‹
 (1);
 
-394 
+396 
 	`U∆ﬂdGameD©a
 ();
 
-397 
+399 
 	`CÀ™upS¸ùtög
 ();
 
-399 
+401 
 	`exô
 (0);
 
-400 
+402 
 	}
 }
 
-402 * 
+404 * 
 	$s¸ùt_«me
 (*
 dú
 )
 
-404 
+406 
 size_t
  
 dú_Àn
@@ -2973,7 +2981,7 @@ dú_Àn
 dú
 );
 
-405 *
+407 *
 Æl
  = 
 	`mÆloc
@@ -2981,13 +2989,13 @@ dú
 dú_Àn
  + 9);
 
-406 *
+408 *
 °¨t
  = 
 Æl
 ;
 
-407 
+409 
 Æl
  = 
 	`memp˝y
@@ -2997,23 +3005,223 @@ dú
 dú_Àn
 );
 
-408 
+410 
 Æl
  = 
 	`memp˝y
 (all, "/jody.scm", 9);
 
-409 *
+411 *
 Æl
  = '\0';
 
-410  
+412  
 °¨t
 ;
 
-411 
+413 
 	}
 }
+
+415 
+	eSTATE
+ { 
+	mATTACK
+, 
+	mEVADE
+ };
+
+416 
+STATE
+ 
+	g°©e
+ = 
+ATTACK
+;
+
+417 
+	gèrgë_x
+ = 0;
+
+418 
+	gèrgë_y
+ = 0;
+
+419 
+	$∂ay_compuãr
+()
+
+425 
+	}
+}
+
+426 
+	$©èck
+()
+
+429 
+	}
+}
+
+430 
+	$evade
+()
+
+432 
+x2
+ = 
+èrgë_x
+ - 
+›p⁄ít
+.
+w‹ld_x
+;
+
+433 
+y2
+ = 
+èrgë_y
+ - 
+›p⁄ít
+.
+w‹ld_y
+;
+
+434 i‡((
+	`Ábs
+(
+x2
+Ë< 10Ë&& ((Ábs(
+y2
+) < 10))) {
+
+435 
+	`¥ötf
+("Going back into ATTACK mode.\n");
+
+436 
+°©e
+ = 
+ATTACK
+;
+
+438 i‡(
+èrgë_x
+ < 0) {
+
+439 
+èrgë_x
+ = 
+	`ønd
+(Ë* 
+WORLD_WIDTH
+ / 
+RAND_MAX
+;
+
+440 
+èrgë_y
+ = 
+ønd
+ * 
+WORLD_HEIGHT
+ * / 
+RAND_MAX
+;
+
+441 
+	`¥ötf
+("SelectedÇew EVADEÅarget.\n");
+
+443 
+›p⁄ít
+.
+ac˚l
+ = 
+PLAYER_FORWARD_THRUST
+;
+
+445 
+	`di°_to_∂ayî
+()
+
+447 
+xdiff
+ = 
+›p⁄ít
+.
+w‹ld_x
+ - 
+∂ayî
+.world_x;
+
+448 
+ydiff
+ = 
+›p⁄ít
+.
+w‹ld_y
+ - 
+∂ayî
+.world_y;
+
+449  
+	`sqπ
+((2 * 
+xdiff
+Ë+ (2 * 
+ydiff
+));
+
+451 
+	`™gÀ_to_∂ayî
+()
+
+453 
+xdiff
+ = 
+èrgë_x
+ - 
+›p⁄ít
+.
+w‹ld_x
+;
+
+454 
+ydiff
+ = 
+èrgë_y
+ - 
+›p⁄ít
+.
+w‹ld_y
+;
+
+455 
+thëa
+ = 
+	`©™2
+(-
+ydiff
+, 
+xdiff
+);
+
+456 i‡(
+thëa
+ < 0)
+
+457 
+thëa
+ +2 * 
+M_PI
+;
+
+458  
+thëa
+ * (180 / 
+M_PI
+);
 
 	@particle.c
 

@@ -3,7 +3,8 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.5.2	//
+!_TAG_PROGRAM_VERSION	5.5.4	//
+ATTACK	main.c	/^enum state { ATTACK, EVADE };$/;"	e	enum:state	file:
 AddParticle	particle.c	/^static void AddParticle(particle_p particle)$/;"	f	file:
 BACKGROUND_H	background.h	2;"	d
 CleanupScripting	scripting.c	/^void CleanupScripting(void)$/;"	f
@@ -14,6 +15,7 @@ DrawBackground	background.c	/^void DrawBackground(SDL_Surface *dest, int camera_
 DrawParallax	background.c	/^void DrawParallax(SDL_Surface *dest, int camera_x, int camera_y)$/;"	f
 DrawParticles	particle.c	/^void DrawParticles(SDL_Surface *dest, int camera_x, int camera_y)$/;"	f
 DrawPlayer	main.c	/^static void DrawPlayer(player_p p)$/;"	f	file:
+EVADE	main.c	/^enum state { ATTACK, EVADE };$/;"	e	enum:state	file:
 GAMEDEFS_H	gamedefs.h	2;"	d
 IMG_DIR	img_dir.h	5;"	d
 IMG_DIR_H	img_dir.h	3;"	d
@@ -88,6 +90,7 @@ particle_p	particle.h	/^} particle_t, *particle_p;$/;"	t
 particle_s	particle.h	/^typedef struct particle_s {$/;"	s
 particle_t	particle.h	/^} particle_t, *particle_p;$/;"	t
 particles	particle.c	/^particle_t particles[MAX_PARTICLES];$/;"	v
+play_computer	main.c	/^static void play_computer(void)$/;"	f	file:
 player	main.c	/^player_t player;		\/* the player sitting at the local keyboard *\/$/;"	v
 player_accel	c_builtins.c	/^SCM player_accel(void)$/;"	f
 player_angle	c_builtins.c	/^SCM player_angle(void)$/;"	f
@@ -116,6 +119,9 @@ set_player_x	c_builtins.c	/^SCM set_player_x(SCM p_x)$/;"	f
 set_player_y	c_builtins.c	/^SCM set_player_y(SCM p_y)$/;"	f
 shields	gamedefs.h	/^	int shields;		\/* shield strength left *\/$/;"	m	struct:player_s
 ship_strip	resources.c	/^SDL_Surface *ship_strip;	\/* rotating ship in 2-degree increments *\/$/;"	v
+state	main.c	/^enum state { ATTACK, EVADE };$/;"	g	file:
+target_x	main.c	/^int target_x = 0;$/;"	v
+target_y	main.c	/^int target_y = 0;$/;"	v
 time_scale	main.c	/^double time_scale = 0;$/;"	v
 velocity	gamedefs.h	/^	double velocity;	\/* velocity in pixels per frame *\/$/;"	m	struct:player_s
 world_height	c_builtins.c	/^SCM world_height(void)$/;"	f

@@ -10,8 +10,6 @@ AC_PROG_MAKE_SET
 SDL_VERSION=1.2.0
 AM_PATH_SDL(${SDL_VERSION}, ,AC_MSG_ERROR([*** SDL version $(SDL_VERSION) not found!]))
 
-GNOME_CHECK_GUILE(fail)
-
 IMG_DIR='${datadir}/jody/img'
 AC_SUBST(IMG_DIR)
 

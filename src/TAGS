@@ -1,134 +1,154 @@
 
-scripting.h,25
-#define SCRIPTING_H2,20
+scripting.h,37
+#define SCRIPTING_HSCRIPTING_H2,20
 
-resources.h,25
-#define RESOURCES_H2,20
+resources.h,37
+#define RESOURCES_HRESOURCES_H2,20
 
-gamedefs.h,680
-#define GAMEDEFS_H2,19
-#define SCREEN_WIDTH	5,76
-#define SCREEN_HEIGHT	6,101
-#define MAX_PARTICLES	9,186
-#define PLAYER_WIDTH	12,297
-#define PLAYER_HEIGHT	13,321
-#define TILE_WIDTH	16,382
-#define TILE_HEIGHT	17,404
-#define WORLD_WIDTH	20,484
-#define WORLD_HEIGHT	21,509
-#define PLAYER_MAX_VELOCITY	24,564
-#define PLAYER_MIN_VELOCITY	25,599
-#define PLAYER_FORWARD_THRUST	27,636
-#define PLAYER_REVERSE_THRUST	28,670
-#define PARALLAX_BACK_FACTOR	32,830
-#define PARALLAX_FRONT_FACTOR	33,862
-#define PARALLAX_GRID_WIDTH	39,1146
-#define PARALLAX_GRID_HEIGHT	40,1179
-#define PI 42,1214
-typedef struct player_s player_s49,1424
+gamedefs.h,1566
+#define GAMEDEFS_HGAMEDEFS_H2,19
+#define SCREEN_WIDTH	SCREEN_WIDTH5,76
+#define SCREEN_HEIGHT	SCREEN_HEIGHT6,101
+#define MAX_PARTICLES	MAX_PARTICLES9,186
+#define PLAYER_WIDTH	PLAYER_WIDTH12,297
+#define PLAYER_HEIGHT	PLAYER_HEIGHT13,321
+#define TILE_WIDTH	TILE_WIDTH16,382
+#define TILE_HEIGHT	TILE_HEIGHT17,404
+#define WORLD_WIDTH	WORLD_WIDTH20,484
+#define WORLD_HEIGHT	WORLD_HEIGHT21,509
+#define PLAYER_MAX_VELOCITY	PLAYER_MAX_VELOCITY24,564
+#define PLAYER_MIN_VELOCITY	PLAYER_MIN_VELOCITY25,599
+#define PLAYER_FORWARD_THRUST	PLAYER_FORWARD_THRUST27,636
+#define PLAYER_REVERSE_THRUST	PLAYER_REVERSE_THRUST28,670
+#define PARALLAX_BACK_FACTOR	PARALLAX_BACK_FACTOR32,830
+#define PARALLAX_FRONT_FACTOR	PARALLAX_FRONT_FACTOR33,862
+#define PARALLAX_GRID_WIDTH	PARALLAX_GRID_WIDTH39,1146
+#define PARALLAX_GRID_HEIGHT	PARALLAX_GRID_HEIGHT40,1179
+#define PI PI42,1214
+typedef struct player_s {player_s49,1424
+	double angle;		/* in clockwise degrees, 0 -> due east */angle50,1450
+	double world_x,world_y;	/* coordinates in the world */world_x51,1508
+	double world_x,world_y;	/* coordinates in the world */world_y51,1508
+	int screen_x,screen_y;	/* onscreen coordinates */screen_x52,1564
+	int screen_x,screen_y;	/* onscreen coordinates */screen_y52,1564
+	double velocity;	/* velocity in pixels per frame */velocity53,1615
+	double accel;		/* acceleration in pixels/frame^2 */accel54,1668
+	int shields;		/* shield strength left */shields55,1721
+} player_t, *player_p;player_t56,1763
 } player_t, *player_p;player_p56,1763
 
-main.c,871
-#define _GNU_SOURCE1,0
-enum { OPP_COMPUTER,19,314
-enum { OPP_COMPUTER, OPP_NETWORK 19,314
-enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;19,314
-player_t player;20,364
-player_t opponent;21,429
-static int camera_x,24,521
-static int camera_x, camera_y;24,521
-SDL_Surface *screen;26,601
-int fullscreen 29,688
-int hwsurface 30,708
-int doublebuf 31,727
-double time_scale 33,747
-static Sint32 seed 52,1410
-static void initrandom(54,1435
-static unsigned int getrandom(59,1485
-static void DrawPlayer(72,1709
-static void InitPlayer(111,2653
-static void InitOpponent(122,2931
-static void UpdatePlayer(137,3395
-static void PlayGame(162,4121
-int main(275,7194
-void main_prog(281,7276
-	enum { GAME_COMPUTER,283,7317
-	enum { GAME_COMPUTER, GAME_NETWORK,283,7317
-	enum { GAME_COMPUTER, GAME_NETWORK, GAME_UNKNOWN 283,7317
-static char * script_name(402,10311
+main.c,1616
+#define _GNU_SOURCE_GNU_SOURCE1,0
+enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;OPP_COMPUTER19,314
+enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;OPP_NETWORK19,314
+enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;opponent_type19,314
+player_t player;		/* the player sitting at the local keyboard */player20,364
+player_t opponent;		/* scripted or networked opponent */opponent21,429
+static int camera_x, camera_y;	/* position of 640x480 viewport within world */camera_x24,521
+static int camera_x, camera_y;	/* position of 640x480 viewport within world */camera_y24,521
+SDL_Surface *screen;		/* global for convenience */screen26,601
+int fullscreen = 0;fullscreen29,688
+int hwsurface = 0;hwsurface30,708
+int doublebuf = 0;doublebuf31,727
+double time_scale = 0;time_scale33,747
+static Sint32 seed = 0;seed53,1443
+static void initrandom()initrandom55,1468
+static unsigned int getrandom()getrandom60,1518
+static void DrawPlayer(player_p p)DrawPlayer73,1742
+static void InitPlayer()InitPlayer112,2686
+static void InitOpponent()InitOpponent123,2964
+static void UpdatePlayer(player_p p)UpdatePlayer138,3428
+static void PlayGame()PlayGame163,4154
+int main(int argc, char *argv[])main276,7227
+void main_prog(int argc, char *argv[])main_prog282,7309
+static char * script_name(char *dir)script_name403,10344
+enum state { ATTACK, EVADE };state414,10572
+enum state { ATTACK, EVADE };ATTACK414,10572
+enum state { ATTACK, EVADE };EVADE414,10572
+int target_x = 0;target_x415,10602
+int target_y = 0;target_y416,10620
+static void play_computer(void)play_computer417,10638
 
-c_builtins.c,594
-SCM fire_weapon(10,138
-SCM player_x(16,284
-SCM player_y(20,349
-SCM player_angle(24,414
-SCM player_accel(28,481
-SCM computer_x(32,548
-SCM computer_y(36,617
-SCM computer_angle(40,686
-SCM computer_accel(44,757
-SCM set_player_x(49,829
-SCM set_player_y(55,932
-SCM set_player_angle(61,1035
-SCM set_player_accel(67,1144
-SCM set_computer_x(73,1253
-SCM set_computer_y(79,1360
-SCM set_computer_angle(85,1467
-SCM set_computer_accel(91,1580
-SCM world_width(98,1694
-SCM world_height(103,1773
-SCM player_forward_thrust(108,1854
-SCM player_reverse_thrust(113,1953
-SCM scm_atan2(119,2053
+c_builtins.c,1055
+SCM fire_weapon(void)fire_weapon10,138
+SCM player_x(void)player_x16,284
+SCM player_y(void)player_y20,349
+SCM player_angle(void)player_angle24,414
+SCM player_accel(void)player_accel28,481
+SCM computer_x(void)computer_x32,548
+SCM computer_y(void)computer_y36,617
+SCM computer_angle(void)computer_angle40,686
+SCM computer_accel(void)computer_accel44,757
+SCM set_player_x(SCM p_x)set_player_x49,829
+SCM set_player_y(SCM p_y)set_player_y55,932
+SCM set_player_angle(SCM p_an)set_player_angle61,1035
+SCM set_player_accel(SCM p_ac)set_player_accel67,1144
+SCM set_computer_x(SCM c_x)set_computer_x73,1253
+SCM set_computer_y(SCM c_y)set_computer_y79,1360
+SCM set_computer_angle(SCM c_an)set_computer_angle85,1467
+SCM set_computer_accel(SCM c_ac)set_computer_accel91,1580
+SCM world_width(void)world_width98,1694
+SCM world_height(void)world_height103,1773
+SCM player_forward_thrust(void)player_forward_thrust108,1854
+SCM player_reverse_thrust(void)player_reverse_thrust113,1953
+SCM scm_atan2(SCM y, SCM x)scm_atan2119,2053
 
-img_dir.h,46
-#define IMG_DIR_H3,89
-#define IMG_DIR 5,108
+img_dir.h,64
+#define IMG_DIR_HIMG_DIR_H3,89
+#define IMG_DIR IMG_DIR5,108
 
-particle.c,260
-particle_t particles[6,83
-int active_particles 7,120
-static void AddParticle(13,325
-static void DeleteParticle(23,612
-void DrawParticles(32,878
-void UpdateParticles(67,1765
-void CreateParticleExplosion(97,2654
-static Uint16 CreateHicolorPixel(121,3279
+particle.c,603
+particle_t particles[MAX_PARTICLES];particles6,83
+int active_particles = 0;active_particles7,120
+static void AddParticle(particle_p particle)AddParticle13,325
+static void DeleteParticle(int index)DeleteParticle23,612
+void DrawParticles(SDL_Surface *dest, int camera_x, int camera_y)DrawParticles32,878
+void UpdateParticles(void)UpdateParticles67,1765
+void CreateParticleExplosion(int x, int y, int r, int g, int b, int energy, int density)CreateParticleExplosion97,2654
+static Uint16 CreateHicolorPixel(SDL_PixelFormat *fmt, Uint8 red, Uint8 green, Uint8 blue)CreateHicolorPixel121,3279
 
 player.h,0
 
-background.c,239
-static int front_tiles[7,159
-static int back_tiles[8,226
-static Sint32 seed 15,633
-static void initrandom(17,658
-static unsigned int getrandom(22,708
-void InitBackground(32,961
-void DrawBackground(50,1455
-void DrawParallax(97,2801
+background.c,516
+static int front_tiles[PARALLAX_GRID_WIDTH][PARALLAX_GRID_HEIGHT];front_tiles7,159
+static int back_tiles[PARALLAX_GRID_WIDTH][PARALLAX_GRID_HEIGHT];back_tiles8,226
+static Sint32 seed = 0;seed15,633
+static void initrandom()initrandom17,658
+static unsigned int getrandom()getrandom22,708
+void InitBackground()InitBackground32,961
+void DrawBackground(SDL_Surface *dest, int camera_x, int camera_y)DrawBackground50,1455
+void DrawParallax(SDL_Surface *dest, int camera_x, int camera_y)DrawParallax97,2801
 
 c_builtins.h,0
 
-scripting.c,112
-void InitScripting(9,149
-void CleanupScripting(39,1559
-int LoadGameScript(43,1592
-int RunGameScript(51,1778
+scripting.c,198
+void InitScripting(void)InitScripting9,149
+void CleanupScripting(void)CleanupScripting39,1559
+int LoadGameScript(char *filename)LoadGameScript43,1592
+int RunGameScript()RunGameScript51,1778
 
-resources.c,246
-#define _GNU_SOURCE1,0
-SDL_Surface *ship_strip;10,147
-SDL_Surface *front_star_tiles;11,215
-SDL_Surface *back_star_tiles;12,283
-int num_star_tiles;13,343
-void LoadGameData(17,453
-void UnloadGameData(80,2752
-static char * file_name(96,3080
+resources.c,537
+#define _GNU_SOURCE_GNU_SOURCE1,0
+SDL_Surface *ship_strip;	/* rotating ship in 2-degree increments */ship_strip10,147
+SDL_Surface *front_star_tiles;	/* for the parallaxing star layer */front_star_tiles11,215
+SDL_Surface *back_star_tiles;	/* for the star background */back_star_tiles12,283
+int num_star_tiles;		/* derived from the width of the loaded strips */num_star_tiles13,343
+void LoadGameData(void)LoadGameData17,453
+void UnloadGameData(void)UnloadGameData80,2752
+static char * file_name(char *name)file_name96,3080
 
-particle.h,112
-#define PARTICLE_H2,19
-typedef struct particle_s particle_s7,87
+particle.h,528
+#define PARTICLE_HPARTICLE_H2,19
+typedef struct particle_s {particle_s7,87
+    double x,y;		/* coordinates of the particle */x8,115
+    double x,y;		/* coordinates of the particle */y8,115
+    double energy;      /* velocity of the particle */energy9,166
+    double angle;	/* angle of the particle */angle10,221
+    int r, g, b;	/* color */r11,267
+    int r, g, b;	/* color */g11,267
+    int r, g, b;	/* color */b11,267
+} particle_t, *particle_p;particle_t12,296
 } particle_t, *particle_p;particle_p12,296
 
-background.h,26
-#define BACKGROUND_H2,21
+background.h,39
+#define BACKGROUND_HBACKGROUND_H2,21

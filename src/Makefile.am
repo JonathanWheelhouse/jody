@@ -5,29 +5,22 @@ bin_PROGRAMS = jody
 
 jody_SOURCES = background.c \
 	background.h \
-	c_builtins.c \
-	c_builtins.h \
 	gamedefs.h main.c \
 	particle.c \
 	particle.h \
 	player.h \
 	resources.c \
-	resources.h \
-	scripting.c \
-	scripting.h
+	resources.h
 
-jody_LDADD = $(GUILE_LIBS) $(SDL_LIBS)
+jody_LDADD = $(SDL_LIBS)
 
 ## Both these ways work to pass the bindir to main.c
 ## DEFS = -DSCRIPTDIR=\"$(bindir)\" @DEFS@
 AM_CPPFLAGS = -DSCRIPTDIR=\"$(bindir)\"
 
-bin_SCRIPTS = jody.scm
-
 noinst_HEADERS = img_dir.h
 
-EXTRA_DIST = jody.scm \
-	img_dir.h.in
+EXTRA_DIST = img_dir.h.in
 
 ## We borrow guile's convention and use @-...-@ as the substitution
 ## brackets here, instead of the usual @...@.  This prevents autoconf

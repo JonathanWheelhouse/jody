@@ -1,144 +1,2 @@
 
-src/background.c,239
-static int front_tiles[7,159
-static int back_tiles[8,226
-static Sint32 seed 15,633
-static void initrandom(17,658
-static unsigned int getrandom(22,708
-void InitBackground(32,961
-void DrawBackground(50,1455
-void DrawParallax(97,2801
-
-src/background.h,26
-#define BACKGROUND_H2,21
-
-src/c_builtins.c,594
-SCM fire_weapon(10,138
-SCM player_x(16,284
-SCM player_y(20,349
-SCM player_angle(24,414
-SCM player_accel(28,481
-SCM computer_x(32,548
-SCM computer_y(36,617
-SCM computer_angle(40,686
-SCM computer_accel(44,757
-SCM set_player_x(49,829
-SCM set_player_y(55,932
-SCM set_player_angle(61,1035
-SCM set_player_accel(67,1144
-SCM set_computer_x(73,1253
-SCM set_computer_y(79,1360
-SCM set_computer_angle(85,1467
-SCM set_computer_accel(91,1580
-SCM world_width(98,1694
-SCM world_height(103,1773
-SCM player_forward_thrust(108,1854
-SCM player_reverse_thrust(113,1953
-SCM scm_atan2(119,2053
-
-src/c_builtins.h,0
-
-src/gamedefs.h,680
-#define GAMEDEFS_H2,19
-#define SCREEN_WIDTH	5,76
-#define SCREEN_HEIGHT	6,101
-#define MAX_PARTICLES	9,186
-#define PLAYER_WIDTH	12,297
-#define PLAYER_HEIGHT	13,321
-#define TILE_WIDTH	16,382
-#define TILE_HEIGHT	17,404
-#define WORLD_WIDTH	20,484
-#define WORLD_HEIGHT	21,509
-#define PLAYER_MAX_VELOCITY	24,564
-#define PLAYER_MIN_VELOCITY	25,599
-#define PLAYER_FORWARD_THRUST	27,636
-#define PLAYER_REVERSE_THRUST	28,670
-#define PARALLAX_BACK_FACTOR	32,830
-#define PARALLAX_FRONT_FACTOR	33,862
-#define PARALLAX_GRID_WIDTH	39,1146
-#define PARALLAX_GRID_HEIGHT	40,1179
-#define PI 42,1214
-typedef struct player_s player_s49,1424
-} player_t, *player_p;player_p56,1763
-
-src/img_dir.h,46
-#define IMG_DIR_H3,89
-#define IMG_DIR 5,108
-
-src/jody.scm,290
-(define state state1,0
-(define target_x target_x2,23
-(define target_y target_y3,43
-(define (play_computer)play_computer5,64
-(define (attack)attack17,400
-(define (evade)evade27,809
-(define (dist_to_player)dist_to_player37,1214
-(define (angle_to_player)angle_to_player42,1371
-
-src/main.c,880
-#define _GNU_SOURCE1,0
-enum { OPP_COMPUTER,19,314
-enum { OPP_COMPUTER, OPP_NETWORK 19,314
-enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;19,314
-player_t player;20,364
-player_t opponent;21,429
-static int camera_x,24,521
-static int camera_x, camera_y;24,521
-SDL_Surface *screen;26,601
-int fullscreen 29,688
-int hwsurface 30,708
-int doublebuf 31,727
-double time_scale 33,747
-static Sint32 seed 52,1410
-static void initrandom(54,1435
-static unsigned int getrandom(59,1488
-static void DrawPlayer(72,1724
-static void InitPlayer(111,2733
-static void InitOpponent(122,3029
-static void UpdatePlayer(137,3502
-static void PlayGame(162,4271
-int main(275,7430
-void main_prog(281,7518
-    enum { GAME_COMPUTER,283,7559
-    enum { GAME_COMPUTER, GAME_NETWORK,283,7559
-    enum { GAME_COMPUTER, GAME_NETWORK, GAME_UNKNOWN 283,7559
-static char * script_name(402,10735
-
-src/particle.c,260
-particle_t particles[6,83
-int active_particles 7,120
-static void AddParticle(13,325
-static void DeleteParticle(23,612
-void DrawParticles(32,878
-void UpdateParticles(67,1765
-void CreateParticleExplosion(97,2654
-static Uint16 CreateHicolorPixel(121,3279
-
-src/particle.h,112
-#define PARTICLE_H2,19
-typedef struct particle_s particle_s7,87
-} particle_t, *particle_p;particle_p12,296
-
-src/player.h,0
-
-src/resources.c,246
-#define _GNU_SOURCE1,0
-SDL_Surface *ship_strip;10,147
-SDL_Surface *front_star_tiles;11,215
-SDL_Surface *back_star_tiles;12,283
-int num_star_tiles;13,343
-void LoadGameData(17,453
-void UnloadGameData(80,2752
-static char * file_name(96,3080
-
-src/resources.h,25
-#define RESOURCES_H2,20
-
-src/scripting.c,112
-void InitScripting(9,149
-void CleanupScripting(39,1559
-int LoadGameScript(43,1592
-int RunGameScript(51,1778
-
-src/scripting.h,25
-#define SCRIPTING_H2,20
+/home/jonathan/DEV/games/jody/src/TAGS,include
