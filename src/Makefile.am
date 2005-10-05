@@ -3,25 +3,23 @@ DIST_SUBDIRS = img
 
 bin_PROGRAMS = jody
 
-jody_SOURCES = background.c \
-	background.h \
-	gamedefs.h main.c \
-	particle.c \
-	particle.h \
-	player.h \
+jody_SOURCES = \
+	main.c \
+	gamedefs.h \
 	resources.c \
-	resources.h
+	resources.h \
+	util.h \
+	util.c
 
-jody_LDADD = $(SDL_LIBS)
+LDADD = $(SDL_LIBS) -lSDL_image
 
 ## Both these ways work to pass the bindir to main.c
 ## DEFS = -DSCRIPTDIR=\"$(bindir)\" @DEFS@
-AM_CPPFLAGS = -DSCRIPTDIR=\"$(bindir)\"
+AM_CPPFLAGS = -DSCRIPTDIR=\"$(bindir)\" $(shell sdl-config --cflags)
 
+AM_CFLAGS = -pedantic -Wall
 noinst_HEADERS = img_dir.h
-
 EXTRA_DIST = img_dir.h.in
-
 ## We borrow guile's convention and use @-...-@ as the substitution
 ## brackets here, instead of the usual @...@.  This prevents autoconf
 ## from substituting the values directly into the left-hand sides of

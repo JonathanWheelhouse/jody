@@ -1,124 +1,87 @@
 
-resources.h,37
+resources.h,1189
 #define RESOURCES_HRESOURCES_H2,20
+enum image {image8,92
+	 IMG_BACKGROUND,IMG_BACKGROUND9,105
+	 IMG_CLOUD,IMG_CLOUD10,123
+	 IMG_COW_BLACK_TILE,IMG_COW_BLACK_TILE11,136
+	 IMG_COW_BLACK_LEFT,IMG_COW_BLACK_LEFT12,158
+	 IMG_COW_BLACK,IMG_COW_BLACK13,180
+	 IMG_COW_BROWN_LEFT,IMG_COW_BROWN_LEFT14,197
+	 IMG_COW_BROWN,IMG_COW_BROWN15,219
+	 IMG_COW_ORANGE_LEFT,IMG_COW_ORANGE_LEFT16,236
+	 IMG_COW_ORANGE,IMG_COW_ORANGE17,259
+	 IMG_COW_RED_LEFT,IMG_COW_RED_LEFT18,277
+	 IMG_COW_RED,IMG_COW_RED19,297
+	 IMG_COW_WHITE_LEFT,IMG_COW_WHITE_LEFT20,312
+	 IMG_COW_WHITE,IMG_COW_WHITE21,334
+	 IMG_COW_YELLOW_LEFT,IMG_COW_YELLOW_LEFT22,351
+	 IMG_COW_YELLOW,IMG_COW_YELLOW23,374
+	 IMG_COW_YELLOW_WITH_RED_OUTLINE_LEFT,IMG_COW_YELLOW_WITH_RED_OUTLINE_LEFT24,392
+	 IMG_COW_YELLOW_WITH_RED_OUTLINE,IMG_COW_YELLOW_WITH_RED_OUTLINE25,432
+	 IMG_KANGAROO_BLACK_LEFT,IMG_KANGAROO_BLACK_LEFT26,467
+	 IMG_KANGAROO_BLACK,IMG_KANGAROO_BLACK27,494
+	 IMG_KANGAROO_GREY_LEFT,IMG_KANGAROO_GREY_LEFT28,516
+	 IMG_KANGAROO_GREY,IMG_KANGAROO_GREY29,542
+	 IMG_KANGAROO_RED_LEFT,IMG_KANGAROO_RED_LEFT30,563
+	 IMG_KANGAROO_RED,IMG_KANGAROO_RED31,588
+	 NUM_IMAGESNUM_IMAGES32,608
 
-gamedefs.h,1566
+gamedefs.h,140
 #define GAMEDEFS_HGAMEDEFS_H2,19
-#define SCREEN_WIDTH	SCREEN_WIDTH5,76
-#define SCREEN_HEIGHT	SCREEN_HEIGHT6,101
-#define MAX_PARTICLES	MAX_PARTICLES9,186
-#define PLAYER_WIDTH	PLAYER_WIDTH12,297
-#define PLAYER_HEIGHT	PLAYER_HEIGHT13,321
-#define TILE_WIDTH	TILE_WIDTH16,382
-#define TILE_HEIGHT	TILE_HEIGHT17,404
-#define WORLD_WIDTH	WORLD_WIDTH20,484
-#define WORLD_HEIGHT	WORLD_HEIGHT21,509
-#define PLAYER_MAX_VELOCITY	PLAYER_MAX_VELOCITY24,564
-#define PLAYER_MIN_VELOCITY	PLAYER_MIN_VELOCITY25,599
-#define PLAYER_FORWARD_THRUST	PLAYER_FORWARD_THRUST27,636
-#define PLAYER_REVERSE_THRUST	PLAYER_REVERSE_THRUST28,670
-#define PARALLAX_BACK_FACTOR	PARALLAX_BACK_FACTOR32,830
-#define PARALLAX_FRONT_FACTOR	PARALLAX_FRONT_FACTOR33,862
-#define PARALLAX_GRID_WIDTH	PARALLAX_GRID_WIDTH39,1146
-#define PARALLAX_GRID_HEIGHT	PARALLAX_GRID_HEIGHT40,1179
-#define PI PI42,1214
-typedef struct player_s {player_s49,1424
-	double angle;		/* in clockwise degrees, 0 -> due east */angle50,1450
-	double world_x,world_y;	/* coordinates in the world */world_x51,1508
-	double world_x,world_y;	/* coordinates in the world */world_y51,1508
-	int screen_x,screen_y;	/* onscreen coordinates */screen_x52,1564
-	int screen_x,screen_y;	/* onscreen coordinates */screen_y52,1564
-	double velocity;	/* velocity in pixels per frame */velocity53,1615
-	double accel;		/* acceleration in pixels/frame^2 */accel54,1668
-	int shields;		/* shield strength left */shields55,1721
-} player_t, *player_p;player_t56,1763
-} player_t, *player_p;player_p56,1763
+#define SCREEN_WIDTH	SCREEN_WIDTH7,98
+#define SCREEN_HEIGHT	SCREEN_HEIGHT8,123
+#define PI PI10,150
 
-main.c,1877
+util.h,223
+#define UTIL_HUTIL_H2,15
+#undef RANDRAND7,64
+#define RAND(RAND9,83
+#undef MAXMAX12,152
+#define MAX(MAX14,170
+#undef MINMIN17,224
+#define MIN(MIN19,242
+#undef UNUSEDUNUSED22,299
+#define UNUSED(UNUSED24,320
+
+main.c,593
 #define _GNU_SOURCE_GNU_SOURCE1,0
-enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;OPP_COMPUTER16,268
-enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;OPP_NETWORK16,268
-enum { OPP_COMPUTER, OPP_NETWORK } opponent_type;opponent_type16,268
-player_t player;		/* the player sitting at the local keyboard */player17,318
-player_t opponent;		/* scripted or networked opponent */opponent18,383
-static int camera_x, camera_y;	/* position of 640x480 viewport within world */camera_x21,475
-static int camera_x, camera_y;	/* position of 640x480 viewport within world */camera_y21,475
-SDL_Surface *screen;		/* global for convenience */screen23,555
-int fullscreen = 0;fullscreen26,642
-int hwsurface = 0;hwsurface27,662
-int doublebuf = 0;doublebuf28,681
-double time_scale = 0;time_scale30,701
-static Sint32 seed = 0;seed54,1528
-static void initrandom(void)initrandom56,1553
-static unsigned int getrandom(void)getrandom61,1608
-static void DrawPlayer(player_p p)DrawPlayer74,1840
-static void InitPlayer(void)InitPlayer113,2809
-static void InitOpponent(void)InitOpponent124,3097
-static void UpdatePlayer(player_p p)UpdatePlayer139,3578
-static void PlayGame(void)PlayGame164,4316
-int main(int argc, char *argv[])main273,7435
-static char * script_name(char *dir)script_name383,10363
-enum STATE { ATTACK, EVADE };STATE394,10598
-enum STATE { ATTACK, EVADE };ATTACK394,10598
-enum STATE { ATTACK, EVADE };EVADE394,10598
-enum STATE state = ATTACK;state395,10628
-int target_x = 0;target_x396,10655
-int target_y = 0;target_y397,10673
-static void play_computer(void)play_computer398,10691
-static void attack(void)attack424,11297
-static void evade(void)evade442,11721
-static double dist_to_player(void)dist_to_player458,12184
-static double angle_to_player(void)angle_to_player464,12377
-static void fire_weapon(void)fire_weapon473,12619
+int fullscreen = 0;fullscreen14,224
+double time_scale = 0;time_scale16,245
+static Sint32 seed = 0;seed32,899
+static void initrandom(void)initrandom34,924
+static unsigned int getrandom(void)getrandom39,979
+int main(int argc, char *argv[])main49,1132
+static void getargs(int argc, char *argv[])getargs67,1374
+static void play_game(void)play_game104,2555
+static void usage(int ret)usage164,3884
+static void handle_events(int *quit, int *pause)handle_events176,4165
+static void draw(SDL_Rect *src, SDL_Rect *dest2, int *pause)draw217,5060
 
 img_dir.h,64
 #define IMG_DIR_HIMG_DIR_H3,89
 #define IMG_DIR IMG_DIR5,108
 
-particle.c,603
-particle_t particles[MAX_PARTICLES];particles6,83
-int active_particles = 0;active_particles7,120
-static void AddParticle(particle_p particle)AddParticle13,325
-static void DeleteParticle(int index)DeleteParticle23,612
-void DrawParticles(SDL_Surface *dest, int camera_x, int camera_y)DrawParticles32,878
-void UpdateParticles(void)UpdateParticles67,1765
-void CreateParticleExplosion(int x, int y, int r, int g, int b, int energy, int density)CreateParticleExplosion97,2654
-static Uint16 CreateHicolorPixel(SDL_PixelFormat *fmt, Uint8 red, Uint8 green, Uint8 blue)CreateHicolorPixel121,3279
-
-player.h,0
-
-background.c,516
-static int front_tiles[PARALLAX_GRID_WIDTH][PARALLAX_GRID_HEIGHT];front_tiles7,159
-static int back_tiles[PARALLAX_GRID_WIDTH][PARALLAX_GRID_HEIGHT];back_tiles8,226
-static Sint32 seed = 0;seed15,633
-static void initrandom()initrandom17,658
-static unsigned int getrandom()getrandom22,708
-void InitBackground()InitBackground32,961
-void DrawBackground(SDL_Surface *dest, int camera_x, int camera_y)DrawBackground50,1455
-void DrawParallax(SDL_Surface *dest, int camera_x, int camera_y)DrawParallax97,2801
-
-resources.c,537
+resources.c,1183
 #define _GNU_SOURCE_GNU_SOURCE1,0
-SDL_Surface *ship_strip;	/* rotating ship in 2-degree increments */ship_strip10,147
-SDL_Surface *front_star_tiles;	/* for the parallaxing star layer */front_star_tiles11,215
-SDL_Surface *back_star_tiles;	/* for the star background */back_star_tiles12,283
-int num_star_tiles;		/* derived from the width of the loaded strips */num_star_tiles13,343
-void LoadGameData(void)LoadGameData17,453
-void UnloadGameData(void)UnloadGameData80,2752
-static char * file_name(char *name)file_name96,3080
+SDL_Surface *screen;screen10,169
+SDL_Surface *images[NUM_IMAGES];images11,190
+SDL_Cursor *cursor_arrow;cursor_arrow13,224
+SDL_Cursor *cursor_wheelhouse;cursor_wheelhouse14,250
+SDL_Cursor *cursor_wheelhouse_transparent;cursor_wheelhouse_transparent15,281
+SDL_Cursor *cursor_wheelhouse_inverted;cursor_wheelhouse_inverted16,324
+SDL_Cursor *cursor_wheelhouse_black_with_white_lines;cursor_wheelhouse_black_with_white_lines17,364
+void setup(int fullscreen)setup22,475
+static void seticon(void)seticon54,1350
+SDL_Cursor *create_cursor_arrow(void)create_cursor_arrow75,1873
+static const char *wheelhouse[] = {wheelhouse157,4114
+SDL_Cursor *create_cursor_wheelhouse(void)create_cursor_wheelhouse200,5544
+SDL_Cursor *create_cursor_wheelhouse_transparent(void)create_cursor_wheelhouse_transparent233,6192
+SDL_Cursor *create_cursor_wheelhouse_inverted(void)create_cursor_wheelhouse_inverted269,6906
+SDL_Cursor *create_cursor_wheelhouse_black_with_white_lines(void)create_cursor_wheelhouse_black_with_white_lines302,7563
+const char *image_names [NUM_IMAGES] = {image_names335,8213
+static void load_img(void)load_img361,8990
 
-particle.h,528
-#define PARTICLE_HPARTICLE_H2,19
-typedef struct particle_s {particle_s7,87
-    double x,y;		/* coordinates of the particle */x8,115
-    double x,y;		/* coordinates of the particle */y8,115
-    double energy;      /* velocity of the particle */energy9,166
-    double angle;	/* angle of the particle */angle10,221
-    int r, g, b;	/* color */r11,267
-    int r, g, b;	/* color */g11,267
-    int r, g, b;	/* color */b11,267
-} particle_t, *particle_p;particle_t12,296
-} particle_t, *particle_p;particle_p12,296
-
-background.h,39
-#define BACKGROUND_HBACKGROUND_H2,21
+util.c,85
+void fatal(const char *format, ...)fatal5,60
+void * xalloc(int size)xalloc16,230
