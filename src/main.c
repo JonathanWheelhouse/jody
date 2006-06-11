@@ -9,7 +9,12 @@
 #include "img_dir.h"
 #include "gamedefs.h"
 #include "resources.h"
+#include "cursor.h"
 #include "util.h"
+
+/* constants */
+#define X_DIST 10
+#define Y_DIST 1
 
 /* global variables */
 int fullscreen = 0;
@@ -19,6 +24,7 @@ double time_scale = 0;
 /* Prototypes */
 static void getargs(int argc, char *argv[]);
 static void usage(int ret);
+static void setup(int fullscreen);
 static void play_game(void);
 static void handle_events(int *quit, int *pause);
 static void draw(SDL_Rect *src, int *pause);
@@ -78,6 +84,37 @@ static void getargs(int argc, char *argv[])
 	 }
 }
 
+static void setup(int fullscreen)
+{
+	 if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+		  printf("Unable to initialize SDL: %s\n", SDL_GetError());
+		  exit(1);
+	 }
+
+	 atexit(SDL_Quit);
+
+	 seticon();
+
+	 if (SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF |
+						  (fullscreen ? SDL_FULLSCREEN : 0)) == NULL) {
+		  printf("Unable to set video mode: %s\n", SDL_GetError());
+		  exit(1);
+	 }
+
+	 screen = SDL_GetVideoSurface();
+
+	 SDL_WM_SetCaption("jody", "jody");
+
+	 /* Setup the cursors. */
+	 cursor_arrow = create_cursor_arrow();
+	 cursor_wheelhouse = create_cursor_wheelhouse();
+	 cursor_wheelhouse_transparent = create_cursor_wheelhouse_transparent();
+	 cursor_wheelhouse_inverted = create_cursor_wheelhouse_inverted();
+	 cursor_wheelhouse_black_with_white_lines = create_cursor_wheelhouse_black_with_white_lines();
+
+	 setup_img();
+}
+
 static void play_game(void)
 {
 
@@ -105,7 +142,7 @@ static void play_game(void)
 
 		  prev_ticks = cur_ticks;
 		  cur_ticks = SDL_GetTicks();
-		  time_scale = (double)(cur_ticks-prev_ticks)/30.0;
+		  time_scale = (double)(cur_ticks-prev_ticks)/50.0;
 
 		  handle_events(&quit, &pause);
 
@@ -215,13 +252,15 @@ static void draw(SDL_Rect *src, int *pause)
 /* 			   src->x += cow_width; */
 /* 			   if (src->x > cow3_x) */
 /* 					src->x = 0; */
-		  struct image *image = &images[i];
-		  dest.x = image->x;
-		  dest.y = image->y;
-		  dest.w = image->surface->w;
-		  dest.h = image->surface->h;
-		  if (!*pause)
-			   dest = calc_dest(image);
+		 struct image *image = &images[i];
+		 dest.w = image->surface->w;
+		 dest.h = image->surface->h;
+		 if (*pause) {
+			 dest.x = image->x;
+			 dest.y = image->y;
+		 } else
+			 dest = calc_dest(image);
+
 		  SDL_BlitSurface(image->surface, NULL, screen, &dest);
 	 }
 }
@@ -231,7 +270,7 @@ static SDL_Rect calc_dest(struct image *image)
 	 SDL_Rect dest;
 
 	 /* Move the cow horizontally. */
-	 image->x += 20;
+	 image->x += X_DIST * time_scale;
 	 if (image->x > SCREEN_WIDTH)
 		  image->x = 0;
 	 dest.x = image->x;
@@ -241,12 +280,16 @@ static SDL_Rect calc_dest(struct image *image)
 		like bounce off. */
 
 	 unsigned int odd = random() % 2;
-	 if (odd) {
-		  image->y += 5;
-	 }
-	 else {
-		  image->y -= 5;
-	 }
+	 int dist;
+	 if (odd)
+		 dist = Y_DIST;
+	 else
+		 dist = - Y_DIST;
+
+	 image->y += dist * time_scale;
+	 if (image->y > SCREEN_HEIGHT || image->y < 0)
+		 image->y = SCREEN_HEIGHT / 2;
+	 
 	 dest.y = image->y;
 
 	 return dest;

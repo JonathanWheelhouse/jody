@@ -49,7 +49,8 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_jody_OBJECTS = main.$(OBJEXT) resources.$(OBJEXT) util.$(OBJEXT)
+am_jody_OBJECTS = main.$(OBJEXT) resources.$(OBJEXT) cursor.$(OBJEXT) \
+	util.$(OBJEXT)
 jody_OBJECTS = $(am_jody_OBJECTS)
 jody_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
@@ -86,7 +87,7 @@ CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPPFLAGS = 
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"jody\" -DPACKAGE_TARNAME=\"jody\" -DPACKAGE_VERSION=\"0.1.0\" -DPACKAGE_STRING=\"jody\ 0.1.0\" -DPACKAGE_BUGREPORT=\"jonathan.wheelhouse@gmail.com\" -DPACKAGE=\"jody\" -DVERSION=\"0.1.0\" 
+DEFS = -DPACKAGE_NAME=\"jody\" -DPACKAGE_TARNAME=\"jody\" -DPACKAGE_VERSION=\"0.1.0\" -DPACKAGE_STRING=\"jody\ 0.1.0\" -DPACKAGE_BUGREPORT=\"jonathan\ dot\ wheelhouse\ at\ gmail.com\" -DPACKAGE=\"jody\" -DVERSION=\"0.1.0\" 
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -104,7 +105,7 @@ LTLIBOBJS =
 MAKEINFO = ${SHELL} /home/jonathan/DEV/games/jody/missing --run makeinfo
 OBJEXT = o
 PACKAGE = jody
-PACKAGE_BUGREPORT = jonathan.wheelhouse@gmail.com
+PACKAGE_BUGREPORT = jonathan dot wheelhouse at gmail.com
 PACKAGE_NAME = jody
 PACKAGE_STRING = jody 0.1.0
 PACKAGE_TARNAME = jody
@@ -151,8 +152,10 @@ DIST_SUBDIRS = img
 jody_SOURCES = \
 	main.c \
 	gamedefs.h \
-	resources.c \
 	resources.h \
+	resources.c \
+	cursor.h \
+	cursor.c \
 	util.h \
 	util.c
 
@@ -229,6 +232,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/cursor.Po
 include ./$(DEPDIR)/main.Po
 include ./$(DEPDIR)/resources.Po
 include ./$(DEPDIR)/util.Po

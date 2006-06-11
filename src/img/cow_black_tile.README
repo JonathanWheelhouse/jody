@@ -1,0 +1,8 @@
+cow_black.png PNG 126x95 126x95+0+0 DirectClass 5kb 
+cow_black_wide.png PNG 126x95 126x95+0+0 DirectClass 6kb 
+cow_black_narrow.png PNG 126x95 126x95+0+0 DirectClass 5kb 
+cow_black.png PNG 126x95 126x95+0+0 DirectClass 5kb 0.020u 0:01
+cow_black_wide.png[1] PNG 126x95 126x95+0+0 DirectClass 6kb 
+cow_black_narrow.png[2] PNG 126x95 126x95+0+0 DirectClass 5kb 
+cow_black.png PNG 126x95=>378x95 378x95+0+0 DirectClass 5kb 
+cow_black.png=>cow_black_tile.png PNG 126x95=>378x95 378x95+0+0 DirectClass 9kb 0.040u 0:01

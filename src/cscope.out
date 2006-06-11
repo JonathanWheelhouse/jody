@@ -1,4 +1,776 @@
-cscope 15 $HOME/DEV/games/jody/src               0000318401
+cscope 16 $HOME/DEV/games/jody/src               0000377849
+	@cursor.c
+
+1 
+	#_GNU_SOURCE
+
+
+	)
+
+2 
+	~<°dio.h
+>
+
+3 
+	~<°dlib.h
+>
+
+4 
+	~<°rög.h
+>
+
+5 
+	~<SDL_image.h
+>
+
+6 
+	~<time.h
+>
+
+7 
+	~"gamedefs.h
+"
+
+8 
+	~"ªsour˚s.h
+"
+
+9 
+	~"img_dú.h
+"
+
+11 
+SDL_Curs‹
+ *
+	gcurs‹_¨row
+;
+
+12 
+SDL_Curs‹
+ *
+	gcurs‹_whìlhou£
+;
+
+13 
+SDL_Curs‹
+ *
+	gcurs‹_whìlhou£_å™•¨ít
+;
+
+14 
+SDL_Curs‹
+ *
+	gcurs‹_whìlhou£_övîãd
+;
+
+15 
+SDL_Curs‹
+ *
+	gcurs‹_whìlhou£_bœck_wôh_whôe_löes
+;
+
+17 
+SDL_Curs‹
+ *
+	$¸óã_curs‹_¨row
+()
+
+24 c⁄° *
+¨row
+[] = {
+
+67 
+i
+, 
+row
+, 
+cﬁ
+;
+
+68 
+Uöt8
+ 
+d©a
+[4*32];
+
+69 
+Uöt8
+ 
+mask
+[4*32];
+
+70 
+hŸ_x
+, 
+hŸ_y
+;
+
+72 
+i
+ = -1;
+
+73 
+row
+=0;Ñow<32; ++row) {
+
+74 
+cﬁ
+=0; col<32; ++col) {
+
+75 i‡–
+cﬁ
+ % 8 ) {
+
+76 
+d©a
+[
+i
+] <<= 1;
+
+77 
+mask
+[
+i
+] <<= 1;
+
+79 ++
+i
+;
+
+80 
+d©a
+[
+i
+] = 
+mask
+[i] = 0;
+
+82 
+¨row
+[4+
+row
+][
+cﬁ
+]) {
+
+84 
+d©a
+[
+i
+] |= 0x01;
+
+85 
+mask
+[
+i
+] |= 0x01;
+
+88 
+mask
+[
+i
+] |= 0x01;
+
+95 
+	`ssˇnf
+(
+¨row
+[4+
+row
+], "%d,%d", &
+hŸ_x
+, &
+hŸ_y
+);
+
+96  
+	`SDL_Cª©eCurs‹
+(
+d©a
+, 
+mask
+, 32, 32, 
+hŸ_x
+, 
+hŸ_y
+);
+
+97 
+	}
+}
+
+99 c⁄° *
+	gwhìlhou£
+[] = {
+
+142 
+SDL_Curs‹
+ *
+	$¸óã_curs‹_whìlhou£
+()
+
+144 
+i
+, 
+row
+, 
+cﬁ
+;
+
+145 
+Uöt8
+ 
+d©a
+[4*32];
+
+146 
+Uöt8
+ 
+mask
+[4*32];
+
+147 
+hŸ_x
+, 
+hŸ_y
+;
+
+149 
+i
+ = -1;
+
+150 
+row
+=0;Ñow<32; ++row) {
+
+151 
+cﬁ
+=0; col<32; ++col) {
+
+152 i‡–
+cﬁ
+ % 8 ) {
+
+153 
+d©a
+[
+i
+] <<= 1;
+
+154 
+mask
+[
+i
+] <<= 1;
+
+156 ++
+i
+;
+
+157 
+d©a
+[
+i
+] = 
+mask
+[i] = 0;
+
+159 
+whìlhou£
+[4+
+row
+][
+cﬁ
+]) {
+
+161 
+d©a
+[
+i
+] |= 0x01;
+
+162 
+mask
+[
+i
+] |= 0x01;
+
+165 
+mask
+[
+i
+] |= 0x01;
+
+172 
+	`ssˇnf
+(
+whìlhou£
+[4+
+row
+], "%d,%d", &
+hŸ_x
+, &
+hŸ_y
+);
+
+173  
+	`SDL_Cª©eCurs‹
+(
+d©a
+, 
+mask
+, 32, 32, 
+hŸ_x
+, 
+hŸ_y
+);
+
+174 
+	}
+}
+
+175 
+SDL_Curs‹
+ *
+	$¸óã_curs‹_whìlhou£_å™•¨ít
+()
+
+177 
+i
+, 
+row
+, 
+cﬁ
+;
+
+178 
+Uöt8
+ 
+d©a
+[4*32];
+
+179 
+Uöt8
+ 
+mask
+[4*32];
+
+180 
+hŸ_x
+, 
+hŸ_y
+;
+
+182 
+i
+ = -1;
+
+183 
+row
+=0;Ñow<32; ++row) {
+
+184 
+cﬁ
+=0; col<32; ++col) {
+
+185 i‡–
+cﬁ
+ % 8 ) {
+
+186 
+d©a
+[
+i
+] <<= 1;
+
+187 
+mask
+[
+i
+] <<= 1;
+
+189 ++
+i
+;
+
+190 
+d©a
+[
+i
+] = 
+mask
+[i] = 0;
+
+192 
+whìlhou£
+[4+
+row
+][
+cﬁ
+]) {
+
+194 
+d©a
+[
+i
+] |= 0x01;
+
+195 
+mask
+[
+i
+] |= 0x01;
+
+208 
+	`ssˇnf
+(
+whìlhou£
+[4+
+row
+], "%d,%d", &
+hŸ_x
+, &
+hŸ_y
+);
+
+209  
+	`SDL_Cª©eCurs‹
+(
+d©a
+, 
+mask
+, 32, 32, 
+hŸ_x
+, 
+hŸ_y
+);
+
+210 
+	}
+}
+
+211 
+SDL_Curs‹
+ *
+	$¸óã_curs‹_whìlhou£_övîãd
+()
+
+213 
+i
+, 
+row
+, 
+cﬁ
+;
+
+214 
+Uöt8
+ 
+d©a
+[4*32];
+
+215 
+Uöt8
+ 
+mask
+[4*32];
+
+216 
+hŸ_x
+, 
+hŸ_y
+;
+
+218 
+i
+ = -1;
+
+219 
+row
+=0;Ñow<32; ++row) {
+
+220 
+cﬁ
+=0; col<32; ++col) {
+
+221 i‡–
+cﬁ
+ % 8 ) {
+
+222 
+d©a
+[
+i
+] <<= 1;
+
+223 
+mask
+[
+i
+] <<= 1;
+
+225 ++
+i
+;
+
+226 
+d©a
+[
+i
+] = 
+mask
+[i] = 0;
+
+228 
+whìlhou£
+[4+
+row
+][
+cﬁ
+]) {
+
+230 
+d©a
+[
+i
+] |= 0x01;
+
+231 
+mask
+[
+i
+] |= 0x01;
+
+234 
+d©a
+[
+i
+] |= 0x01;
+
+241 
+	`ssˇnf
+(
+whìlhou£
+[4+
+row
+], "%d,%d", &
+hŸ_x
+, &
+hŸ_y
+);
+
+242  
+	`SDL_Cª©eCurs‹
+(
+d©a
+, 
+mask
+, 32, 32, 
+hŸ_x
+, 
+hŸ_y
+);
+
+243 
+	}
+}
+
+244 
+SDL_Curs‹
+ *
+	$¸óã_curs‹_whìlhou£_bœck_wôh_whôe_löes
+()
+
+246 
+i
+, 
+row
+, 
+cﬁ
+;
+
+247 
+Uöt8
+ 
+d©a
+[4*32];
+
+248 
+Uöt8
+ 
+mask
+[4*32];
+
+249 
+hŸ_x
+, 
+hŸ_y
+;
+
+251 
+i
+ = -1;
+
+252 
+row
+=0;Ñow<32; ++row) {
+
+253 
+cﬁ
+=0; col<32; ++col) {
+
+254 i‡–
+cﬁ
+ % 8 ) {
+
+255 
+d©a
+[
+i
+] <<= 1;
+
+256 
+mask
+[
+i
+] <<= 1;
+
+258 ++
+i
+;
+
+259 
+d©a
+[
+i
+] = 
+mask
+[i] = 0;
+
+261 
+whìlhou£
+[4+
+row
+][
+cﬁ
+]) {
+
+263 
+mask
+[
+i
+] |= 0x01;
+
+266 
+d©a
+[
+i
+] |= 0x01;
+
+273 
+	`ssˇnf
+(
+whìlhou£
+[4+
+row
+], "%d,%d", &
+hŸ_x
+, &
+hŸ_y
+);
+
+274  
+	`SDL_Cª©eCurs‹
+(
+d©a
+, 
+mask
+, 32, 32, 
+hŸ_x
+, 
+hŸ_y
+);
+
+275 
+	}
+}
+
+	@cursor.h
+
+1 #i‚de‡
+CURSOR_H
+
+
+2 
+	#CURSOR_H
+
+
+	)
+
+4 
+	~<SDL/SDL.h
+>
+
+6 
+SDL_Curs‹
+ *
+¸óã_curs‹_¨row
+();
+
+7 
+SDL_Curs‹
+ *
+¸óã_curs‹_whìlhou£
+();
+
+8 
+SDL_Curs‹
+ *
+¸óã_curs‹_whìlhou£_å™•¨ít
+();
+
+9 
+SDL_Curs‹
+ *
+¸óã_curs‹_whìlhou£_övîãd
+();
+
+10 
+SDL_Curs‹
+ *
+¸óã_curs‹_whìlhou£_bœck_wôh_whôe_löes
+();
+
+12 
+SDL_Curs‹
+ *
+curs‹_¨row
+;
+
+13 
+SDL_Curs‹
+ *
+curs‹_whìlhou£
+;
+
+14 
+SDL_Curs‹
+ *
+curs‹_whìlhou£_å™•¨ít
+;
+
+15 
+SDL_Curs‹
+ *
+curs‹_whìlhou£_övîãd
+;
+
+16 
+SDL_Curs‹
+ *
+curs‹_whìlhou£_bœck_wôh_whôe_löes
+;
+
 	@gamedefs.h
 
 1 #i‚de‡
@@ -100,18 +872,34 @@ IMG_DIR_H
 "
 
 12 
+	~"curs‹.h
+"
+
+13 
 	~"utû.h
 "
 
-15 
+16 
+	#X_DIST
+ 10
+
+	)
+
+17 
+	#Y_DIST
+ 1
+
+	)
+
+20 
 	gfuŒs¸ìn
  = 0;
 
-17 
+22 
 	gtime_sˇÀ
  = 0;
 
-20 
+25 
 gë¨gs
 (
 ¨gc
@@ -119,21 +907,23 @@ gë¨gs
 ¨gv
 []);
 
-21 
+26 
 ußge
 (
 ªt
 );
 
-22 
-gëøndom
-();
+27 
+£tup
+(
+fuŒs¸ìn
+);
 
-23 
+28 
 ∂ay_game
 ();
 
-24 
+29 
 h™dÀ_evíts
 (*
 quô
@@ -141,19 +931,25 @@ quô
 ∑u£
 );
 
-25 
+30 
 døw
 (
 SDL_Re˘
  *
 §c
-, SDL_Re˘ *
-de°2
 , *
 ∑u£
 );
 
-27 
+31 
+SDL_Re˘
+ 
+ˇlc_de°
+(
+image
+ *image);
+
+33 
 	$maö
 (
 ¨gc
@@ -161,7 +957,7 @@ de°2
 ¨gv
 [])
 
-29 
+35 
 	`gë¨gs
 (
 ¨gc
@@ -169,31 +965,31 @@ de°2
 ¨gv
 );
 
-31 
+37 
 	`§™d
 (
 	`time
 (0));
 
-33 
+39 
 	`£tup
 (
 fuŒs¸ìn
 );
 
-37 
+43 
 	`∂ay_game
 ();
 
-41 
+47 
 	`exô
 (0);
 
-42 
+48 
 	}
 }
 
-44 
+50 
 	$gë¨gs
 (
 ¨gc
@@ -201,17 +997,17 @@ fuŒs¸ìn
 ¨gv
 [])
 
-46 
+52 
 i
 ;
 
-48 
+54 
 i
  = 1; i < 
 ¨gc
 ; i++) {
 
-49 i‡(
+55 i‡(
 	`°rcmp
 (
 ¨gv
@@ -219,11 +1015,11 @@ i
 i
 ], "--fullscreen") == 0 || strcmp(argv[i], "-f") == 0) {
 
-50 
+56 
 fuŒs¸ìn
  = 1;
 
-51 } i‡(
+57 } i‡(
 	`°rcmp
 (
 ¨gv
@@ -231,19 +1027,19 @@ fuŒs¸ìn
 i
 ], "--help") == 0 || strcmp(argv[i], "-h") == 0) {
 
-52 
+58 
 	`¥ötf
 (
 
-54 "Vîsi⁄ " 
+60 "Vîsi⁄ " 
 VERSION
  "\n"
 
-73 
+79 
 	`exô
 (0);
 
-74 } i‡(
+80 } i‡(
 	`°rcmp
 (
 ¨gv
@@ -251,45 +1047,155 @@ VERSION
 i
 ], "--usage") == 0 || strcmp(argv[i], "-u") == 0)
 
-75 
+81 
 	`ußge
 (0);
 
-77 
+83 
 	`ußge
 (1);
 
-79 
+85 
 	}
 }
 
-81 
+87 
+	$£tup
+(
+fuŒs¸ìn
+)
+
+89 i‡(
+	`SDL_Inô
+(
+SDL_INIT_VIDEO
+) < 0) {
+
+90 
+	`¥ötf
+("U«bÀÅÿöôülizêSDL: %s\n", 
+	`SDL_GëEº‹
+());
+
+91 
+	`exô
+(1);
+
+94 
+	`©exô
+(
+SDL_Quô
+);
+
+96 
+	`£tic⁄
+();
+
+98 i‡(
+	`SDL_SëVideoMode
+(
+SCREEN_WIDTH
+, 
+SCREEN_HEIGHT
+, 32, 
+SDL_HWSURFACE
+ | 
+SDL_DOUBLEBUF
+ |
+
+99 (
+fuŒs¸ìn
+ ? 
+SDL_FULLSCREEN
+ : 0)Ë=
+NULL
+) {
+
+100 
+	`¥ötf
+("U«bÀÅÿ£àvideÿmode: %s\n", 
+	`SDL_GëEº‹
+());
+
+101 
+	`exô
+(1);
+
+104 
+s¸ìn
+ = 
+	`SDL_GëVideoSurÁ˚
+();
+
+106 
+	`SDL_WM_SëC≠ti⁄
+("jody", "jody");
+
+109 
+curs‹_¨row
+ = 
+	`¸óã_curs‹_¨row
+();
+
+110 
+curs‹_whìlhou£
+ = 
+	`¸óã_curs‹_whìlhou£
+();
+
+111 
+curs‹_whìlhou£_å™•¨ít
+ = 
+	`¸óã_curs‹_whìlhou£_å™•¨ít
+();
+
+112 
+curs‹_whìlhou£_övîãd
+ = 
+	`¸óã_curs‹_whìlhou£_övîãd
+();
+
+113 
+curs‹_whìlhou£_bœck_wôh_whôe_löes
+ = 
+	`¸óã_curs‹_whìlhou£_bœck_wôh_whôe_löes
+();
+
+115 
+	`£tup_img
+();
+
+116 
+	}
+}
+
+118 
 	$∂ay_game
 ()
 
-85 
+122 
 ¥ev_ticks
  = 0, 
 cur_ticks
  = 0;
 
-86 
+123 
 °¨t_time
 , 
 íd_time
 ;
 
-87 
+124 
 ‰ames_døwn
  = 0;
 
-88 
+125 
 ¥ev_ticks
  = 
 	`SDL_GëTicks
 ();
 
-89 
+126 
 °¨t_time
  = 
 	`time
@@ -297,111 +1203,69 @@ cur_ticks
 NULL
 );
 
-93 
+130 
 SDL_Re˘
  
 §c
 ;
 
-94 
+131 
 §c
 .
 w
  = 126;
 
-95 
+132 
 §c
 .
 h
  = 95;
 
-96 
+133 
 §c
 .
 x
  = 0;
 
-97 
+134 
 §c
 .
 y
  = 0;
 
-100 
-SDL_Re˘
- 
-de°2
-;
-
-101 
-de°2
-.
-w
- = (
-images
-[
-IMG_COW_BLACK_TILE
-].
-s¸ìn
-)->w;
-
-102 
-de°2
-.
-h
- = (
-images
-[
-IMG_COW_BLACK_TILE
-].
-s¸ìn
-)->h;
-
-103 
-de°2
-.
-x
- = 0;
-
-104 
-de°2
-.
-y
- = 350;
-
-106 
+136 
 quô
  = 0;
 
-107 
+137 
 ∑u£
  = 0;
 
-108 
+138 
 quô
  == 0) {
 
-113 
+143 
 ¥ev_ticks
  = 
 cur_ticks
 ;
 
-114 
+144 
 cur_ticks
  = 
 	`SDL_GëTicks
 ();
 
-115 
+145 
 time_sˇÀ
  = ()(
 cur_ticks
 -
 ¥ev_ticks
-)/30.0;
+)/50.0;
 
-117 
+147 
 	`h™dÀ_evíts
 (&
 quô
@@ -409,27 +1273,25 @@ quô
 ∑u£
 );
 
-122 
+152 
 	`døw
 (&
 §c
 , &
-de°2
-, &
 ∑u£
 );
 
-125 
+155 
 	`SDL_Flù
 (
 s¸ìn
 );
 
-127 
+157 
 ‰ames_døwn
 ++;
 
-131 
+161 
 íd_time
  = 
 	`time
@@ -437,27 +1299,27 @@ s¸ìn
 NULL
 );
 
-132 i‡(
+162 i‡(
 °¨t_time
  =
 íd_time
 )Énd_time++;
 
-135 
+165 
 	`¥ötf
 ("Drew %i frames in %i seconds, forá framerate of %.2f fps.\n",
 
-136 
+166 
 ‰ames_døwn
 ,
 
-137 
+167 
 íd_time
 -
 °¨t_time
 ,
 
-138 ()
+168 ()
 ‰ames_døwn
 /()(
 íd_time
@@ -465,23 +1327,23 @@ NULL
 °¨t_time
 ));
 
-140 
+170 
 	}
 }
 
-142 
+172 
 	$ußge
 (
 ªt
 )
 
-144 
+174 
 FILE
  *
 fs
 ;
 
-146 
+176 
 fs
  = (
 ªt
@@ -491,23 +1353,23 @@ fs
 °dout
 ;
 
-147 
+177 
 	`Ârötf
 (
 fs
 ,
 
-151 
+181 
 	`exô
 (
 ªt
 );
 
-152 
+182 
 	}
 }
 
-154 
+184 
 	$h™dÀ_evíts
 (*
 quô
@@ -515,19 +1377,19 @@ quô
 ∑u£
 )
 
-156 
+186 
 SDL_Evít
  
 evít
 ;
 
-157 
+187 
 	`SDL_PﬁlEvít
 (&
 evít
 ) > 0) {
 
-158 i‡(
+188 i‡(
 evít
 .
 ty≥
@@ -535,11 +1397,11 @@ ty≥
 SDL_QUIT
 ) {
 
-159 *
+189 *
 quô
  = 1;
 
-160 } i‡(
+190 } i‡(
 evít
 .
 ty≥
@@ -547,7 +1409,7 @@ ty≥
 SDL_KEYDOWN
 ) {
 
-161 
+191 
 evít
 .
 key
@@ -557,125 +1419,123 @@ keysym
 sym
 ) {
 
-162 
+192 
 SDLK_ESCAPE
 :
 
-163 
+193 
 SDLK_q
 :
 
-164 *
+194 *
 quô
  = 1;
 
-166 
+196 
 SDLK_1
 :
 
-167 
+197 
 	`SDL_SëCurs‹
 (
 curs‹_¨row
 );
 
-169 
+199 
 SDLK_2
 :
 
-170 
+200 
 	`SDL_SëCurs‹
 (
 curs‹_whìlhou£
 );
 
-172 
+202 
 SDLK_3
 :
 
-173 
+203 
 	`SDL_SëCurs‹
 (
 curs‹_whìlhou£_å™•¨ít
 );
 
-175 
+205 
 SDLK_4
 :
 
-176 
+206 
 	`SDL_SëCurs‹
 (
 curs‹_whìlhou£_övîãd
 );
 
-178 
+208 
 SDLK_5
 :
 
-179 
+209 
 	`SDL_SëCurs‹
 (
 curs‹_whìlhou£_bœck_wôh_whôe_löes
 );
 
-181 
+211 
 SDLK_f
 :
 
-182 
+212 
 	`SDL_WM_ToggÀFuŒS¸ìn
 (
 s¸ìn
 );
 
-184 
+214 
 SDLK_p
 :
 
-185 
+215 
 SDLK_SPACE
 :
 
-186 *
+216 *
 ∑u£
  = !*pause;
 
-193 
+223 
 	}
 }
 
-195 
+225 
 	$døw
 (
 SDL_Re˘
  *
 §c
-, SDL_Re˘ *
-de°2
 , *
 ∑u£
 )
 
-197 
+227 
 SDL_Re˘
  
 de°
 ;
 
-200 
+230 
 de°
 .
 x
  = 0;
 
-201 
+231 
 de°
 .
 y
  = 0;
 
-202 
+232 
 de°
 .
 w
@@ -684,10 +1544,10 @@ images
 [
 IMG_BACKGROUND
 ].
-s¸ìn
+surÁ˚
 )->w;
 
-203 
+233 
 de°
 .
 h
@@ -696,294 +1556,220 @@ images
 [
 IMG_BACKGROUND
 ].
-s¸ìn
+surÁ˚
 )->h;
 
-204 
+234 
 	`SDL_BlôSurÁ˚
 (
 images
 [
 IMG_BACKGROUND
 ].
-s¸ìn
+surÁ˚
 , 
 NULL
-, s¸ìn, &
+, 
+s¸ìn
+, &
 de°
 );
 
-207 
-de°
-.
-x
- = 10;
+236 
+i
+;
 
-208 
-de°
-.
-y
- = 10;
+237 
+i
+ = 1; i < 
+NUM_IMAGES
+; i++) {
 
-209 
+255 
+image
+ *imagê&
+images
+[
+i
+];
+
+256 
 de°
 .
 w
- = (
-images
-[
-IMG_CLOUD
-].
-s¸ìn
-)->w;
+ = 
+image
+->
+surÁ˚
+->w;
 
-210 
+257 
 de°
 .
 h
- = (
-images
-[
-IMG_CLOUD
-].
-s¸ìn
-)->h;
+ = 
+image
+->
+surÁ˚
+->h;
 
-211 
-	`SDL_BlôSurÁ˚
-(
-images
-[
-IMG_CLOUD
-].
-s¸ìn
-, 
-NULL
-, s¸ìn, &
-de°
-);
-
-214 
-de°
-.
-x
- = 100;
-
-215 
-de°
-.
-y
- = 280;
-
-216 
-de°
-.
-w
- = (
-images
-[
-IMG_COW_BLACK_LEFT
-].
-s¸ìn
-)->w;
-
-217 
-de°
-.
-h
- = (
-images
-[
-IMG_COW_BLACK_LEFT
-].
-s¸ìn
-)->h;
-
-218 
-	`SDL_BlôSurÁ˚
-(
-images
-[
-IMG_COW_BLACK_LEFT
-].
-s¸ìn
-, 
-NULL
-, s¸ìn, &
-de°
-);
-
-221 
-de°
-.
-x
- = 500;
-
-222 
-de°
-.
-y
- = 280;
-
-223 
-de°
-.
-w
- = (
-images
-[
-IMG_KANGAROO_RED_LEFT
-].
-s¸ìn
-)->w;
-
-224 
-de°
-.
-h
- = (
-images
-[
-IMG_KANGAROO_RED_LEFT
-].
-s¸ìn
-)->h;
-
-225 
-	`SDL_BlôSurÁ˚
-(
-images
-[
-IMG_KANGAROO_RED_LEFT
-].
-s¸ìn
-, 
-NULL
-, s¸ìn, &
-de°
-);
-
-236 i‡(!*
+258 i‡(*
 ∑u£
 ) {
 
-238 
-cow3_x
- = 252;
+259 
+de°
+.
+x
+ = 
+image
+->x;
 
-239 
-cow_width
- = 126;
+260 
+de°
+.
+y
+ = 
+image
+->y;
 
-240 
-§c
+262 
+de°
+ = 
+	`ˇlc_de°
+(
+image
+);
+
+264 
+	`SDL_BlôSurÁ˚
+(
+image
+->
+surÁ˚
+, 
+NULL
+, 
+s¸ìn
+, &
+de°
+);
+
+266 
+	}
+}
+
+268 
+SDL_Re˘
+ 
+	$ˇlc_de°
+(
+image
+ *image)
+
+270 
+SDL_Re˘
+ 
+de°
+;
+
+273 
+image
 ->
 x
  +
-cow_width
+X_DIST
+ * 
+time_sˇÀ
 ;
 
-241 i‡(
-§c
+274 i‡(
+image
 ->
-x
- > 
-cow3_x
-)
-
-242 
-§c
-->
-x
- = 0;
-
-245 
-images
-[
-IMG_COW_BLACK_TILE
-].
-x
- += 20;
-
-246 i‡(
-images
-[
-IMG_COW_BLACK_TILE
-].
 x
  > 
 SCREEN_WIDTH
 )
 
-247 
-images
-[
-IMG_COW_BLACK_TILE
-].
+275 
+image
+->
 x
  = 0;
 
-248 
-de°2
-->
+276 
+de°
+.
 x
  = 
-images
-[
-IMG_COW_BLACK_TILE
-].x;
+image
+->x;
 
-254 
+282 
 odd
  = 
 	`øndom
 () % 2;
 
-255 i‡(
+283 
+di°
+;
+
+284 i‡(
 odd
-) {
+)
 
-256 
-images
-[
-IMG_COW_BLACK_TILE
-].
+285 
+di°
+ = 
+Y_DIST
+;
+
+287 
+di°
+ = - 
+Y_DIST
+;
+
+289 
+image
+->
 y
- += 5;
+ +
+di°
+ * 
+time_sˇÀ
+;
 
-259 
-images
-[
-IMG_COW_BLACK_TILE
-].
+290 i‡(
+image
+->
 y
- -= 5;
+ > 
+SCREEN_HEIGHT
+ || image->y < 0)
 
-261 
-de°2
+291 
+image
 ->
 y
  = 
-images
-[
-IMG_COW_BLACK_TILE
-].y;
+SCREEN_HEIGHT
+ / 2;
 
-264 
-	`SDL_BlôSurÁ˚
-(
-images
-[
-IMG_COW_BLACK_TILE
-].
-s¸ìn
-, 
-§c
-, s¸ìn, 
-de°2
-);
+293 
+de°
+.
+y
+ = 
+image
+->y;
 
-265 
+295  
+de°
+;
+
+296 
 	}
 }
 
@@ -1057,149 +1843,203 @@ x_sˇÀ
 y_sˇÀ
 );
 
-18 
-SDL_Curs‹
- *
-	gcurs‹_¨row
-;
-
-19 
-SDL_Curs‹
- *
-	gcurs‹_whìlhou£
-;
-
-20 
-SDL_Curs‹
- *
-	gcurs‹_whìlhou£_å™•¨ít
-;
-
-21 
-SDL_Curs‹
- *
-	gcurs‹_whìlhou£_övîãd
-;
-
-22 
-SDL_Curs‹
- *
-	gcurs‹_whìlhou£_bœck_wôh_whôe_löes
-;
-
-24 
-£tic⁄
-();
-
-26 c⁄° *
+18 c⁄° *
 	gimage_«mes
  [
 NUM_IMAGES
 ] = {
 
-27 
+19 
 IMG_DIR
  "background.png",
 
-28 
+20 
 IMG_DIR
  "cloud.png",
 
-29 
+21 
 IMG_DIR
  "cow_black_tile.png",
 
-30 
+22 
 IMG_DIR
  "cow_black_left.png",
 
-31 
+23 
 IMG_DIR
  "cow_black.png",
 
-32 
+24 
 IMG_DIR
  "cow_brown_left.png",
 
-33 
+25 
 IMG_DIR
  "cow_brown.png",
 
-34 
+26 
 IMG_DIR
  "cow_orange_left.png",
 
-35 
+27 
 IMG_DIR
  "cow_orange.png",
 
-36 
+28 
 IMG_DIR
  "cow_red_left.png",
 
-37 
+29 
 IMG_DIR
  "cow_red.png",
 
-38 
+30 
 IMG_DIR
  "cow_white_left.png",
 
-39 
+31 
 IMG_DIR
  "cow_white.png",
 
-40 
+32 
 IMG_DIR
  "cow_yellow_left.png",
 
-41 
+33 
 IMG_DIR
  "cow_yellow.png",
 
-42 
+34 
 IMG_DIR
  "cow_yellow_with_red_outline_left.png",
 
-43 
+35 
 IMG_DIR
  "cow_yellow_with_red_outline.png",
 
-44 
+36 
 IMG_DIR
  "kangaroo_black_left.png",
 
-45 
+37 
 IMG_DIR
  "kangaroo_black.png",
 
-46 
+38 
 IMG_DIR
  "kangaroo_grey_left.png",
 
-47 
+39 
 IMG_DIR
  "kangaroo_grey.png",
 
-48 
+40 
 IMG_DIR
  "kangaroo_red_left.png",
 
-49 
+41 
 IMG_DIR
  "kangaroo_red.png"
 
-52 
+44 
+	$£tic⁄
+()
+
+46 
+SDL_SurÁ˚
+ *
+ic⁄
+ = 
+	`IMG_Lﬂd
+(
+IMG_DIR
+ "icon.png");
+
+47 i‡(
+ic⁄
+ =
+NULL
+) {
+
+48 
+	`Ârötf
+(
+°dîr
+,
+
+51 "%s\n\n", 
+IMG_DIR
+ "ic⁄.≤g", 
+	`SDL_GëEº‹
+());
+
+52 
+	`exô
+(1);
+
+55 
+maskÀn
+ = (((
+ic⁄
+ -> 
+w
+Ë+ 7Ë/ 8Ë* (ic⁄ -> 
+h
+);
+
+56 
+Uöt8
+ *
+mask
+ = 
+	`mÆloc
+(
+maskÀn
+ * (Uint8));
+
+57 
+	`mem£t
+(
+mask
+, 0xFF, 
+maskÀn
+);
+
+59 
+	`SDL_WM_SëIc⁄
+(
+ic⁄
+, 
+mask
+);
+
+61 
+	`‰ì
+(
+mask
+);
+
+62 
+	`SDL_FªeSurÁ˚
+(
+ic⁄
+);
+
+63 
+	}
+}
+
+65 
 	$£tup_img
 ()
 
-54 
+67 
 	`§™d
  (
 	`time
 (0));
 
-55 
+68 
 x_sˇÀ
  = 
 RAND_MAX
@@ -1207,7 +2047,7 @@ RAND_MAX
 SCREEN_WIDTH
 ;
 
-56 
+69 
 y_sˇÀ
  = 
 RAND_MAX
@@ -1215,23 +2055,23 @@ RAND_MAX
 SCREEN_HEIGHT
 ;
 
-58 
+71 
 i
 ;
 
-59 
+72 
 i
  = 0; i < 
 NUM_IMAGES
 ; i++) {
 
-60 
+73 
 	`lﬂd_img
 (
 i
 );
 
-61 
+74 
 	`£t_°¨t_pos
 (
 i
@@ -1241,17 +2081,17 @@ x_sˇÀ
 y_sˇÀ
 );
 
-63 
+76 
 	}
 }
 
-65 
+78 
 	$lﬂd_img
 (
 i
 )
 
-67 
+80 
 SDL_SurÁ˚
  *
 img
@@ -1263,21 +2103,19 @@ image_«mes
 i
 ]);
 
-68 i‡(
+81 i‡(
 img
-
-
-69 =
+ =
 NULL
 ) {
 
-70 
+82 
 	`Ârötf
 (
 °dîr
 ,
 
-74 "%s\n\n", 
+86 "%s\n\n", 
 image_«mes
 [
 i
@@ -1285,25 +2123,25 @@ i
 	`SDL_GëEº‹
 ());
 
-75 
+87 
 	`exô
 (1);
 
-77 
+89 
 images
 [
 i
 ].
-s¸ìn
+surÁ˚
  = 
 img
 ;
 
-78 
+90 
 	}
 }
 
-80 
+92 
 	$£t_°¨t_pos
 (
 i
@@ -1313,19 +2151,19 @@ x_sˇÀ
 y_sˇÀ
 )
 
-82 
+94 
 x
  = 
 	`øndom
 ();
 
-84 
+96 
 x
  /
 x_sˇÀ
 ;
 
-85 
+97 
 images
 [
 i
@@ -1333,19 +2171,19 @@ i
 x
  = x;
 
-86 
+98 
 y
  = 
 	`øndom
 ();
 
-88 
+100 
 y
  /
 y_sˇÀ
 ;
 
-90 
+102 
 images
 [
 i
@@ -1353,831 +2191,7 @@ i
 y
  = y;
 
-91 
-	}
-}
-
-93 
-	$£tup
-(
-fuŒs¸ìn
-)
-
-95 i‡(
-	`SDL_Inô
-(
-SDL_INIT_VIDEO
-) < 0) {
-
-96 
-	`¥ötf
-("U«bÀÅÿöôülizêSDL: %s\n", 
-	`SDL_GëEº‹
-());
-
-97 
-	`exô
-(1);
-
-100 
-	`©exô
-(
-SDL_Quô
-);
-
-102 
-	`£tic⁄
-();
-
-104 i‡(
-	`SDL_SëVideoMode
-(
-SCREEN_WIDTH
-, 
-SCREEN_HEIGHT
-, 32, 
-SDL_HWSURFACE
- | 
-SDL_DOUBLEBUF
- |
-
-105 (
-fuŒs¸ìn
- ? 
-SDL_FULLSCREEN
- : 0)Ë=
-NULL
-) {
-
-106 
-	`¥ötf
-("U«bÀÅÿ£àvideÿmode: %s\n", 
-	`SDL_GëEº‹
-());
-
-107 
-	`exô
-(1);
-
-110 
-s¸ìn
- = 
-	`SDL_GëVideoSurÁ˚
-();
-
-112 
-	`SDL_WM_SëC≠ti⁄
-("jody", "jody");
-
-115 
-curs‹_¨row
- = 
-	`¸óã_curs‹_¨row
-();
-
-116 
-curs‹_whìlhou£
- = 
-	`¸óã_curs‹_whìlhou£
-();
-
-117 
-curs‹_whìlhou£_å™•¨ít
- = 
-	`¸óã_curs‹_whìlhou£_å™•¨ít
-();
-
-118 
-curs‹_whìlhou£_övîãd
- = 
-	`¸óã_curs‹_whìlhou£_övîãd
-();
-
-119 
-curs‹_whìlhou£_bœck_wôh_whôe_löes
- = 
-	`¸óã_curs‹_whìlhou£_bœck_wôh_whôe_löes
-();
-
-121 
-	`£tup_img
-();
-
-122 
-	}
-}
-
-124 
-	$£tic⁄
-()
-
-126 
-SDL_SurÁ˚
- *
-ic⁄
- = 
-	`IMG_Lﬂd
-(
-IMG_DIR
- "icon.png");
-
-127 i‡(
-ic⁄
- =
-NULL
-) {
-
-128 
-	`Ârötf
-(
-°dîr
-,
-
-131 "%s\n\n", 
-IMG_DIR
- "ic⁄.≤g", 
-	`SDL_GëEº‹
-());
-
-132 
-	`exô
-(1);
-
-135 
-maskÀn
- = (((
-ic⁄
- -> 
-w
-Ë+ 7Ë/ 8Ë* (ic⁄ -> 
-h
-);
-
-136 
-Uöt8
- *
-mask
- = 
-	`mÆloc
-(
-maskÀn
- * (Uint8));
-
-137 
-	`mem£t
-(
-mask
-, 0xFF, 
-maskÀn
-);
-
-139 
-	`SDL_WM_SëIc⁄
-(
-ic⁄
-, 
-mask
-);
-
-141 
-	`‰ì
-(
-mask
-);
-
-142 
-	`SDL_FªeSurÁ˚
-(
-ic⁄
-);
-
-143 
-	}
-}
-
-145 
-SDL_Curs‹
- *
-	$¸óã_curs‹_¨row
-()
-
-152 c⁄° *
-¨row
-[] = {
-
-195 
-i
-, 
-row
-, 
-cﬁ
-;
-
-196 
-Uöt8
- 
-d©a
-[4*32];
-
-197 
-Uöt8
- 
-mask
-[4*32];
-
-198 
-hŸ_x
-, 
-hŸ_y
-;
-
-200 
-i
- = -1;
-
-201 
-row
-=0;Ñow<32; ++row) {
-
-202 
-cﬁ
-=0; col<32; ++col) {
-
-203 i‡–
-cﬁ
- % 8 ) {
-
-204 
-d©a
-[
-i
-] <<= 1;
-
-205 
-mask
-[
-i
-] <<= 1;
-
-207 ++
-i
-;
-
-208 
-d©a
-[
-i
-] = 
-mask
-[i] = 0;
-
-210 
-¨row
-[4+
-row
-][
-cﬁ
-]) {
-
-212 
-d©a
-[
-i
-] |= 0x01;
-
-213 
-mask
-[
-i
-] |= 0x01;
-
-216 
-mask
-[
-i
-] |= 0x01;
-
-223 
-	`ssˇnf
-(
-¨row
-[4+
-row
-], "%d,%d", &
-hŸ_x
-, &
-hŸ_y
-);
-
-224  
-	`SDL_Cª©eCurs‹
-(
-d©a
-, 
-mask
-, 32, 32, 
-hŸ_x
-, 
-hŸ_y
-);
-
-225 
-	}
-}
-
-227 c⁄° *
-	gwhìlhou£
-[] = {
-
-270 
-SDL_Curs‹
- *
-	$¸óã_curs‹_whìlhou£
-()
-
-272 
-i
-, 
-row
-, 
-cﬁ
-;
-
-273 
-Uöt8
- 
-d©a
-[4*32];
-
-274 
-Uöt8
- 
-mask
-[4*32];
-
-275 
-hŸ_x
-, 
-hŸ_y
-;
-
-277 
-i
- = -1;
-
-278 
-row
-=0;Ñow<32; ++row) {
-
-279 
-cﬁ
-=0; col<32; ++col) {
-
-280 i‡–
-cﬁ
- % 8 ) {
-
-281 
-d©a
-[
-i
-] <<= 1;
-
-282 
-mask
-[
-i
-] <<= 1;
-
-284 ++
-i
-;
-
-285 
-d©a
-[
-i
-] = 
-mask
-[i] = 0;
-
-287 
-whìlhou£
-[4+
-row
-][
-cﬁ
-]) {
-
-289 
-d©a
-[
-i
-] |= 0x01;
-
-290 
-mask
-[
-i
-] |= 0x01;
-
-293 
-mask
-[
-i
-] |= 0x01;
-
-300 
-	`ssˇnf
-(
-whìlhou£
-[4+
-row
-], "%d,%d", &
-hŸ_x
-, &
-hŸ_y
-);
-
-301  
-	`SDL_Cª©eCurs‹
-(
-d©a
-, 
-mask
-, 32, 32, 
-hŸ_x
-, 
-hŸ_y
-);
-
-302 
-	}
-}
-
-303 
-SDL_Curs‹
- *
-	$¸óã_curs‹_whìlhou£_å™•¨ít
-()
-
-305 
-i
-, 
-row
-, 
-cﬁ
-;
-
-306 
-Uöt8
- 
-d©a
-[4*32];
-
-307 
-Uöt8
- 
-mask
-[4*32];
-
-308 
-hŸ_x
-, 
-hŸ_y
-;
-
-310 
-i
- = -1;
-
-311 
-row
-=0;Ñow<32; ++row) {
-
-312 
-cﬁ
-=0; col<32; ++col) {
-
-313 i‡–
-cﬁ
- % 8 ) {
-
-314 
-d©a
-[
-i
-] <<= 1;
-
-315 
-mask
-[
-i
-] <<= 1;
-
-317 ++
-i
-;
-
-318 
-d©a
-[
-i
-] = 
-mask
-[i] = 0;
-
-320 
-whìlhou£
-[4+
-row
-][
-cﬁ
-]) {
-
-322 
-d©a
-[
-i
-] |= 0x01;
-
-323 
-mask
-[
-i
-] |= 0x01;
-
-336 
-	`ssˇnf
-(
-whìlhou£
-[4+
-row
-], "%d,%d", &
-hŸ_x
-, &
-hŸ_y
-);
-
-337  
-	`SDL_Cª©eCurs‹
-(
-d©a
-, 
-mask
-, 32, 32, 
-hŸ_x
-, 
-hŸ_y
-);
-
-338 
-	}
-}
-
-339 
-SDL_Curs‹
- *
-	$¸óã_curs‹_whìlhou£_övîãd
-()
-
-341 
-i
-, 
-row
-, 
-cﬁ
-;
-
-342 
-Uöt8
- 
-d©a
-[4*32];
-
-343 
-Uöt8
- 
-mask
-[4*32];
-
-344 
-hŸ_x
-, 
-hŸ_y
-;
-
-346 
-i
- = -1;
-
-347 
-row
-=0;Ñow<32; ++row) {
-
-348 
-cﬁ
-=0; col<32; ++col) {
-
-349 i‡–
-cﬁ
- % 8 ) {
-
-350 
-d©a
-[
-i
-] <<= 1;
-
-351 
-mask
-[
-i
-] <<= 1;
-
-353 ++
-i
-;
-
-354 
-d©a
-[
-i
-] = 
-mask
-[i] = 0;
-
-356 
-whìlhou£
-[4+
-row
-][
-cﬁ
-]) {
-
-358 
-d©a
-[
-i
-] |= 0x01;
-
-359 
-mask
-[
-i
-] |= 0x01;
-
-362 
-d©a
-[
-i
-] |= 0x01;
-
-369 
-	`ssˇnf
-(
-whìlhou£
-[4+
-row
-], "%d,%d", &
-hŸ_x
-, &
-hŸ_y
-);
-
-370  
-	`SDL_Cª©eCurs‹
-(
-d©a
-, 
-mask
-, 32, 32, 
-hŸ_x
-, 
-hŸ_y
-);
-
-371 
-	}
-}
-
-372 
-SDL_Curs‹
- *
-	$¸óã_curs‹_whìlhou£_bœck_wôh_whôe_löes
-()
-
-374 
-i
-, 
-row
-, 
-cﬁ
-;
-
-375 
-Uöt8
- 
-d©a
-[4*32];
-
-376 
-Uöt8
- 
-mask
-[4*32];
-
-377 
-hŸ_x
-, 
-hŸ_y
-;
-
-379 
-i
- = -1;
-
-380 
-row
-=0;Ñow<32; ++row) {
-
-381 
-cﬁ
-=0; col<32; ++col) {
-
-382 i‡–
-cﬁ
- % 8 ) {
-
-383 
-d©a
-[
-i
-] <<= 1;
-
-384 
-mask
-[
-i
-] <<= 1;
-
-386 ++
-i
-;
-
-387 
-d©a
-[
-i
-] = 
-mask
-[i] = 0;
-
-389 
-whìlhou£
-[4+
-row
-][
-cﬁ
-]) {
-
-391 
-mask
-[
-i
-] |= 0x01;
-
-394 
-d©a
-[
-i
-] |= 0x01;
-
-401 
-	`ssˇnf
-(
-whìlhou£
-[4+
-row
-], "%d,%d", &
-hŸ_x
-, &
-hŸ_y
-);
-
-402  
-	`SDL_Cª©eCurs‹
-(
-d©a
-, 
-mask
-, 32, 32, 
-hŸ_x
-, 
-hŸ_y
-);
-
-403 
+103 
 	}
 }
 
@@ -2197,203 +2211,145 @@ RESOURCES_H
 	~<SDL/SDL.h
 >
 
-6 
+6 
+£tic⁄
+();
+
+7 
+£tup_img
+();
+
+9 
 SDL_SurÁ˚
  *
 s¸ìn
 ;
 
-9 
+11 
 	eimage_idx
  {
 
-10 
+12 
 	mIMG_BACKGROUND
 ,
 
-11 
+13 
 	mIMG_CLOUD
 ,
 
-12 
+14 
 	mIMG_COW_BLACK_TILE
 ,
 
-13 
+15 
 	mIMG_COW_BLACK_LEFT
 ,
 
-14 
+16 
 	mIMG_COW_BLACK
 ,
 
-15 
+17 
 	mIMG_COW_BROWN_LEFT
 ,
 
-16 
+18 
 	mIMG_COW_BROWN
 ,
 
-17 
+19 
 	mIMG_COW_ORANGE_LEFT
 ,
 
-18 
+20 
 	mIMG_COW_ORANGE
 ,
 
-19 
+21 
 	mIMG_COW_RED_LEFT
 ,
 
-20 
+22 
 	mIMG_COW_RED
 ,
 
-21 
+23 
 	mIMG_COW_WHITE_LEFT
 ,
 
-22 
+24 
 	mIMG_COW_WHITE
 ,
 
-23 
+25 
 	mIMG_COW_YELLOW_LEFT
 ,
 
-24 
+26 
 	mIMG_COW_YELLOW
 ,
 
-25 
+27 
 	mIMG_COW_YELLOW_WITH_RED_OUTLINE_LEFT
 ,
 
-26 
+28 
 	mIMG_COW_YELLOW_WITH_RED_OUTLINE
 ,
 
-27 
+29 
 	mIMG_KANGAROO_BLACK_LEFT
 ,
 
-28 
+30 
 	mIMG_KANGAROO_BLACK
 ,
 
-29 
+31 
 	mIMG_KANGAROO_GREY_LEFT
 ,
 
-30 
+32 
 	mIMG_KANGAROO_GREY
 ,
 
-31 
+33 
 	mIMG_KANGAROO_RED_LEFT
 ,
 
-32 
+34 
 	mIMG_KANGAROO_RED
 ,
 
-33 
+35 
 	mNUM_IMAGES
 
 
-37 
+39 
 	simage
  {
 
-38 
+40 
 SDL_SurÁ˚
  *
-	ms¸ìn
+	msurÁ˚
 ;
 
-39 
+41 
 	mx
 ;
 
-40 
+42 
 	my
 ;
 
-43 
+45 
 image
  
 images
 [
 NUM_IMAGES
 ];
-
-45 
-£tup
-(
-fuŒs¸ìn
-);
-
-47 
-SDL_Curs‹
- *
-¸óã_curs‹_¨row
-();
-
-48 
-SDL_Curs‹
- *
-¸óã_curs‹_whìlhou£
-();
-
-49 
-SDL_Curs‹
- *
-¸óã_curs‹_whìlhou£_å™•¨ít
-();
-
-50 
-SDL_Curs‹
- *
-¸óã_curs‹_whìlhou£_övîãd
-();
-
-51 
-SDL_Curs‹
- *
-¸óã_curs‹_whìlhou£_bœck_wôh_whôe_löes
-();
-
-53 
-SDL_Curs‹
- *
-curs‹_¨row
-;
-
-54 
-SDL_Curs‹
- *
-curs‹_whìlhou£
-;
-
-55 
-SDL_Curs‹
- *
-curs‹_whìlhou£_å™•¨ít
-;
-
-56 
-SDL_Curs‹
- *
-curs‹_whìlhou£_övîãd
-;
-
-57 
-SDL_Curs‹
- *
-curs‹_whìlhou£_bœck_wôh_whôe_löes
-;
 
 	@util.c
 
@@ -2489,7 +2445,7 @@ NULL
 
 22 
 	`Áèl
-("out of memory");
+("Out of memory");
 
 23  
 p
@@ -2499,17 +2455,17 @@ p
 	}
 }
 
-32 
+27 
 Söt32
  
 	g£ed
  = 0;
 
-34 
+29 
 	$öôøndom
 ()
 
-36 
+31 
 £ed
  = 
 	`time
@@ -2517,7 +2473,7 @@ Söt32
 NULL
 );
 
-37 
+32 
 	}
 }
 
@@ -2623,133 +2579,133 @@ f‹m©
 
 	@/usr/include/SDL/SDL.h
 
-23 #ifde‡
-SAVE_RCSID
-
-
-24 
-	grcsid
- =
-
-30 #i‚de‡
+25 #i‚de‡
 _SDL_H
 
 
-31 
+26 
 	#_SDL_H
 
 
 	)
 
-33 
+28 
 	~"SDL_maö.h
 "
 
-34 
-	~"SDL_ty≥s.h
+29 
+	~"SDL_°döc.h
 "
 
-35 
-	~"SDL_gëív.h
-"
-
-36 
-	~"SDL_îr‹.h
-"
-
-37 
-	~"SDL_rw›s.h
-"
-
-38 
-	~"SDL_timî.h
-"
-
-39 
+30 
 	~"SDL_audio.h
 "
 
-40 
+31 
 	~"SDL_cdrom.h
 "
 
-41 
-	~"SDL_joy°ick.h
+32 
+	~"SDL_˝uöfo.h
 "
 
-42 
+33 
+	~"SDL_ídün.h
+"
+
+34 
+	~"SDL_îr‹.h
+"
+
+35 
 	~"SDL_evíts.h
 "
 
-43 
+36 
+	~"SDL_lﬂdso.h
+"
+
+37 
+	~"SDL_muãx.h
+"
+
+38 
+	~"SDL_rw›s.h
+"
+
+39 
+	~"SDL_thªad.h
+"
+
+40 
+	~"SDL_timî.h
+"
+
+41 
 	~"SDL_video.h
 "
 
-44 
-	~"SDL_byã‹dî.h
-"
-
-45 
+42 
 	~"SDL_vîsi⁄.h
 "
 
-47 
+44 
 	~"begö_code.h
 "
 
-49 #ifde‡
+46 #ifde‡
 __˝lu•lus
 
 
-58 
+55 
 	#SDL_INIT_TIMER
  0x00000001
 
 	)
 
-59 
+56 
 	#SDL_INIT_AUDIO
  0x00000010
 
 	)
 
-60 
+57 
 	#SDL_INIT_VIDEO
  0x00000020
 
 	)
 
-61 
+58 
 	#SDL_INIT_CDROM
  0x00000100
 
 	)
 
-62 
+59 
 	#SDL_INIT_JOYSTICK
  0x00000200
 
 	)
 
-63 
+60 
 	#SDL_INIT_NOPARACHUTE
  0x00100000
 
 	)
 
-64 
+61 
 	#SDL_INIT_EVENTTHREAD
  0x01000000
 
 	)
 
-65 
+62 
 	#SDL_INIT_EVERYTHING
  0x0000FFFF
 
 	)
 
-72 
+69 
 DECLSPEC
  
 SDLCALL
@@ -2761,7 +2717,7 @@ Uöt32
 Êags
 );
 
-75 
+72 
 DECLSPEC
  
 SDLCALL
@@ -2773,7 +2729,7 @@ Uöt32
 Êags
 );
 
-78 
+75 
 DECLSPEC
  
 SDLCALL
@@ -2785,7 +2741,7 @@ Uöt32
 Êags
 );
 
-84 
+81 
 DECLSPEC
  
 Uöt32
@@ -2797,7 +2753,7 @@ SDL_WasInô
 Êags
 );
 
-89 
+86 
 DECLSPEC
  
 SDLCALL
@@ -2805,11 +2761,11 @@ SDLCALL
 SDL_Quô
 ();
 
-92 #ifde‡
+89 #ifde‡
 __˝lu•lus
 
 
-95 
+92 
 	~"˛o£_code.h
 "
 
@@ -9409,8 +9365,6 @@ __size
 
 617 
 __THROW
- 
-__©åibuã_mÆloc__
  
 	`__n⁄nuŒ
  ((1));
@@ -55945,6 +55899,20 @@ _libc_Â°©e
 
 	@/usr/include/asm/sigcontext.h
 
+5 #ifde‡
+__x86_64__
+
+
+6 
+	~<asm-x86_64/sigc⁄ãxt.h
+>
+
+8 
+	~<asm-i486/sigc⁄ãxt.h
+>
+
+	@/usr/include/asm-i486/sigcontext.h
+
 1 #i‚de‡
 _ASMi386_SIGCONTEXT_H
 
@@ -56182,6 +56150,230 @@ __u£r
 81 
 	m¸2
 ;
+
+	@/usr/include/asm-x86_64/sigcontext.h
+
+1 #i‚de‡
+_ASM_X86_64_SIGCONTEXT_H
+
+
+2 
+	#_ASM_X86_64_SIGCONTEXT_H
+
+
+	)
+
+4 
+	~<asm/ty≥s.h
+>
+
+5 
+	~<löux/compûî.h
+>
+
+10 
+	s_Â°©e
+ {
+
+11 
+__u16
+ 
+	mcwd
+;
+
+12 
+__u16
+ 
+	mswd
+;
+
+13 
+__u16
+ 
+	mtwd
+;
+
+14 
+__u16
+ 
+	mf›
+;
+
+15 
+__u64
+ 
+	mrù
+;
+
+16 
+__u64
+ 
+	mrdp
+;
+
+17 
+__u32
+ 
+	mmxc§
+;
+
+18 
+__u32
+ 
+	mmxc§_mask
+;
+
+19 
+__u32
+ 
+	m°_•a˚
+[32];
+
+20 
+__u32
+ 
+	mxmm_•a˚
+[64];
+
+21 
+__u32
+ 
+	mª£rved2
+[24];
+
+24 
+	ssigc⁄ãxt
+ {
+
+25 
+	mr8
+;
+
+26 
+	mr9
+;
+
+27 
+	mr10
+;
+
+28 
+	mr11
+;
+
+29 
+	mr12
+;
+
+30 
+	mr13
+;
+
+31 
+	mr14
+;
+
+32 
+	mr15
+;
+
+33 
+	mrdi
+;
+
+34 
+	mrsi
+;
+
+35 
+	mrbp
+;
+
+36 
+	mrbx
+;
+
+37 
+	mrdx
+;
+
+38 
+	møx
+;
+
+39 
+	mrcx
+;
+
+40 
+	mr•
+;
+
+41 
+	mrù
+;
+
+42 
+	meÊags
+;
+
+43 
+	mcs
+;
+
+44 
+	mgs
+;
+
+45 
+	mfs
+;
+
+46 
+	m__∑d0
+;
+
+47 
+	mîr
+;
+
+48 
+	må≠no
+;
+
+49 
+	mﬁdmask
+;
+
+50 
+	m¸2
+;
+
+51 
+_Â°©e
+ 
+__u£r
+ *
+	mÂ°©e
+;
+
+52 
+	mª£rved1
+[8];
+
+	@/usr/include/asm/types.h
+
+5 #ifde‡
+__x86_64__
+
+
+6 
+	~<asm-x86_64/ty≥s.h
+>
+
+8 
+	~<asm-i486/ty≥s.h
+>
 
 	@/usr/include/linux/compiler.h
 
@@ -56683,6 +56875,312 @@ __Æways_ölöe
 
 	)
 
+	@/usr/include/asm-i486/types.h
+
+1 #i‚de‡
+_I386_TYPES_H
+
+
+2 
+	#_I386_TYPES_H
+
+
+	)
+
+4 #i‚de‡
+__ASSEMBLY__
+
+
+6 
+	tumode_t
+;
+
+13 
+__sig√d__
+ 
+	t__s8
+;
+
+14 
+	t__u8
+;
+
+16 
+__sig√d__
+ 
+	t__s16
+;
+
+17 
+	t__u16
+;
+
+19 
+__sig√d__
+ 
+	t__s32
+;
+
+20 
+	t__u32
+;
+
+22 #i‡
+deföed
+(
+__GNUC__
+)
+
+23 
+__exãnsi⁄__
+ 
+__sig√d__
+ 
+	t__s64
+;
+
+24 
+__exãnsi⁄__
+ 
+	t__u64
+;
+
+32 #ifde‡
+__KERNEL__
+
+
+34 
+	#BITS_PER_LONG
+ 32
+
+	)
+
+36 #i‚de‡
+__ASSEMBLY__
+
+
+38 
+	~<löux/c⁄fig.h
+>
+
+40 sig√d 
+	ts8
+;
+
+41 
+	tu8
+;
+
+43 sig√d 
+	ts16
+;
+
+44 
+	tu16
+;
+
+46 sig√d 
+	ts32
+;
+
+47 
+	tu32
+;
+
+49 sig√d 
+	ts64
+;
+
+50 
+	tu64
+;
+
+54 #ifde‡
+CONFIG_HIGHMEM64G
+
+
+55 
+u64
+ 
+	tdma_addr_t
+;
+
+57 
+u32
+ 
+	tdma_addr_t
+;
+
+59 
+u64
+ 
+	tdma64_addr_t
+;
+
+61 #ifde‡
+CONFIG_LBD
+
+
+62 
+u64
+ 
+	t£˘‹_t
+;
+
+63 
+	#HAVE_SECTOR_T
+
+
+	)
+
+66 
+	tkmem_buf˘l_t
+;
+
+	@/usr/include/asm-x86_64/types.h
+
+1 #i‚de‡
+_X86_64_TYPES_H
+
+
+2 
+	#_X86_64_TYPES_H
+
+
+	)
+
+4 #i‚de‡
+__ASSEMBLY__
+
+
+6 
+	tumode_t
+;
+
+13 
+__sig√d__
+ 
+	t__s8
+;
+
+14 
+	t__u8
+;
+
+16 
+__sig√d__
+ 
+	t__s16
+;
+
+17 
+	t__u16
+;
+
+19 
+__sig√d__
+ 
+	t__s32
+;
+
+20 
+	t__u32
+;
+
+22 #i‡
+deföed
+(
+__GNUC__
+)
+
+23 
+__exãnsi⁄__
+ 
+__sig√d__
+ 
+	t__s64
+;
+
+24 
+__exãnsi⁄__
+ 
+	t__u64
+;
+
+32 #ifde‡
+__KERNEL__
+
+
+34 
+	#BITS_PER_LONG
+ 64
+
+	)
+
+36 #i‚de‡
+__ASSEMBLY__
+
+
+38 sig√d 
+	ts8
+;
+
+39 
+	tu8
+;
+
+41 sig√d 
+	ts16
+;
+
+42 
+	tu16
+;
+
+44 sig√d 
+	ts32
+;
+
+45 
+	tu32
+;
+
+47 sig√d 
+	ts64
+;
+
+48 
+	tu64
+;
+
+50 
+u64
+ 
+	tdma64_addr_t
+;
+
+51 
+u64
+ 
+	tdma_addr_t
+;
+
+53 
+u64
+ 
+	t£˘‹_t
+;
+
+54 
+	#HAVE_SECTOR_T
+
+
+	)
+
+56 
+	tkmem_buf˘l_t
+;
+
 	@/usr/include/linux/compiler-gcc2.h
 
 9 
@@ -57091,13 +57589,8081 @@ off
 
 	)
 
+	@/usr/include/linux/config.h
+
+1 #i‚de‡
+_LINUX_CONFIG_H
+
+
+2 
+	#_LINUX_CONFIG_H
+
+
+	)
+
+4 
+	~<löux/autoc⁄f.h
+>
+
+	@/usr/include/linux/autoconf.h
+
+5 #ifde‡
+__x86_64__
+
+
+6 
+	~<asm-x86_64/autoc⁄f.h
+>
+
+8 
+	~<asm-i486/autoc⁄f.h
+>
+
+	@/usr/include/asm-i486/autoconf.h
+
+6 
+	#AUTOCONF_INCLUDED
+
+
+	)
+
+7 
+	#CONFIG_X86
+ 1
+
+	)
+
+8 
+	#CONFIG_MMU
+ 1
+
+	)
+
+9 
+	#CONFIG_UID16
+ 1
+
+	)
+
+10 
+	#CONFIG_GENERIC_ISA_DMA
+ 1
+
+	)
+
+11 
+	#CONFIG_GENERIC_IOMAP
+ 1
+
+	)
+
+16 
+	#CONFIG_EXPERIMENTAL
+ 1
+
+	)
+
+17 
+	#CONFIG_CLEAN_COMPILE
+ 1
+
+	)
+
+18 
+	#CONFIG_LOCK_KERNEL
+ 1
+
+	)
+
+19 
+	#CONFIG_INIT_ENV_ARG_LIMIT
+ 32
+
+	)
+
+24 
+	#CONFIG_LOCALVERSION
+ ""
+
+	)
+
+25 
+	#CONFIG_SWAP
+ 1
+
+	)
+
+26 
+	#CONFIG_SYSVIPC
+ 1
+
+	)
+
+27 
+	#CONFIG_POSIX_MQUEUE
+ 1
+
+	)
+
+28 #unde‡
+CONFIG_BSD_PROCESS_ACCT
+
+
+29 
+	#CONFIG_SYSCTL
+ 1
+
+	)
+
+30 
+	#CONFIG_AUDIT
+ 1
+
+	)
+
+31 
+	#CONFIG_AUDITSYSCALL
+ 1
+
+	)
+
+32 
+	#CONFIG_HOTPLUG
+ 1
+
+	)
+
+33 
+	#CONFIG_KOBJECT_UEVENT
+ 1
+
+	)
+
+34 #unde‡
+CONFIG_IKCONFIG
+
+
+35 #unde‡
+CONFIG_CPUSETS
+
+
+36 #unde‡
+CONFIG_EMBEDDED
+
+
+37 
+	#CONFIG_KALLSYMS
+ 1
+
+	)
+
+38 #unde‡
+CONFIG_KALLSYMS_EXTRA_PASS
+
+
+39 
+	#CONFIG_PRINTK
+ 1
+
+	)
+
+40 
+	#CONFIG_BUG
+ 1
+
+	)
+
+41 
+	#CONFIG_BASE_FULL
+ 1
+
+	)
+
+42 
+	#CONFIG_FUTEX
+ 1
+
+	)
+
+43 
+	#CONFIG_EPOLL
+ 1
+
+	)
+
+44 
+	#CONFIG_SHMEM
+ 1
+
+	)
+
+45 
+	#CONFIG_CC_ALIGN_FUNCTIONS
+ 0
+
+	)
+
+46 
+	#CONFIG_CC_ALIGN_LABELS
+ 0
+
+	)
+
+47 
+	#CONFIG_CC_ALIGN_LOOPS
+ 0
+
+	)
+
+48 
+	#CONFIG_CC_ALIGN_JUMPS
+ 0
+
+	)
+
+49 #unde‡
+CONFIG_TINY_SHMEM
+
+
+50 
+	#CONFIG_BASE_SMALL
+ 0
+
+	)
+
+55 
+	#CONFIG_MODULES
+ 1
+
+	)
+
+56 #unde‡
+CONFIG_MODULE_UNLOAD
+
+
+57 
+	#CONFIG_OBSOLETE_MODPARM
+ 1
+
+	)
+
+58 #unde‡
+CONFIG_MODVERSIONS
+
+
+59 #unde‡
+CONFIG_MODULE_SRCVERSION_ALL
+
+
+60 
+	#CONFIG_KMOD
+ 1
+
+	)
+
+65 
+	#CONFIG_X86_PC
+ 1
+
+	)
+
+66 #unde‡
+CONFIG_X86_ELAN
+
+
+67 #unde‡
+CONFIG_X86_VOYAGER
+
+
+68 #unde‡
+CONFIG_X86_NUMAQ
+
+
+69 #unde‡
+CONFIG_X86_SUMMIT
+
+
+70 #unde‡
+CONFIG_X86_BIGSMP
+
+
+71 #unde‡
+CONFIG_X86_VISWS
+
+
+72 #unde‡
+CONFIG_X86_GENERICARCH
+
+
+73 #unde‡
+CONFIG_X86_ES7000
+
+
+74 #unde‡
+CONFIG_M386
+
+
+75 #unde‡
+CONFIG_M486
+
+
+76 #unde‡
+CONFIG_M586
+
+
+77 #unde‡
+CONFIG_M586TSC
+
+
+78 #unde‡
+CONFIG_M586MMX
+
+
+79 #unde‡
+CONFIG_M686
+
+
+80 #unde‡
+CONFIG_MPENTIUMII
+
+
+81 #unde‡
+CONFIG_MPENTIUMIII
+
+
+82 #unde‡
+CONFIG_MPENTIUMM
+
+
+83 
+	#CONFIG_MPENTIUM4
+ 1
+
+	)
+
+84 #unde‡
+CONFIG_MK6
+
+
+85 #unde‡
+CONFIG_MK7
+
+
+86 #unde‡
+CONFIG_MK8
+
+
+87 #unde‡
+CONFIG_MCRUSOE
+
+
+88 #unde‡
+CONFIG_MEFFICEON
+
+
+89 #unde‡
+CONFIG_MWINCHIPC6
+
+
+90 #unde‡
+CONFIG_MWINCHIP2
+
+
+91 #unde‡
+CONFIG_MWINCHIP3D
+
+
+92 #unde‡
+CONFIG_MGEODEGX1
+
+
+93 #unde‡
+CONFIG_MCYRIXIII
+
+
+94 #unde‡
+CONFIG_MVIAC3_2
+
+
+95 #unde‡
+CONFIG_X86_GENERIC
+
+
+96 
+	#CONFIG_X86_CMPXCHG
+ 1
+
+	)
+
+97 
+	#CONFIG_X86_XADD
+ 1
+
+	)
+
+98 
+	#CONFIG_X86_L1_CACHE_SHIFT
+ 7
+
+	)
+
+99 
+	#CONFIG_RWSEM_XCHGADD_ALGORITHM
+ 1
+
+	)
+
+100 
+	#CONFIG_GENERIC_CALIBRATE_DELAY
+ 1
+
+	)
+
+101 
+	#CONFIG_X86_WP_WORKS_OK
+ 1
+
+	)
+
+102 
+	#CONFIG_X86_INVLPG
+ 1
+
+	)
+
+103 
+	#CONFIG_X86_BSWAP
+ 1
+
+	)
+
+104 
+	#CONFIG_X86_POPAD_OK
+ 1
+
+	)
+
+105 
+	#CONFIG_X86_GOOD_APIC
+ 1
+
+	)
+
+106 
+	#CONFIG_X86_INTEL_USERCOPY
+ 1
+
+	)
+
+107 
+	#CONFIG_X86_USE_PPRO_CHECKSUM
+ 1
+
+	)
+
+108 #unde‡
+CONFIG_HPET_TIMER
+
+
+109 
+	#CONFIG_SMP
+ 1
+
+	)
+
+110 
+	#CONFIG_NR_CPUS
+ 8
+
+	)
+
+111 
+	#CONFIG_SCHED_SMT
+ 1
+
+	)
+
+112 #unde‡
+CONFIG_PREEMPT_NONE
+
+
+113 #unde‡
+CONFIG_PREEMPT_VOLUNTARY
+
+
+114 
+	#CONFIG_PREEMPT
+ 1
+
+	)
+
+115 
+	#CONFIG_PREEMPT_BKL
+ 1
+
+	)
+
+116 
+	#CONFIG_X86_LOCAL_APIC
+ 1
+
+	)
+
+117 
+	#CONFIG_X86_IO_APIC
+ 1
+
+	)
+
+118 
+	#CONFIG_X86_TSC
+ 1
+
+	)
+
+119 
+	#CONFIG_X86_MCE
+ 1
+
+	)
+
+120 
+	#CONFIG_X86_MCE_NONFATAL
+ 1
+
+	)
+
+121 
+	#CONFIG_X86_MCE_P4THERMAL
+ 1
+
+	)
+
+122 #unde‡
+CONFIG_TOSHIBA
+
+
+123 #unde‡
+CONFIG_I8K
+
+
+124 #unde‡
+CONFIG_X86_REBOOTFIXUPS
+
+
+125 #unde‡
+CONFIG_MICROCODE
+
+
+126 #unde‡
+CONFIG_X86_MSR
+
+
+127 #unde‡
+CONFIG_X86_CPUID
+
+
+132 #unde‡
+CONFIG_EDD
+
+
+133 
+	#CONFIG_NOHIGHMEM
+ 1
+
+	)
+
+134 #unde‡
+CONFIG_HIGHMEM4G
+
+
+135 #unde‡
+CONFIG_HIGHMEM64G
+
+
+136 
+	#CONFIG_SELECT_MEMORY_MODEL
+ 1
+
+	)
+
+137 
+	#CONFIG_FLATMEM_MANUAL
+ 1
+
+	)
+
+138 #unde‡
+CONFIG_DISCONTIGMEM_MANUAL
+
+
+139 #unde‡
+CONFIG_SPARSEMEM_MANUAL
+
+
+140 
+	#CONFIG_FLATMEM
+ 1
+
+	)
+
+141 
+	#CONFIG_FLAT_NODE_MEM_MAP
+ 1
+
+	)
+
+142 #unde‡
+CONFIG_MATH_EMULATION
+
+
+143 
+	#CONFIG_MTRR
+ 1
+
+	)
+
+144 #unde‡
+CONFIG_EFI
+
+
+145 
+	#CONFIG_IRQBALANCE
+ 1
+
+	)
+
+146 
+	#CONFIG_HAVE_DEC_LOCK
+ 1
+
+	)
+
+147 #unde‡
+CONFIG_REGPARM
+
+
+148 
+	#CONFIG_SECCOMP
+ 1
+
+	)
+
+149 #unde‡
+CONFIG_HZ_100
+
+
+150 
+	#CONFIG_HZ_250
+ 1
+
+	)
+
+151 #unde‡
+CONFIG_HZ_1000
+
+
+152 
+	#CONFIG_HZ
+ 250
+
+	)
+
+153 
+	#CONFIG_PHYSICAL_START
+ 0x100000
+
+	)
+
+154 #unde‡
+CONFIG_KEXEC
+
+
+159 
+	#CONFIG_PM
+ 1
+
+	)
+
+160 #unde‡
+CONFIG_PM_DEBUG
+
+
+161 
+	#CONFIG_SOFTWARE_SUSPEND
+ 1
+
+	)
+
+162 
+	#CONFIG_PM_STD_PARTITION
+ ""
+
+	)
+
+167 
+	#CONFIG_ACPI
+ 1
+
+	)
+
+168 
+	#CONFIG_ACPI_BOOT
+ 1
+
+	)
+
+169 
+	#CONFIG_ACPI_INTERPRETER
+ 1
+
+	)
+
+170 
+	#CONFIG_ACPI_AC
+ 1
+
+	)
+
+171 
+	#CONFIG_ACPI_BATTERY
+ 1
+
+	)
+
+172 
+	#CONFIG_ACPI_BUTTON
+ 1
+
+	)
+
+173 
+	#CONFIG_ACPI_VIDEO_MODULE
+ 1
+
+	)
+
+174 
+	#CONFIG_ACPI_HOTKEY_MODULE
+ 1
+
+	)
+
+175 
+	#CONFIG_ACPI_FAN
+ 1
+
+	)
+
+176 
+	#CONFIG_ACPI_PROCESSOR
+ 1
+
+	)
+
+177 
+	#CONFIG_ACPI_THERMAL
+ 1
+
+	)
+
+178 #unde‡
+CONFIG_ACPI_ASUS
+
+
+179 
+	#CONFIG_ACPI_IBM_MODULE
+ 1
+
+	)
+
+180 #unde‡
+CONFIG_ACPI_TOSHIBA
+
+
+181 
+	#CONFIG_ACPI_BLACKLIST_YEAR
+ 0
+
+	)
+
+182 #unde‡
+CONFIG_ACPI_DEBUG
+
+
+183 
+	#CONFIG_ACPI_BUS
+ 1
+
+	)
+
+184 
+	#CONFIG_ACPI_EC
+ 1
+
+	)
+
+185 
+	#CONFIG_ACPI_POWER
+ 1
+
+	)
+
+186 
+	#CONFIG_ACPI_PCI
+ 1
+
+	)
+
+187 
+	#CONFIG_ACPI_SYSTEM
+ 1
+
+	)
+
+188 #unde‡
+CONFIG_X86_PM_TIMER
+
+
+189 #unde‡
+CONFIG_ACPI_CONTAINER
+
+
+194 #unde‡
+CONFIG_APM
+
+
+199 #unde‡
+CONFIG_CPU_FREQ
+
+
+204 
+	#CONFIG_PCI
+ 1
+
+	)
+
+205 #unde‡
+CONFIG_PCI_GOBIOS
+
+
+206 #unde‡
+CONFIG_PCI_GOMMCONFIG
+
+
+207 #unde‡
+CONFIG_PCI_GODIRECT
+
+
+208 
+	#CONFIG_PCI_GOANY
+ 1
+
+	)
+
+209 
+	#CONFIG_PCI_BIOS
+ 1
+
+	)
+
+210 
+	#CONFIG_PCI_DIRECT
+ 1
+
+	)
+
+211 
+	#CONFIG_PCI_MMCONFIG
+ 1
+
+	)
+
+212 #unde‡
+CONFIG_PCIEPORTBUS
+
+
+213 #unde‡
+CONFIG_PCI_MSI
+
+
+214 
+	#CONFIG_PCI_LEGACY_PROC
+ 1
+
+	)
+
+215 
+	#CONFIG_PCI_NAMES
+ 1
+
+	)
+
+216 
+	#CONFIG_ISA_DMA_API
+ 1
+
+	)
+
+217 
+	#CONFIG_ISA
+ 1
+
+	)
+
+218 #unde‡
+CONFIG_EISA
+
+
+219 #unde‡
+CONFIG_MCA
+
+
+220 #unde‡
+CONFIG_SCx200
+
+
+221 #unde‡
+CONFIG_HOTPLUG_CPU
+
+
+226 #unde‡
+CONFIG_PCCARD
+
+
+231 #unde‡
+CONFIG_HOTPLUG_PCI
+
+
+236 
+	#CONFIG_BINFMT_ELF
+ 1
+
+	)
+
+237 
+	#CONFIG_BINFMT_AOUT
+ 1
+
+	)
+
+238 
+	#CONFIG_BINFMT_MISC
+ 1
+
+	)
+
+243 
+	#CONFIG_NET
+ 1
+
+	)
+
+248 
+	#CONFIG_PACKET
+ 1
+
+	)
+
+249 #unde‡
+CONFIG_PACKET_MMAP
+
+
+250 
+	#CONFIG_UNIX
+ 1
+
+	)
+
+251 #unde‡
+CONFIG_NET_KEY
+
+
+252 
+	#CONFIG_INET
+ 1
+
+	)
+
+253 
+	#CONFIG_IP_MULTICAST
+ 1
+
+	)
+
+254 #unde‡
+CONFIG_IP_ADVANCED_ROUTER
+
+
+255 
+	#CONFIG_IP_FIB_HASH
+ 1
+
+	)
+
+256 #unde‡
+CONFIG_IP_PNP
+
+
+257 #unde‡
+CONFIG_NET_IPIP
+
+
+258 #unde‡
+CONFIG_NET_IPGRE
+
+
+259 #unde‡
+CONFIG_IP_MROUTE
+
+
+260 #unde‡
+CONFIG_ARPD
+
+
+261 #unde‡
+CONFIG_SYN_COOKIES
+
+
+262 #unde‡
+CONFIG_INET_AH
+
+
+263 #unde‡
+CONFIG_INET_ESP
+
+
+264 #unde‡
+CONFIG_INET_IPCOMP
+
+
+265 #unde‡
+CONFIG_INET_TUNNEL
+
+
+266 
+	#CONFIG_IP_TCPDIAG
+ 1
+
+	)
+
+267 #unde‡
+CONFIG_IP_TCPDIAG_IPV6
+
+
+268 #unde‡
+CONFIG_TCP_CONG_ADVANCED
+
+
+269 
+	#CONFIG_TCP_CONG_BIC
+ 1
+
+	)
+
+274 #unde‡
+CONFIG_IP_VS
+
+
+275 #unde‡
+CONFIG_IPV6
+
+
+276 
+	#CONFIG_NETFILTER
+ 1
+
+	)
+
+277 #unde‡
+CONFIG_NETFILTER_DEBUG
+
+
+282 
+	#CONFIG_IP_NF_CONNTRACK
+ 1
+
+	)
+
+283 #unde‡
+CONFIG_IP_NF_CT_ACCT
+
+
+284 #unde‡
+CONFIG_IP_NF_CONNTRACK_MARK
+
+
+285 #unde‡
+CONFIG_IP_NF_CT_PROTO_SCTP
+
+
+286 #unde‡
+CONFIG_IP_NF_FTP
+
+
+287 #unde‡
+CONFIG_IP_NF_IRC
+
+
+288 #unde‡
+CONFIG_IP_NF_TFTP
+
+
+289 #unde‡
+CONFIG_IP_NF_AMANDA
+
+
+290 
+	#CONFIG_IP_NF_QUEUE
+ 1
+
+	)
+
+291 
+	#CONFIG_IP_NF_IPTABLES
+ 1
+
+	)
+
+292 
+	#CONFIG_IP_NF_MATCH_LIMIT
+ 1
+
+	)
+
+293 
+	#CONFIG_IP_NF_MATCH_IPRANGE
+ 1
+
+	)
+
+294 
+	#CONFIG_IP_NF_MATCH_MAC
+ 1
+
+	)
+
+295 
+	#CONFIG_IP_NF_MATCH_PKTTYPE
+ 1
+
+	)
+
+296 
+	#CONFIG_IP_NF_MATCH_MARK
+ 1
+
+	)
+
+297 
+	#CONFIG_IP_NF_MATCH_MULTIPORT
+ 1
+
+	)
+
+298 
+	#CONFIG_IP_NF_MATCH_TOS
+ 1
+
+	)
+
+299 
+	#CONFIG_IP_NF_MATCH_RECENT
+ 1
+
+	)
+
+300 
+	#CONFIG_IP_NF_MATCH_ECN
+ 1
+
+	)
+
+301 
+	#CONFIG_IP_NF_MATCH_DSCP
+ 1
+
+	)
+
+302 
+	#CONFIG_IP_NF_MATCH_AH_ESP
+ 1
+
+	)
+
+303 
+	#CONFIG_IP_NF_MATCH_LENGTH
+ 1
+
+	)
+
+304 
+	#CONFIG_IP_NF_MATCH_TTL
+ 1
+
+	)
+
+305 
+	#CONFIG_IP_NF_MATCH_TCPMSS
+ 1
+
+	)
+
+306 
+	#CONFIG_IP_NF_MATCH_HELPER
+ 1
+
+	)
+
+307 
+	#CONFIG_IP_NF_MATCH_STATE
+ 1
+
+	)
+
+308 
+	#CONFIG_IP_NF_MATCH_CONNTRACK
+ 1
+
+	)
+
+309 
+	#CONFIG_IP_NF_MATCH_OWNER
+ 1
+
+	)
+
+310 #unde‡
+CONFIG_IP_NF_MATCH_ADDRTYPE
+
+
+311 #unde‡
+CONFIG_IP_NF_MATCH_REALM
+
+
+312 #unde‡
+CONFIG_IP_NF_MATCH_SCTP
+
+
+313 #unde‡
+CONFIG_IP_NF_MATCH_COMMENT
+
+
+314 #unde‡
+CONFIG_IP_NF_MATCH_HASHLIMIT
+
+
+315 
+	#CONFIG_IP_NF_FILTER
+ 1
+
+	)
+
+316 
+	#CONFIG_IP_NF_TARGET_REJECT
+ 1
+
+	)
+
+317 
+	#CONFIG_IP_NF_TARGET_LOG
+ 1
+
+	)
+
+318 
+	#CONFIG_IP_NF_TARGET_ULOG
+ 1
+
+	)
+
+319 
+	#CONFIG_IP_NF_TARGET_TCPMSS
+ 1
+
+	)
+
+320 
+	#CONFIG_IP_NF_NAT
+ 1
+
+	)
+
+321 
+	#CONFIG_IP_NF_NAT_NEEDED
+ 1
+
+	)
+
+322 
+	#CONFIG_IP_NF_TARGET_MASQUERADE
+ 1
+
+	)
+
+323 
+	#CONFIG_IP_NF_TARGET_REDIRECT
+ 1
+
+	)
+
+324 
+	#CONFIG_IP_NF_TARGET_NETMAP
+ 1
+
+	)
+
+325 
+	#CONFIG_IP_NF_TARGET_SAME
+ 1
+
+	)
+
+326 #unde‡
+CONFIG_IP_NF_NAT_SNMP_BASIC
+
+
+327 
+	#CONFIG_IP_NF_MANGLE
+ 1
+
+	)
+
+328 
+	#CONFIG_IP_NF_TARGET_TOS
+ 1
+
+	)
+
+329 
+	#CONFIG_IP_NF_TARGET_ECN
+ 1
+
+	)
+
+330 
+	#CONFIG_IP_NF_TARGET_DSCP
+ 1
+
+	)
+
+331 
+	#CONFIG_IP_NF_TARGET_MARK
+ 1
+
+	)
+
+332 
+	#CONFIG_IP_NF_TARGET_CLASSIFY
+ 1
+
+	)
+
+333 
+	#CONFIG_IP_NF_RAW_MODULE
+ 1
+
+	)
+
+334 
+	#CONFIG_IP_NF_TARGET_NOTRACK_MODULE
+ 1
+
+	)
+
+335 
+	#CONFIG_IP_NF_ARPTABLES
+ 1
+
+	)
+
+336 
+	#CONFIG_IP_NF_ARPFILTER
+ 1
+
+	)
+
+337 
+	#CONFIG_IP_NF_ARP_MANGLE
+ 1
+
+	)
+
+342 #unde‡
+CONFIG_IP_SCTP
+
+
+343 #unde‡
+CONFIG_ATM
+
+
+344 #unde‡
+CONFIG_BRIDGE
+
+
+345 #unde‡
+CONFIG_VLAN_8021Q
+
+
+346 #unde‡
+CONFIG_DECNET
+
+
+347 #unde‡
+CONFIG_LLC2
+
+
+348 #unde‡
+CONFIG_IPX
+
+
+349 #unde‡
+CONFIG_ATALK
+
+
+350 #unde‡
+CONFIG_X25
+
+
+351 #unde‡
+CONFIG_LAPB
+
+
+352 #unde‡
+CONFIG_NET_DIVERT
+
+
+353 #unde‡
+CONFIG_ECONET
+
+
+354 #unde‡
+CONFIG_WAN_ROUTER
+
+
+355 #unde‡
+CONFIG_NET_SCHED
+
+
+356 #unde‡
+CONFIG_NET_CLS_ROUTE
+
+
+361 #unde‡
+CONFIG_NET_PKTGEN
+
+
+362 #unde‡
+CONFIG_NETPOLL
+
+
+363 #unde‡
+CONFIG_NET_POLL_CONTROLLER
+
+
+364 #unde‡
+CONFIG_HAMRADIO
+
+
+365 #unde‡
+CONFIG_IRDA
+
+
+366 #unde‡
+CONFIG_BT
+
+
+375 
+	#CONFIG_STANDALONE
+ 1
+
+	)
+
+376 
+	#CONFIG_PREVENT_FIRMWARE_BUILD
+ 1
+
+	)
+
+377 
+	#CONFIG_FW_LOADER_MODULE
+ 1
+
+	)
+
+382 #unde‡
+CONFIG_MTD
+
+
+387 
+	#CONFIG_PARPORT
+ 1
+
+	)
+
+388 
+	#CONFIG_PARPORT_PC
+ 1
+
+	)
+
+389 #unde‡
+CONFIG_PARPORT_SERIAL
+
+
+390 #unde‡
+CONFIG_PARPORT_PC_FIFO
+
+
+391 #unde‡
+CONFIG_PARPORT_PC_SUPERIO
+
+
+392 #unde‡
+CONFIG_PARPORT_GSC
+
+
+393 #unde‡
+CONFIG_PARPORT_1284
+
+
+398 
+	#CONFIG_PNP
+ 1
+
+	)
+
+399 #unde‡
+CONFIG_PNP_DEBUG
+
+
+404 #unde‡
+CONFIG_ISAPNP
+
+
+405 #unde‡
+CONFIG_PNPBIOS
+
+
+406 
+	#CONFIG_PNPACPI
+ 1
+
+	)
+
+411 
+	#CONFIG_BLK_DEV_FD
+ 1
+
+	)
+
+412 #unde‡
+CONFIG_BLK_DEV_XD
+
+
+413 #unde‡
+CONFIG_PARIDE
+
+
+414 #unde‡
+CONFIG_BLK_CPQ_DA
+
+
+415 #unde‡
+CONFIG_BLK_CPQ_CISS_DA
+
+
+416 #unde‡
+CONFIG_BLK_DEV_DAC960
+
+
+417 #unde‡
+CONFIG_BLK_DEV_UMEM
+
+
+418 #unde‡
+CONFIG_BLK_DEV_COW_COMMON
+
+
+419 #unde‡
+CONFIG_BLK_DEV_LOOP
+
+
+420 #unde‡
+CONFIG_BLK_DEV_NBD
+
+
+421 #unde‡
+CONFIG_BLK_DEV_SX8
+
+
+422 #unde‡
+CONFIG_BLK_DEV_UB
+
+
+423 #unde‡
+CONFIG_BLK_DEV_RAM
+
+
+424 
+	#CONFIG_BLK_DEV_RAM_COUNT
+ 16
+
+	)
+
+425 
+	#CONFIG_INITRAMFS_SOURCE
+ ""
+
+	)
+
+426 
+	#CONFIG_LBD
+ 1
+
+	)
+
+427 #unde‡
+CONFIG_CDROM_PKTCDVD
+
+
+432 
+	#CONFIG_IOSCHED_NOOP
+ 1
+
+	)
+
+433 
+	#CONFIG_IOSCHED_AS
+ 1
+
+	)
+
+434 
+	#CONFIG_IOSCHED_DEADLINE
+ 1
+
+	)
+
+435 
+	#CONFIG_IOSCHED_CFQ
+ 1
+
+	)
+
+436 #unde‡
+CONFIG_ATA_OVER_ETH
+
+
+441 
+	#CONFIG_IDE
+ 1
+
+	)
+
+442 
+	#CONFIG_BLK_DEV_IDE
+ 1
+
+	)
+
+447 #unde‡
+CONFIG_BLK_DEV_IDE_SATA
+
+
+448 #unde‡
+CONFIG_BLK_DEV_HD_IDE
+
+
+449 
+	#CONFIG_BLK_DEV_IDEDISK
+ 1
+
+	)
+
+450 
+	#CONFIG_IDEDISK_MULTI_MODE
+ 1
+
+	)
+
+451 
+	#CONFIG_BLK_DEV_IDECD
+ 1
+
+	)
+
+452 #unde‡
+CONFIG_BLK_DEV_IDETAPE
+
+
+453 #unde‡
+CONFIG_BLK_DEV_IDEFLOPPY
+
+
+454 #unde‡
+CONFIG_BLK_DEV_IDESCSI
+
+
+455 #unde‡
+CONFIG_IDE_TASK_IOCTL
+
+
+460 
+	#CONFIG_IDE_GENERIC
+ 1
+
+	)
+
+461 
+	#CONFIG_BLK_DEV_CMD640
+ 1
+
+	)
+
+462 #unde‡
+CONFIG_BLK_DEV_CMD640_ENHANCED
+
+
+463 #unde‡
+CONFIG_BLK_DEV_IDEPNP
+
+
+464 
+	#CONFIG_BLK_DEV_IDEPCI
+ 1
+
+	)
+
+465 
+	#CONFIG_IDEPCI_SHARE_IRQ
+ 1
+
+	)
+
+466 #unde‡
+CONFIG_BLK_DEV_OFFBOARD
+
+
+467 
+	#CONFIG_BLK_DEV_GENERIC
+ 1
+
+	)
+
+468 #unde‡
+CONFIG_BLK_DEV_OPTI621
+
+
+469 
+	#CONFIG_BLK_DEV_RZ1000
+ 1
+
+	)
+
+470 
+	#CONFIG_BLK_DEV_IDEDMA_PCI
+ 1
+
+	)
+
+471 #unde‡
+CONFIG_BLK_DEV_IDEDMA_FORCED
+
+
+472 
+	#CONFIG_IDEDMA_PCI_AUTO
+ 1
+
+	)
+
+473 #unde‡
+CONFIG_IDEDMA_ONLYDISK
+
+
+474 #unde‡
+CONFIG_BLK_DEV_AEC62XX
+
+
+475 #unde‡
+CONFIG_BLK_DEV_ALI15X3
+
+
+476 #unde‡
+CONFIG_BLK_DEV_AMD74XX
+
+
+477 #unde‡
+CONFIG_BLK_DEV_ATIIXP
+
+
+478 #unde‡
+CONFIG_BLK_DEV_CMD64X
+
+
+479 #unde‡
+CONFIG_BLK_DEV_TRIFLEX
+
+
+480 #unde‡
+CONFIG_BLK_DEV_CY82C693
+
+
+481 #unde‡
+CONFIG_BLK_DEV_CS5520
+
+
+482 #unde‡
+CONFIG_BLK_DEV_CS5530
+
+
+483 #unde‡
+CONFIG_BLK_DEV_HPT34X
+
+
+484 #unde‡
+CONFIG_BLK_DEV_HPT366
+
+
+485 #unde‡
+CONFIG_BLK_DEV_SC1200
+
+
+486 
+	#CONFIG_BLK_DEV_PIIX
+ 1
+
+	)
+
+487 #unde‡
+CONFIG_BLK_DEV_IT821X
+
+
+488 #unde‡
+CONFIG_BLK_DEV_NS87415
+
+
+489 #unde‡
+CONFIG_BLK_DEV_PDC202XX_OLD
+
+
+490 #unde‡
+CONFIG_BLK_DEV_PDC202XX_NEW
+
+
+491 #unde‡
+CONFIG_BLK_DEV_SVWKS
+
+
+492 #unde‡
+CONFIG_BLK_DEV_SIIMAGE
+
+
+493 #unde‡
+CONFIG_BLK_DEV_SIS5513
+
+
+494 #unde‡
+CONFIG_BLK_DEV_SLC90E66
+
+
+495 #unde‡
+CONFIG_BLK_DEV_TRM290
+
+
+496 #unde‡
+CONFIG_BLK_DEV_VIA82CXXX
+
+
+497 #unde‡
+CONFIG_IDE_ARM
+
+
+498 #unde‡
+CONFIG_IDE_CHIPSETS
+
+
+499 
+	#CONFIG_BLK_DEV_IDEDMA
+ 1
+
+	)
+
+500 #unde‡
+CONFIG_IDEDMA_IVB
+
+
+501 
+	#CONFIG_IDEDMA_AUTO
+ 1
+
+	)
+
+502 #unde‡
+CONFIG_BLK_DEV_HD
+
+
+507 
+	#CONFIG_SCSI
+ 1
+
+	)
+
+508 
+	#CONFIG_SCSI_PROC_FS
+ 1
+
+	)
+
+513 
+	#CONFIG_BLK_DEV_SD
+ 1
+
+	)
+
+514 #unde‡
+CONFIG_CHR_DEV_ST
+
+
+515 #unde‡
+CONFIG_CHR_DEV_OSST
+
+
+516 #unde‡
+CONFIG_BLK_DEV_SR
+
+
+517 
+	#CONFIG_CHR_DEV_SG
+ 1
+
+	)
+
+518 #unde‡
+CONFIG_CHR_DEV_SCH
+
+
+523 #unde‡
+CONFIG_SCSI_MULTI_LUN
+
+
+524 #unde‡
+CONFIG_SCSI_CONSTANTS
+
+
+525 #unde‡
+CONFIG_SCSI_LOGGING
+
+
+530 #unde‡
+CONFIG_SCSI_SPI_ATTRS
+
+
+531 #unde‡
+CONFIG_SCSI_FC_ATTRS
+
+
+532 #unde‡
+CONFIG_SCSI_ISCSI_ATTRS
+
+
+537 #unde‡
+CONFIG_BLK_DEV_3W_XXXX_RAID
+
+
+538 #unde‡
+CONFIG_SCSI_3W_9XXX
+
+
+539 #unde‡
+CONFIG_SCSI_7000FASST
+
+
+540 #unde‡
+CONFIG_SCSI_ACARD
+
+
+541 #unde‡
+CONFIG_SCSI_AHA152X
+
+
+542 #unde‡
+CONFIG_SCSI_AHA1542
+
+
+543 #unde‡
+CONFIG_SCSI_AACRAID
+
+
+544 #unde‡
+CONFIG_SCSI_AIC7XXX
+
+
+545 #unde‡
+CONFIG_SCSI_AIC7XXX_OLD
+
+
+546 #unde‡
+CONFIG_SCSI_AIC79XX
+
+
+547 
+	#CONFIG_SCSI_DPT_I2O_MODULE
+ 1
+
+	)
+
+548 #unde‡
+CONFIG_SCSI_IN2000
+
+
+549 #unde‡
+CONFIG_MEGARAID_NEWGEN
+
+
+550 #unde‡
+CONFIG_MEGARAID_LEGACY
+
+
+551 
+	#CONFIG_SCSI_SATA
+ 1
+
+	)
+
+552 #unde‡
+CONFIG_SCSI_SATA_AHCI
+
+
+553 #unde‡
+CONFIG_SCSI_SATA_SVW
+
+
+554 
+	#CONFIG_SCSI_ATA_PIIX
+ 1
+
+	)
+
+555 #unde‡
+CONFIG_SCSI_SATA_NV
+
+
+556 #unde‡
+CONFIG_SCSI_SATA_PROMISE
+
+
+557 #unde‡
+CONFIG_SCSI_SATA_QSTOR
+
+
+558 
+	#CONFIG_SCSI_SATA_SX4_MODULE
+ 1
+
+	)
+
+559 #unde‡
+CONFIG_SCSI_SATA_SIL
+
+
+560 
+	#CONFIG_SCSI_SATA_SIS_MODULE
+ 1
+
+	)
+
+561 #unde‡
+CONFIG_SCSI_SATA_ULI
+
+
+562 #unde‡
+CONFIG_SCSI_SATA_VIA
+
+
+563 #unde‡
+CONFIG_SCSI_SATA_VITESSE
+
+
+564 #unde‡
+CONFIG_SCSI_BUSLOGIC
+
+
+565 #unde‡
+CONFIG_SCSI_DMX3191D
+
+
+566 #unde‡
+CONFIG_SCSI_DTC3280
+
+
+567 #unde‡
+CONFIG_SCSI_EATA
+
+
+568 #unde‡
+CONFIG_SCSI_FUTURE_DOMAIN
+
+
+569 #unde‡
+CONFIG_SCSI_GDTH
+
+
+570 #unde‡
+CONFIG_SCSI_GENERIC_NCR5380
+
+
+571 #unde‡
+CONFIG_SCSI_GENERIC_NCR5380_MMIO
+
+
+572 #unde‡
+CONFIG_SCSI_IPS
+
+
+573 #unde‡
+CONFIG_SCSI_INITIO
+
+
+574 #unde‡
+CONFIG_SCSI_INIA100
+
+
+575 #unde‡
+CONFIG_SCSI_PPA
+
+
+576 #unde‡
+CONFIG_SCSI_IMM
+
+
+577 #unde‡
+CONFIG_SCSI_NCR53C406A
+
+
+578 #unde‡
+CONFIG_SCSI_SYM53C8XX_2
+
+
+579 
+	#CONFIG_SCSI_IPR_MODULE
+ 1
+
+	)
+
+580 #unde‡
+CONFIG_SCSI_IPR_TRACE
+
+
+581 #unde‡
+CONFIG_SCSI_IPR_DUMP
+
+
+582 #unde‡
+CONFIG_SCSI_PAS16
+
+
+583 #unde‡
+CONFIG_SCSI_PSI240I
+
+
+584 #unde‡
+CONFIG_SCSI_QLOGIC_FAS
+
+
+585 #unde‡
+CONFIG_SCSI_QLOGIC_FC
+
+
+586 #unde‡
+CONFIG_SCSI_QLOGIC_1280
+
+
+587 
+	#CONFIG_SCSI_QLA2XXX
+ 1
+
+	)
+
+588 #unde‡
+CONFIG_SCSI_QLA21XX
+
+
+589 #unde‡
+CONFIG_SCSI_QLA22XX
+
+
+590 #unde‡
+CONFIG_SCSI_QLA2300
+
+
+591 #unde‡
+CONFIG_SCSI_QLA2322
+
+
+592 #unde‡
+CONFIG_SCSI_QLA6312
+
+
+593 #unde‡
+CONFIG_SCSI_LPFC
+
+
+594 #unde‡
+CONFIG_SCSI_SYM53C416
+
+
+595 #unde‡
+CONFIG_SCSI_DC395x
+
+
+596 #unde‡
+CONFIG_SCSI_DC390T
+
+
+597 #unde‡
+CONFIG_SCSI_T128
+
+
+598 #unde‡
+CONFIG_SCSI_U14_34F
+
+
+599 #unde‡
+CONFIG_SCSI_ULTRASTOR
+
+
+600 #unde‡
+CONFIG_SCSI_NSP32
+
+
+601 #unde‡
+CONFIG_SCSI_DEBUG
+
+
+606 #unde‡
+CONFIG_CD_NO_IDESCSI
+
+
+611 #unde‡
+CONFIG_MD
+
+
+616 #unde‡
+CONFIG_FUSION
+
+
+617 #unde‡
+CONFIG_FUSION_SPI
+
+
+618 #unde‡
+CONFIG_FUSION_FC
+
+
+623 
+	#CONFIG_IEEE1394
+ 1
+
+	)
+
+628 #unde‡
+CONFIG_IEEE1394_VERBOSEDEBUG
+
+
+629 #unde‡
+CONFIG_IEEE1394_OUI_DB
+
+
+630 #unde‡
+CONFIG_IEEE1394_EXTRA_CONFIG_ROMS
+
+
+631 #unde‡
+CONFIG_IEEE1394_EXPORT_FULL_API
+
+
+640 
+	#CONFIG_IEEE1394_OHCI1394
+ 1
+
+	)
+
+645 #unde‡
+CONFIG_IEEE1394_VIDEO1394
+
+
+646 #unde‡
+CONFIG_IEEE1394_SBP2
+
+
+647 #unde‡
+CONFIG_IEEE1394_ETH1394
+
+
+648 #unde‡
+CONFIG_IEEE1394_DV1394
+
+
+649 
+	#CONFIG_IEEE1394_RAWIO
+ 1
+
+	)
+
+650 #unde‡
+CONFIG_IEEE1394_CMP
+
+
+655 #unde‡
+CONFIG_I2O
+
+
+660 
+	#CONFIG_NETDEVICES
+ 1
+
+	)
+
+661 
+	#CONFIG_DUMMY_MODULE
+ 1
+
+	)
+
+662 #unde‡
+CONFIG_BONDING
+
+
+663 #unde‡
+CONFIG_EQUALIZER
+
+
+664 #unde‡
+CONFIG_TUN
+
+
+665 #unde‡
+CONFIG_NET_SB1000
+
+
+670 #unde‡
+CONFIG_ARCNET
+
+
+675 
+	#CONFIG_NET_ETHERNET
+ 1
+
+	)
+
+676 
+	#CONFIG_MII
+ 1
+
+	)
+
+677 #unde‡
+CONFIG_HAPPYMEAL
+
+
+678 #unde‡
+CONFIG_SUNGEM
+
+
+679 #unde‡
+CONFIG_NET_VENDOR_3COM
+
+
+680 #unde‡
+CONFIG_LANCE
+
+
+681 #unde‡
+CONFIG_NET_VENDOR_SMC
+
+
+682 #unde‡
+CONFIG_NET_VENDOR_RACAL
+
+
+687 #unde‡
+CONFIG_NET_TULIP
+
+
+688 #unde‡
+CONFIG_AT1700
+
+
+689 #unde‡
+CONFIG_DEPCA
+
+
+690 #unde‡
+CONFIG_HP100
+
+
+691 #unde‡
+CONFIG_NET_ISA
+
+
+692 
+	#CONFIG_NET_PCI
+ 1
+
+	)
+
+693 #unde‡
+CONFIG_PCNET32
+
+
+694 #unde‡
+CONFIG_AMD8111_ETH
+
+
+695 #unde‡
+CONFIG_ADAPTEC_STARFIRE
+
+
+696 #unde‡
+CONFIG_AC3200
+
+
+697 #unde‡
+CONFIG_APRICOT
+
+
+698 #unde‡
+CONFIG_B44
+
+
+699 #unde‡
+CONFIG_FORCEDETH
+
+
+700 #unde‡
+CONFIG_CS89x0
+
+
+701 #unde‡
+CONFIG_DGRS
+
+
+702 #unde‡
+CONFIG_EEPRO100
+
+
+703 #unde‡
+CONFIG_E100
+
+
+704 #unde‡
+CONFIG_FEALNX
+
+
+705 #unde‡
+CONFIG_NATSEMI
+
+
+706 #unde‡
+CONFIG_NE2K_PCI
+
+
+707 #unde‡
+CONFIG_8139CP
+
+
+708 
+	#CONFIG_8139TOO
+ 1
+
+	)
+
+709 
+	#CONFIG_8139TOO_PIO
+ 1
+
+	)
+
+710 #unde‡
+CONFIG_8139TOO_TUNE_TWISTER
+
+
+711 #unde‡
+CONFIG_8139TOO_8129
+
+
+712 #unde‡
+CONFIG_8139_OLD_RX_RESET
+
+
+713 #unde‡
+CONFIG_SIS900
+
+
+714 #unde‡
+CONFIG_EPIC100
+
+
+715 #unde‡
+CONFIG_SUNDANCE
+
+
+716 #unde‡
+CONFIG_TLAN
+
+
+717 #unde‡
+CONFIG_VIA_RHINE
+
+
+718 #unde‡
+CONFIG_NET_POCKET
+
+
+723 #unde‡
+CONFIG_ACENIC
+
+
+724 #unde‡
+CONFIG_DL2K
+
+
+725 #unde‡
+CONFIG_E1000
+
+
+726 #unde‡
+CONFIG_NS83820
+
+
+727 #unde‡
+CONFIG_HAMACHI
+
+
+728 #unde‡
+CONFIG_YELLOWFIN
+
+
+729 #unde‡
+CONFIG_R8169
+
+
+730 #unde‡
+CONFIG_SKGE
+
+
+731 #unde‡
+CONFIG_SK98LIN
+
+
+732 #unde‡
+CONFIG_VIA_VELOCITY
+
+
+733 #unde‡
+CONFIG_TIGON3
+
+
+734 #unde‡
+CONFIG_BNX2
+
+
+739 #unde‡
+CONFIG_IXGB
+
+
+740 
+	#CONFIG_S2IO_MODULE
+ 1
+
+	)
+
+741 #unde‡
+CONFIG_S2IO_NAPI
+
+
+742 #unde‡
+CONFIG_2BUFF_MODE
+
+
+747 #unde‡
+CONFIG_TR
+
+
+752 #unde‡
+CONFIG_NET_RADIO
+
+
+757 #unde‡
+CONFIG_WAN
+
+
+758 #unde‡
+CONFIG_FDDI
+
+
+759 #unde‡
+CONFIG_HIPPI
+
+
+760 #unde‡
+CONFIG_PLIP
+
+
+761 #unde‡
+CONFIG_PPP
+
+
+762 #unde‡
+CONFIG_SLIP
+
+
+763 #unde‡
+CONFIG_NET_FC
+
+
+764 #unde‡
+CONFIG_SHAPER
+
+
+765 #unde‡
+CONFIG_NETCONSOLE
+
+
+770 #unde‡
+CONFIG_ISDN
+
+
+775 #unde‡
+CONFIG_PHONE
+
+
+780 
+	#CONFIG_INPUT
+ 1
+
+	)
+
+785 
+	#CONFIG_INPUT_MOUSEDEV
+ 1
+
+	)
+
+786 
+	#CONFIG_INPUT_MOUSEDEV_PSAUX
+ 1
+
+	)
+
+787 
+	#CONFIG_INPUT_MOUSEDEV_SCREEN_X
+ 1024
+
+	)
+
+788 
+	#CONFIG_INPUT_MOUSEDEV_SCREEN_Y
+ 768
+
+	)
+
+789 #unde‡
+CONFIG_INPUT_JOYDEV
+
+
+790 #unde‡
+CONFIG_INPUT_TSDEV
+
+
+791 #unde‡
+CONFIG_INPUT_EVDEV
+
+
+792 #unde‡
+CONFIG_INPUT_EVBUG
+
+
+797 
+	#CONFIG_INPUT_KEYBOARD
+ 1
+
+	)
+
+798 
+	#CONFIG_KEYBOARD_ATKBD
+ 1
+
+	)
+
+799 #unde‡
+CONFIG_KEYBOARD_SUNKBD
+
+
+800 #unde‡
+CONFIG_KEYBOARD_LKKBD
+
+
+801 #unde‡
+CONFIG_KEYBOARD_XTKBD
+
+
+802 #unde‡
+CONFIG_KEYBOARD_NEWTON
+
+
+803 
+	#CONFIG_INPUT_MOUSE
+ 1
+
+	)
+
+804 
+	#CONFIG_MOUSE_PS2
+ 1
+
+	)
+
+805 #unde‡
+CONFIG_MOUSE_SERIAL
+
+
+806 #unde‡
+CONFIG_MOUSE_INPORT
+
+
+807 #unde‡
+CONFIG_MOUSE_LOGIBM
+
+
+808 #unde‡
+CONFIG_MOUSE_PC110PAD
+
+
+809 #unde‡
+CONFIG_MOUSE_VSXXXAA
+
+
+810 #unde‡
+CONFIG_INPUT_JOYSTICK
+
+
+811 #unde‡
+CONFIG_INPUT_TOUCHSCREEN
+
+
+812 #unde‡
+CONFIG_INPUT_MISC
+
+
+817 
+	#CONFIG_SERIO
+ 1
+
+	)
+
+818 
+	#CONFIG_SERIO_I8042
+ 1
+
+	)
+
+819 #unde‡
+CONFIG_SERIO_SERPORT
+
+
+820 #unde‡
+CONFIG_SERIO_CT82C710
+
+
+821 #unde‡
+CONFIG_SERIO_PARKBD
+
+
+822 #unde‡
+CONFIG_SERIO_PCIPS2
+
+
+823 
+	#CONFIG_SERIO_LIBPS2
+ 1
+
+	)
+
+824 #unde‡
+CONFIG_SERIO_RAW
+
+
+825 #unde‡
+CONFIG_GAMEPORT
+
+
+830 
+	#CONFIG_VT
+ 1
+
+	)
+
+831 
+	#CONFIG_VT_CONSOLE
+ 1
+
+	)
+
+832 
+	#CONFIG_HW_CONSOLE
+ 1
+
+	)
+
+833 #unde‡
+CONFIG_SERIAL_NONSTANDARD
+
+
+838 
+	#CONFIG_SERIAL_8250
+ 1
+
+	)
+
+839 #unde‡
+CONFIG_SERIAL_8250_CONSOLE
+
+
+840 #unde‡
+CONFIG_SERIAL_8250_ACPI
+
+
+841 
+	#CONFIG_SERIAL_8250_NR_UARTS
+ 4
+
+	)
+
+842 #unde‡
+CONFIG_SERIAL_8250_EXTENDED
+
+
+847 
+	#CONFIG_SERIAL_CORE
+ 1
+
+	)
+
+848 #unde‡
+CONFIG_SERIAL_JSM
+
+
+849 
+	#CONFIG_UNIX98_PTYS
+ 1
+
+	)
+
+850 
+	#CONFIG_LEGACY_PTYS
+ 1
+
+	)
+
+851 
+	#CONFIG_LEGACY_PTY_COUNT
+ 256
+
+	)
+
+852 
+	#CONFIG_PRINTER
+ 1
+
+	)
+
+853 #unde‡
+CONFIG_LP_CONSOLE
+
+
+854 #unde‡
+CONFIG_PPDEV
+
+
+855 #unde‡
+CONFIG_TIPAR
+
+
+860 #unde‡
+CONFIG_IPMI_HANDLER
+
+
+865 #unde‡
+CONFIG_WATCHDOG
+
+
+866 #unde‡
+CONFIG_HW_RANDOM
+
+
+867 #unde‡
+CONFIG_NVRAM
+
+
+868 #unde‡
+CONFIG_RTC
+
+
+869 #unde‡
+CONFIG_GEN_RTC
+
+
+870 #unde‡
+CONFIG_DTLK
+
+
+871 #unde‡
+CONFIG_R3964
+
+
+872 #unde‡
+CONFIG_APPLICOM
+
+
+873 #unde‡
+CONFIG_SONYPI
+
+
+878 
+	#CONFIG_AGP
+ 1
+
+	)
+
+879 #unde‡
+CONFIG_AGP_ALI
+
+
+880 #unde‡
+CONFIG_AGP_ATI
+
+
+881 #unde‡
+CONFIG_AGP_AMD
+
+
+882 #unde‡
+CONFIG_AGP_AMD64
+
+
+883 
+	#CONFIG_AGP_INTEL
+ 1
+
+	)
+
+884 #unde‡
+CONFIG_AGP_NVIDIA
+
+
+885 #unde‡
+CONFIG_AGP_SIS
+
+
+886 #unde‡
+CONFIG_AGP_SWORKS
+
+
+887 #unde‡
+CONFIG_AGP_VIA
+
+
+888 #unde‡
+CONFIG_AGP_EFFICEON
+
+
+889 
+	#CONFIG_DRM
+ 1
+
+	)
+
+890 #unde‡
+CONFIG_DRM_TDFX
+
+
+891 #unde‡
+CONFIG_DRM_R128
+
+
+892 #unde‡
+CONFIG_DRM_RADEON
+
+
+893 #unde‡
+CONFIG_DRM_I810
+
+
+894 #unde‡
+CONFIG_DRM_I830
+
+
+895 #unde‡
+CONFIG_DRM_I915
+
+
+896 #unde‡
+CONFIG_DRM_MGA
+
+
+897 #unde‡
+CONFIG_DRM_SIS
+
+
+898 #unde‡
+CONFIG_DRM_VIA
+
+
+899 #unde‡
+CONFIG_MWAVE
+
+
+900 #unde‡
+CONFIG_RAW_DRIVER
+
+
+901 #unde‡
+CONFIG_HPET
+
+
+902 #unde‡
+CONFIG_HANGCHECK_TIMER
+
+
+907 #unde‡
+CONFIG_TCG_TPM
+
+
+912 #unde‡
+CONFIG_I2C
+
+
+913 #unde‡
+CONFIG_I2C_SENSOR
+
+
+918 #unde‡
+CONFIG_W1
+
+
+923 
+	#CONFIG_HWMON
+ 1
+
+	)
+
+924 #unde‡
+CONFIG_HWMON_DEBUG_CHIP
+
+
+929 #unde‡
+CONFIG_IBM_ASM
+
+
+934 #unde‡
+CONFIG_VIDEO_DEV
+
+
+939 #unde‡
+CONFIG_DVB
+
+
+944 #unde‡
+CONFIG_FB
+
+
+945 #unde‡
+CONFIG_VIDEO_SELECT
+
+
+950 
+	#CONFIG_VGA_CONSOLE
+ 1
+
+	)
+
+951 #unde‡
+CONFIG_MDA_CONSOLE
+
+
+952 
+	#CONFIG_DUMMY_CONSOLE
+ 1
+
+	)
+
+957 
+	#CONFIG_SOUND
+ 1
+
+	)
+
+962 
+	#CONFIG_SND
+ 1
+
+	)
+
+963 
+	#CONFIG_SND_TIMER
+ 1
+
+	)
+
+964 
+	#CONFIG_SND_PCM
+ 1
+
+	)
+
+965 
+	#CONFIG_SND_SEQUENCER
+ 1
+
+	)
+
+966 #unde‡
+CONFIG_SND_SEQ_DUMMY
+
+
+967 
+	#CONFIG_SND_OSSEMUL
+ 1
+
+	)
+
+968 
+	#CONFIG_SND_MIXER_OSS
+ 1
+
+	)
+
+969 
+	#CONFIG_SND_PCM_OSS
+ 1
+
+	)
+
+970 
+	#CONFIG_SND_SEQUENCER_OSS
+ 1
+
+	)
+
+971 #unde‡
+CONFIG_SND_VERBOSE_PRINTK
+
+
+972 #unde‡
+CONFIG_SND_DEBUG
+
+
+977 #unde‡
+CONFIG_SND_DUMMY
+
+
+978 #unde‡
+CONFIG_SND_VIRMIDI
+
+
+979 #unde‡
+CONFIG_SND_MTPAV
+
+
+980 #unde‡
+CONFIG_SND_SERIAL_U16550
+
+
+981 #unde‡
+CONFIG_SND_MPU401
+
+
+986 #unde‡
+CONFIG_SND_AD1848
+
+
+987 #unde‡
+CONFIG_SND_CS4231
+
+
+988 #unde‡
+CONFIG_SND_CS4232
+
+
+989 #unde‡
+CONFIG_SND_CS4236
+
+
+990 #unde‡
+CONFIG_SND_ES1688
+
+
+991 #unde‡
+CONFIG_SND_ES18XX
+
+
+992 #unde‡
+CONFIG_SND_GUSCLASSIC
+
+
+993 #unde‡
+CONFIG_SND_GUSEXTREME
+
+
+994 #unde‡
+CONFIG_SND_GUSMAX
+
+
+995 #unde‡
+CONFIG_SND_INTERWAVE
+
+
+996 #unde‡
+CONFIG_SND_INTERWAVE_STB
+
+
+997 #unde‡
+CONFIG_SND_OPTI92X_AD1848
+
+
+998 #unde‡
+CONFIG_SND_OPTI92X_CS4231
+
+
+999 #unde‡
+CONFIG_SND_OPTI93X
+
+
+1000 #unde‡
+CONFIG_SND_SB8
+
+
+1001 #unde‡
+CONFIG_SND_SB16
+
+
+1002 #unde‡
+CONFIG_SND_SBAWE
+
+
+1003 #unde‡
+CONFIG_SND_WAVEFRONT
+
+
+1004 #unde‡
+CONFIG_SND_CMI8330
+
+
+1005 #unde‡
+CONFIG_SND_OPL3SA2
+
+
+1006 #unde‡
+CONFIG_SND_SGALAXY
+
+
+1007 #unde‡
+CONFIG_SND_SSCAPE
+
+
+1012 
+	#CONFIG_SND_AC97_CODEC
+ 1
+
+	)
+
+1013 #unde‡
+CONFIG_SND_ALI5451
+
+
+1014 #unde‡
+CONFIG_SND_ATIIXP
+
+
+1015 #unde‡
+CONFIG_SND_ATIIXP_MODEM
+
+
+1016 #unde‡
+CONFIG_SND_AU8810
+
+
+1017 #unde‡
+CONFIG_SND_AU8820
+
+
+1018 #unde‡
+CONFIG_SND_AU8830
+
+
+1019 #unde‡
+CONFIG_SND_AZT3328
+
+
+1020 #unde‡
+CONFIG_SND_BT87X
+
+
+1021 #unde‡
+CONFIG_SND_CS46XX
+
+
+1022 #unde‡
+CONFIG_SND_CS4281
+
+
+1023 #unde‡
+CONFIG_SND_EMU10K1
+
+
+1024 #unde‡
+CONFIG_SND_EMU10K1X
+
+
+1025 #unde‡
+CONFIG_SND_CA0106
+
+
+1026 #unde‡
+CONFIG_SND_KORG1212
+
+
+1027 #unde‡
+CONFIG_SND_MIXART
+
+
+1028 #unde‡
+CONFIG_SND_NM256
+
+
+1029 #unde‡
+CONFIG_SND_RME32
+
+
+1030 #unde‡
+CONFIG_SND_RME96
+
+
+1031 #unde‡
+CONFIG_SND_RME9652
+
+
+1032 #unde‡
+CONFIG_SND_HDSP
+
+
+1033 #unde‡
+CONFIG_SND_HDSPM
+
+
+1034 #unde‡
+CONFIG_SND_TRIDENT
+
+
+1035 #unde‡
+CONFIG_SND_YMFPCI
+
+
+1036 #unde‡
+CONFIG_SND_ALS4000
+
+
+1037 #unde‡
+CONFIG_SND_CMIPCI
+
+
+1038 #unde‡
+CONFIG_SND_ENS1370
+
+
+1039 #unde‡
+CONFIG_SND_ENS1371
+
+
+1040 #unde‡
+CONFIG_SND_ES1938
+
+
+1041 #unde‡
+CONFIG_SND_ES1968
+
+
+1042 #unde‡
+CONFIG_SND_MAESTRO3
+
+
+1043 #unde‡
+CONFIG_SND_FM801
+
+
+1044 #unde‡
+CONFIG_SND_ICE1712
+
+
+1045 #unde‡
+CONFIG_SND_ICE1724
+
+
+1046 
+	#CONFIG_SND_INTEL8X0
+ 1
+
+	)
+
+1047 #unde‡
+CONFIG_SND_INTEL8X0M
+
+
+1048 #unde‡
+CONFIG_SND_SONICVIBES
+
+
+1049 #unde‡
+CONFIG_SND_VIA82XX
+
+
+1050 #unde‡
+CONFIG_SND_VIA82XX_MODEM
+
+
+1051 #unde‡
+CONFIG_SND_VX222
+
+
+1052 #unde‡
+CONFIG_SND_HDA_INTEL
+
+
+1057 #unde‡
+CONFIG_SND_USB_AUDIO
+
+
+1058 #unde‡
+CONFIG_SND_USB_USX2Y
+
+
+1063 #unde‡
+CONFIG_SOUND_PRIME
+
+
+1068 
+	#CONFIG_USB_ARCH_HAS_HCD
+ 1
+
+	)
+
+1069 
+	#CONFIG_USB_ARCH_HAS_OHCI
+ 1
+
+	)
+
+1070 
+	#CONFIG_USB
+ 1
+
+	)
+
+1071 #unde‡
+CONFIG_USB_DEBUG
+
+
+1076 
+	#CONFIG_USB_DEVICEFS
+ 1
+
+	)
+
+1077 #unde‡
+CONFIG_USB_BANDWIDTH
+
+
+1078 #unde‡
+CONFIG_USB_DYNAMIC_MINORS
+
+
+1079 #unde‡
+CONFIG_USB_SUSPEND
+
+
+1080 #unde‡
+CONFIG_USB_OTG
+
+
+1085 
+	#CONFIG_USB_EHCI_HCD
+ 1
+
+	)
+
+1086 #unde‡
+CONFIG_USB_EHCI_SPLIT_ISO
+
+
+1087 #unde‡
+CONFIG_USB_EHCI_ROOT_HUB_TT
+
+
+1088 #unde‡
+CONFIG_USB_ISP116X_HCD
+
+
+1089 #unde‡
+CONFIG_USB_OHCI_HCD
+
+
+1090 
+	#CONFIG_USB_UHCI_HCD
+ 1
+
+	)
+
+1091 #unde‡
+CONFIG_USB_SL811_HCD
+
+
+1096 #unde‡
+CONFIG_USB_AUDIO
+
+
+1097 #unde‡
+CONFIG_USB_BLUETOOTH_TTY
+
+
+1098 #unde‡
+CONFIG_USB_MIDI
+
+
+1099 #unde‡
+CONFIG_USB_ACM
+
+
+1100 
+	#CONFIG_USB_PRINTER
+ 1
+
+	)
+
+1105 
+	#CONFIG_USB_STORAGE
+ 1
+
+	)
+
+1106 #unde‡
+CONFIG_USB_STORAGE_DEBUG
+
+
+1107 #unde‡
+CONFIG_USB_STORAGE_DATAFAB
+
+
+1108 #unde‡
+CONFIG_USB_STORAGE_FREECOM
+
+
+1109 #unde‡
+CONFIG_USB_STORAGE_ISD200
+
+
+1110 #unde‡
+CONFIG_USB_STORAGE_DPCM
+
+
+1111 #unde‡
+CONFIG_USB_STORAGE_USBAT
+
+
+1112 #unde‡
+CONFIG_USB_STORAGE_SDDR09
+
+
+1113 #unde‡
+CONFIG_USB_STORAGE_SDDR55
+
+
+1114 #unde‡
+CONFIG_USB_STORAGE_JUMPSHOT
+
+
+1119 
+	#CONFIG_USB_HID
+ 1
+
+	)
+
+1120 
+	#CONFIG_USB_HIDINPUT
+ 1
+
+	)
+
+1121 #unde‡
+CONFIG_HID_FF
+
+
+1122 #unde‡
+CONFIG_USB_HIDDEV
+
+
+1123 #unde‡
+CONFIG_USB_AIPTEK
+
+
+1124 #unde‡
+CONFIG_USB_WACOM
+
+
+1125 #unde‡
+CONFIG_USB_ACECAD
+
+
+1126 #unde‡
+CONFIG_USB_KBTAB
+
+
+1127 #unde‡
+CONFIG_USB_POWERMATE
+
+
+1128 #unde‡
+CONFIG_USB_MTOUCH
+
+
+1129 #unde‡
+CONFIG_USB_ITMTOUCH
+
+
+1130 
+	#CONFIG_USB_EGALAX_MODULE
+ 1
+
+	)
+
+1131 #unde‡
+CONFIG_USB_XPAD
+
+
+1132 #unde‡
+CONFIG_USB_ATI_REMOTE
+
+
+1133 #unde‡
+CONFIG_USB_KEYSPAN_REMOTE
+
+
+1138 #unde‡
+CONFIG_USB_MDC800
+
+
+1139 #unde‡
+CONFIG_USB_MICROTEK
+
+
+1144 #unde‡
+CONFIG_USB_DABUSB
+
+
+1153 #unde‡
+CONFIG_USB_CATC
+
+
+1154 #unde‡
+CONFIG_USB_KAWETH
+
+
+1155 #unde‡
+CONFIG_USB_PEGASUS
+
+
+1156 #unde‡
+CONFIG_USB_RTL8150
+
+
+1157 #unde‡
+CONFIG_USB_USBNET
+
+
+1158 
+	#CONFIG_USB_MON
+ 1
+
+	)
+
+1163 #unde‡
+CONFIG_USB_USS720
+
+
+1168 #unde‡
+CONFIG_USB_SERIAL
+
+
+1173 #unde‡
+CONFIG_USB_EMI62
+
+
+1174 #unde‡
+CONFIG_USB_EMI26
+
+
+1175 #unde‡
+CONFIG_USB_AUERSWALD
+
+
+1176 #unde‡
+CONFIG_USB_RIO500
+
+
+1177 #unde‡
+CONFIG_USB_LEGOTOWER
+
+
+1178 #unde‡
+CONFIG_USB_LCD
+
+
+1179 #unde‡
+CONFIG_USB_LED
+
+
+1180 
+	#CONFIG_USB_CYTHERM_MODULE
+ 1
+
+	)
+
+1181 #unde‡
+CONFIG_USB_PHIDGETKIT
+
+
+1182 
+	#CONFIG_USB_PHIDGETSERVO_MODULE
+ 1
+
+	)
+
+1183 #unde‡
+CONFIG_USB_IDMOUSE
+
+
+1184 #unde‡
+CONFIG_USB_SISUSBVGA
+
+
+1185 #unde‡
+CONFIG_USB_LD
+
+
+1186 #unde‡
+CONFIG_USB_TEST
+
+
+1195 #unde‡
+CONFIG_USB_GADGET
+
+
+1200 #unde‡
+CONFIG_MMC
+
+
+1205 #unde‡
+CONFIG_INFINIBAND
+
+
+1214 
+	#CONFIG_EXT2_FS
+ 1
+
+	)
+
+1215 #unde‡
+CONFIG_EXT2_FS_XATTR
+
+
+1216 #unde‡
+CONFIG_EXT2_FS_XIP
+
+
+1217 
+	#CONFIG_EXT3_FS
+ 1
+
+	)
+
+1218 
+	#CONFIG_EXT3_FS_XATTR
+ 1
+
+	)
+
+1219 #unde‡
+CONFIG_EXT3_FS_POSIX_ACL
+
+
+1220 #unde‡
+CONFIG_EXT3_FS_SECURITY
+
+
+1221 
+	#CONFIG_JBD
+ 1
+
+	)
+
+1222 #unde‡
+CONFIG_JBD_DEBUG
+
+
+1223 
+	#CONFIG_FS_MBCACHE
+ 1
+
+	)
+
+1224 #unde‡
+CONFIG_REISERFS_FS
+
+
+1225 #unde‡
+CONFIG_JFS_FS
+
+
+1226 #unde‡
+CONFIG_FS_POSIX_ACL
+
+
+1231 #unde‡
+CONFIG_XFS_FS
+
+
+1232 #unde‡
+CONFIG_MINIX_FS
+
+
+1233 #unde‡
+CONFIG_ROMFS_FS
+
+
+1234 
+	#CONFIG_INOTIFY
+ 1
+
+	)
+
+1235 #unde‡
+CONFIG_QUOTA
+
+
+1236 
+	#CONFIG_DNOTIFY
+ 1
+
+	)
+
+1237 #unde‡
+CONFIG_AUTOFS_FS
+
+
+1238 
+	#CONFIG_AUTOFS4_FS
+ 1
+
+	)
+
+1243 
+	#CONFIG_ISO9660_FS
+ 1
+
+	)
+
+1244 
+	#CONFIG_JOLIET
+ 1
+
+	)
+
+1245 #unde‡
+CONFIG_ZISOFS
+
+
+1246 
+	#CONFIG_UDF_FS
+ 1
+
+	)
+
+1247 
+	#CONFIG_UDF_NLS
+ 1
+
+	)
+
+1252 
+	#CONFIG_FAT_FS
+ 1
+
+	)
+
+1253 
+	#CONFIG_MSDOS_FS
+ 1
+
+	)
+
+1254 
+	#CONFIG_VFAT_FS
+ 1
+
+	)
+
+1255 
+	#CONFIG_FAT_DEFAULT_CODEPAGE
+ 437
+
+	)
+
+1256 
+	#CONFIG_FAT_DEFAULT_IOCHARSET
+ "iso8859-1"
+
+	)
+
+1257 #unde‡
+CONFIG_NTFS_FS
+
+
+1262 
+	#CONFIG_PROC_FS
+ 1
+
+	)
+
+1263 
+	#CONFIG_PROC_KCORE
+ 1
+
+	)
+
+1264 
+	#CONFIG_SYSFS
+ 1
+
+	)
+
+1265 #unde‡
+CONFIG_DEVPTS_FS_XATTR
+
+
+1266 
+	#CONFIG_TMPFS
+ 1
+
+	)
+
+1267 #unde‡
+CONFIG_TMPFS_XATTR
+
+
+1268 #unde‡
+CONFIG_HUGETLBFS
+
+
+1269 #unde‡
+CONFIG_HUGETLB_PAGE
+
+
+1270 
+	#CONFIG_RAMFS
+ 1
+
+	)
+
+1275 #unde‡
+CONFIG_ADFS_FS
+
+
+1276 #unde‡
+CONFIG_AFFS_FS
+
+
+1277 #unde‡
+CONFIG_HFS_FS
+
+
+1278 #unde‡
+CONFIG_HFSPLUS_FS
+
+
+1279 #unde‡
+CONFIG_BEFS_FS
+
+
+1280 #unde‡
+CONFIG_BFS_FS
+
+
+1281 #unde‡
+CONFIG_EFS_FS
+
+
+1282 #unde‡
+CONFIG_CRAMFS
+
+
+1283 #unde‡
+CONFIG_VXFS_FS
+
+
+1284 #unde‡
+CONFIG_HPFS_FS
+
+
+1285 #unde‡
+CONFIG_QNX4FS_FS
+
+
+1286 #unde‡
+CONFIG_SYSV_FS
+
+
+1287 #unde‡
+CONFIG_UFS_FS
+
+
+1292 
+	#CONFIG_NFS_FS
+ 1
+
+	)
+
+1293 #unde‡
+CONFIG_NFS_V3
+
+
+1294 #unde‡
+CONFIG_NFS_V4
+
+
+1295 #unde‡
+CONFIG_NFS_DIRECTIO
+
+
+1296 
+	#CONFIG_NFSD
+ 1
+
+	)
+
+1297 #unde‡
+CONFIG_NFSD_V3
+
+
+1298 
+	#CONFIG_NFSD_TCP
+ 1
+
+	)
+
+1299 
+	#CONFIG_LOCKD
+ 1
+
+	)
+
+1300 
+	#CONFIG_EXPORTFS
+ 1
+
+	)
+
+1301 
+	#CONFIG_NFS_COMMON
+ 1
+
+	)
+
+1302 
+	#CONFIG_SUNRPC
+ 1
+
+	)
+
+1303 #unde‡
+CONFIG_RPCSEC_GSS_KRB5
+
+
+1304 #unde‡
+CONFIG_RPCSEC_GSS_SPKM3
+
+
+1305 #unde‡
+CONFIG_SMB_FS
+
+
+1306 #unde‡
+CONFIG_CIFS
+
+
+1307 #unde‡
+CONFIG_NCP_FS
+
+
+1308 #unde‡
+CONFIG_CODA_FS
+
+
+1309 #unde‡
+CONFIG_AFS_FS
+
+
+1314 #unde‡
+CONFIG_PARTITION_ADVANCED
+
+
+1315 
+	#CONFIG_MSDOS_PARTITION
+ 1
+
+	)
+
+1320 
+	#CONFIG_NLS
+ 1
+
+	)
+
+1321 
+	#CONFIG_NLS_DEFAULT
+ "iso8859-1"
+
+	)
+
+1322 
+	#CONFIG_NLS_CODEPAGE_437
+ 1
+
+	)
+
+1323 #unde‡
+CONFIG_NLS_CODEPAGE_737
+
+
+1324 #unde‡
+CONFIG_NLS_CODEPAGE_775
+
+
+1325 #unde‡
+CONFIG_NLS_CODEPAGE_850
+
+
+1326 #unde‡
+CONFIG_NLS_CODEPAGE_852
+
+
+1327 #unde‡
+CONFIG_NLS_CODEPAGE_855
+
+
+1328 #unde‡
+CONFIG_NLS_CODEPAGE_857
+
+
+1329 #unde‡
+CONFIG_NLS_CODEPAGE_860
+
+
+1330 #unde‡
+CONFIG_NLS_CODEPAGE_861
+
+
+1331 #unde‡
+CONFIG_NLS_CODEPAGE_862
+
+
+1332 #unde‡
+CONFIG_NLS_CODEPAGE_863
+
+
+1333 #unde‡
+CONFIG_NLS_CODEPAGE_864
+
+
+1334 #unde‡
+CONFIG_NLS_CODEPAGE_865
+
+
+1335 #unde‡
+CONFIG_NLS_CODEPAGE_866
+
+
+1336 #unde‡
+CONFIG_NLS_CODEPAGE_869
+
+
+1337 #unde‡
+CONFIG_NLS_CODEPAGE_936
+
+
+1338 #unde‡
+CONFIG_NLS_CODEPAGE_950
+
+
+1339 #unde‡
+CONFIG_NLS_CODEPAGE_932
+
+
+1340 #unde‡
+CONFIG_NLS_CODEPAGE_949
+
+
+1341 #unde‡
+CONFIG_NLS_CODEPAGE_874
+
+
+1342 #unde‡
+CONFIG_NLS_ISO8859_8
+
+
+1343 #unde‡
+CONFIG_NLS_CODEPAGE_1250
+
+
+1344 #unde‡
+CONFIG_NLS_CODEPAGE_1251
+
+
+1345 #unde‡
+CONFIG_NLS_ASCII
+
+
+1346 
+	#CONFIG_NLS_ISO8859_1
+ 1
+
+	)
+
+1347 #unde‡
+CONFIG_NLS_ISO8859_2
+
+
+1348 #unde‡
+CONFIG_NLS_ISO8859_3
+
+
+1349 #unde‡
+CONFIG_NLS_ISO8859_4
+
+
+1350 #unde‡
+CONFIG_NLS_ISO8859_5
+
+
+1351 #unde‡
+CONFIG_NLS_ISO8859_6
+
+
+1352 #unde‡
+CONFIG_NLS_ISO8859_7
+
+
+1353 #unde‡
+CONFIG_NLS_ISO8859_9
+
+
+1354 #unde‡
+CONFIG_NLS_ISO8859_13
+
+
+1355 #unde‡
+CONFIG_NLS_ISO8859_14
+
+
+1356 #unde‡
+CONFIG_NLS_ISO8859_15
+
+
+1357 #unde‡
+CONFIG_NLS_KOI8_R
+
+
+1358 #unde‡
+CONFIG_NLS_KOI8_U
+
+
+1359 #unde‡
+CONFIG_NLS_UTF8
+
+
+1364 
+	#CONFIG_PROFILING
+ 1
+
+	)
+
+1365 
+	#CONFIG_OPROFILE
+ 1
+
+	)
+
+1370 #unde‡
+CONFIG_PRINTK_TIME
+
+
+1371 #unde‡
+CONFIG_DEBUG_KERNEL
+
+
+1372 
+	#CONFIG_LOG_BUF_SHIFT
+ 15
+
+	)
+
+1373 
+	#CONFIG_DEBUG_BUGVERBOSE
+ 1
+
+	)
+
+1374 
+	#CONFIG_EARLY_PRINTK
+ 1
+
+	)
+
+1375 
+	#CONFIG_X86_FIND_SMP_CONFIG
+ 1
+
+	)
+
+1376 
+	#CONFIG_X86_MPPARSE
+ 1
+
+	)
+
+1381 #unde‡
+CONFIG_KEYS
+
+
+1382 #unde‡
+CONFIG_SECURITY
+
+
+1387 #unde‡
+CONFIG_CRYPTO
+
+
+1396 #unde‡
+CONFIG_CRC_CCITT
+
+
+1397 
+	#CONFIG_CRC32
+ 1
+
+	)
+
+1398 
+	#CONFIG_LIBCRC32C_MODULE
+ 1
+
+	)
+
+1399 
+	#CONFIG_GENERIC_HARDIRQS
+ 1
+
+	)
+
+1400 
+	#CONFIG_GENERIC_IRQ_PROBE
+ 1
+
+	)
+
+1401 
+	#CONFIG_X86_SMP
+ 1
+
+	)
+
+1402 
+	#CONFIG_X86_HT
+ 1
+
+	)
+
+1403 
+	#CONFIG_X86_BIOS_REBOOT
+ 1
+
+	)
+
+1404 
+	#CONFIG_X86_TRAMPOLINE
+ 1
+
+	)
+
+1405 
+	#CONFIG_PC
+ 1
+
+	)
+
+	@/usr/include/asm-x86_64/autoconf.h
+
+6 
+	#AUTOCONF_INCLUDED
+
+
+	)
+
+7 
+	#CONFIG_X86_64
+ 1
+
+	)
+
+8 
+	#CONFIG_64BIT
+ 1
+
+	)
+
+9 
+	#CONFIG_X86
+ 1
+
+	)
+
+10 
+	#CONFIG_MMU
+ 1
+
+	)
+
+11 
+	#CONFIG_RWSEM_GENERIC_SPINLOCK
+ 1
+
+	)
+
+12 
+	#CONFIG_GENERIC_CALIBRATE_DELAY
+ 1
+
+	)
+
+13 
+	#CONFIG_X86_CMPXCHG
+ 1
+
+	)
+
+14 
+	#CONFIG_EARLY_PRINTK
+ 1
+
+	)
+
+15 
+	#CONFIG_GENERIC_ISA_DMA
+ 1
+
+	)
+
+16 
+	#CONFIG_GENERIC_IOMAP
+ 1
+
+	)
+
+21 
+	#CONFIG_EXPERIMENTAL
+ 1
+
+	)
+
+22 
+	#CONFIG_CLEAN_COMPILE
+ 1
+
+	)
+
+23 
+	#CONFIG_LOCK_KERNEL
+ 1
+
+	)
+
+24 
+	#CONFIG_INIT_ENV_ARG_LIMIT
+ 32
+
+	)
+
+29 
+	#CONFIG_LOCALVERSION
+ ""
+
+	)
+
+30 
+	#CONFIG_SWAP
+ 1
+
+	)
+
+31 
+	#CONFIG_SYSVIPC
+ 1
+
+	)
+
+32 
+	#CONFIG_POSIX_MQUEUE
+ 1
+
+	)
+
+33 #unde‡
+CONFIG_BSD_PROCESS_ACCT
+
+
+34 
+	#CONFIG_SYSCTL
+ 1
+
+	)
+
+35 #unde‡
+CONFIG_AUDIT
+
+
+36 #unde‡
+CONFIG_HOTPLUG
+
+
+37 
+	#CONFIG_KOBJECT_UEVENT
+ 1
+
+	)
+
+38 
+	#CONFIG_IKCONFIG
+ 1
+
+	)
+
+39 
+	#CONFIG_IKCONFIG_PROC
+ 1
+
+	)
+
+40 #unde‡
+CONFIG_CPUSETS
+
+
+41 #unde‡
+CONFIG_EMBEDDED
+
+
+42 
+	#CONFIG_KALLSYMS
+ 1
+
+	)
+
+43 
+	#CONFIG_KALLSYMS_ALL
+ 1
+
+	)
+
+44 #unde‡
+CONFIG_KALLSYMS_EXTRA_PASS
+
+
+45 
+	#CONFIG_PRINTK
+ 1
+
+	)
+
+46 
+	#CONFIG_BUG
+ 1
+
+	)
+
+47 
+	#CONFIG_BASE_FULL
+ 1
+
+	)
+
+48 
+	#CONFIG_FUTEX
+ 1
+
+	)
+
+49 
+	#CONFIG_EPOLL
+ 1
+
+	)
+
+50 
+	#CONFIG_SHMEM
+ 1
+
+	)
+
+51 
+	#CONFIG_CC_ALIGN_FUNCTIONS
+ 0
+
+	)
+
+52 
+	#CONFIG_CC_ALIGN_LABELS
+ 0
+
+	)
+
+53 
+	#CONFIG_CC_ALIGN_LOOPS
+ 0
+
+	)
+
+54 
+	#CONFIG_CC_ALIGN_JUMPS
+ 0
+
+	)
+
+55 #unde‡
+CONFIG_TINY_SHMEM
+
+
+56 
+	#CONFIG_BASE_SMALL
+ 0
+
+	)
+
+61 
+	#CONFIG_MODULES
+ 1
+
+	)
+
+62 
+	#CONFIG_MODULE_UNLOAD
+ 1
+
+	)
+
+63 
+	#CONFIG_MODULE_FORCE_UNLOAD
+ 1
+
+	)
+
+64 
+	#CONFIG_OBSOLETE_MODPARM
+ 1
+
+	)
+
+65 #unde‡
+CONFIG_MODVERSIONS
+
+
+66 #unde‡
+CONFIG_MODULE_SRCVERSION_ALL
+
+
+67 #unde‡
+CONFIG_KMOD
+
+
+68 
+	#CONFIG_STOP_MACHINE
+ 1
+
+	)
+
+73 #unde‡
+CONFIG_MK8
+
+
+74 #unde‡
+CONFIG_MPSC
+
+
+75 
+	#CONFIG_GENERIC_CPU
+ 1
+
+	)
+
+76 
+	#CONFIG_X86_L1_CACHE_BYTES
+ 128
+
+	)
+
+77 
+	#CONFIG_X86_L1_CACHE_SHIFT
+ 7
+
+	)
+
+78 
+	#CONFIG_X86_TSC
+ 1
+
+	)
+
+79 
+	#CONFIG_X86_GOOD_APIC
+ 1
+
+	)
+
+80 #unde‡
+CONFIG_MICROCODE
+
+
+81 
+	#CONFIG_X86_MSR
+ 1
+
+	)
+
+82 
+	#CONFIG_X86_CPUID
+ 1
+
+	)
+
+83 
+	#CONFIG_X86_HT
+ 1
+
+	)
+
+84 
+	#CONFIG_X86_IO_APIC
+ 1
+
+	)
+
+85 
+	#CONFIG_X86_LOCAL_APIC
+ 1
+
+	)
+
+86 
+	#CONFIG_MTRR
+ 1
+
+	)
+
+87 
+	#CONFIG_SMP
+ 1
+
+	)
+
+88 
+	#CONFIG_SCHED_SMT
+ 1
+
+	)
+
+89 
+	#CONFIG_PREEMPT_NONE
+ 1
+
+	)
+
+90 #unde‡
+CONFIG_PREEMPT_VOLUNTARY
+
+
+91 #unde‡
+CONFIG_PREEMPT
+
+
+92 
+	#CONFIG_PREEMPT_BKL
+ 1
+
+	)
+
+93 
+	#CONFIG_K8_NUMA
+ 1
+
+	)
+
+94 #unde‡
+CONFIG_NUMA_EMU
+
+
+95 
+	#CONFIG_ARCH_DISCONTIGMEM_ENABLE
+ 1
+
+	)
+
+96 
+	#CONFIG_NUMA
+ 1
+
+	)
+
+97 
+	#CONFIG_ARCH_DISCONTIGMEM_DEFAULT
+ 1
+
+	)
+
+98 
+	#CONFIG_ARCH_SPARSEMEM_ENABLE
+ 1
+
+	)
+
+99 
+	#CONFIG_SELECT_MEMORY_MODEL
+ 1
+
+	)
+
+100 #unde‡
+CONFIG_FLATMEM_MANUAL
+
+
+101 
+	#CONFIG_DISCONTIGMEM_MANUAL
+ 1
+
+	)
+
+102 #unde‡
+CONFIG_SPARSEMEM_MANUAL
+
+
+103 
+	#CONFIG_DISCONTIGMEM
+ 1
+
+	)
+
+104 
+	#CONFIG_FLAT_NODE_MEM_MAP
+ 1
+
+	)
+
+105 
+	#CONFIG_NEED_MULTIPLE_NODES
+ 1
+
+	)
+
+106 
+	#CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID
+ 1
+
+	)
+
+107 
+	#CONFIG_HAVE_DEC_LOCK
+ 1
+
+	)
+
+108 
+	#CONFIG_NR_CPUS
+ 8
+
+	)
+
+109 
+	#CONFIG_HPET_TIMER
+ 1
+
+	)
+
+110 
+	#CONFIG_X86_PM_TIMER
+ 1
+
+	)
+
+111 
+	#CONFIG_HPET_EMULATE_RTC
+ 1
+
+	)
+
+112 
+	#CONFIG_GART_IOMMU
+ 1
+
+	)
+
+113 
+	#CONFIG_SWIOTLB
+ 1
+
+	)
+
+114 
+	#CONFIG_X86_MCE
+ 1
+
+	)
+
+115 
+	#CONFIG_X86_MCE_INTEL
+ 1
+
+	)
+
+116 
+	#CONFIG_PHYSICAL_START
+ 0x100000
+
+	)
+
+117 #unde‡
+CONFIG_KEXEC
+
+
+118 
+	#CONFIG_SECCOMP
+ 1
+
+	)
+
+119 #unde‡
+CONFIG_HZ_100
+
+
+120 
+	#CONFIG_HZ_250
+ 1
+
+	)
+
+121 #unde‡
+CONFIG_HZ_1000
+
+
+122 
+	#CONFIG_HZ
+ 250
+
+	)
+
+123 
+	#CONFIG_GENERIC_HARDIRQS
+ 1
+
+	)
+
+124 
+	#CONFIG_GENERIC_IRQ_PROBE
+ 1
+
+	)
+
+125 
+	#CONFIG_ISA_DMA_API
+ 1
+
+	)
+
+130 
+	#CONFIG_PM
+ 1
+
+	)
+
+131 #unde‡
+CONFIG_PM_DEBUG
+
+
+132 
+	#CONFIG_SOFTWARE_SUSPEND
+ 1
+
+	)
+
+133 
+	#CONFIG_PM_STD_PARTITION
+ ""
+
+	)
+
+138 
+	#CONFIG_ACPI
+ 1
+
+	)
+
+139 
+	#CONFIG_ACPI_BOOT
+ 1
+
+	)
+
+140 
+	#CONFIG_ACPI_INTERPRETER
+ 1
+
+	)
+
+141 
+	#CONFIG_ACPI_AC
+ 1
+
+	)
+
+142 
+	#CONFIG_ACPI_BATTERY
+ 1
+
+	)
+
+143 
+	#CONFIG_ACPI_BUTTON
+ 1
+
+	)
+
+144 #unde‡
+CONFIG_ACPI_VIDEO
+
+
+145 
+	#CONFIG_ACPI_HOTKEY_MODULE
+ 1
+
+	)
+
+146 
+	#CONFIG_ACPI_FAN
+ 1
+
+	)
+
+147 
+	#CONFIG_ACPI_PROCESSOR
+ 1
+
+	)
+
+148 
+	#CONFIG_ACPI_THERMAL
+ 1
+
+	)
+
+149 
+	#CONFIG_ACPI_NUMA
+ 1
+
+	)
+
+150 #unde‡
+CONFIG_ACPI_ASUS
+
+
+151 #unde‡
+CONFIG_ACPI_IBM
+
+
+152 
+	#CONFIG_ACPI_TOSHIBA
+ 1
+
+	)
+
+153 
+	#CONFIG_ACPI_BLACKLIST_YEAR
+ 2001
+
+	)
+
+154 #unde‡
+CONFIG_ACPI_DEBUG
+
+
+155 
+	#CONFIG_ACPI_BUS
+ 1
+
+	)
+
+156 
+	#CONFIG_ACPI_EC
+ 1
+
+	)
+
+157 
+	#CONFIG_ACPI_POWER
+ 1
+
+	)
+
+158 
+	#CONFIG_ACPI_PCI
+ 1
+
+	)
+
+159 
+	#CONFIG_ACPI_SYSTEM
+ 1
+
+	)
+
+160 #unde‡
+CONFIG_ACPI_CONTAINER
+
+
+165 
+	#CONFIG_CPU_FREQ
+ 1
+
+	)
+
+166 
+	#CONFIG_CPU_FREQ_TABLE
+ 1
+
+	)
+
+167 #unde‡
+CONFIG_CPU_FREQ_DEBUG
+
+
+168 
+	#CONFIG_CPU_FREQ_STAT
+ 1
+
+	)
+
+169 #unde‡
+CONFIG_CPU_FREQ_STAT_DETAILS
+
+
+170 
+	#CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+ 1
+
+	)
+
+171 #unde‡
+CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+
+
+172 
+	#CONFIG_CPU_FREQ_GOV_PERFORMANCE
+ 1
+
+	)
+
+173 #unde‡
+CONFIG_CPU_FREQ_GOV_POWERSAVE
+
+
+174 
+	#CONFIG_CPU_FREQ_GOV_USERSPACE
+ 1
+
+	)
+
+175 
+	#CONFIG_CPU_FREQ_GOV_ONDEMAND
+ 1
+
+	)
+
+176 #unde‡
+CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+
+
+181 
+	#CONFIG_X86_POWERNOW_K8
+ 1
+
+	)
+
+182 
+	#CONFIG_X86_POWERNOW_K8_ACPI
+ 1
+
+	)
+
+183 #unde‡
+CONFIG_X86_SPEEDSTEP_CENTRINO
+
+
+184 
+	#CONFIG_X86_ACPI_CPUFREQ
+ 1
+
+	)
+
+189 
+	#CONFIG_X86_ACPI_CPUFREQ_PROC_INTF
+ 1
+
+	)
+
+190 #unde‡
+CONFIG_X86_SPEEDSTEP_LIB
+
+
+195 
+	#CONFIG_PCI
+ 1
+
+	)
+
+196 
+	#CONFIG_PCI_DIRECT
+ 1
+
+	)
+
+197 
+	#CONFIG_PCI_MMCONFIG
+ 1
+
+	)
+
+198 
+	#CONFIG_UNORDERED_IO
+ 1
+
+	)
+
+199 #unde‡
+CONFIG_PCIEPORTBUS
+
+
+200 
+	#CONFIG_PCI_MSI
+ 1
+
+	)
+
+201 #unde‡
+CONFIG_PCI_LEGACY_PROC
+
+
+202 #unde‡
+CONFIG_PCI_NAMES
+
+
+203 #unde‡
+CONFIG_PCI_DEBUG
+
+
+208 #unde‡
+CONFIG_PCCARD
+
+
+213 #unde‡
+CONFIG_HOTPLUG_PCI
+
+
+218 
+	#CONFIG_BINFMT_ELF
+ 1
+
+	)
+
+219 #unde‡
+CONFIG_BINFMT_MISC
+
+
+220 
+	#CONFIG_IA32_EMULATION
+ 1
+
+	)
+
+221 
+	#CONFIG_IA32_AOUT
+ 1
+
+	)
+
+222 
+	#CONFIG_COMPAT
+ 1
+
+	)
+
+223 
+	#CONFIG_SYSVIPC_COMPAT
+ 1
+
+	)
+
+224 
+	#CONFIG_UID16
+ 1
+
+	)
+
+229 
+	#CONFIG_NET
+ 1
+
+	)
+
+234 
+	#CONFIG_PACKET
+ 1
+
+	)
+
+235 #unde‡
+CONFIG_PACKET_MMAP
+
+
+236 
+	#CONFIG_UNIX
+ 1
+
+	)
+
+237 #unde‡
+CONFIG_NET_KEY
+
+
+238 
+	#CONFIG_INET
+ 1
+
+	)
+
+239 
+	#CONFIG_IP_MULTICAST
+ 1
+
+	)
+
+240 #unde‡
+CONFIG_IP_ADVANCED_ROUTER
+
+
+241 
+	#CONFIG_IP_FIB_HASH
+ 1
+
+	)
+
+242 #unde‡
+CONFIG_IP_PNP
+
+
+243 #unde‡
+CONFIG_NET_IPIP
+
+
+244 #unde‡
+CONFIG_NET_IPGRE
+
+
+245 #unde‡
+CONFIG_IP_MROUTE
+
+
+246 #unde‡
+CONFIG_ARPD
+
+
+247 #unde‡
+CONFIG_SYN_COOKIES
+
+
+248 #unde‡
+CONFIG_INET_AH
+
+
+249 #unde‡
+CONFIG_INET_ESP
+
+
+250 #unde‡
+CONFIG_INET_IPCOMP
+
+
+251 #unde‡
+CONFIG_INET_TUNNEL
+
+
+252 
+	#CONFIG_IP_TCPDIAG
+ 1
+
+	)
+
+253 
+	#CONFIG_IP_TCPDIAG_IPV6
+ 1
+
+	)
+
+254 #unde‡
+CONFIG_TCP_CONG_ADVANCED
+
+
+255 
+	#CONFIG_TCP_CONG_BIC
+ 1
+
+	)
+
+256 
+	#CONFIG_IPV6
+ 1
+
+	)
+
+257 #unde‡
+CONFIG_IPV6_PRIVACY
+
+
+258 #unde‡
+CONFIG_INET6_AH
+
+
+259 #unde‡
+CONFIG_INET6_ESP
+
+
+260 #unde‡
+CONFIG_INET6_IPCOMP
+
+
+261 #unde‡
+CONFIG_INET6_TUNNEL
+
+
+262 #unde‡
+CONFIG_IPV6_TUNNEL
+
+
+263 #unde‡
+CONFIG_NETFILTER
+
+
+268 #unde‡
+CONFIG_IP_SCTP
+
+
+269 #unde‡
+CONFIG_ATM
+
+
+270 #unde‡
+CONFIG_BRIDGE
+
+
+271 #unde‡
+CONFIG_VLAN_8021Q
+
+
+272 #unde‡
+CONFIG_DECNET
+
+
+273 #unde‡
+CONFIG_LLC2
+
+
+274 #unde‡
+CONFIG_IPX
+
+
+275 #unde‡
+CONFIG_ATALK
+
+
+276 #unde‡
+CONFIG_X25
+
+
+277 #unde‡
+CONFIG_LAPB
+
+
+278 #unde‡
+CONFIG_NET_DIVERT
+
+
+279 #unde‡
+CONFIG_ECONET
+
+
+280 #unde‡
+CONFIG_WAN_ROUTER
+
+
+281 #unde‡
+CONFIG_NET_SCHED
+
+
+282 #unde‡
+CONFIG_NET_CLS_ROUTE
+
+
+287 #unde‡
+CONFIG_NET_PKTGEN
+
+
+288 
+	#CONFIG_NETPOLL
+ 1
+
+	)
+
+289 #unde‡
+CONFIG_NETPOLL_RX
+
+
+290 #unde‡
+CONFIG_NETPOLL_TRAP
+
+
+291 
+	#CONFIG_NET_POLL_CONTROLLER
+ 1
+
+	)
+
+292 #unde‡
+CONFIG_HAMRADIO
+
+
+293 #unde‡
+CONFIG_IRDA
+
+
+294 #unde‡
+CONFIG_BT
+
+
+303 
+	#CONFIG_STANDALONE
+ 1
+
+	)
+
+304 
+	#CONFIG_PREVENT_FIRMWARE_BUILD
+ 1
+
+	)
+
+305 #unde‡
+CONFIG_FW_LOADER
+
+
+306 #unde‡
+CONFIG_DEBUG_DRIVER
+
+
+311 #unde‡
+CONFIG_MTD
+
+
+316 #unde‡
+CONFIG_PARPORT
+
+
+321 #unde‡
+CONFIG_PNP
+
+
+326 
+	#CONFIG_BLK_DEV_FD
+ 1
+
+	)
+
+327 #unde‡
+CONFIG_BLK_CPQ_DA
+
+
+328 #unde‡
+CONFIG_BLK_CPQ_CISS_DA
+
+
+329 #unde‡
+CONFIG_BLK_DEV_DAC960
+
+
+330 #unde‡
+CONFIG_BLK_DEV_UMEM
+
+
+331 #unde‡
+CONFIG_BLK_DEV_COW_COMMON
+
+
+332 
+	#CONFIG_BLK_DEV_LOOP
+ 1
+
+	)
+
+333 #unde‡
+CONFIG_BLK_DEV_CRYPTOLOOP
+
+
+334 #unde‡
+CONFIG_BLK_DEV_NBD
+
+
+335 #unde‡
+CONFIG_BLK_DEV_SX8
+
+
+336 #unde‡
+CONFIG_BLK_DEV_UB
+
+
+337 
+	#CONFIG_BLK_DEV_RAM
+ 1
+
+	)
+
+338 
+	#CONFIG_BLK_DEV_RAM_COUNT
+ 16
+
+	)
+
+339 
+	#CONFIG_BLK_DEV_RAM_SIZE
+ 4096
+
+	)
+
+340 
+	#CONFIG_BLK_DEV_INITRD
+ 1
+
+	)
+
+341 
+	#CONFIG_INITRAMFS_SOURCE
+ ""
+
+	)
+
+342 
+	#CONFIG_LBD
+ 1
+
+	)
+
+343 #unde‡
+CONFIG_CDROM_PKTCDVD
+
+
+348 
+	#CONFIG_IOSCHED_NOOP
+ 1
+
+	)
+
+349 #unde‡
+CONFIG_IOSCHED_AS
+
+
+350 
+	#CONFIG_IOSCHED_DEADLINE
+ 1
+
+	)
+
+351 
+	#CONFIG_IOSCHED_CFQ
+ 1
+
+	)
+
+352 #unde‡
+CONFIG_ATA_OVER_ETH
+
+
+357 
+	#CONFIG_IDE
+ 1
+
+	)
+
+358 
+	#CONFIG_BLK_DEV_IDE
+ 1
+
+	)
+
+363 #unde‡
+CONFIG_BLK_DEV_IDE_SATA
+
+
+364 #unde‡
+CONFIG_BLK_DEV_HD_IDE
+
+
+365 
+	#CONFIG_BLK_DEV_IDEDISK
+ 1
+
+	)
+
+366 
+	#CONFIG_IDEDISK_MULTI_MODE
+ 1
+
+	)
+
+367 
+	#CONFIG_BLK_DEV_IDECD
+ 1
+
+	)
+
+368 #unde‡
+CONFIG_BLK_DEV_IDETAPE
+
+
+369 #unde‡
+CONFIG_BLK_DEV_IDEFLOPPY
+
+
+370 #unde‡
+CONFIG_BLK_DEV_IDESCSI
+
+
+371 #unde‡
+CONFIG_IDE_TASK_IOCTL
+
+
+376 
+	#CONFIG_IDE_GENERIC
+ 1
+
+	)
+
+377 #unde‡
+CONFIG_BLK_DEV_CMD640
+
+
+378 
+	#CONFIG_BLK_DEV_IDEPCI
+ 1
+
+	)
+
+379 #unde‡
+CONFIG_IDEPCI_SHARE_IRQ
+
+
+380 #unde‡
+CONFIG_BLK_DEV_OFFBOARD
+
+
+381 #unde‡
+CONFIG_BLK_DEV_GENERIC
+
+
+382 #unde‡
+CONFIG_BLK_DEV_OPTI621
+
+
+383 #unde‡
+CONFIG_BLK_DEV_RZ1000
+
+
+384 
+	#CONFIG_BLK_DEV_IDEDMA_PCI
+ 1
+
+	)
+
+385 #unde‡
+CONFIG_BLK_DEV_IDEDMA_FORCED
+
+
+386 
+	#CONFIG_IDEDMA_PCI_AUTO
+ 1
+
+	)
+
+387 #unde‡
+CONFIG_IDEDMA_ONLYDISK
+
+
+388 #unde‡
+CONFIG_BLK_DEV_AEC62XX
+
+
+389 #unde‡
+CONFIG_BLK_DEV_ALI15X3
+
+
+390 
+	#CONFIG_BLK_DEV_AMD74XX
+ 1
+
+	)
+
+391 #unde‡
+CONFIG_BLK_DEV_ATIIXP
+
+
+392 #unde‡
+CONFIG_BLK_DEV_CMD64X
+
+
+393 #unde‡
+CONFIG_BLK_DEV_TRIFLEX
+
+
+394 #unde‡
+CONFIG_BLK_DEV_CY82C693
+
+
+395 #unde‡
+CONFIG_BLK_DEV_CS5520
+
+
+396 #unde‡
+CONFIG_BLK_DEV_CS5530
+
+
+397 #unde‡
+CONFIG_BLK_DEV_HPT34X
+
+
+398 #unde‡
+CONFIG_BLK_DEV_HPT366
+
+
+399 #unde‡
+CONFIG_BLK_DEV_SC1200
+
+
+400 
+	#CONFIG_BLK_DEV_PIIX
+ 1
+
+	)
+
+401 #unde‡
+CONFIG_BLK_DEV_IT821X
+
+
+402 #unde‡
+CONFIG_BLK_DEV_NS87415
+
+
+403 #unde‡
+CONFIG_BLK_DEV_PDC202XX_OLD
+
+
+404 
+	#CONFIG_BLK_DEV_PDC202XX_NEW
+ 1
+
+	)
+
+405 #unde‡
+CONFIG_PDC202XX_FORCE
+
+
+406 #unde‡
+CONFIG_BLK_DEV_SVWKS
+
+
+407 #unde‡
+CONFIG_BLK_DEV_SIIMAGE
+
+
+408 #unde‡
+CONFIG_BLK_DEV_SIS5513
+
+
+409 #unde‡
+CONFIG_BLK_DEV_SLC90E66
+
+
+410 #unde‡
+CONFIG_BLK_DEV_TRM290
+
+
+411 #unde‡
+CONFIG_BLK_DEV_VIA82CXXX
+
+
+412 #unde‡
+CONFIG_IDE_ARM
+
+
+413 
+	#CONFIG_BLK_DEV_IDEDMA
+ 1
+
+	)
+
+414 #unde‡
+CONFIG_IDEDMA_IVB
+
+
+415 
+	#CONFIG_IDEDMA_AUTO
+ 1
+
+	)
+
+416 #unde‡
+CONFIG_BLK_DEV_HD
+
+
+421 
+	#CONFIG_SCSI
+ 1
+
+	)
+
+422 #unde‡
+CONFIG_SCSI_PROC_FS
+
+
+427 
+	#CONFIG_BLK_DEV_SD
+ 1
+
+	)
+
+428 #unde‡
+CONFIG_CHR_DEV_ST
+
+
+429 #unde‡
+CONFIG_CHR_DEV_OSST
+
+
+430 #unde‡
+CONFIG_BLK_DEV_SR
+
+
+431 #unde‡
+CONFIG_CHR_DEV_SG
+
+
+432 #unde‡
+CONFIG_CHR_DEV_SCH
+
+
+437 #unde‡
+CONFIG_SCSI_MULTI_LUN
+
+
+438 #unde‡
+CONFIG_SCSI_CONSTANTS
+
+
+439 #unde‡
+CONFIG_SCSI_LOGGING
+
+
+444 #unde‡
+CONFIG_SCSI_SPI_ATTRS
+
+
+445 #unde‡
+CONFIG_SCSI_FC_ATTRS
+
+
+446 #unde‡
+CONFIG_SCSI_ISCSI_ATTRS
+
+
+451 #unde‡
+CONFIG_BLK_DEV_3W_XXXX_RAID
+
+
+452 #unde‡
+CONFIG_SCSI_3W_9XXX
+
+
+453 #unde‡
+CONFIG_SCSI_ACARD
+
+
+454 #unde‡
+CONFIG_SCSI_AACRAID
+
+
+455 #unde‡
+CONFIG_SCSI_AIC7XXX
+
+
+456 #unde‡
+CONFIG_SCSI_AIC7XXX_OLD
+
+
+457 
+	#CONFIG_SCSI_AIC79XX
+ 1
+
+	)
+
+458 
+	#CONFIG_AIC79XX_CMDS_PER_DEVICE
+ 32
+
+	)
+
+459 
+	#CONFIG_AIC79XX_RESET_DELAY_MS
+ 4000
+
+	)
+
+460 #unde‡
+CONFIG_AIC79XX_ENABLE_RD_STRM
+
+
+461 #unde‡
+CONFIG_AIC79XX_DEBUG_ENABLE
+
+
+462 
+	#CONFIG_AIC79XX_DEBUG_MASK
+ 0
+
+	)
+
+463 #unde‡
+CONFIG_AIC79XX_REG_PRETTY_PRINT
+
+
+464 #unde‡
+CONFIG_MEGARAID_NEWGEN
+
+
+465 #unde‡
+CONFIG_MEGARAID_LEGACY
+
+
+466 
+	#CONFIG_SCSI_SATA
+ 1
+
+	)
+
+467 #unde‡
+CONFIG_SCSI_SATA_AHCI
+
+
+468 #unde‡
+CONFIG_SCSI_SATA_SVW
+
+
+469 
+	#CONFIG_SCSI_ATA_PIIX
+ 1
+
+	)
+
+470 #unde‡
+CONFIG_SCSI_SATA_NV
+
+
+471 #unde‡
+CONFIG_SCSI_SATA_PROMISE
+
+
+472 #unde‡
+CONFIG_SCSI_SATA_QSTOR
+
+
+473 #unde‡
+CONFIG_SCSI_SATA_SX4
+
+
+474 #unde‡
+CONFIG_SCSI_SATA_SIL
+
+
+475 #unde‡
+CONFIG_SCSI_SATA_SIS
+
+
+476 #unde‡
+CONFIG_SCSI_SATA_ULI
+
+
+477 
+	#CONFIG_SCSI_SATA_VIA
+ 1
+
+	)
+
+478 #unde‡
+CONFIG_SCSI_SATA_VITESSE
+
+
+479 #unde‡
+CONFIG_SCSI_BUSLOGIC
+
+
+480 #unde‡
+CONFIG_SCSI_DMX3191D
+
+
+481 #unde‡
+CONFIG_SCSI_EATA
+
+
+482 #unde‡
+CONFIG_SCSI_FUTURE_DOMAIN
+
+
+483 #unde‡
+CONFIG_SCSI_GDTH
+
+
+484 #unde‡
+CONFIG_SCSI_IPS
+
+
+485 #unde‡
+CONFIG_SCSI_INITIO
+
+
+486 #unde‡
+CONFIG_SCSI_INIA100
+
+
+487 #unde‡
+CONFIG_SCSI_SYM53C8XX_2
+
+
+488 #unde‡
+CONFIG_SCSI_IPR
+
+
+489 #unde‡
+CONFIG_SCSI_QLOGIC_FC
+
+
+490 #unde‡
+CONFIG_SCSI_QLOGIC_1280
+
+
+491 
+	#CONFIG_SCSI_QLA2XXX
+ 1
+
+	)
+
+492 #unde‡
+CONFIG_SCSI_QLA21XX
+
+
+493 #unde‡
+CONFIG_SCSI_QLA22XX
+
+
+494 #unde‡
+CONFIG_SCSI_QLA2300
+
+
+495 #unde‡
+CONFIG_SCSI_QLA2322
+
+
+496 #unde‡
+CONFIG_SCSI_QLA6312
+
+
+497 #unde‡
+CONFIG_SCSI_LPFC
+
+
+498 #unde‡
+CONFIG_SCSI_DC395x
+
+
+499 #unde‡
+CONFIG_SCSI_DC390T
+
+
+500 #unde‡
+CONFIG_SCSI_DEBUG
+
+
+505 #unde‡
+CONFIG_MD
+
+
+510 #unde‡
+CONFIG_FUSION
+
+
+511 #unde‡
+CONFIG_FUSION_SPI
+
+
+512 #unde‡
+CONFIG_FUSION_FC
+
+
+517 #unde‡
+CONFIG_IEEE1394
+
+
+522 #unde‡
+CONFIG_I2O
+
+
+527 
+	#CONFIG_NETDEVICES
+ 1
+
+	)
+
+528 #unde‡
+CONFIG_DUMMY
+
+
+529 #unde‡
+CONFIG_BONDING
+
+
+530 #unde‡
+CONFIG_EQUALIZER
+
+
+531 
+	#CONFIG_TUN
+ 1
+
+	)
+
+536 #unde‡
+CONFIG_ARCNET
+
+
+541 
+	#CONFIG_NET_ETHERNET
+ 1
+
+	)
+
+542 
+	#CONFIG_MII
+ 1
+
+	)
+
+543 #unde‡
+CONFIG_HAPPYMEAL
+
+
+544 #unde‡
+CONFIG_SUNGEM
+
+
+545 #unde‡
+CONFIG_NET_VENDOR_3COM
+
+
+550 #unde‡
+CONFIG_NET_TULIP
+
+
+551 #unde‡
+CONFIG_HP100
+
+
+552 
+	#CONFIG_NET_PCI
+ 1
+
+	)
+
+553 #unde‡
+CONFIG_PCNET32
+
+
+554 #unde‡
+CONFIG_AMD8111_ETH
+
+
+555 #unde‡
+CONFIG_ADAPTEC_STARFIRE
+
+
+556 #unde‡
+CONFIG_B44
+
+
+557 
+	#CONFIG_FORCEDETH
+ 1
+
+	)
+
+558 #unde‡
+CONFIG_DGRS
+
+
+559 #unde‡
+CONFIG_EEPRO100
+
+
+560 #unde‡
+CONFIG_E100
+
+
+561 #unde‡
+CONFIG_FEALNX
+
+
+562 #unde‡
+CONFIG_NATSEMI
+
+
+563 #unde‡
+CONFIG_NE2K_PCI
+
+
+564 
+	#CONFIG_8139CP
+ 1
+
+	)
+
+565 
+	#CONFIG_8139TOO
+ 1
+
+	)
+
+566 #unde‡
+CONFIG_8139TOO_PIO
+
+
+567 #unde‡
+CONFIG_8139TOO_TUNE_TWISTER
+
+
+568 #unde‡
+CONFIG_8139TOO_8129
+
+
+569 #unde‡
+CONFIG_8139_OLD_RX_RESET
+
+
+570 #unde‡
+CONFIG_SIS900
+
+
+571 #unde‡
+CONFIG_EPIC100
+
+
+572 #unde‡
+CONFIG_SUNDANCE
+
+
+573 #unde‡
+CONFIG_VIA_RHINE
+
+
+578 #unde‡
+CONFIG_ACENIC
+
+
+579 #unde‡
+CONFIG_DL2K
+
+
+580 
+	#CONFIG_E1000
+ 1
+
+	)
+
+581 #unde‡
+CONFIG_E1000_NAPI
+
+
+582 #unde‡
+CONFIG_NS83820
+
+
+583 #unde‡
+CONFIG_HAMACHI
+
+
+584 #unde‡
+CONFIG_YELLOWFIN
+
+
+585 #unde‡
+CONFIG_R8169
+
+
+586 #unde‡
+CONFIG_SKGE
+
+
+587 #unde‡
+CONFIG_SK98LIN
+
+
+588 #unde‡
+CONFIG_VIA_VELOCITY
+
+
+589 
+	#CONFIG_TIGON3
+ 1
+
+	)
+
+590 #unde‡
+CONFIG_BNX2
+
+
+595 #unde‡
+CONFIG_IXGB
+
+
+596 
+	#CONFIG_S2IO_MODULE
+ 1
+
+	)
+
+597 #unde‡
+CONFIG_S2IO_NAPI
+
+
+598 #unde‡
+CONFIG_2BUFF_MODE
+
+
+603 #unde‡
+CONFIG_TR
+
+
+608 #unde‡
+CONFIG_NET_RADIO
+
+
+613 #unde‡
+CONFIG_WAN
+
+
+614 #unde‡
+CONFIG_FDDI
+
+
+615 #unde‡
+CONFIG_HIPPI
+
+
+616 #unde‡
+CONFIG_PPP
+
+
+617 #unde‡
+CONFIG_SLIP
+
+
+618 #unde‡
+CONFIG_NET_FC
+
+
+619 #unde‡
+CONFIG_SHAPER
+
+
+620 
+	#CONFIG_NETCONSOLE
+ 1
+
+	)
+
+625 #unde‡
+CONFIG_ISDN
+
+
+630 #unde‡
+CONFIG_PHONE
+
+
+635 
+	#CONFIG_INPUT
+ 1
+
+	)
+
+640 
+	#CONFIG_INPUT_MOUSEDEV
+ 1
+
+	)
+
+641 
+	#CONFIG_INPUT_MOUSEDEV_PSAUX
+ 1
+
+	)
+
+642 
+	#CONFIG_INPUT_MOUSEDEV_SCREEN_X
+ 1024
+
+	)
+
+643 
+	#CONFIG_INPUT_MOUSEDEV_SCREEN_Y
+ 768
+
+	)
+
+644 #unde‡
+CONFIG_INPUT_JOYDEV
+
+
+645 #unde‡
+CONFIG_INPUT_TSDEV
+
+
+646 
+	#CONFIG_INPUT_EVDEV
+ 1
+
+	)
+
+647 #unde‡
+CONFIG_INPUT_EVBUG
+
+
+652 
+	#CONFIG_INPUT_KEYBOARD
+ 1
+
+	)
+
+653 
+	#CONFIG_KEYBOARD_ATKBD
+ 1
+
+	)
+
+654 #unde‡
+CONFIG_KEYBOARD_SUNKBD
+
+
+655 #unde‡
+CONFIG_KEYBOARD_LKKBD
+
+
+656 #unde‡
+CONFIG_KEYBOARD_XTKBD
+
+
+657 #unde‡
+CONFIG_KEYBOARD_NEWTON
+
+
+658 
+	#CONFIG_INPUT_MOUSE
+ 1
+
+	)
+
+659 
+	#CONFIG_MOUSE_PS2
+ 1
+
+	)
+
+660 #unde‡
+CONFIG_MOUSE_SERIAL
+
+
+661 #unde‡
+CONFIG_MOUSE_VSXXXAA
+
+
+662 #unde‡
+CONFIG_INPUT_JOYSTICK
+
+
+663 #unde‡
+CONFIG_INPUT_TOUCHSCREEN
+
+
+664 #unde‡
+CONFIG_INPUT_MISC
+
+
+669 
+	#CONFIG_SERIO
+ 1
+
+	)
+
+670 
+	#CONFIG_SERIO_I8042
+ 1
+
+	)
+
+671 #unde‡
+CONFIG_SERIO_SERPORT
+
+
+672 #unde‡
+CONFIG_SERIO_CT82C710
+
+
+673 #unde‡
+CONFIG_SERIO_PCIPS2
+
+
+674 
+	#CONFIG_SERIO_LIBPS2
+ 1
+
+	)
+
+675 #unde‡
+CONFIG_SERIO_RAW
+
+
+676 #unde‡
+CONFIG_GAMEPORT
+
+
+681 
+	#CONFIG_VT
+ 1
+
+	)
+
+682 
+	#CONFIG_VT_CONSOLE
+ 1
+
+	)
+
+683 
+	#CONFIG_HW_CONSOLE
+ 1
+
+	)
+
+684 #unde‡
+CONFIG_SERIAL_NONSTANDARD
+
+
+689 
+	#CONFIG_SERIAL_8250
+ 1
+
+	)
+
+690 
+	#CONFIG_SERIAL_8250_CONSOLE
+ 1
+
+	)
+
+691 #unde‡
+CONFIG_SERIAL_8250_ACPI
+
+
+692 
+	#CONFIG_SERIAL_8250_NR_UARTS
+ 4
+
+	)
+
+693 #unde‡
+CONFIG_SERIAL_8250_EXTENDED
+
+
+698 
+	#CONFIG_SERIAL_CORE
+ 1
+
+	)
+
+699 
+	#CONFIG_SERIAL_CORE_CONSOLE
+ 1
+
+	)
+
+700 #unde‡
+CONFIG_SERIAL_JSM
+
+
+701 
+	#CONFIG_UNIX98_PTYS
+ 1
+
+	)
+
+702 
+	#CONFIG_LEGACY_PTYS
+ 1
+
+	)
+
+703 
+	#CONFIG_LEGACY_PTY_COUNT
+ 256
+
+	)
+
+708 #unde‡
+CONFIG_IPMI_HANDLER
+
+
+713 #unde‡
+CONFIG_WATCHDOG
+
+
+714 
+	#CONFIG_HW_RANDOM
+ 1
+
+	)
+
+715 #unde‡
+CONFIG_NVRAM
+
+
+716 
+	#CONFIG_RTC
+ 1
+
+	)
+
+717 #unde‡
+CONFIG_DTLK
+
+
+718 #unde‡
+CONFIG_R3964
+
+
+719 #unde‡
+CONFIG_APPLICOM
+
+
+724 
+	#CONFIG_AGP
+ 1
+
+	)
+
+725 
+	#CONFIG_AGP_AMD64
+ 1
+
+	)
+
+726 
+	#CONFIG_AGP_INTEL
+ 1
+
+	)
+
+727 #unde‡
+CONFIG_DRM
+
+
+728 #unde‡
+CONFIG_MWAVE
+
+
+729 
+	#CONFIG_RAW_DRIVER
+ 1
+
+	)
+
+730 
+	#CONFIG_HPET
+ 1
+
+	)
+
+731 #unde‡
+CONFIG_HPET_RTC_IRQ
+
+
+732 
+	#CONFIG_HPET_MMAP
+ 1
+
+	)
+
+733 
+	#CONFIG_MAX_RAW_DEVS
+ 256
+
+	)
+
+734 #unde‡
+CONFIG_HANGCHECK_TIMER
+
+
+739 #unde‡
+CONFIG_TCG_TPM
+
+
+744 #unde‡
+CONFIG_I2C
+
+
+745 #unde‡
+CONFIG_I2C_SENSOR
+
+
+750 #unde‡
+CONFIG_W1
+
+
+755 
+	#CONFIG_HWMON
+ 1
+
+	)
+
+756 #unde‡
+CONFIG_HWMON_DEBUG_CHIP
+
+
+761 #unde‡
+CONFIG_IBM_ASM
+
+
+766 #unde‡
+CONFIG_VIDEO_DEV
+
+
+771 #unde‡
+CONFIG_DVB
+
+
+776 #unde‡
+CONFIG_FB
+
+
+777 
+	#CONFIG_VIDEO_SELECT
+ 1
+
+	)
+
+782 
+	#CONFIG_VGA_CONSOLE
+ 1
+
+	)
+
+783 
+	#CONFIG_DUMMY_CONSOLE
+ 1
+
+	)
+
+788 
+	#CONFIG_SOUND
+ 1
+
+	)
+
+793 #unde‡
+CONFIG_SND
+
+
+798 
+	#CONFIG_SOUND_PRIME
+ 1
+
+	)
+
+799 #unde‡
+CONFIG_SOUND_BT878
+
+
+800 #unde‡
+CONFIG_SOUND_CMPCI
+
+
+801 #unde‡
+CONFIG_SOUND_EMU10K1
+
+
+802 #unde‡
+CONFIG_SOUND_FUSION
+
+
+803 #unde‡
+CONFIG_SOUND_CS4281
+
+
+804 #unde‡
+CONFIG_SOUND_ES1370
+
+
+805 #unde‡
+CONFIG_SOUND_ES1371
+
+
+806 #unde‡
+CONFIG_SOUND_ESSSOLO1
+
+
+807 #unde‡
+CONFIG_SOUND_MAESTRO
+
+
+808 #unde‡
+CONFIG_SOUND_MAESTRO3
+
+
+809 
+	#CONFIG_SOUND_ICH
+ 1
+
+	)
+
+810 #unde‡
+CONFIG_SOUND_SONICVIBES
+
+
+811 #unde‡
+CONFIG_SOUND_TRIDENT
+
+
+812 #unde‡
+CONFIG_SOUND_MSNDCLAS
+
+
+813 #unde‡
+CONFIG_SOUND_MSNDPIN
+
+
+814 #unde‡
+CONFIG_SOUND_VIA82CXXX
+
+
+815 #unde‡
+CONFIG_SOUND_OSS
+
+
+816 #unde‡
+CONFIG_SOUND_ALI5455
+
+
+817 #unde‡
+CONFIG_SOUND_FORTE
+
+
+818 #unde‡
+CONFIG_SOUND_RME96XX
+
+
+819 #unde‡
+CONFIG_SOUND_AD1980
+
+
+824 
+	#CONFIG_USB_ARCH_HAS_HCD
+ 1
+
+	)
+
+825 
+	#CONFIG_USB_ARCH_HAS_OHCI
+ 1
+
+	)
+
+826 
+	#CONFIG_USB
+ 1
+
+	)
+
+827 #unde‡
+CONFIG_USB_DEBUG
+
+
+832 
+	#CONFIG_USB_DEVICEFS
+ 1
+
+	)
+
+833 #unde‡
+CONFIG_USB_BANDWIDTH
+
+
+834 #unde‡
+CONFIG_USB_DYNAMIC_MINORS
+
+
+835 #unde‡
+CONFIG_USB_SUSPEND
+
+
+836 #unde‡
+CONFIG_USB_OTG
+
+
+841 
+	#CONFIG_USB_EHCI_HCD
+ 1
+
+	)
+
+842 #unde‡
+CONFIG_USB_EHCI_SPLIT_ISO
+
+
+843 #unde‡
+CONFIG_USB_EHCI_ROOT_HUB_TT
+
+
+844 #unde‡
+CONFIG_USB_ISP116X_HCD
+
+
+845 
+	#CONFIG_USB_OHCI_HCD
+ 1
+
+	)
+
+846 #unde‡
+CONFIG_USB_OHCI_BIG_ENDIAN
+
+
+847 
+	#CONFIG_USB_OHCI_LITTLE_ENDIAN
+ 1
+
+	)
+
+848 
+	#CONFIG_USB_UHCI_HCD
+ 1
+
+	)
+
+849 #unde‡
+CONFIG_USB_SL811_HCD
+
+
+854 #unde‡
+CONFIG_USB_AUDIO
+
+
+855 #unde‡
+CONFIG_USB_BLUETOOTH_TTY
+
+
+856 #unde‡
+CONFIG_USB_MIDI
+
+
+857 #unde‡
+CONFIG_USB_ACM
+
+
+858 
+	#CONFIG_USB_PRINTER
+ 1
+
+	)
+
+863 
+	#CONFIG_USB_STORAGE
+ 1
+
+	)
+
+864 #unde‡
+CONFIG_USB_STORAGE_DEBUG
+
+
+865 #unde‡
+CONFIG_USB_STORAGE_DATAFAB
+
+
+866 #unde‡
+CONFIG_USB_STORAGE_FREECOM
+
+
+867 #unde‡
+CONFIG_USB_STORAGE_ISD200
+
+
+868 #unde‡
+CONFIG_USB_STORAGE_DPCM
+
+
+869 #unde‡
+CONFIG_USB_STORAGE_USBAT
+
+
+870 #unde‡
+CONFIG_USB_STORAGE_SDDR09
+
+
+871 #unde‡
+CONFIG_USB_STORAGE_SDDR55
+
+
+872 #unde‡
+CONFIG_USB_STORAGE_JUMPSHOT
+
+
+877 
+	#CONFIG_USB_HID
+ 1
+
+	)
+
+878 
+	#CONFIG_USB_HIDINPUT
+ 1
+
+	)
+
+879 #unde‡
+CONFIG_HID_FF
+
+
+880 #unde‡
+CONFIG_USB_HIDDEV
+
+
+881 #unde‡
+CONFIG_USB_AIPTEK
+
+
+882 #unde‡
+CONFIG_USB_WACOM
+
+
+883 #unde‡
+CONFIG_USB_ACECAD
+
+
+884 #unde‡
+CONFIG_USB_KBTAB
+
+
+885 #unde‡
+CONFIG_USB_POWERMATE
+
+
+886 #unde‡
+CONFIG_USB_MTOUCH
+
+
+887 #unde‡
+CONFIG_USB_ITMTOUCH
+
+
+888 #unde‡
+CONFIG_USB_EGALAX
+
+
+889 #unde‡
+CONFIG_USB_XPAD
+
+
+890 #unde‡
+CONFIG_USB_ATI_REMOTE
+
+
+891 #unde‡
+CONFIG_USB_KEYSPAN_REMOTE
+
+
+896 #unde‡
+CONFIG_USB_MDC800
+
+
+897 #unde‡
+CONFIG_USB_MICROTEK
+
+
+902 #unde‡
+CONFIG_USB_DABUSB
+
+
+911 #unde‡
+CONFIG_USB_CATC
+
+
+912 #unde‡
+CONFIG_USB_KAWETH
+
+
+913 #unde‡
+CONFIG_USB_PEGASUS
+
+
+914 #unde‡
+CONFIG_USB_RTL8150
+
+
+915 #unde‡
+CONFIG_USB_USBNET
+
+
+916 
+	#CONFIG_USB_MON
+ 1
+
+	)
+
+925 #unde‡
+CONFIG_USB_SERIAL
+
+
+930 #unde‡
+CONFIG_USB_EMI62
+
+
+931 #unde‡
+CONFIG_USB_EMI26
+
+
+932 #unde‡
+CONFIG_USB_AUERSWALD
+
+
+933 #unde‡
+CONFIG_USB_RIO500
+
+
+934 #unde‡
+CONFIG_USB_LEGOTOWER
+
+
+935 #unde‡
+CONFIG_USB_LCD
+
+
+936 #unde‡
+CONFIG_USB_LED
+
+
+937 #unde‡
+CONFIG_USB_CYTHERM
+
+
+938 #unde‡
+CONFIG_USB_PHIDGETKIT
+
+
+939 #unde‡
+CONFIG_USB_PHIDGETSERVO
+
+
+940 #unde‡
+CONFIG_USB_IDMOUSE
+
+
+941 #unde‡
+CONFIG_USB_SISUSBVGA
+
+
+942 #unde‡
+CONFIG_USB_LD
+
+
+943 #unde‡
+CONFIG_USB_TEST
+
+
+952 #unde‡
+CONFIG_USB_GADGET
+
+
+957 #unde‡
+CONFIG_MMC
+
+
+962 #unde‡
+CONFIG_INFINIBAND
+
+
+971 #unde‡
+CONFIG_EDD
+
+
+976 
+	#CONFIG_EXT2_FS
+ 1
+
+	)
+
+977 
+	#CONFIG_EXT2_FS_XATTR
+ 1
+
+	)
+
+978 
+	#CONFIG_EXT2_FS_POSIX_ACL
+ 1
+
+	)
+
+979 #unde‡
+CONFIG_EXT2_FS_SECURITY
+
+
+980 #unde‡
+CONFIG_EXT2_FS_XIP
+
+
+981 
+	#CONFIG_EXT3_FS
+ 1
+
+	)
+
+982 
+	#CONFIG_EXT3_FS_XATTR
+ 1
+
+	)
+
+983 
+	#CONFIG_EXT3_FS_POSIX_ACL
+ 1
+
+	)
+
+984 #unde‡
+CONFIG_EXT3_FS_SECURITY
+
+
+985 
+	#CONFIG_JBD
+ 1
+
+	)
+
+986 #unde‡
+CONFIG_JBD_DEBUG
+
+
+987 
+	#CONFIG_FS_MBCACHE
+ 1
+
+	)
+
+988 
+	#CONFIG_REISERFS_FS
+ 1
+
+	)
+
+989 #unde‡
+CONFIG_REISERFS_CHECK
+
+
+990 #unde‡
+CONFIG_REISERFS_PROC_INFO
+
+
+991 
+	#CONFIG_REISERFS_FS_XATTR
+ 1
+
+	)
+
+992 
+	#CONFIG_REISERFS_FS_POSIX_ACL
+ 1
+
+	)
+
+993 #unde‡
+CONFIG_REISERFS_FS_SECURITY
+
+
+994 #unde‡
+CONFIG_JFS_FS
+
+
+995 
+	#CONFIG_FS_POSIX_ACL
+ 1
+
+	)
+
+1000 #unde‡
+CONFIG_XFS_FS
+
+
+1001 #unde‡
+CONFIG_MINIX_FS
+
+
+1002 #unde‡
+CONFIG_ROMFS_FS
+
+
+1003 
+	#CONFIG_INOTIFY
+ 1
+
+	)
+
+1004 #unde‡
+CONFIG_QUOTA
+
+
+1005 
+	#CONFIG_DNOTIFY
+ 1
+
+	)
+
+1006 
+	#CONFIG_AUTOFS_FS
+ 1
+
+	)
+
+1007 #unde‡
+CONFIG_AUTOFS4_FS
+
+
+1012 
+	#CONFIG_ISO9660_FS
+ 1
+
+	)
+
+1013 
+	#CONFIG_JOLIET
+ 1
+
+	)
+
+1014 #unde‡
+CONFIG_ZISOFS
+
+
+1015 #unde‡
+CONFIG_UDF_FS
+
+
+1020 
+	#CONFIG_FAT_FS
+ 1
+
+	)
+
+1021 
+	#CONFIG_MSDOS_FS
+ 1
+
+	)
+
+1022 
+	#CONFIG_VFAT_FS
+ 1
+
+	)
+
+1023 
+	#CONFIG_FAT_DEFAULT_CODEPAGE
+ 437
+
+	)
+
+1024 
+	#CONFIG_FAT_DEFAULT_IOCHARSET
+ "iso8859-1"
+
+	)
+
+1025 #unde‡
+CONFIG_NTFS_FS
+
+
+1030 
+	#CONFIG_PROC_FS
+ 1
+
+	)
+
+1031 
+	#CONFIG_PROC_KCORE
+ 1
+
+	)
+
+1032 
+	#CONFIG_SYSFS
+ 1
+
+	)
+
+1033 #unde‡
+CONFIG_DEVPTS_FS_XATTR
+
+
+1034 
+	#CONFIG_TMPFS
+ 1
+
+	)
+
+1035 #unde‡
+CONFIG_TMPFS_XATTR
+
+
+1036 
+	#CONFIG_HUGETLBFS
+ 1
+
+	)
+
+1037 
+	#CONFIG_HUGETLB_PAGE
+ 1
+
+	)
+
+1038 
+	#CONFIG_RAMFS
+ 1
+
+	)
+
+1043 #unde‡
+CONFIG_ADFS_FS
+
+
+1044 #unde‡
+CONFIG_AFFS_FS
+
+
+1045 #unde‡
+CONFIG_HFS_FS
+
+
+1046 #unde‡
+CONFIG_HFSPLUS_FS
+
+
+1047 #unde‡
+CONFIG_BEFS_FS
+
+
+1048 #unde‡
+CONFIG_BFS_FS
+
+
+1049 #unde‡
+CONFIG_EFS_FS
+
+
+1050 #unde‡
+CONFIG_CRAMFS
+
+
+1051 #unde‡
+CONFIG_VXFS_FS
+
+
+1052 #unde‡
+CONFIG_HPFS_FS
+
+
+1053 #unde‡
+CONFIG_QNX4FS_FS
+
+
+1054 #unde‡
+CONFIG_SYSV_FS
+
+
+1055 #unde‡
+CONFIG_UFS_FS
+
+
+1060 
+	#CONFIG_NFS_FS
+ 1
+
+	)
+
+1061 
+	#CONFIG_NFS_V3
+ 1
+
+	)
+
+1062 #unde‡
+CONFIG_NFS_V3_ACL
+
+
+1063 #unde‡
+CONFIG_NFS_V4
+
+
+1064 #unde‡
+CONFIG_NFS_DIRECTIO
+
+
+1065 
+	#CONFIG_NFSD
+ 1
+
+	)
+
+1066 
+	#CONFIG_NFSD_V3
+ 1
+
+	)
+
+1067 #unde‡
+CONFIG_NFSD_V3_ACL
+
+
+1068 #unde‡
+CONFIG_NFSD_V4
+
+
+1069 
+	#CONFIG_NFSD_TCP
+ 1
+
+	)
+
+1070 
+	#CONFIG_LOCKD
+ 1
+
+	)
+
+1071 
+	#CONFIG_LOCKD_V4
+ 1
+
+	)
+
+1072 
+	#CONFIG_EXPORTFS
+ 1
+
+	)
+
+1073 
+	#CONFIG_NFS_COMMON
+ 1
+
+	)
+
+1074 
+	#CONFIG_SUNRPC
+ 1
+
+	)
+
+1075 #unde‡
+CONFIG_RPCSEC_GSS_KRB5
+
+
+1076 #unde‡
+CONFIG_RPCSEC_GSS_SPKM3
+
+
+1077 #unde‡
+CONFIG_SMB_FS
+
+
+1078 #unde‡
+CONFIG_CIFS
+
+
+1079 #unde‡
+CONFIG_NCP_FS
+
+
+1080 #unde‡
+CONFIG_CODA_FS
+
+
+1081 #unde‡
+CONFIG_AFS_FS
+
+
+1086 #unde‡
+CONFIG_PARTITION_ADVANCED
+
+
+1087 
+	#CONFIG_MSDOS_PARTITION
+ 1
+
+	)
+
+1092 
+	#CONFIG_NLS
+ 1
+
+	)
+
+1093 
+	#CONFIG_NLS_DEFAULT
+ "iso8859-1"
+
+	)
+
+1094 
+	#CONFIG_NLS_CODEPAGE_437
+ 1
+
+	)
+
+1095 #unde‡
+CONFIG_NLS_CODEPAGE_737
+
+
+1096 #unde‡
+CONFIG_NLS_CODEPAGE_775
+
+
+1097 #unde‡
+CONFIG_NLS_CODEPAGE_850
+
+
+1098 #unde‡
+CONFIG_NLS_CODEPAGE_852
+
+
+1099 #unde‡
+CONFIG_NLS_CODEPAGE_855
+
+
+1100 #unde‡
+CONFIG_NLS_CODEPAGE_857
+
+
+1101 #unde‡
+CONFIG_NLS_CODEPAGE_860
+
+
+1102 #unde‡
+CONFIG_NLS_CODEPAGE_861
+
+
+1103 #unde‡
+CONFIG_NLS_CODEPAGE_862
+
+
+1104 #unde‡
+CONFIG_NLS_CODEPAGE_863
+
+
+1105 #unde‡
+CONFIG_NLS_CODEPAGE_864
+
+
+1106 #unde‡
+CONFIG_NLS_CODEPAGE_865
+
+
+1107 #unde‡
+CONFIG_NLS_CODEPAGE_866
+
+
+1108 #unde‡
+CONFIG_NLS_CODEPAGE_869
+
+
+1109 #unde‡
+CONFIG_NLS_CODEPAGE_936
+
+
+1110 #unde‡
+CONFIG_NLS_CODEPAGE_950
+
+
+1111 #unde‡
+CONFIG_NLS_CODEPAGE_932
+
+
+1112 #unde‡
+CONFIG_NLS_CODEPAGE_949
+
+
+1113 #unde‡
+CONFIG_NLS_CODEPAGE_874
+
+
+1114 #unde‡
+CONFIG_NLS_ISO8859_8
+
+
+1115 #unde‡
+CONFIG_NLS_CODEPAGE_1250
+
+
+1116 #unde‡
+CONFIG_NLS_CODEPAGE_1251
+
+
+1117 
+	#CONFIG_NLS_ASCII
+ 1
+
+	)
+
+1118 
+	#CONFIG_NLS_ISO8859_1
+ 1
+
+	)
+
+1119 #unde‡
+CONFIG_NLS_ISO8859_2
+
+
+1120 #unde‡
+CONFIG_NLS_ISO8859_3
+
+
+1121 #unde‡
+CONFIG_NLS_ISO8859_4
+
+
+1122 #unde‡
+CONFIG_NLS_ISO8859_5
+
+
+1123 #unde‡
+CONFIG_NLS_ISO8859_6
+
+
+1124 #unde‡
+CONFIG_NLS_ISO8859_7
+
+
+1125 #unde‡
+CONFIG_NLS_ISO8859_9
+
+
+1126 #unde‡
+CONFIG_NLS_ISO8859_13
+
+
+1127 #unde‡
+CONFIG_NLS_ISO8859_14
+
+
+1128 
+	#CONFIG_NLS_ISO8859_15
+ 1
+
+	)
+
+1129 #unde‡
+CONFIG_NLS_KOI8_R
+
+
+1130 #unde‡
+CONFIG_NLS_KOI8_U
+
+
+1131 
+	#CONFIG_NLS_UTF8
+ 1
+
+	)
+
+1136 
+	#CONFIG_PROFILING
+ 1
+
+	)
+
+1137 
+	#CONFIG_OPROFILE
+ 1
+
+	)
+
+1142 #unde‡
+CONFIG_PRINTK_TIME
+
+
+1143 
+	#CONFIG_DEBUG_KERNEL
+ 1
+
+	)
+
+1144 
+	#CONFIG_MAGIC_SYSRQ
+ 1
+
+	)
+
+1145 
+	#CONFIG_LOG_BUF_SHIFT
+ 18
+
+	)
+
+1146 #unde‡
+CONFIG_SCHEDSTATS
+
+
+1147 #unde‡
+CONFIG_DEBUG_SLAB
+
+
+1148 #unde‡
+CONFIG_DEBUG_SPINLOCK
+
+
+1149 #unde‡
+CONFIG_DEBUG_SPINLOCK_SLEEP
+
+
+1150 #unde‡
+CONFIG_DEBUG_KOBJECT
+
+
+1151 #unde‡
+CONFIG_DEBUG_INFO
+
+
+1152 
+	#CONFIG_DEBUG_FS
+ 1
+
+	)
+
+1153 
+	#CONFIG_INIT_DEBUG
+ 1
+
+	)
+
+1154 #unde‡
+CONFIG_IOMMU_DEBUG
+
+
+1155 
+	#CONFIG_KPROBES
+ 1
+
+	)
+
+1160 #unde‡
+CONFIG_KEYS
+
+
+1161 #unde‡
+CONFIG_SECURITY
+
+
+1166 #unde‡
+CONFIG_CRYPTO
+
+
+1175 #unde‡
+CONFIG_CRC_CCITT
+
+
+1176 
+	#CONFIG_CRC32
+ 1
+
+	)
+
+1177 #unde‡
+CONFIG_LIBCRC32C
+
+
 	@
 1
 .
 1
 /usr/include
-77
-1945
+88
+2248
+cursor.c
+cursor.h
 gamedefs.h
 img_dir.h
 main.c
@@ -57169,9 +65735,18 @@ util.h
 /usr/include/bits/sigstack.h
 /usr/include/sys/ucontext.h
 /usr/include/asm/sigcontext.h
+/usr/include/asm-i486/sigcontext.h
+/usr/include/asm-x86_64/sigcontext.h
+/usr/include/asm/types.h
 /usr/include/linux/compiler.h
+/usr/include/asm-i486/types.h
+/usr/include/asm-x86_64/types.h
 /usr/include/linux/compiler-gcc2.h
 /usr/include/linux/compiler-gcc3.h
 /usr/include/linux/compiler-gcc4.h
 /usr/include/linux/compiler-intel.h
 /usr/include/linux/compiler-gcc.h
+/usr/include/linux/config.h
+/usr/include/linux/autoconf.h
+/usr/include/asm-i486/autoconf.h
+/usr/include/asm-x86_64/autoconf.h

@@ -81,7 +81,7 @@ CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPPFLAGS = 
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"jody\" -DPACKAGE_TARNAME=\"jody\" -DPACKAGE_VERSION=\"0.1.0\" -DPACKAGE_STRING=\"jody\ 0.1.0\" -DPACKAGE_BUGREPORT=\"jonathan.wheelhouse@gmail.com\" -DPACKAGE=\"jody\" -DVERSION=\"0.1.0\" 
+DEFS = -DPACKAGE_NAME=\"jody\" -DPACKAGE_TARNAME=\"jody\" -DPACKAGE_VERSION=\"0.1.0\" -DPACKAGE_STRING=\"jody\ 0.1.0\" -DPACKAGE_BUGREPORT=\"jonathan\ dot\ wheelhouse\ at\ gmail.com\" -DPACKAGE=\"jody\" -DVERSION=\"0.1.0\" 
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -99,7 +99,7 @@ LTLIBOBJS =
 MAKEINFO = ${SHELL} /home/jonathan/DEV/games/jody/missing --run makeinfo
 OBJEXT = o
 PACKAGE = jody
-PACKAGE_BUGREPORT = jonathan.wheelhouse@gmail.com
+PACKAGE_BUGREPORT = jonathan dot wheelhouse at gmail.com
 PACKAGE_NAME = jody
 PACKAGE_STRING = jody 0.1.0
 PACKAGE_TARNAME = jody

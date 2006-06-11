@@ -49,7 +49,8 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_jody_OBJECTS = main.$(OBJEXT) resources.$(OBJEXT) util.$(OBJEXT)
+am_jody_OBJECTS = main.$(OBJEXT) resources.$(OBJEXT) cursor.$(OBJEXT) \
+	util.$(OBJEXT)
 jody_OBJECTS = $(am_jody_OBJECTS)
 jody_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
@@ -151,8 +152,10 @@ DIST_SUBDIRS = img
 jody_SOURCES = \
 	main.c \
 	gamedefs.h \
-	resources.c \
 	resources.h \
+	resources.c \
+	cursor.h \
+	cursor.c \
 	util.h \
 	util.c
 
@@ -229,6 +232,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cursor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/resources.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/util.Po@am__quote@
