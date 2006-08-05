@@ -19,7 +19,7 @@ LDADD = $(SDL_LIBS) -lSDL_image
 ## DEFS = -DSCRIPTDIR=\"$(bindir)\" @DEFS@
 AM_CPPFLAGS = -DSCRIPTDIR=\"$(bindir)\" $(shell sdl-config --cflags)
 
-AM_CFLAGS = -pedantic -Wall
+AM_CFLAGS = -pedantic -Wall -std=gnu99
 noinst_HEADERS = img_dir.h
 EXTRA_DIST = img_dir.h.in
 ## We borrow guile's convention and use @-...-@ as the substitution

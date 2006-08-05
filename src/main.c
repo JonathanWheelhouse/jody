@@ -1,5 +1,3 @@
-#define _GNU_SOURCE
-
 #include <SDL.h>
 #include <stdlib.h>
 #include <string.h>
@@ -58,7 +56,7 @@ static void getargs(int argc, char *argv[])
 			   printf(
 					"\njody\n"
 					"Version " VERSION "\n"
-					"Copyright 2005 Jonathan Wheelhouse\n"
+					"Copyright 2006 Jonathan Wheelhouse\n"
 					"\n"
 					"Game controls:\n"
 					"  Keys:\n"
