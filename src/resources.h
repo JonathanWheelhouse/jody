@@ -6,7 +6,7 @@
 extern void seticon(void);
 extern void setup_img(void);
 
-extern SDL_Surface *screen;
+extern SDL_Surface *screen, *back;
 
 enum image_idx {
 	 IMG_BACKGROUND,
