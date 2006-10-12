@@ -51,9 +51,10 @@ am__vpath_adj = case $$p in \
     *) f=$$p;; \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
-am__installdirs = "$(DESTDIR)$(imgdir)"
+am__installdirs = "$(DESTDIR)$(imgdir)" "$(DESTDIR)$(imgdir)"
 imgDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(img_DATA)
+nobase_imgDATA_INSTALL = $(install_sh_DATA)
+DATA = $(img_DATA) $(nobase_img_DATA)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
@@ -161,6 +162,11 @@ img_DATA = \
 	kangaroo_red_left.png \
 	kangaroo_red.png
 
+nobase_img_DATA = cow_black/info \
+	cow_black/1.png \
+	cow_black/2.png \
+	cow_black/3.png
+
 EXTRA_DIST = \
   .cvsignore \
   ${img_DATA}
@@ -215,6 +221,25 @@ uninstall-imgDATA:
 	  echo " rm -f '$(DESTDIR)$(imgdir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(imgdir)/$$f"; \
 	done
+install-nobase_imgDATA: $(nobase_img_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(imgdir)" || $(mkdir_p) "$(DESTDIR)$(imgdir)"
+	@$(am__vpath_adj_setup) \
+	list='$(nobase_img_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  $(am__vpath_adj) \
+	  echo " $(nobase_imgDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(imgdir)/$$f'"; \
+	  $(nobase_imgDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(imgdir)/$$f"; \
+	done
+
+uninstall-nobase_imgDATA:
+	@$(NORMAL_UNINSTALL)
+	@$(am__vpath_adj_setup) \
+	list='$(nobase_img_DATA)'; for p in $$list; do \
+	  $(am__vpath_adj) \
+	  echo " rm -f '$(DESTDIR)$(imgdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(imgdir)/$$f"; \
+	done
 tags: TAGS
 TAGS:
 
@@ -253,7 +278,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(DATA)
 installdirs:
-	for dir in "$(DESTDIR)$(imgdir)"; do \
+	for dir in "$(DESTDIR)$(imgdir)" "$(DESTDIR)$(imgdir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-am
@@ -298,7 +323,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-imgDATA
+install-data-am: install-imgDATA install-nobase_imgDATA
 
 install-exec-am:
 
@@ -324,16 +349,18 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-imgDATA uninstall-info-am
+uninstall-am: uninstall-imgDATA uninstall-info-am \
+	uninstall-nobase_imgDATA
 
 .PHONY: all all-am check check-am clean clean-generic distclean \
 	distclean-generic distdir dvi dvi-am html html-am info info-am \
 	install install-am install-data install-data-am install-exec \
 	install-exec-am install-imgDATA install-info install-info-am \
-	install-man install-strip installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-generic pdf pdf-am ps ps-am uninstall \
-	uninstall-am uninstall-imgDATA uninstall-info-am
+	install-man install-nobase_imgDATA install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
+	pdf-am ps ps-am uninstall uninstall-am uninstall-imgDATA \
+	uninstall-info-am uninstall-nobase_imgDATA
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -26,6 +26,10 @@ img_DATA = \
 	kangaroo_red_left.png \
 	kangaroo_red.png
 
+nobase_img_DATA = cow_black/info \
+	cow_black/1.png \
+	cow_black/2.png \
+	cow_black/3.png
 
 EXTRA_DIST = \
   .cvsignore \

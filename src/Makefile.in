@@ -14,7 +14,6 @@
 
 @SET_MAKE@
 
-
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
 VPATH = @srcdir@
@@ -37,8 +36,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 bin_PROGRAMS = jody$(EXEEXT)
 subdir = src
-DIST_COMMON = $(noinst_HEADERS) $(srcdir)/Makefile.am \
-	$(srcdir)/Makefile.in
+DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
 	$(top_srcdir)/configure.ac
@@ -49,8 +47,8 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_jody_OBJECTS = main.$(OBJEXT) resources.$(OBJEXT) cursor.$(OBJEXT) \
-	util.$(OBJEXT)
+am_jody_OBJECTS = main.$(OBJEXT) csprite.$(OBJEXT) resources.$(OBJEXT) \
+	cursor.$(OBJEXT) util.$(OBJEXT)
 jody_OBJECTS = $(am_jody_OBJECTS)
 jody_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
@@ -70,7 +68,6 @@ RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
 	install-recursive installcheck-recursive installdirs-recursive \
 	pdf-recursive ps-recursive uninstall-info-recursive \
 	uninstall-recursive
-HEADERS = $(noinst_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -158,6 +155,8 @@ DIST_SUBDIRS = img
 jody_SOURCES = \
 	main.c \
 	gamedefs.h \
+	csprite.h \
+	csprite.c \
 	resources.h \
 	resources.c \
 	cursor.h \
@@ -166,13 +165,9 @@ jody_SOURCES = \
 	util.c
 
 LDADD = $(SDL_LIBS) -lSDL_image
-AM_CPPFLAGS = -DSCRIPTDIR=\"$(bindir)\" $(shell sdl-config --cflags)
+AM_CPPFLAGS = $(shell sdl-config --cflags) -DIMG_DIR=\"${pkgdatadir}/img/\"
 AM_CFLAGS = -pedantic -Wall -std=gnu99
-noinst_HEADERS = img_dir.h
-EXTRA_DIST = img_dir.h.in
-BUILT_SOURCES = img_dir.h
-all: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) all-recursive
+all: all-recursive
 
 .SUFFIXES:
 .SUFFIXES: .c .o .obj
@@ -238,6 +233,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/csprite.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cursor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/resources.Po@am__quote@
@@ -433,16 +429,14 @@ distdir: $(DISTFILES)
 	  fi; \
 	done
 check-am: all-am
-check: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) check-recursive
-all-am: Makefile $(PROGRAMS) $(HEADERS)
+check: check-recursive
+all-am: Makefile $(PROGRAMS)
 installdirs: installdirs-recursive
 installdirs-am:
 	for dir in "$(DESTDIR)$(bindir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
-install: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) install-recursive
+install: install-recursive
 install-exec: install-exec-recursive
 install-data: install-data-recursive
 uninstall: uninstall-recursive
@@ -466,7 +460,6 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 clean: clean-recursive
 
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
@@ -532,11 +525,6 @@ uninstall-info: uninstall-info-recursive
 	tags tags-recursive uninstall uninstall-am \
 	uninstall-binPROGRAMS uninstall-info-am
 
-img_dir.h: img_dir.h.in ${top_builddir}/config.status
-	rm -f $@.tmp
-	sed < $< > $@.tmp \
-	    -e 's:@-IMG_DIR-@:${IMG_DIR}:g'
-	mv $@.tmp $@
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

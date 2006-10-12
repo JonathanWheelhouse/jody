@@ -1,85 +1,1263 @@
-cscope 16 $HOME/DEV/games/jody/src               0000377849
-	@cursor.c
+cscope 16 /usr/local/src/jody/src               0000384262
+	@csprite.c
 
-1 
-	#_GNU_SOURCE
+1 
+	~<SDL_image.h
+>
+
+2 
+	~<°rög.h
+>
+
+3 
+	~"c•rôe.h
+"
+
+5 
+CS¥ôeBa£
+ *
+ba£_öô
+(*
+dú
+)
+
+7 
+	gbuf„r
+[255];
+
+8 
+	gfûíame
+[255];
+
+9 
+	g«me
+[255];
+
+10 
+	g∑u£
+=0, 
+	gr
+=0, 
+	gg
+=0, 
+	gb
+=0;
+
+11 
+FILE
+ *
+	gÂ
+;
+
+13 
+•rötf
+(
+fûíame
+, "%s/öfo", 
+dú
+);
+
+15 i‡((
+	gÂ
+=
+f›í
+(
+fûíame
+, "r")Ë=
+NULL
+) {
+
+16 
+¥ötf
+("ERROR o≥nög fûê%s\n\n", 
+fûíame
+);
+
+17  
+	gNULL
+;
+
+21 
+CS¥ôeBa£
+ *
+	gba£
+ = 
+mÆloc
+((CSpriteBase));
+
+22 
+	gba£
+->
+	gmBuût
+ = 
+ba£
+->
+mNum‰ames
+ = ba£->
+mW
+ = ba£->
+mH
+ = 0;
+
+24 
+fgës
+(
+buf„r
+, 255, 
+Â
+);
+
+25 
+ssˇnf
+(
+buf„r
+, "FILES: %d", &
+ba£
+->
+mNum‰ames
+);
+
+27 
+CS¥ôeFøme
+ *
+	gmAnim
+ = 
+mÆloc
+(
+ba£
+->
+mNum‰ames
+ * (CSpriteFrame));
+
+30 
+	gba£
+->
+	gmBuût
+ = 1;
+
+31 
+	gcou¡
+ = 0;
+
+33 !
+„of
+(
+Â
+Ë&& 
+	gcou¡
+ < 
+	gba£
+->
+	gmNum‰ames
+) {
+
+34 
+fgës
+(
+buf„r
+, 255, 
+Â
+);
+
+35 i‡(
+	gbuf„r
+[0] !'#' && 
+buf„r
+[0] !'\r' && buf„r[0] !'\0' && buf„r[0] !'\n' && 
+°æí
+(buffer) != 0) {
+
+37 
+m©ch
+ = 
+ssˇnf
+(
+buf„r
+, "%†%d %d %d %d", 
+«me
+, &
+∑u£
+, &
+r
+, &
+g
+, &
+b
+);
+
+38 i‡(
+	gm©ch
+ != 5)
+
+39  
+NULL
+;
+
+41 
+•rötf
+(
+fûíame
+, "%s/%s", 
+dú
+, 
+«me
+);
+
+43 
+SDL_SurÁ˚
+ *
+	gãmp
+;
+
+44 if((
+	gãmp
+ = 
+IMG_Lﬂd
+(
+fûíame
+)Ë=
+NULL
+)
+
+45  
+NULL
+;
+
+46 if(
+	gr
+ >= 0)
+
+47 
+SDL_SëCﬁ‹Key
+(
+ãmp
+, 
+SDL_SRCCOLORKEY
+, 
+SDL_M≠RGB
+—emp->
+f‹m©
+, 
+r
+, 
+g
+, 
+b
+));
+
+50 
+	gmAnim
+[
+cou¡
+].
+	gimage
+ = 
+ãmp
+;
+
+53 
+	gmAnim
+[
+cou¡
+].
+	g∑u£
+ = 
+∑u£
+;
+
+54 i‡(!
+	gba£
+->
+	gmW
+)
+
+55 
+	gba£
+->
+	gmW
+ = 
+mAnim
+[
+cou¡
+].
+image
+->
+w
+;
+
+56 i‡(!
+	gba£
+->
+	gmH
+)
+
+57 
+	gba£
+->
+	gmH
+ = 
+mAnim
+[
+cou¡
+].
+image
+->
+w
+;
+
+59 
+	gcou¡
+++;
+
+62 
+f˛o£
+(
+Â
+);
+
+64 
+	gba£
+->
+	gmAnim
+ = 
+mAnim
+;
+
+65  
+	gba£
+;
+
+68 
+CS¥ôe
+ *
+öô
+(
+CS¥ôeBa£
+ *
+ba£
+, 
+SDL_SurÁ˚
+ *
+s¸ìn
+)
+
+70 
+CS¥ôe
+ *
+	g•rôe
+ = 
+mÆloc
+((CSprite));
+
+71 
+	g•rôe
+->
+	gmFøme
+ = 0;
+
+72 
+	g•rôe
+->
+	gmX
+ = 0;
+
+73 
+	g•rôe
+->
+	gmY
+ = 0;
+
+74 
+	g•rôe
+->
+	gmOldX
+ = 0;
+
+75 
+	g•rôe
+->
+	gmOldY
+ = 0;
+
+76 
+	g•rôe
+->
+	gmAnim©ög
+ = 0;
+
+77 
+	g•rôe
+->
+	gmDøwn
+ = 0;
+
+78 
+	g•rôe
+->
+	gmS≥ed
+ = 0;
+
+79 
+	g•rôe
+->
+	gmLa°upd©e
+ = 0;
+
+81 
+	g•rôe
+->
+	gmS¥ôeBa£
+ = 
+ba£
+;
+
+83 i‡(
+	g•rôe
+->
+	gmS¥ôeBa£
+->
+	gmBuût
+) {
+
+84 i‡(
+	g•rôe
+->
+	gmS¥ôeBa£
+->
+	gmNum‰ames
+ > 1)
+
+85 
+	g•rôe
+->
+	gmAnim©ög
+ = 1;
+
+86 
+	g•rôe
+->
+	gmBackª∂a˚mít
+ = 
+SDL_Di•œyF‹m©
+(
+•rôe
+->
+mS¥ôeBa£
+->
+mAnim
+[0].
+image
+);
+
+88 
+	g•rôe
+->
+	gmS¸ìn
+ = 
+s¸ìn
+;
+
+89  
+	g•rôe
+;
+
+92 
+døw
+(
+CS¥ôe
+ *
+•rôe
+)
+
+94 i‡(
+	g•rôe
+->
+	gmAnim©ög
+ == 1) {
+
+95 i‡(
+•rôe
+->
+mLa°upd©e
+ + s¥ôe->
+mS¥ôeBa£
+->
+mAnim
+[•rôe->
+mFøme
+].
+∑u£
+ * s¥ôe->
+mS≥ed
+ < 
+SDL_GëTicks
+()) {
+
+96 
+•rôe
+->
+mFøme
+++;
+
+97 i‡(
+	g•rôe
+->
+	gmFøme
+ > s¥ôe->
+	gmS¥ôeBa£
+->
+	gmNum‰ames
+ - 1)
+
+98 
+	g•rôe
+->
+	gmFøme
+ = 0;
+
+99 
+	g•rôe
+->
+	gmLa°upd©e
+ = 
+SDL_GëTicks
+();
+
+103 if(
+	g•rôe
+->
+	gmDøwn
+ == 0)
+
+104 
+•rôe
+->
+mDøwn
+ = 1;
+
+106 
+SDL_Re˘
+ 
+	gde°
+;
+
+107 
+	gde°
+.
+	gx
+ = 
+•rôe
+->
+mX
+; de°.
+	gy
+ = s¥ôe->
+mY
+;
+
+108 
+SDL_BlôSurÁ˚
+(
+•rôe
+->
+mS¥ôeBa£
+->
+mAnim
+[•rôe->
+mFøme
+].
+image
+, 
+NULL
+, s¥ôe->
+mS¸ìn
+, &
+de°
+);
+
+111 
+˛órBG
+(
+CS¥ôe
+ *
+•rôe
+)
+
+113 i‡(
+	g•rôe
+->
+	gmDøwn
+ == 1) {
+
+114 
+SDL_Re˘
+ 
+de°
+;
+
+115 
+	gde°
+.
+	gx
+ = 
+•rôe
+->
+mOldX
+;
+
+116 
+	gde°
+.
+	gy
+ = 
+•rôe
+->
+mOldY
+;
+
+117 
+	gde°
+.
+	gw
+ = 
+•rôe
+->
+mS¥ôeBa£
+->
+mW
+;
+
+118 
+	gde°
+.
+	gh
+ = 
+•rôe
+->
+mS¥ôeBa£
+->
+mH
+;
+
+119 
+SDL_BlôSurÁ˚
+(
+•rôe
+->
+mBackª∂a˚mít
+, 
+NULL
+, s¥ôe->
+mS¸ìn
+, &
+de°
+);
+
+123 
+upd©eBG
+(
+CS¥ôe
+ *
+•rôe
+)
+
+125 
+SDL_Re˘
+ 
+	g§¸e˘
+;
+
+126 
+	g§¸e˘
+.
+	gw
+ = 
+•rôe
+->
+mS¥ôeBa£
+->
+mW
+;
+
+127 
+	g§¸e˘
+.
+	gh
+ = 
+•rôe
+->
+mS¥ôeBa£
+->
+mH
+;
+
+128 
+	g§¸e˘
+.
+	gx
+ = 
+•rôe
+->
+mX
+;
+
+129 
+	g§¸e˘
+.
+	gy
+ = 
+•rôe
+->
+mY
+;
+
+130 
+	g•rôe
+->
+	gmOldX
+ = 
+•rôe
+->
+mX
+;
+
+131 
+	g•rôe
+->
+	gmOldY
+ = 
+•rôe
+->
+mY
+;
+
+132 
+SDL_BlôSurÁ˚
+(
+•rôe
+->
+mS¸ìn
+, &
+§¸e˘
+, s¥ôe->
+mBackª∂a˚mít
+, 
+NULL
+);
+
+135 
+	$£tFøme
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+Ë{ s¥ôe->
+mFøme
+ =Çr; 
+	}
+}
+
+136 
+	$gëFøme
+(
+CS¥ôe
+ *
+•rôe
+Ë{  s¥ôe->
+mFøme
+; 
+	}
+}
+
+138 
+	$£tS≥ed
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+Ë{ s¥ôe->
+mS≥ed
+ =Çr; 
+	}
+}
+
+139 
+	$gëS≥ed
+(
+CS¥ôe
+ *
+•rôe
+Ë{  s¥ôe->
+mS≥ed
+; 
+	}
+}
+
+141 
+	$toggÀAnim
+(
+CS¥ôe
+ *
+•rôe
+Ë{ s¥ôe->
+mAnim©ög
+ = !•rôe->mAnim©ög; 
+	}
+}
+
+142 
+	$°¨tAnim
+(
+CS¥ôe
+ *
+•rôe
+Ë{ s¥ôe->
+mAnim©ög
+ = 1; 
+	}
+}
+
+143 
+	$°›Anim
+(
+CS¥ôe
+ *
+•rôe
+Ë{ s¥ôe->
+mAnim©ög
+ = 0; 
+	}
+}
+
+144 
+	$ªwöd_‰ame
+(
+CS¥ôe
+ *
+•rôe
+Ë{ s¥ôe->
+mFøme
+ = 0; 
+	}
+}
+
+146 
+	$xadd
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+Ë{ s¥ôe->
+mX
+ +ƒ; 
+	}
+}
+
+147 
+	$yadd
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+Ë{ s¥ôe->
+mY
+ +ƒ; 
+	}
+}
+
+148 
+	$x£t
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+Ë{ s¥ôe->
+mX
+ =Çr; 
+	}
+}
+
+149 
+	$y£t
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+Ë{ s¥ôe->
+mY
+ =Çr; 
+	}
+}
+
+150 
+	$£t
+(
+CS¥ôe
+ *
+•rôe
+, 
+xx
+, 
+yy
+Ë{ s¥ôe->
+mX
+ = xx; s¥ôe->
+mY
+ = yy; 
+	}
+}
+
+	@csprite.h
+
+1 #i‚de‡
+__CSPRITE_H__
+
+
+2 
+	#__CSPRITE_H__
 
 
 	)
 
-2 
+4 
+	~<SDL/SDL.h
+>
+
+6 
+	gCS¥ôeFøme
+
+
+8 
+SDL_SurÁ˚
+ *
+	gimage
+;
+
+9 
+	g∑u£
+;
+
+12 
+	gCS¥ôeBa£
+
+
+14 
+CS¥ôeFøme
+ *
+	gmAnim
+;
+
+15 
+	gmBuût
+, 
+	gmNum‰ames
+, 
+	gmW
+, 
+	gmH
+;
+
+18 
+	gCS¥ôe
+
+
+20 
+	gmFøme
+;
+
+21 
+	gmX
+, 
+	gmY
+, 
+	gmOldX
+, 
+	gmOldY
+;
+
+22 
+	gmAnim©ög
+;
+
+23 
+	gmDøwn
+;
+
+24 
+	gmS≥ed
+;
+
+25 
+	gmLa°upd©e
+;
+
+26 
+CS¥ôeBa£
+ *
+	gmS¥ôeBa£
+;
+
+27 
+SDL_SurÁ˚
+ *
+	gmBackª∂a˚mít
+;
+
+28 
+SDL_SurÁ˚
+ *
+	gmS¸ìn
+;
+
+31 
+CS¥ôeBa£
+ *
+ba£_öô
+(*
+dú
+);
+
+32 
+CS¥ôe
+ *
+öô
+(
+CS¥ôeBa£
+ *
+ba£
+, 
+SDL_SurÁ˚
+ *
+s¸ìn
+);
+
+34 
+døw
+(
+CS¥ôe
+ *
+•rôe
+);
+
+35 
+˛órBG
+(
+CS¥ôe
+ *
+•rôe
+);
+
+36 
+upd©eBG
+(
+CS¥ôe
+ *
+•rôe
+);
+
+38 
+£tFøme
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+);
+
+39 
+gëFøme
+();
+
+41 
+£tS≥ed
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+);
+
+42 
+gëS≥ed
+(
+CS¥ôe
+ *
+•rôe
+);
+
+44 
+toggÀAnim
+(
+CS¥ôe
+ *
+•rôe
+);
+
+45 
+°¨tAnim
+(
+CS¥ôe
+ *
+•rôe
+);
+
+46 
+°›Anim
+(
+CS¥ôe
+ *
+•rôe
+);
+
+47 
+ªwöd_‰ame
+(
+CS¥ôe
+ *
+•rôe
+);
+
+49 
+xadd
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+);
+
+50 
+yadd
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+);
+
+51 
+x£t
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+);
+
+52 
+y£t
+(
+CS¥ôe
+ *
+•rôe
+, 
+ƒ
+);
+
+53 
+£t
+(
+CS¥ôe
+ *
+•rôe
+, 
+xx
+, 
+yy
+);
+
+	@cursor.c
+
+1 
 	~<°dio.h
 >
 
-3 
+2 
 	~<°dlib.h
 >
 
-4 
+3 
 	~<°rög.h
 >
 
-5 
+4 
 	~<SDL_image.h
 >
 
-6 
+5 
 	~<time.h
 >
 
-7 
+6 
 	~"gamedefs.h
 "
 
-8 
+7 
 	~"ªsour˚s.h
 "
 
-9 
+8 
 	~"img_dú.h
 "
 
-11 
+10 
 SDL_Curs‹
  *
 	gcurs‹_¨row
 ;
 
-12 
+11 
 SDL_Curs‹
  *
 	gcurs‹_whìlhou£
 ;
 
-13 
+12 
 SDL_Curs‹
  *
 	gcurs‹_whìlhou£_å™•¨ít
 ;
 
-14 
+13 
 SDL_Curs‹
  *
 	gcurs‹_whìlhou£_övîãd
 ;
 
-15 
+14 
 SDL_Curs‹
  *
 	gcurs‹_whìlhou£_bœck_wôh_whôe_löes
 ;
 
-17 
+16 
 SDL_Curs‹
  *
 	$¸óã_curs‹_¨row
 ()
 
-24 c⁄° *
+23 c⁄° *
 ¨row
 [] = {
 
-67 
+66 
 i
 , 
 row
@@ -87,57 +1265,57 @@ row
 cﬁ
 ;
 
-68 
+67 
 Uöt8
  
 d©a
 [4*32];
 
-69 
+68 
 Uöt8
  
 mask
 [4*32];
 
-70 
+69 
 hŸ_x
 , 
 hŸ_y
 ;
 
-72 
+71 
 i
  = -1;
 
-73 
+72 
 row
 =0;Ñow<32; ++row) {
 
-74 
+73 
 cﬁ
 =0; col<32; ++col) {
 
-75 i‡–
+74 i‡–
 cﬁ
  % 8 ) {
 
-76 
+75 
 d©a
 [
 i
 ] <<= 1;
 
-77 
+76 
 mask
 [
 i
 ] <<= 1;
 
-79 ++
+78 ++
 i
 ;
 
-80 
+79 
 d©a
 [
 i
@@ -145,7 +1323,7 @@ i
 mask
 [i] = 0;
 
-82 
+81 
 ¨row
 [4+
 row
@@ -153,25 +1331,25 @@ row
 cﬁ
 ]) {
 
-84 
+83 
 d©a
 [
 i
 ] |= 0x01;
 
-85 
+84 
 mask
 [
 i
 ] |= 0x01;
 
-88 
+87 
 mask
 [
 i
 ] |= 0x01;
 
-95 
+94 
 	`ssˇnf
 (
 ¨row
@@ -183,7 +1361,7 @@ hŸ_x
 hŸ_y
 );
 
-96  
+95  
 	`SDL_Cª©eCurs‹
 (
 d©a
@@ -195,21 +1373,21 @@ hŸ_x
 hŸ_y
 );
 
-97 
+96 
 	}
 }
 
-99 c⁄° *
+98 c⁄° *
 	gwhìlhou£
 [] = {
 
-142 
+141 
 SDL_Curs‹
  *
 	$¸óã_curs‹_whìlhou£
 ()
 
-144 
+143 
 i
 , 
 row
@@ -217,57 +1395,57 @@ row
 cﬁ
 ;
 
-145 
+144 
 Uöt8
  
 d©a
 [4*32];
 
-146 
+145 
 Uöt8
  
 mask
 [4*32];
 
-147 
+146 
 hŸ_x
 , 
 hŸ_y
 ;
 
-149 
+148 
 i
  = -1;
 
-150 
+149 
 row
 =0;Ñow<32; ++row) {
 
-151 
+150 
 cﬁ
 =0; col<32; ++col) {
 
-152 i‡–
+151 i‡–
 cﬁ
  % 8 ) {
 
-153 
+152 
 d©a
 [
 i
 ] <<= 1;
 
-154 
+153 
 mask
 [
 i
 ] <<= 1;
 
-156 ++
+155 ++
 i
 ;
 
-157 
+156 
 d©a
 [
 i
@@ -275,7 +1453,7 @@ i
 mask
 [i] = 0;
 
-159 
+158 
 whìlhou£
 [4+
 row
@@ -283,25 +1461,25 @@ row
 cﬁ
 ]) {
 
-161 
+160 
 d©a
 [
 i
 ] |= 0x01;
 
-162 
+161 
 mask
 [
 i
 ] |= 0x01;
 
-165 
+164 
 mask
 [
 i
 ] |= 0x01;
 
-172 
+171 
 	`ssˇnf
 (
 whìlhou£
@@ -313,7 +1491,7 @@ hŸ_x
 hŸ_y
 );
 
-173  
+172  
 	`SDL_Cª©eCurs‹
 (
 d©a
@@ -325,17 +1503,17 @@ hŸ_x
 hŸ_y
 );
 
-174 
+173 
 	}
 }
 
-175 
+174 
 SDL_Curs‹
  *
 	$¸óã_curs‹_whìlhou£_å™•¨ít
 ()
 
-177 
+176 
 i
 , 
 row
@@ -343,57 +1521,57 @@ row
 cﬁ
 ;
 
-178 
+177 
 Uöt8
  
 d©a
 [4*32];
 
-179 
+178 
 Uöt8
  
 mask
 [4*32];
 
-180 
+179 
 hŸ_x
 , 
 hŸ_y
 ;
 
-182 
+181 
 i
  = -1;
 
-183 
+182 
 row
 =0;Ñow<32; ++row) {
 
-184 
+183 
 cﬁ
 =0; col<32; ++col) {
 
-185 i‡–
+184 i‡–
 cﬁ
  % 8 ) {
 
-186 
+185 
 d©a
 [
 i
 ] <<= 1;
 
-187 
+186 
 mask
 [
 i
 ] <<= 1;
 
-189 ++
+188 ++
 i
 ;
 
-190 
+189 
 d©a
 [
 i
@@ -401,7 +1579,7 @@ i
 mask
 [i] = 0;
 
-192 
+191 
 whìlhou£
 [4+
 row
@@ -409,19 +1587,19 @@ row
 cﬁ
 ]) {
 
-194 
+193 
 d©a
 [
 i
 ] |= 0x01;
 
-195 
+194 
 mask
 [
 i
 ] |= 0x01;
 
-208 
+207 
 	`ssˇnf
 (
 whìlhou£
@@ -433,7 +1611,7 @@ hŸ_x
 hŸ_y
 );
 
-209  
+208  
 	`SDL_Cª©eCurs‹
 (
 d©a
@@ -445,17 +1623,17 @@ hŸ_x
 hŸ_y
 );
 
-210 
+209 
 	}
 }
 
-211 
+210 
 SDL_Curs‹
  *
 	$¸óã_curs‹_whìlhou£_övîãd
 ()
 
-213 
+212 
 i
 , 
 row
@@ -463,57 +1641,57 @@ row
 cﬁ
 ;
 
-214 
+213 
 Uöt8
  
 d©a
 [4*32];
 
-215 
+214 
 Uöt8
  
 mask
 [4*32];
 
-216 
+215 
 hŸ_x
 , 
 hŸ_y
 ;
 
-218 
+217 
 i
  = -1;
 
-219 
+218 
 row
 =0;Ñow<32; ++row) {
 
-220 
+219 
 cﬁ
 =0; col<32; ++col) {
 
-221 i‡–
+220 i‡–
 cﬁ
  % 8 ) {
 
-222 
+221 
 d©a
 [
 i
 ] <<= 1;
 
-223 
+222 
 mask
 [
 i
 ] <<= 1;
 
-225 ++
+224 ++
 i
 ;
 
-226 
+225 
 d©a
 [
 i
@@ -521,7 +1699,7 @@ i
 mask
 [i] = 0;
 
-228 
+227 
 whìlhou£
 [4+
 row
@@ -529,25 +1707,25 @@ row
 cﬁ
 ]) {
 
-230 
+229 
 d©a
 [
 i
 ] |= 0x01;
 
-231 
+230 
 mask
 [
 i
 ] |= 0x01;
 
-234 
+233 
 d©a
 [
 i
 ] |= 0x01;
 
-241 
+240 
 	`ssˇnf
 (
 whìlhou£
@@ -559,7 +1737,7 @@ hŸ_x
 hŸ_y
 );
 
-242  
+241  
 	`SDL_Cª©eCurs‹
 (
 d©a
@@ -571,17 +1749,17 @@ hŸ_x
 hŸ_y
 );
 
-243 
+242 
 	}
 }
 
-244 
+243 
 SDL_Curs‹
  *
 	$¸óã_curs‹_whìlhou£_bœck_wôh_whôe_löes
 ()
 
-246 
+245 
 i
 , 
 row
@@ -589,57 +1767,57 @@ row
 cﬁ
 ;
 
-247 
+246 
 Uöt8
  
 d©a
 [4*32];
 
-248 
+247 
 Uöt8
  
 mask
 [4*32];
 
-249 
+248 
 hŸ_x
 , 
 hŸ_y
 ;
 
-251 
+250 
 i
  = -1;
 
-252 
+251 
 row
 =0;Ñow<32; ++row) {
 
-253 
+252 
 cﬁ
 =0; col<32; ++col) {
 
-254 i‡–
+253 i‡–
 cﬁ
  % 8 ) {
 
-255 
+254 
 d©a
 [
 i
 ] <<= 1;
 
-256 
+255 
 mask
 [
 i
 ] <<= 1;
 
-258 ++
+257 ++
 i
 ;
 
-259 
+258 
 d©a
 [
 i
@@ -647,7 +1825,7 @@ i
 mask
 [i] = 0;
 
-261 
+260 
 whìlhou£
 [4+
 row
@@ -655,19 +1833,19 @@ row
 cﬁ
 ]) {
 
-263 
+262 
 mask
 [
 i
 ] |= 0x01;
 
-266 
+265 
 d©a
 [
 i
 ] |= 0x01;
 
-273 
+272 
 	`ssˇnf
 (
 whìlhou£
@@ -679,7 +1857,7 @@ hŸ_x
 hŸ_y
 );
 
-274  
+273  
 	`SDL_Cª©eCurs‹
 (
 d©a
@@ -691,7 +1869,7 @@ hŸ_x
 hŸ_y
 );
 
-275 
+274 
 	}
 }
 
@@ -829,77 +2007,95 @@ IMG_DIR_H
 
 	@main.c
 
-1 
-	#_GNU_SOURCE
-
-
-	)
-
-3 
+1 
 	~<SDL.h
 >
 
-4 
+2 
+	~<SDL_image.h
+>
+
+3 
 	~<°dlib.h
 >
 
-5 
+4 
 	~<°rög.h
 >
 
-6 
+5 
 	~<time.h
 >
 
-7 
+6 
 	~<m©h.h
 >
 
-8 
+7 
 	~<as£π.h
 >
 
-9 
+8 
 	~"img_dú.h
 "
 
-10 
+9 
 	~"gamedefs.h
 "
 
-11 
+10 
 	~"ªsour˚s.h
 "
 
-12 
+11 
 	~"curs‹.h
 "
 
-13 
+12 
 	~"utû.h
 "
 
-16 
+13 
+	~"c•rôe.h
+"
+
+14 
+	~"img_dú.h
+"
+
+17 
 	#X_DIST
  10
 
 	)
 
-17 
+18 
 	#Y_DIST
  1
 
 	)
 
-20 
+21 
 	gfuŒs¸ìn
  = 0;
 
-22 
+22 
+CS¥ôeBa£
+ *
+	gcow_bœck_ba£
+;
+
+23 
+CS¥ôe
+ *
+	gcow_bœck
+;
+
+25 
 	gtime_sˇÀ
  = 0;
 
-25 
+28 
 gë¨gs
 (
 ¨gc
@@ -907,23 +2103,27 @@ gë¨gs
 ¨gv
 []);
 
-26 
+29 
 ußge
 (
 ªt
 );
 
-27 
+30 
 £tup
 (
 fuŒs¸ìn
 );
 
-28 
+31 
+£tup_•rôes
+();
+
+32 
 ∂ay_game
 ();
 
-29 
+33 
 h™dÀ_evíts
 (*
 quô
@@ -931,8 +2131,8 @@ quô
 ∑u£
 );
 
-30 
-døw
+34 
+maö_døw
 (
 SDL_Re˘
  *
@@ -941,7 +2141,7 @@ SDL_Re˘
 ∑u£
 );
 
-31 
+35 
 SDL_Re˘
  
 ˇlc_de°
@@ -949,7 +2149,43 @@ SDL_Re˘
 image
  *image);
 
-33 
+37 
+SDL_SurÁ˚
+ * 
+ImageLﬂd
+(*
+fûe
+);
+
+38 
+InôImages
+();
+
+39 
+DøwIMG
+(
+SDL_SurÁ˚
+ *
+img
+, 
+x
+, 
+y
+);
+
+40 
+DøwBG
+();
+
+41 
+DøwS˚√
+(
+CS¥ôe
+ *
+cow_bœck
+);
+
+43 
 	$maö
 (
 ¨gc
@@ -957,7 +2193,7 @@ image
 ¨gv
 [])
 
-35 
+45 
 	`gë¨gs
 (
 ¨gc
@@ -965,31 +2201,31 @@ image
 ¨gv
 );
 
-37 
+47 
 	`§™d
 (
 	`time
 (0));
 
-39 
+49 
 	`£tup
 (
 fuŒs¸ìn
 );
 
-43 
+53 
 	`∂ay_game
 ();
 
-47 
+57 
 	`exô
 (0);
 
-48 
+58 
 	}
 }
 
-50 
+60 
 	$gë¨gs
 (
 ¨gc
@@ -997,17 +2233,17 @@ fuŒs¸ìn
 ¨gv
 [])
 
-52 
+62 
 i
 ;
 
-54 
+64 
 i
  = 1; i < 
 ¨gc
 ; i++) {
 
-55 i‡(
+65 i‡(
 	`°rcmp
 (
 ¨gv
@@ -1015,11 +2251,11 @@ i
 i
 ], "--fullscreen") == 0 || strcmp(argv[i], "-f") == 0) {
 
-56 
+66 
 fuŒs¸ìn
  = 1;
 
-57 } i‡(
+67 } i‡(
 	`°rcmp
 (
 ¨gv
@@ -1027,19 +2263,19 @@ fuŒs¸ìn
 i
 ], "--help") == 0 || strcmp(argv[i], "-h") == 0) {
 
-58 
+68 
 	`¥ötf
 (
 
-60 "Vîsi⁄ " 
+70 "Vîsi⁄ " 
 VERSION
  "\n"
 
-79 
+89 
 	`exô
 (0);
 
-80 } i‡(
+90 } i‡(
 	`°rcmp
 (
 ¨gv
@@ -1047,51 +2283,51 @@ VERSION
 i
 ], "--usage") == 0 || strcmp(argv[i], "-u") == 0)
 
-81 
+91 
 	`ußge
 (0);
 
-83 
+93 
 	`ußge
 (1);
 
-85 
+95 
 	}
 }
 
-87 
+97 
 	$£tup
 (
 fuŒs¸ìn
 )
 
-89 i‡(
+99 i‡(
 	`SDL_Inô
 (
 SDL_INIT_VIDEO
 ) < 0) {
 
-90 
+100 
 	`¥ötf
 ("U«bÀÅÿöôülizêSDL: %s\n", 
 	`SDL_GëEº‹
 ());
 
-91 
+101 
 	`exô
 (1);
 
-94 
+104 
 	`©exô
 (
 SDL_Quô
 );
 
-96 
+106 
 	`£tic⁄
 ();
 
-98 i‡(
+108 i‡(
 	`SDL_SëVideoMode
 (
 SCREEN_WIDTH
@@ -1103,7 +2339,7 @@ SDL_HWSURFACE
 SDL_DOUBLEBUF
  |
 
-99 (
+109 (
 fuŒs¸ìn
  ? 
 SDL_FULLSCREEN
@@ -1111,91 +2347,141 @@ SDL_FULLSCREEN
 NULL
 ) {
 
-100 
+110 
 	`¥ötf
 ("U«bÀÅÿ£àvideÿmode: %s\n", 
 	`SDL_GëEº‹
 ());
 
-101 
+111 
 	`exô
 (1);
 
-104 
+114 
 s¸ìn
  = 
 	`SDL_GëVideoSurÁ˚
 ();
 
-106 
+116 
 	`SDL_WM_SëC≠ti⁄
 ("jody", "jody");
 
-109 
+119 
 curs‹_¨row
  = 
 	`¸óã_curs‹_¨row
 ();
 
-110 
+120 
 curs‹_whìlhou£
  = 
 	`¸óã_curs‹_whìlhou£
 ();
 
-111 
+121 
 curs‹_whìlhou£_å™•¨ít
  = 
 	`¸óã_curs‹_whìlhou£_å™•¨ít
 ();
 
-112 
+122 
 curs‹_whìlhou£_övîãd
  = 
 	`¸óã_curs‹_whìlhou£_övîãd
 ();
 
-113 
+123 
 curs‹_whìlhou£_bœck_wôh_whôe_löes
  = 
 	`¸óã_curs‹_whìlhou£_bœck_wôh_whôe_löes
 ();
 
-115 
+125 
 	`£tup_img
 ();
 
-116 
+127 
+	`£tup_•rôes
+();
+
+129 
 	}
 }
 
-118 
+131 
+	$£tup_•rôes
+()
+
+133 
+cow_bœck_ba£
+ = 
+	`ba£_öô
+(
+IMG_DIR
+ "cow_black");
+
+134 
+cow_bœck
+ = 
+	`öô
+(
+cow_bœck_ba£
+, 
+s¸ìn
+);
+
+135 
+	`£t
+(
+cow_bœck
+, 150,300);
+
+136 
+	`£tS≥ed
+(
+cow_bœck
+, 1);
+
+138 
+	`InôImages
+();
+
+139 
+	`DøwBG
+();
+
+140 
+	}
+}
+
+142 
 	$∂ay_game
 ()
 
-122 
+146 
 ¥ev_ticks
  = 0, 
 cur_ticks
  = 0;
 
-123 
+147 
 °¨t_time
 , 
 íd_time
 ;
 
-124 
+148 
 ‰ames_døwn
  = 0;
 
-125 
+149 
 ¥ev_ticks
  = 
 	`SDL_GëTicks
 ();
 
-126 
+150 
 °¨t_time
  = 
 	`time
@@ -1203,61 +2489,61 @@ cur_ticks
 NULL
 );
 
-130 
+154 
 SDL_Re˘
  
 §c
 ;
 
-131 
+155 
 §c
 .
 w
  = 126;
 
-132 
+156 
 §c
 .
 h
  = 95;
 
-133 
+157 
 §c
 .
 x
  = 0;
 
-134 
+158 
 §c
 .
 y
  = 0;
 
-136 
+160 
 quô
  = 0;
 
-137 
+161 
 ∑u£
  = 0;
 
-138 
+162 
 quô
  == 0) {
 
-143 
+167 
 ¥ev_ticks
  = 
 cur_ticks
 ;
 
-144 
+168 
 cur_ticks
  = 
 	`SDL_GëTicks
 ();
 
-145 
+169 
 time_sˇÀ
  = ()(
 cur_ticks
@@ -1265,7 +2551,7 @@ cur_ticks
 ¥ev_ticks
 )/50.0;
 
-147 
+171 
 	`h™dÀ_evíts
 (&
 quô
@@ -1273,25 +2559,17 @@ quô
 ∑u£
 );
 
-152 
-	`døw
-(&
-§c
-, &
-∑u£
-);
-
-155 
-	`SDL_Flù
+178 
+	`DøwS˚√
 (
-s¸ìn
+cow_bœck
 );
 
-157 
+183 
 ‰ames_døwn
 ++;
 
-161 
+187 
 íd_time
  = 
 	`time
@@ -1299,27 +2577,27 @@ s¸ìn
 NULL
 );
 
-162 i‡(
+188 i‡(
 °¨t_time
  =
 íd_time
 )Énd_time++;
 
-165 
+191 
 	`¥ötf
 ("Drew %i frames in %i seconds, forá framerate of %.2f fps.\n",
 
-166 
+192 
 ‰ames_døwn
 ,
 
-167 
+193 
 íd_time
 -
 °¨t_time
 ,
 
-168 ()
+194 ()
 ‰ames_døwn
 /()(
 íd_time
@@ -1327,23 +2605,23 @@ NULL
 °¨t_time
 ));
 
-170 
+196 
 	}
 }
 
-172 
+198 
 	$ußge
 (
 ªt
 )
 
-174 
+200 
 FILE
  *
 fs
 ;
 
-176 
+202 
 fs
  = (
 ªt
@@ -1353,23 +2631,23 @@ fs
 °dout
 ;
 
-177 
+203 
 	`Ârötf
 (
 fs
 ,
 
-181 
+207 
 	`exô
 (
 ªt
 );
 
-182 
+208 
 	}
 }
 
-184 
+210 
 	$h™dÀ_evíts
 (*
 quô
@@ -1377,19 +2655,19 @@ quô
 ∑u£
 )
 
-186 
+212 
 SDL_Evít
  
 evít
 ;
 
-187 
+213 
 	`SDL_PﬁlEvít
 (&
 evít
 ) > 0) {
 
-188 i‡(
+214 i‡(
 evít
 .
 ty≥
@@ -1397,11 +2675,11 @@ ty≥
 SDL_QUIT
 ) {
 
-189 *
+215 *
 quô
  = 1;
 
-190 } i‡(
+216 } i‡(
 evít
 .
 ty≥
@@ -1409,7 +2687,7 @@ ty≥
 SDL_KEYDOWN
 ) {
 
-191 
+217 
 evít
 .
 key
@@ -1419,96 +2697,96 @@ keysym
 sym
 ) {
 
-192 
+218 
 SDLK_ESCAPE
 :
 
-193 
+219 
 SDLK_q
 :
 
-194 *
+220 *
 quô
  = 1;
 
-196 
+222 
 SDLK_1
 :
 
-197 
+223 
 	`SDL_SëCurs‹
 (
 curs‹_¨row
 );
 
-199 
+225 
 SDLK_2
 :
 
-200 
+226 
 	`SDL_SëCurs‹
 (
 curs‹_whìlhou£
 );
 
-202 
+228 
 SDLK_3
 :
 
-203 
+229 
 	`SDL_SëCurs‹
 (
 curs‹_whìlhou£_å™•¨ít
 );
 
-205 
+231 
 SDLK_4
 :
 
-206 
+232 
 	`SDL_SëCurs‹
 (
 curs‹_whìlhou£_övîãd
 );
 
-208 
+234 
 SDLK_5
 :
 
-209 
+235 
 	`SDL_SëCurs‹
 (
 curs‹_whìlhou£_bœck_wôh_whôe_löes
 );
 
-211 
+237 
 SDLK_f
 :
 
-212 
+238 
 	`SDL_WM_ToggÀFuŒS¸ìn
 (
 s¸ìn
 );
 
-214 
+240 
 SDLK_p
 :
 
-215 
+241 
 SDLK_SPACE
 :
 
-216 *
+242 *
 ∑u£
  = !*pause;
 
-223 
+249 
 	}
 }
 
-225 
-	$døw
+251 
+	$maö_døw
 (
 SDL_Re˘
  *
@@ -1517,25 +2795,25 @@ SDL_Re˘
 ∑u£
 )
 
-227 
+253 
 SDL_Re˘
  
 de°
 ;
 
-230 
+256 
 de°
 .
 x
  = 0;
 
-231 
+257 
 de°
 .
 y
  = 0;
 
-232 
+258 
 de°
 .
 w
@@ -1547,7 +2825,7 @@ IMG_BACKGROUND
 surÁ˚
 )->w;
 
-233 
+259 
 de°
 .
 h
@@ -1559,7 +2837,7 @@ IMG_BACKGROUND
 surÁ˚
 )->h;
 
-234 
+260 
 	`SDL_BlôSurÁ˚
 (
 images
@@ -1575,17 +2853,17 @@ s¸ìn
 de°
 );
 
-236 
+262 
 i
 ;
 
-237 
+263 
 i
  = 1; i < 
 NUM_IMAGES
 ; i++) {
 
-255 
+281 
 image
  *imagê&
 images
@@ -1593,7 +2871,7 @@ images
 i
 ];
 
-256 
+282 
 de°
 .
 w
@@ -1603,7 +2881,7 @@ image
 surÁ˚
 ->w;
 
-257 
+283 
 de°
 .
 h
@@ -1613,11 +2891,11 @@ image
 surÁ˚
 ->h;
 
-258 i‡(*
+284 i‡(*
 ∑u£
 ) {
 
-259 
+285 
 de°
 .
 x
@@ -1625,7 +2903,7 @@ x
 image
 ->x;
 
-260 
+286 
 de°
 .
 y
@@ -1633,7 +2911,7 @@ y
 image
 ->y;
 
-262 
+288 
 de°
  = 
 	`ˇlc_de°
@@ -1641,7 +2919,7 @@ de°
 image
 );
 
-264 
+290 
 	`SDL_BlôSurÁ˚
 (
 image
@@ -1655,11 +2933,11 @@ s¸ìn
 de°
 );
 
-266 
+292 
 	}
 }
 
-268 
+294 
 SDL_Re˘
  
 	$ˇlc_de°
@@ -1667,13 +2945,13 @@ SDL_Re˘
 image
  *image)
 
-270 
+296 
 SDL_Re˘
  
 de°
 ;
 
-273 
+299 
 image
 ->
 x
@@ -1683,7 +2961,7 @@ X_DIST
 time_sˇÀ
 ;
 
-274 i‡(
+300 i‡(
 image
 ->
 x
@@ -1691,13 +2969,13 @@ x
 SCREEN_WIDTH
 )
 
-275 
+301 
 image
 ->
 x
  = 0;
 
-276 
+302 
 de°
 .
 x
@@ -1705,33 +2983,33 @@ x
 image
 ->x;
 
-282 
+308 
 odd
  = 
 	`øndom
 () % 2;
 
-283 
+309 
 di°
 ;
 
-284 i‡(
+310 i‡(
 odd
 )
 
-285 
+311 
 di°
  = 
 Y_DIST
 ;
 
-287 
+313 
 di°
  = - 
 Y_DIST
 ;
 
-289 
+315 
 image
 ->
 y
@@ -1741,7 +3019,7 @@ di°
 time_sˇÀ
 ;
 
-290 i‡(
+316 i‡(
 image
 ->
 y
@@ -1749,7 +3027,7 @@ y
 SCREEN_HEIGHT
  || image->y < 0)
 
-291 
+317 
 image
 ->
 y
@@ -1757,7 +3035,7 @@ y
 SCREEN_HEIGHT
  / 2;
 
-293 
+319 
 de°
 .
 y
@@ -1765,61 +3043,237 @@ y
 image
 ->y;
 
-295  
+321  
 de°
 ;
 
-296 
+322 
+	}
+}
+
+324 
+SDL_SurÁ˚
+ * 
+	$ImageLﬂd
+(*
+fûe
+)
+
+326 
+SDL_SurÁ˚
+ *
+ãmp1
+, *
+ãmp2
+;
+
+327 
+ãmp1
+ = 
+	`IMG_Lﬂd
+(
+fûe
+);
+
+328 i‡(
+ãmp1
+ =
+NULL
+) {
+
+329 
+	`Ârötf
+(
+°dîr
+,
+
+333 "%s\n\n", 
+fûe
+, 
+	`SDL_GëEº‹
+());
+
+334 
+	`exô
+(1);
+
+336 
+ãmp2
+ = 
+	`SDL_Di•œyF‹m©
+(
+ãmp1
+);
+
+337 
+	`SDL_FªeSurÁ˚
+(
+ãmp1
+);
+
+338  
+ãmp2
+;
+
+339 
+	}
+}
+
+341 
+	$InôImages
+()
+
+343 
+back
+ = 
+	`ImageLﬂd
+(
+IMG_DIR
+ "background.png");
+
+345 
+	}
+}
+
+347 
+	$DøwIMG
+(
+SDL_SurÁ˚
+ *
+img
+, 
+x
+, 
+y
+)
+
+349 
+SDL_Re˘
+ 
+de°
+;
+
+350 
+de°
+.
+x
+ = x;
+
+351 
+de°
+.
+y
+ = y;
+
+352 
+	`SDL_BlôSurÁ˚
+(
+img
+, 
+NULL
+, 
+s¸ìn
+, &
+de°
+);
+
+353 
+	}
+}
+
+355 
+	$DøwBG
+()
+
+357 
+	`DøwIMG
+(
+back
+, 0, 0);
+
+358 
+	}
+}
+
+360 
+	$DøwS˚√
+(
+CS¥ôe
+ *
+cow_bœck
+)
+
+362 
+	`˛órBG
+(
+cow_bœck
+);
+
+363 
+	`upd©eBG
+(
+cow_bœck
+);
+
+364 
+	`døw
+(
+cow_bœck
+);
+
+365 
+	`SDL_Flù
+(
+s¸ìn
+);
+
+366 
 	}
 }
 
 	@resources.c
 
-1 
-	#_GNU_SOURCE
-
-
-	)
-
-2 
+1 
 	~<°dio.h
 >
 
-3 
+2 
 	~<°dlib.h
 >
 
-4 
+3 
 	~<°rög.h
 >
 
-5 
+4 
 	~<SDL_image.h
 >
 
-6 
+5 
 	~<time.h
 >
 
-7 
+6 
 	~"gamedefs.h
 "
 
-8 
+7 
 	~"ªsour˚s.h
 "
 
-9 
+8 
 	~"img_dú.h
 "
 
-11 
+10 
 SDL_SurÁ˚
  *
 	gs¸ìn
+, *
+	gback
 ;
 
-13 
+12 
 image
  
 	gimages
@@ -1827,13 +3281,13 @@ image
 NUM_IMAGES
 ];
 
-15 
+14 
 lﬂd_img
 (
 i
 );
 
-16 
+15 
 £t_°¨t_pos
 (
 i
@@ -1843,109 +3297,109 @@ x_sˇÀ
 y_sˇÀ
 );
 
-18 c⁄° *
+17 c⁄° *
 	gimage_«mes
  [
 NUM_IMAGES
 ] = {
 
-19 
+18 
 IMG_DIR
  "background.png",
 
-20 
+19 
 IMG_DIR
  "cloud.png",
 
-21 
+20 
 IMG_DIR
  "cow_black_tile.png",
 
-22 
+21 
 IMG_DIR
  "cow_black_left.png",
 
-23 
+22 
 IMG_DIR
  "cow_black.png",
 
-24 
+23 
 IMG_DIR
  "cow_brown_left.png",
 
-25 
+24 
 IMG_DIR
  "cow_brown.png",
 
-26 
+25 
 IMG_DIR
  "cow_orange_left.png",
 
-27 
+26 
 IMG_DIR
  "cow_orange.png",
 
-28 
+27 
 IMG_DIR
  "cow_red_left.png",
 
-29 
+28 
 IMG_DIR
  "cow_red.png",
 
-30 
+29 
 IMG_DIR
  "cow_white_left.png",
 
-31 
+30 
 IMG_DIR
  "cow_white.png",
 
-32 
+31 
 IMG_DIR
  "cow_yellow_left.png",
 
-33 
+32 
 IMG_DIR
  "cow_yellow.png",
 
-34 
+33 
 IMG_DIR
  "cow_yellow_with_red_outline_left.png",
 
-35 
+34 
 IMG_DIR
  "cow_yellow_with_red_outline.png",
 
-36 
+35 
 IMG_DIR
  "kangaroo_black_left.png",
 
-37 
+36 
 IMG_DIR
  "kangaroo_black.png",
 
-38 
+37 
 IMG_DIR
  "kangaroo_grey_left.png",
 
-39 
+38 
 IMG_DIR
  "kangaroo_grey.png",
 
-40 
+39 
 IMG_DIR
  "kangaroo_red_left.png",
 
-41 
+40 
 IMG_DIR
  "kangaroo_red.png"
 
-44 
+43 
 	$£tic⁄
 ()
 
-46 
+45 
 SDL_SurÁ˚
  *
 ic⁄
@@ -1955,29 +3409,29 @@ ic⁄
 IMG_DIR
  "icon.png");
 
-47 i‡(
+46 i‡(
 ic⁄
  =
 NULL
 ) {
 
-48 
+47 
 	`Ârötf
 (
 °dîr
 ,
 
-51 "%s\n\n", 
+50 "%s\n\n", 
 IMG_DIR
  "ic⁄.≤g", 
 	`SDL_GëEº‹
 ());
 
-52 
+51 
 	`exô
 (1);
 
-55 
+54 
 maskÀn
  = (((
 ic⁄
@@ -1987,7 +3441,7 @@ w
 h
 );
 
-56 
+55 
 Uöt8
  *
 mask
@@ -1997,7 +3451,7 @@ mask
 maskÀn
  * (Uint8));
 
-57 
+56 
 	`mem£t
 (
 mask
@@ -2005,7 +3459,7 @@ mask
 maskÀn
 );
 
-59 
+58 
 	`SDL_WM_SëIc⁄
 (
 ic⁄
@@ -2013,33 +3467,33 @@ ic⁄
 mask
 );
 
-61 
+60 
 	`‰ì
 (
 mask
 );
 
-62 
+61 
 	`SDL_FªeSurÁ˚
 (
 ic⁄
 );
 
-63 
+62 
 	}
 }
 
-65 
+64 
 	$£tup_img
 ()
 
-67 
+66 
 	`§™d
  (
 	`time
 (0));
 
-68 
+67 
 x_sˇÀ
  = 
 RAND_MAX
@@ -2047,7 +3501,7 @@ RAND_MAX
 SCREEN_WIDTH
 ;
 
-69 
+68 
 y_sˇÀ
  = 
 RAND_MAX
@@ -2055,23 +3509,23 @@ RAND_MAX
 SCREEN_HEIGHT
 ;
 
-71 
+70 
 i
 ;
 
-72 
+71 
 i
  = 0; i < 
 NUM_IMAGES
 ; i++) {
 
-73 
+72 
 	`lﬂd_img
 (
 i
 );
 
-74 
+73 
 	`£t_°¨t_pos
 (
 i
@@ -2081,17 +3535,17 @@ x_sˇÀ
 y_sˇÀ
 );
 
-76 
+75 
 	}
 }
 
-78 
+77 
 	$lﬂd_img
 (
 i
 )
 
-80 
+79 
 SDL_SurÁ˚
  *
 img
@@ -2103,19 +3557,19 @@ image_«mes
 i
 ]);
 
-81 i‡(
+80 i‡(
 img
  =
 NULL
 ) {
 
-82 
+81 
 	`Ârötf
 (
 °dîr
 ,
 
-86 "%s\n\n", 
+85 "%s\n\n", 
 image_«mes
 [
 i
@@ -2123,11 +3577,11 @@ i
 	`SDL_GëEº‹
 ());
 
-87 
+86 
 	`exô
 (1);
 
-89 
+88 
 images
 [
 i
@@ -2137,11 +3591,11 @@ surÁ˚
 img
 ;
 
-90 
+89 
 	}
 }
 
-92 
+91 
 	$£t_°¨t_pos
 (
 i
@@ -2151,19 +3605,19 @@ x_sˇÀ
 y_sˇÀ
 )
 
-94 
+93 
 x
  = 
 	`øndom
 ();
 
-96 
+95 
 x
  /
 x_sˇÀ
 ;
 
-97 
+96 
 images
 [
 i
@@ -2171,19 +3625,19 @@ i
 x
  = x;
 
-98 
+97 
 y
  = 
 	`øndom
 ();
 
-100 
+99 
 y
  /
 y_sˇÀ
 ;
 
-102 
+101 
 images
 [
 i
@@ -2191,7 +3645,7 @@ i
 y
  = y;
 
-103 
+102 
 	}
 }
 
@@ -2223,6 +3677,8 @@ RESOURCES_H
 SDL_SurÁ˚
  *
 s¸ìn
+, *
+back
 ;
 
 11 
@@ -56685,15 +58141,7 @@ __GNUC__
 	~<löux/compûî-gcc3.h
 >
 
-56 #ñi‡
-__GNUC__
- == 2
-
-57 
-	~<löux/compûî-gcc2.h
->
-
-59 #îr‹ 
+57 #îr‹ 
 S‹ry
 , 
 your
@@ -56711,15 +58159,15 @@ nŸ
 ªcognized
 .
 
-65 #ifde‡
+63 #ifde‡
 __INTEL_COMPILER
 
 
-66 
+64 
 	~<löux/compûî-öãl.h
 >
 
-75 
+73 
 	#likñy
 (
 x
@@ -56729,7 +58177,7 @@ x
 
 	)
 
-76 
+74 
 	#u∆ikñy
 (
 x
@@ -56739,11 +58187,11 @@ x
 
 	)
 
-79 #i‚de‡
+77 #i‚de‡
 b¨rõr
 
 
-80 
+78 
 	#b¨rõr
 (Ë
 	`__mem‹y_b¨rõr
@@ -56751,11 +58199,11 @@ b¨rõr
 
 	)
 
-83 #i‚de‡
+81 #i‚de‡
 RELOC_HIDE
 
 
-84 
+82 
 	#RELOC_HIDE
 (
 ±r
@@ -56763,17 +58211,17 @@ RELOC_HIDE
 off
 ) \
 
-85 ({ 
+83 ({ 
 __±r
 ; \
 
-86 
+84 
 __±r
  = (Ë(
 ±r
 ); \
 
-87 (
+85 (
 	`ty≥of
 (
 ±r
@@ -56785,21 +58233,21 @@ off
 
 	)
 
-100 #i‚de‡
+98 #i‚de‡
 __dïªˇãd
 
 
-101 
+99 
 	#__dïªˇãd
 
 
 	)
 
-104 #ifde‡
+102 #ifde‡
 MODULE
 
 
-105 
+103 
 	#__dïªˇãd_f‹_moduÀs
  
 __dïªˇãd
@@ -56807,67 +58255,67 @@ __dïªˇãd
 
 	)
 
-107 
+105 
 	#__dïªˇãd_f‹_moduÀs
 
 
 	)
 
-110 #i‚de‡
+108 #i‚de‡
 __mu°_check
 
 
-111 
+109 
 	#__mu°_check
 
 
 	)
 
-125 #i‚de‡
+123 #i‚de‡
 __©åibuã_u£d__
 
 
-126 
+124 
 	#__©åibuã_u£d__
 
 
 	)
 
-139 #i‚de‡
+137 #i‚de‡
 __©åibuã_puª__
 
 
-140 
+138 
 	#__©åibuã_puª__
 
 
 	)
 
-157 #i‚de‡
+155 #i‚de‡
 __©åibuã_c⁄°__
 
 
-158 
+156 
 	#__©åibuã_c⁄°__
 
 
 	)
 
-161 #i‚de‡
+159 #i‚de‡
 noölöe
 
 
-162 
+160 
 	#noölöe
 
 
 	)
 
-165 #i‚de‡
+163 #i‚de‡
 __Æways_ölöe
 
 
-166 
+164 
 	#__Æways_ölöe
  
 ölöe
@@ -57033,9 +58481,21 @@ u64
 
 	)
 
-66 
-	tkmem_buf˘l_t
+66 #ifde‡
+CONFIG_LSF
+
+
+67 
+u64
+ 
+	tblk˙t_t
 ;
+
+68 
+	#HAVE_BLKCNT_T
+
+
+	)
 
 	@/usr/include/asm-x86_64/types.h
 
@@ -57177,72 +58637,6 @@ u64
 
 	)
 
-56 
-	tkmem_buf˘l_t
-;
-
-	@/usr/include/linux/compiler-gcc2.h
-
-9 
-	~<löux/compûî-gcc.h
->
-
-11 #i‡
-__GNUC_MINOR__
- < 96
-
-12 
-	#__buûtö_ex≥˘
-(
-x
-, 
-ex≥˘ed_vÆue
-Ë(x)
-
-	)
-
-15 
-	#__©åibuã_u£d__
- 
-	`__©åibuã__
-((
-__unu£d__
-))
-
-	)
-
-21 #i‡
-__GNUC_MINOR__
- >= 96
-
-22 
-	#__©åibuã_puª__
- 
-	`__©åibuã__
-((
-puª
-))
-
-	)
-
-23 
-	#__©åibuã_c⁄°__
- 
-	`__©åibuã__
-((
-__c⁄°__
-))
-
-	)
-
-29 
-	#va_c›y
- 
-__va_c›y
-
-
-	)
-
 	@/usr/include/linux/compiler-gcc3.h
 
 4 
@@ -57251,63 +58645,9 @@ __va_c›y
 
 6 #i‡
 __GNUC_MINOR__
- >= 1
-
-7 
-	#ölöe
- 
-ölöe
- 
-	`__©åibuã__
-((
-Æways_ölöe
-))
-
-	)
-
-8 
-	#__ölöe__
- 
-__ölöe__
- 
-	`__©åibuã__
-((
-Æways_ölöe
-))
-
-	)
-
-9 
-	#__ölöe
- 
-__ölöe
- 
-	`__©åibuã__
-((
-Æways_ölöe
-))
-
-	)
-
-12 #i‡
-__GNUC_MINOR__
- > 0
-
-13 
-	#__dïªˇãd
- 
-	`__©åibuã__
-((
-dïªˇãd
-))
-
-	)
-
-16 #i‡
-__GNUC_MINOR__
  >= 3
 
-17 
+7 
 	#__©åibuã_u£d__
  
 	`__©åibuã__
@@ -57317,7 +58657,7 @@ __u£d__
 
 	)
 
-19 
+9 
 	#__©åibuã_u£d__
  
 	`__©åibuã__
@@ -57327,50 +58667,28 @@ __unu£d__
 
 	)
 
-22 
-	#__©åibuã_puª__
- 
-	`__©åibuã__
-((
-puª
-))
-
-	)
-
-23 
-	#__©åibuã_c⁄°__
- 
-	`__©åibuã__
-((
-__c⁄°__
-))
-
-	)
-
-25 #i‡
-__GNUC_MINOR__
- >= 1
-
-26 
-	#noölöe
- 
-	`__©åibuã__
-((
-noölöe
-))
-
-	)
-
-29 #i‡
+12 #i‡
 __GNUC_MINOR__
  >= 4
 
-30 
+13 
 	#__mu°_check
  
 	`__©åibuã__
 ((
 w¨n_unu£d_ªsu…
+))
+
+	)
+
+16 
+	#__Æways_ölöe
+ 
+ölöe
+ 
+	`__©åibuã__
+((
+Æways_ölöe
 ))
 
 	)
@@ -57381,7 +58699,23 @@ w¨n_unu£d_ªsu…
 	~<löux/compûî-gcc.h
 >
 
-6 
+6 #ifde‡
+CONFIG_FORCED_INLINING
+
+
+7 #unde‡
+ölöe
+
+
+8 #unde‡
+__ölöe__
+
+
+9 #unde‡
+__ölöe
+
+
+10 
 	#ölöe
  
 ölöe
@@ -57393,7 +58727,7 @@ w¨n_unu£d_ªsu…
 
 	)
 
-7 
+11 
 	#__ölöe__
  
 __ölöe__
@@ -57405,7 +58739,7 @@ __ölöe__
 
 	)
 
-8 
+12 
 	#__ölöe
  
 __ölöe
@@ -57417,17 +58751,7 @@ __ölöe
 
 	)
 
-9 
-	#__dïªˇãd
- 
-	`__©åibuã__
-((
-dïªˇãd
-))
-
-	)
-
-10 
+15 
 	#__©åibuã_u£d__
  
 	`__©åibuã__
@@ -57437,37 +58761,7 @@ __u£d__
 
 	)
 
-11 
-	#__©åibuã_puª__
- 
-	`__©åibuã__
-((
-puª
-))
-
-	)
-
-12 
-	#__©åibuã_c⁄°__
- 
-	`__©åibuã__
-((
-__c⁄°__
-))
-
-	)
-
-13 
-	#noölöe
- 
-	`__©åibuã__
-((
-noölöe
-))
-
-	)
-
-14 
+16 
 	#__mu°_check
  
 	`__©åibuã__
@@ -57477,7 +58771,7 @@ w¨n_unu£d_ªsu…
 
 	)
 
-15 
+17 
 	#__compûî_off£tof
 (
 a
@@ -57486,6 +58780,18 @@ b
 Ë
 	`__buûtö_off£tof
 ◊,b)
+
+	)
+
+18 
+	#__Æways_ölöe
+ 
+ölöe
+ 
+	`__©åibuã__
+((
+Æways_ölöe
+))
 
 	)
 
@@ -57557,7 +58863,7 @@ __asm__
 
 	)
 
-14 
+20 
 	#RELOC_HIDE
 (
 ±r
@@ -57565,19 +58871,19 @@ __asm__
 off
 ) \
 
-15 ({ 
+21 ({ 
 __±r
 ; \
 
-16 
+22 
 	`__asm__
- ("" : "=g"(
+ ("" : "Ù"(
 __±r
 Ë: "0"(
 ±r
 )); \
 
-17 (
+23 (
 	`ty≥of
 (
 ±r
@@ -57586,6 +58892,82 @@ __±r
  + (
 off
 )); })
+
+	)
+
+26 
+	#ölöe
+ 
+ölöe
+ 
+	`__©åibuã__
+((
+Æways_ölöe
+))
+
+	)
+
+27 
+	#__ölöe__
+ 
+__ölöe__
+ 
+	`__©åibuã__
+((
+Æways_ölöe
+))
+
+	)
+
+28 
+	#__ölöe
+ 
+__ölöe
+ 
+	`__©åibuã__
+((
+Æways_ölöe
+))
+
+	)
+
+29 
+	#__dïªˇãd
+ 
+	`__©åibuã__
+((
+dïªˇãd
+))
+
+	)
+
+30 
+	#noölöe
+ 
+	`__©åibuã__
+((
+noölöe
+))
+
+	)
+
+31 
+	#__©åibuã_puª__
+ 
+	`__©åibuã__
+((
+puª
+))
+
+	)
+
+32 
+	#__©åibuã_c⁄°__
+ 
+	`__©åibuã__
+((
+__c⁄°__
+))
 
 	)
 
@@ -57601,7 +58983,7 @@ _LINUX_CONFIG_H
 
 	)
 
-4 
+6 
 	~<löux/autoc⁄f.h
 >
 
@@ -65660,8 +67042,10 @@ CONFIG_LIBCRC32C
 .
 1
 /usr/include
-88
-2248
+89
+2233
+csprite.c
+csprite.h
 cursor.c
 cursor.h
 gamedefs.h
@@ -65741,7 +67125,6 @@ util.h
 /usr/include/linux/compiler.h
 /usr/include/asm-i486/types.h
 /usr/include/asm-x86_64/types.h
-/usr/include/linux/compiler-gcc2.h
 /usr/include/linux/compiler-gcc3.h
 /usr/include/linux/compiler-gcc4.h
 /usr/include/linux/compiler-intel.h

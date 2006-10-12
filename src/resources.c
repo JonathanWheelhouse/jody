@@ -5,9 +5,8 @@
 #include <time.h>
 #include "gamedefs.h"
 #include "resources.h"
-#include "img_dir.h"
 
-SDL_Surface *screen;
+SDL_Surface *screen, *back;
 
 struct image images[NUM_IMAGES];
 
@@ -63,15 +62,15 @@ void seticon(void)
 
 void setup_img(void)
 {
-	 srand (time(0));
-	 unsigned int x_scale = RAND_MAX / SCREEN_WIDTH;
-	 unsigned int y_scale = RAND_MAX / SCREEN_HEIGHT;
+	srand (time(0));
+	unsigned int x_scale = RAND_MAX / SCREEN_WIDTH;
+	unsigned int y_scale = RAND_MAX / SCREEN_HEIGHT;
 
-	 int i;
-	 for (i = 0; i < NUM_IMAGES; i++) {
-		  load_img(i);
-		  set_start_pos(i, x_scale, y_scale);
-	 }
+	int i;
+	for (i = 0; i < NUM_IMAGES; i++) {
+		load_img(i);
+		set_start_pos(i, x_scale, y_scale);
+	}
 }
 
 static void load_img(int i)

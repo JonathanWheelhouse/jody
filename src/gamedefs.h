@@ -1,7 +1,6 @@
 #ifndef GAMEDEFS_H
 #define GAMEDEFS_H
 
-#include "img_dir.h"
 
 /* Dimensions of the game window. */
 #define SCREEN_WIDTH	640
