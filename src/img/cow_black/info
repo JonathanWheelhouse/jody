@@ -1,0 +1,9 @@
+FILES: 3
+# SYNTAX:
+# filename of the frame,
+# milliseconds to pause afterwards,
+# the RGB of the transparent part,
+# if R < 0 then SDL_SetColorKey not done (ie no transparency)
+1.png       50    -1 255 0
+2.png       50    -1 255 0
+3.png       50    -1 255 0

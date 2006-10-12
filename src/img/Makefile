@@ -69,13 +69,12 @@ CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPPFLAGS = 
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"jody\" -DPACKAGE_TARNAME=\"jody\" -DPACKAGE_VERSION=\"0.1.0\" -DPACKAGE_STRING=\"jody\ 0.1.0\" -DPACKAGE_BUGREPORT=\"jonathan\ dot\ wheelhouse\ at\ gmail.com\" -DPACKAGE=\"jody\" -DVERSION=\"0.1.0\"
+DEFS = -DPACKAGE_NAME=\"jody\" -DPACKAGE_TARNAME=\"jody\" -DPACKAGE_VERSION=\"0.1.0\" -DPACKAGE_STRING=\"jody\ 0.1.0\" -DPACKAGE_BUGREPORT=\"jonathan\ dot\ wheelhouse\ at\ gmail.com\" -DPACKAGE=\"jody\" -DVERSION=\"0.1.0\" -DIMG_DIR=\$$\{pkgdatadir\}/img/
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
 EXEEXT = 
-IMG_DIR = ${datadir}/jody/img/
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
