@@ -39,94 +39,94 @@ PATH: /usr/games
 ## Core tests. ##
 ## ----------- ##
 
-configure:1725: checking for a BSD-compatible install
-configure:1781: result: /usr/bin/install -c
-configure:1792: checking whether build environment is sane
-configure:1835: result: yes
-configure:1900: checking for gawk
-configure:1916: found /usr/bin/gawk
-configure:1927: result: gawk
-configure:1938: checking whether make sets $(MAKE)
-configure:1959: result: yes
-configure:2192: checking for gcc
-configure:2208: found /usr/bin/gcc
-configure:2219: result: gcc
-configure:2457: checking for C compiler version
-configure:2464: gcc --version >&5
+configure:1724: checking for a BSD-compatible install
+configure:1780: result: /usr/bin/install -c
+configure:1791: checking whether build environment is sane
+configure:1834: result: yes
+configure:1899: checking for gawk
+configure:1915: found /usr/bin/gawk
+configure:1926: result: gawk
+configure:1937: checking whether make sets $(MAKE)
+configure:1958: result: yes
+configure:2191: checking for gcc
+configure:2207: found /usr/bin/gcc
+configure:2218: result: gcc
+configure:2456: checking for C compiler version
+configure:2463: gcc --version >&5
 gcc (GCC) 4.1.2 20061007 (prerelease) (Debian 4.1.1-16)
 Copyright (C) 2006 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-configure:2467: $? = 0
-configure:2474: gcc -v >&5
+configure:2466: $? = 0
+configure:2473: gcc -v >&5
 Using built-in specs.
 Target: i486-linux-gnu
 Configured with: ../src/configure -v --enable-languages=c,c++,fortran,objc,obj-c++,treelang --prefix=/usr --enable-shared --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --enable-nls --program-suffix=-4.1 --enable-__cxa_atexit --enable-clocale=gnu --enable-libstdcxx-debug --enable-mpfr --with-tune=i686 --enable-checking=release i486-linux-gnu
 Thread model: posix
 gcc version 4.1.2 20061007 (prerelease) (Debian 4.1.1-16)
-configure:2477: $? = 0
-configure:2484: gcc -V >&5
+configure:2476: $? = 0
+configure:2483: gcc -V >&5
 gcc: '-V' option must have argument
-configure:2487: $? = 1
-configure:2510: checking for C compiler default output file name
-configure:2537: gcc    conftest.c  >&5
-configure:2540: $? = 0
-configure:2578: result: a.out
-configure:2595: checking whether the C compiler works
-configure:2605: ./a.out
-configure:2608: $? = 0
-configure:2625: result: yes
-configure:2632: checking whether we are cross compiling
-configure:2634: result: no
-configure:2637: checking for suffix of executables
-configure:2644: gcc -o conftest    conftest.c  >&5
-configure:2647: $? = 0
-configure:2671: result: 
-configure:2677: checking for suffix of object files
-configure:2703: gcc -c   conftest.c >&5
-configure:2706: $? = 0
-configure:2729: result: o
-configure:2733: checking whether we are using the GNU C compiler
-configure:2762: gcc -c   conftest.c >&5
-configure:2768: $? = 0
-configure:2775: test -z "$ac_c_werror_flag" || test ! -s conftest.err
-configure:2778: $? = 0
-configure:2785: test -s conftest.o
-configure:2788: $? = 0
-configure:2802: result: yes
-configure:2807: checking whether gcc accepts -g
-configure:2837: gcc -c -g  conftest.c >&5
-configure:2843: $? = 0
-configure:2850: test -z "$ac_c_werror_flag" || test ! -s conftest.err
-configure:2853: $? = 0
-configure:2860: test -s conftest.o
-configure:2863: $? = 0
-configure:2993: result: yes
-configure:3010: checking for gcc option to accept ISO C89
-configure:3084: gcc  -c -g -O2  conftest.c >&5
-configure:3090: $? = 0
-configure:3097: test -z "$ac_c_werror_flag" || test ! -s conftest.err
-configure:3100: $? = 0
-configure:3107: test -s conftest.o
-configure:3110: $? = 0
-configure:3130: result: none needed
-configure:3159: checking for style of include used by make
-configure:3187: result: GNU
-configure:3215: checking dependency style of gcc
-configure:3305: result: gcc3
-configure:3322: checking whether make sets $(MAKE)
-configure:3343: result: yes
-configure:3394: checking for sdl-config
-configure:3412: found /usr/bin/sdl-config
-configure:3425: result: /usr/bin/sdl-config
-configure:3434: checking for SDL - version >= 1.2.0
-configure:3529: gcc -o conftest -g -O2 -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT   conftest.c  -L/usr/lib -lSDL >&5
-configure:3532: $? = 0
-configure:3538: ./conftest
-configure:3541: $? = 0
-configure:3561: result: yes
-configure:3821: creating ./config.status
+configure:2486: $? = 1
+configure:2509: checking for C compiler default output file name
+configure:2536: gcc    conftest.c  >&5
+configure:2539: $? = 0
+configure:2577: result: a.out
+configure:2594: checking whether the C compiler works
+configure:2604: ./a.out
+configure:2607: $? = 0
+configure:2624: result: yes
+configure:2631: checking whether we are cross compiling
+configure:2633: result: no
+configure:2636: checking for suffix of executables
+configure:2643: gcc -o conftest    conftest.c  >&5
+configure:2646: $? = 0
+configure:2670: result: 
+configure:2676: checking for suffix of object files
+configure:2702: gcc -c   conftest.c >&5
+configure:2705: $? = 0
+configure:2728: result: o
+configure:2732: checking whether we are using the GNU C compiler
+configure:2761: gcc -c   conftest.c >&5
+configure:2767: $? = 0
+configure:2774: test -z "$ac_c_werror_flag" || test ! -s conftest.err
+configure:2777: $? = 0
+configure:2784: test -s conftest.o
+configure:2787: $? = 0
+configure:2801: result: yes
+configure:2806: checking whether gcc accepts -g
+configure:2836: gcc -c -g  conftest.c >&5
+configure:2842: $? = 0
+configure:2849: test -z "$ac_c_werror_flag" || test ! -s conftest.err
+configure:2852: $? = 0
+configure:2859: test -s conftest.o
+configure:2862: $? = 0
+configure:2992: result: yes
+configure:3009: checking for gcc option to accept ISO C89
+configure:3083: gcc  -c -g -O2  conftest.c >&5
+configure:3089: $? = 0
+configure:3096: test -z "$ac_c_werror_flag" || test ! -s conftest.err
+configure:3099: $? = 0
+configure:3106: test -s conftest.o
+configure:3109: $? = 0
+configure:3129: result: none needed
+configure:3158: checking for style of include used by make
+configure:3186: result: GNU
+configure:3214: checking dependency style of gcc
+configure:3304: result: gcc3
+configure:3321: checking whether make sets $(MAKE)
+configure:3342: result: yes
+configure:3393: checking for sdl-config
+configure:3411: found /usr/bin/sdl-config
+configure:3424: result: /usr/bin/sdl-config
+configure:3433: checking for SDL - version >= 1.2.0
+configure:3528: gcc -o conftest -g -O2 -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT   conftest.c  -L/usr/lib -lSDL >&5
+configure:3531: $? = 0
+configure:3537: ./conftest
+configure:3540: $? = 0
+configure:3560: result: yes
+configure:3817: creating ./config.status
 
 ## ---------------------- ##
 ## Running config.status. ##
@@ -143,10 +143,10 @@ generated by GNU Autoconf 2.60a.  Invocation command line was
 
 on wheelhouse
 
-config.status:606: creating Makefile
-config.status:606: creating src/Makefile
-config.status:606: creating src/img/Makefile
-config.status:791: executing depfiles commands
+config.status:605: creating Makefile
+config.status:605: creating src/Makefile
+config.status:605: creating src/img/Makefile
+config.status:790: executing depfiles commands
 
 ## ---------------- ##
 ## Cache variables. ##
@@ -201,7 +201,6 @@ ECHO_C=''
 ECHO_N='-n'
 ECHO_T=''
 EXEEXT=''
-IMG_DIR='${datadir}/jody/img/'
 INSTALL_DATA='${INSTALL} -m 644'
 INSTALL_PROGRAM='${INSTALL}'
 INSTALL_SCRIPT='${INSTALL}'

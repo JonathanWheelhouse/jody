@@ -641,7 +641,6 @@ am__fastdepCC_FALSE
 SDL_CONFIG
 SDL_CFLAGS
 SDL_LIBS
-IMG_DIR
 LIB@&t@OBJS
 LTLIBOBJS'
 ac_subst_files=''
@@ -3669,9 +3668,6 @@ echo "$as_me: error: *** SDL version $(SDL_VERSION) not found!" >&2;}
   rm -f conf.sdltest
 
 
-IMG_DIR='${datadir}/jody/img/'
-
-
 ac_config_files="$ac_config_files Makefile src/Makefile src/img/Makefile"
 
 cat >confcache <<\_ACEOF
@@ -4394,12 +4390,11 @@ am__fastdepCC_FALSE!$am__fastdepCC_FALSE$ac_delim
 SDL_CONFIG!$SDL_CONFIG$ac_delim
 SDL_CFLAGS!$SDL_CFLAGS$ac_delim
 SDL_LIBS!$SDL_LIBS$ac_delim
-IMG_DIR!$IMG_DIR$ac_delim
 LIB@&t@OBJS!$LIB@&t@OBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 80; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 79; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

@@ -543,7 +543,6 @@ s,@am__fastdepCC_FALSE@,|#_!!_#|#,g
 s,@SDL_CONFIG@,|#_!!_#|/usr/bin/sdl-config,g
 s,@SDL_CFLAGS@,|#_!!_#|-I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT,g
 s,@SDL_LIBS@,|#_!!_#|-L/usr/lib -lSDL,g
-s,@IMG_DIR@,|#_!!_#|${datadir}/jody/img/,g
 s,@LIBOBJS@,|#_!!_#|,g
 s,@LTLIBOBJS@,|#_!!_#|,g
 :end

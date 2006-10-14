@@ -5,6 +5,7 @@
 #include <time.h>
 #include "gamedefs.h"
 #include "resources.h"
+#include "datadir.h"
 
 SDL_Surface *screen, *back;
 

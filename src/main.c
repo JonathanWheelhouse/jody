@@ -10,6 +10,7 @@
 #include "cursor.h"
 #include "util.h"
 #include "csprite.h"
+#include "datadir.h"
 
 /* constants */
 #define X_DIST 10

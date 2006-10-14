@@ -5,6 +5,7 @@
 #include <time.h>
 #include "gamedefs.h"
 #include "resources.h"
+#include "datadir.h"
 
 SDL_Cursor *cursor_arrow;
 SDL_Cursor *cursor_wheelhouse;
