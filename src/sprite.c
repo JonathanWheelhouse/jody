@@ -1,6 +1,6 @@
 #include <SDL_image.h>
 #include <string.h>
-#include "csprite.h"
+#include "sprite.h"
 
 struct CSpriteBase *base_init(char *dir)
 {
