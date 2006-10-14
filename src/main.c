@@ -5,11 +5,12 @@
 #include <time.h>
 #include <math.h>
 #include <assert.h>
+
 #include "gamedefs.h"
 #include "resources.h"
 #include "cursor.h"
 #include "util.h"
-#include "csprite.h"
+#include "sprite.h"
 #include "datadir.h"
 
 /* constants */

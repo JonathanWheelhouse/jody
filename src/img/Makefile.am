@@ -1,4 +1,4 @@
-imgdir = ${IMG_DIR}
+imgdir = ${pkgdatadir}/img
 
 img_DATA = \
 	icon.png \
