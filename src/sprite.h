@@ -1,55 +1,55 @@
-#ifndef __CSPRITE_H__
-#define __CSPRITE_H__
+#ifndef __SPRITE_H__
+#define __SPRITE_H__
 
 #include <SDL/SDL.h>
 
-struct CSpriteFrame
+struct sprite_frame
 {
   SDL_Surface *image;
   int pause;
 };
 
-struct CSpriteBase
+struct sprite_base
 {
-  struct CSpriteFrame *mAnim;
-  int mBuilt, mNumframes, mW, mH;
+  struct sprite_frame *frames;
+  int is_built, frames_count, image_width, image_height;
 };
 
-struct CSprite
+struct sprite
 {
-	int mFrame;
-	int mX, mY, mOldX, mOldY;
-	int mAnimating;
-	int mDrawn;
-	float mSpeed;
-	long mLastupdate;
-	struct CSpriteBase *mSpriteBase;
-	SDL_Surface *mBackreplacement;
-	SDL_Surface *mScreen;
+	int frame_index;
+	int x, y, prev_x, prev_y;
+	int is_animating;
+	int is_drawn;
+	float speed;
+	long last_update;
+	struct sprite_base *sprite_base;
+	SDL_Surface *back_replacement;
+	SDL_Surface *screen;
 };
 
-extern struct CSpriteBase *base_init(char *dir);
-extern struct CSprite *init(struct CSpriteBase *base, SDL_Surface *screen);
+extern struct sprite_base *base_init(char *dir);
+extern struct sprite *init(struct sprite_base *base, SDL_Surface *screen);
 
-extern void draw(struct CSprite *sprite);
-extern void clearBG(struct CSprite *sprite);
-extern void updateBG(struct CSprite *sprite);
+extern void draw(struct sprite *sprite);
+extern void clear_background(struct sprite *sprite);
+extern void update_background(struct sprite *sprite);
 
-extern void setFrame(struct CSprite *sprite, int nr);
-extern int getFrame();
+extern void set_frame_index(struct sprite *sprite, int frame_index);
+extern int get_frame_index();
 
-extern void setSpeed(struct CSprite *sprite, float nr);
-extern float getSpeed(struct CSprite *sprite);
+extern void set_speed(struct sprite *sprite, float speed);
+extern float get_speed(struct sprite *sprite);
 
-extern void toggleAnim(struct CSprite *sprite);
-extern void startAnim(struct CSprite *sprite);
-extern void stopAnim(struct CSprite *sprite);
-extern void rewind_frame(struct CSprite *sprite);
+extern void toggle_is_animating(struct sprite *sprite);
+extern void start_animating(struct sprite *sprite);
+extern void stop_animating(struct sprite *sprite);
+extern void rewind_frame(struct sprite *sprite);
 
-extern void xadd(struct CSprite *sprite, int nr);
-extern void yadd(struct CSprite *sprite, int nr);
-extern void xset(struct CSprite *sprite, int nr);
-extern void yset(struct CSprite *sprite, int nr);
-extern void set(struct CSprite *sprite, int xx, int yy);
+extern void xadd(struct sprite *sprite, int nr);
+extern void yadd(struct sprite *sprite, int nr);
+extern void xset(struct sprite *sprite, int nr);
+extern void yset(struct sprite *sprite, int nr);
+extern void set(struct sprite *sprite, int x, int y);
 
 #endif

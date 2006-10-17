@@ -19,8 +19,8 @@
 
 /* global variables */
 int fullscreen = 0;
-struct CSpriteBase *cow_black_base;
-struct CSprite *cow_black;
+struct sprite_base *cow_black_base;
+struct sprite *cow_black;
 
 double time_scale = 0;
 
@@ -34,11 +34,11 @@ static void handle_events(int *quit, int *pause);
 static void main_draw(SDL_Rect *src, int *pause);
 static SDL_Rect calc_dest(struct image *image);
 
-static SDL_Surface * ImageLoad(char *file);
-static int InitImages();
-static void DrawIMG(SDL_Surface *img, int x, int y);
-static void DrawBG();
-static void DrawScene(struct CSprite *cow_black);
+static SDL_Surface * image_load(char *file);
+static int init_images();
+static void draw_image(SDL_Surface *img, int x, int y);
+static void draw_background();
+static void draw_scene(struct sprite *cow_black);
 
 int main(int argc, char *argv[])
 {
@@ -133,10 +133,10 @@ static void setup_sprites()
 	cow_black_base = base_init(IMG_DIR "cow_black");
 	cow_black = init(cow_black_base, screen);
 	set(cow_black, 150,300);
-	setSpeed(cow_black, 1);
+	set_speed(cow_black, 1);
 
- 	InitImages();
- 	DrawBG();
+ 	init_images();
+ 	draw_background();
 }
 
 static void play_game(void)
@@ -175,7 +175,7 @@ static void play_game(void)
 /* 		  DrawBackground(screen); */
 /* 		main_draw(&src, &pause); */
 
-		DrawScene(cow_black);
+		draw_scene(cow_black);
 
 		/* Flip the page. */
 /* 		SDL_Flip(screen); */
@@ -321,13 +321,13 @@ static SDL_Rect calc_dest(struct image *image)
 	return dest;
 }
 
-static SDL_Surface * ImageLoad(char *file)
+static SDL_Surface * image_load(char *file)
 {
 	SDL_Surface *temp1, *temp2;
 	temp1 = IMG_Load(file);
 	if (temp1 == NULL) {
 		fprintf(stderr,
-				"\nError: 'static SDL_Surface * ImageLoad' function couldn't load a graphics file:\n"
+				"\nError: 'static SDL_Surface * image_load' function couldn't load a graphics file:\n"
 				"%s\n"
 				"The Simple DirectMedia error that occurred was:\n"
 				"%s\n\n", file, SDL_GetError());
@@ -338,13 +338,13 @@ static SDL_Surface * ImageLoad(char *file)
 	return temp2;
 }
 
-static int InitImages()
+static int init_images()
 {
-  back = ImageLoad(IMG_DIR "background.png");
+  back = image_load(IMG_DIR "background.png");
   return 0;
 }
 
-static void DrawIMG(SDL_Surface *img, int x, int y)
+static void draw_image(SDL_Surface *img, int x, int y)
 {
   SDL_Rect dest;
   dest.x = x;
@@ -352,15 +352,15 @@ static void DrawIMG(SDL_Surface *img, int x, int y)
   SDL_BlitSurface(img, NULL, screen, &dest);
 }
 
-static void DrawBG()
+static void draw_background()
 {
-  DrawIMG(back, 0, 0);
+  draw_image(back, 0, 0);
 }
 
-static void DrawScene(struct CSprite *cow_black)
+static void draw_scene(struct sprite *cow_black)
 {
-  clearBG(cow_black);
-  updateBG(cow_black);
+  clear_background(cow_black);
+  update_background(cow_black);
   draw(cow_black);
   SDL_Flip(screen);
 }

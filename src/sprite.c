@@ -2,7 +2,7 @@
 #include <string.h>
 #include "sprite.h"
 
-struct CSpriteBase *base_init(char *dir)
+struct sprite_base *base_init(char *dir)
 {
 	char buffer[255];
 	char filename[255];
@@ -18,19 +18,19 @@ struct CSpriteBase *base_init(char *dir)
 	}
 
 
-	struct CSpriteBase *base = malloc(sizeof(struct CSpriteBase));
-	base->mBuilt = base->mNumframes = base->mW = base->mH = 0;
+	struct sprite_base *base = malloc(sizeof(struct sprite_base));
+	base->is_built = base->frames_count = base->image_width = base->image_height = 0;
 
 	fgets(buffer, 255, fp);
-	sscanf(buffer, "FILES: %d", &base->mNumframes);
+	sscanf(buffer, "FILES: %d", &base->frames_count);
 
-	struct CSpriteFrame *mAnim = malloc(base->mNumframes * sizeof(struct CSpriteFrame));
+	struct sprite_frame *frames = malloc(base->frames_count * sizeof(struct sprite_frame));
   
 
-	base->mBuilt = 1;
+	base->is_built = 1;
 	int count = 0;
 
-	while (!feof(fp) && count < base->mNumframes) {
+	while (!feof(fp) && count < base->frames_count) {
 		fgets(buffer, 255, fp);
 		if (buffer[0] != '#' && buffer[0] != '\r' && buffer[0] != '\0' && buffer[0] != '\n' && strlen(buffer) != 0) {
 
@@ -46,105 +46,107 @@ struct CSpriteBase *base_init(char *dir)
 			if(r >= 0)
 				SDL_SetColorKey(temp, SDL_SRCCOLORKEY, SDL_MapRGB(temp->format, r, g, b));
 
-/* 			mAnim[count].image = SDL_DisplayFormat(temp); */
-			mAnim[count].image = temp;
+/* 			frames[count].image = SDL_DisplayFormat(temp); */
+			frames[count].image = temp;
 /* 			SDL_FreeSurface(temp); */
 
-			mAnim[count].pause = pause;
-			if (!base->mW)
-				base->mW = mAnim[count].image->w;
-			if (!base->mH)
-				base->mH = mAnim[count].image->w;
+			frames[count].pause = pause;
+			if (!base->image_width)
+				base->image_width = frames[count].image->w;
+			if (!base->image_height)
+				base->image_height = frames[count].image->w;
 
 			count++;
 		}
 	}
 	fclose(fp);
 
-	base->mAnim = mAnim;
+	base->frames = frames;
 	return base;
 }
 
-struct CSprite *init(struct CSpriteBase *base, SDL_Surface *screen)
+struct sprite *init(struct sprite_base *base, SDL_Surface *screen)
 {
-	struct CSprite *sprite = malloc(sizeof(struct CSprite));
-	sprite->mFrame = 0;
-	sprite->mX = 0;
-	sprite->mY = 0;
-	sprite->mOldX = 0;
-	sprite->mOldY = 0;
-	sprite->mAnimating = 0;
-	sprite->mDrawn = 0;
-	sprite->mSpeed = 0;
-	sprite->mLastupdate = 0;
+	struct sprite *sprite = malloc(sizeof(struct sprite));
+	sprite->frame_index = 0;
+	sprite->x = 0;
+	sprite->y = 0;
+	sprite->prev_x = 0;
+	sprite->prev_y = 0;
+	sprite->is_animating = 0;
+	sprite->is_drawn = 0;
+	sprite->speed = 0;
+	sprite->last_update = 0;
 
-	sprite->mSpriteBase = base;
+	sprite->sprite_base = base;
 
-	if (sprite->mSpriteBase->mBuilt) {
-		if (sprite->mSpriteBase->mNumframes > 1)
-			sprite->mAnimating = 1;
-		sprite->mBackreplacement = SDL_DisplayFormat(sprite->mSpriteBase->mAnim[0].image);
+	if (sprite->sprite_base->is_built) {
+		if (sprite->sprite_base->frames_count > 1)
+			sprite->is_animating = 1;
+		sprite->back_replacement = SDL_DisplayFormat(sprite->sprite_base->frames[0].image);
 	}
-	sprite->mScreen = screen;
+	sprite->screen = screen;
 	return sprite;
 }
 
-void draw(struct CSprite *sprite)
+void draw(struct sprite *sprite)
 {
-	if (sprite->mAnimating == 1) {
-		if (sprite->mLastupdate + sprite->mSpriteBase->mAnim[sprite->mFrame].pause * sprite->mSpeed < SDL_GetTicks()) {
-			sprite->mFrame++;
-			if (sprite->mFrame > sprite->mSpriteBase->mNumframes - 1)
-				sprite->mFrame = 0;
-			sprite->mLastupdate = SDL_GetTicks();
+	if (sprite->is_animating == 1) {
+		if (sprite->last_update + sprite->sprite_base->frames[sprite->frame_index].pause * sprite->speed < SDL_GetTicks()) {
+			sprite->frame_index++;
+			if (sprite->frame_index > sprite->sprite_base->frames_count - 1)
+				sprite->frame_index = 0;
+			sprite->last_update = SDL_GetTicks();
 		}
 	}
 
-	if(sprite->mDrawn == 0)
-		sprite->mDrawn = 1;
+	if(sprite->is_drawn == 0)
+		sprite->is_drawn = 1;
 
 	SDL_Rect dest;
-	dest.x = sprite->mX; dest.y = sprite->mY;
-	SDL_BlitSurface(sprite->mSpriteBase->mAnim[sprite->mFrame].image, NULL, sprite->mScreen, &dest);
+	dest.x = sprite->x; dest.y = sprite->y;
+	SDL_BlitSurface(sprite->sprite_base->frames[sprite->frame_index].image, NULL, sprite->screen, &dest);
 }
 
-void clearBG(struct CSprite *sprite)
+void clear_background(struct sprite *sprite)
 {
-	if (sprite->mDrawn == 1) {
+	if (sprite->is_drawn == 1) { // first time through, this is not done
 		SDL_Rect dest;
-		dest.x = sprite->mOldX;
-		dest.y = sprite->mOldY;
-		dest.w = sprite->mSpriteBase->mW;
-		dest.h = sprite->mSpriteBase->mH;
-		SDL_BlitSurface(sprite->mBackreplacement, NULL, sprite->mScreen, &dest);
+		dest.x = sprite->prev_x;
+		dest.y = sprite->prev_y;
+		dest.w = sprite->sprite_base->image_width;
+		dest.h = sprite->sprite_base->image_height;
+		SDL_BlitSurface(sprite->back_replacement, NULL, sprite->screen, &dest);
 	}
 }
 
-void updateBG(struct CSprite *sprite)
+/* this is misnamed a bit; it really sets back_replacement (which is set to background */
+void update_background(struct sprite *sprite)
 {
 	SDL_Rect srcrect;
-	srcrect.w = sprite->mSpriteBase->mW;
-	srcrect.h = sprite->mSpriteBase->mH;
-	srcrect.x = sprite->mX;
-	srcrect.y = sprite->mY;
-	sprite->mOldX = sprite->mX;
-	sprite->mOldY = sprite->mY;
-	SDL_BlitSurface(sprite->mScreen, &srcrect, sprite->mBackreplacement, NULL);
+	srcrect.w = sprite->sprite_base->image_width;
+	srcrect.h = sprite->sprite_base->image_height;
+	srcrect.x = sprite->x;
+	srcrect.y = sprite->y;
+	sprite->prev_x = sprite->x;
+	sprite->prev_y = sprite->y;
+	/* first time, back_replacement is set to the background (as background has just been set to screen */
+	SDL_BlitSurface(sprite->screen, &srcrect, sprite->back_replacement, NULL);
 }
 
-void setFrame(struct CSprite *sprite, int nr) { sprite->mFrame = nr; }
-int getFrame(struct CSprite *sprite) { return sprite->mFrame; }
+void set_frame_index(struct sprite *sprite, int frame_index) { sprite->frame_index = frame_index; }
+int get_frame_index(struct sprite *sprite) { return sprite->frame_index; }
 
-void setSpeed(struct CSprite *sprite, float nr) { sprite->mSpeed = nr; }
-float getSpeed(struct CSprite *sprite) { return sprite->mSpeed; }
+void set_speed(struct sprite *sprite, float speed) { sprite->speed = speed; }
+float get_speed(struct sprite *sprite) { return sprite->speed; }
 
-void toggleAnim(struct CSprite *sprite) { sprite->mAnimating = !sprite->mAnimating; }
-void startAnim(struct CSprite *sprite) { sprite->mAnimating = 1; }
-void stopAnim(struct CSprite *sprite) { sprite->mAnimating = 0; }
-void rewind_frame(struct CSprite *sprite) { sprite->mFrame = 0; }
+void toggle_is_animating(struct sprite *sprite) { sprite->is_animating = !sprite->is_animating; }
+void start_animating(struct sprite *sprite) { sprite->is_animating = 1; }
+void stop_animating(struct sprite *sprite) { sprite->is_animating = 0; }
+void rewind_frame(struct sprite *sprite) { sprite->frame_index = 0; }
 
-void xadd(struct CSprite *sprite, int nr) { sprite->mX += nr; }
-void yadd(struct CSprite *sprite, int nr) { sprite->mY += nr; }
-void xset(struct CSprite *sprite, int nr) { sprite->mX = nr; }
-void yset(struct CSprite *sprite, int nr) { sprite->mY = nr; }
-void set(struct CSprite *sprite, int xx, int yy) { sprite->mX = xx; sprite->mY = yy; }
+void xadd(struct sprite *sprite, int nr) { sprite->x += nr; }
+void yadd(struct sprite *sprite, int nr) { sprite->y += nr; }
+void xset(struct sprite *sprite, int nr) { sprite->x = nr; }
+void yset(struct sprite *sprite, int nr) { sprite->y = nr; }
+void set(struct sprite *sprite, int x, int y) { sprite->x = x; sprite->y = y; }
