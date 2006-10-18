@@ -32,8 +32,6 @@ extern struct sprite_base *base_init(char *dir);
 extern struct sprite *init(struct sprite_base *base, SDL_Surface *screen);
 
 extern void draw(struct sprite *sprite);
-extern void clear_background(struct sprite *sprite);
-extern void update_background(struct sprite *sprite);
 
 extern void set_frame_index(struct sprite *sprite, int frame_index);
 extern int get_frame_index();

@@ -108,32 +108,6 @@ void draw(struct sprite *sprite)
 	SDL_BlitSurface(sprite->sprite_base->frames[sprite->frame_index].image, NULL, sprite->screen, &dest);
 }
 
-void clear_background(struct sprite *sprite)
-{
-	if (sprite->is_drawn == 1) { // first time through, this is not done
-		SDL_Rect dest;
-		dest.x = sprite->prev_x;
-		dest.y = sprite->prev_y;
-		dest.w = sprite->sprite_base->image_width;
-		dest.h = sprite->sprite_base->image_height;
-		SDL_BlitSurface(sprite->back_replacement, NULL, sprite->screen, &dest);
-	}
-}
-
-/* this is misnamed a bit; it really sets back_replacement (which is set to background */
-void update_background(struct sprite *sprite)
-{
-	SDL_Rect srcrect;
-	srcrect.w = sprite->sprite_base->image_width;
-	srcrect.h = sprite->sprite_base->image_height;
-	srcrect.x = sprite->x;
-	srcrect.y = sprite->y;
-	sprite->prev_x = sprite->x;
-	sprite->prev_y = sprite->y;
-	/* first time, back_replacement is set to the background (as background has just been set to screen */
-	SDL_BlitSurface(sprite->screen, &srcrect, sprite->back_replacement, NULL);
-}
-
 void set_frame_index(struct sprite *sprite, int frame_index) { sprite->frame_index = frame_index; }
 int get_frame_index(struct sprite *sprite) { return sprite->frame_index; }
 

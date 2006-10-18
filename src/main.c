@@ -340,27 +340,26 @@ static SDL_Surface * image_load(char *file)
 
 static int init_images()
 {
-  back = image_load(IMG_DIR "background.png");
-  return 0;
+	back = image_load(IMG_DIR "background.png");
+	return 0;
 }
 
 static void draw_image(SDL_Surface *img, int x, int y)
 {
-  SDL_Rect dest;
-  dest.x = x;
-  dest.y = y;
-  SDL_BlitSurface(img, NULL, screen, &dest);
+	SDL_Rect dest;
+	dest.x = x;
+	dest.y = y;
+	SDL_BlitSurface(img, NULL, screen, &dest);
 }
 
 static void draw_background()
 {
-  draw_image(back, 0, 0);
+	draw_image(back, 0, 0);
 }
 
 static void draw_scene(struct sprite *cow_black)
 {
-  clear_background(cow_black);
-  update_background(cow_black);
-  draw(cow_black);
-  SDL_Flip(screen);
+	draw_background();
+	draw(cow_black);
+	SDL_Flip(screen);
 }
