@@ -1,8 +1,9 @@
 #include <SDL_image.h>
 #include <string.h>
 #include "sprite.h"
+#include "gamedefs.h"
 
-struct sprite_base *base_init(char *dir)
+struct sprite_base *base_init(const char *dir)
 {
 	char buffer[255];
 	char filename[255];
@@ -13,7 +14,7 @@ struct sprite_base *base_init(char *dir)
 	sprintf(filename, "%s/info", dir);
 
 	if ((fp=fopen(filename, "r")) == NULL) {
-		printf("ERROR opening file %s\n\n", filename);
+		fprintf(stderr, "ERROR opening file %s\n\n", filename);
 		return NULL;
 	}
 
@@ -65,7 +66,7 @@ struct sprite_base *base_init(char *dir)
 	return base;
 }
 
-struct sprite *init(struct sprite_base *base, SDL_Surface *screen)
+struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen)
 {
 	struct sprite *sprite = malloc(sizeof(struct sprite));
 	sprite->frame_index = 0;
@@ -83,10 +84,29 @@ struct sprite *init(struct sprite_base *base, SDL_Surface *screen)
 	if (sprite->sprite_base->is_built) {
 		if (sprite->sprite_base->frames_count > 1)
 			sprite->is_animating = 1;
-		sprite->back_replacement = SDL_DisplayFormat(sprite->sprite_base->frames[0].image);
 	}
 	sprite->screen = screen;
 	return sprite;
+}
+
+void free_sprite(struct sprite *sprite)
+{
+	if (sprite) {
+		struct sprite_base *sprite_base = sprite->sprite_base;
+		if (sprite_base) {
+			struct sprite_frame *frames = sprite_base->frames;
+			if (frames)
+				for (int i = 0; i < sprite_base->frames_count; i++) {
+					SDL_Surface *image = (frames + i)->image;
+/*FIXME - dunno why but SDL_FreeSurface gets a segmentation fault although gdb shows image is valid */
+/* 					if (image) */
+/* 						SDL_FreeSurface(image); */
+				}
+				free(frames);
+			free(sprite_base);
+		}
+		free(sprite);
+	}
 }
 
 void draw(struct sprite *sprite)
@@ -119,7 +139,13 @@ void start_animating(struct sprite *sprite) { sprite->is_animating = 1; }
 void stop_animating(struct sprite *sprite) { sprite->is_animating = 0; }
 void rewind_frame(struct sprite *sprite) { sprite->frame_index = 0; }
 
-void xadd(struct sprite *sprite, int nr) { sprite->x += nr; }
+void xadd(struct sprite *sprite, int displacement)
+{
+	sprite->x += displacement;
+	if(sprite->x > SCREEN_WIDTH)
+		sprite->x = 0;
+}
+
 void yadd(struct sprite *sprite, int nr) { sprite->y += nr; }
 void xset(struct sprite *sprite, int nr) { sprite->x = nr; }
 void yset(struct sprite *sprite, int nr) { sprite->y = nr; }

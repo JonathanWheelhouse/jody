@@ -8,8 +8,6 @@ jody_SOURCES = \
 	gamedefs.h \
 	sprite.h \
 	sprite.c \
-	resources.h \
-	resources.c \
 	cursor.h \
 	cursor.c \
 	util.h \
@@ -22,7 +20,7 @@ LDADD = $(SDL_LIBS) -lSDL_image
 
 AM_CPPFLAGS = $(shell sdl-config --cflags)
 
-AM_CFLAGS = -pedantic -Wall -std=gnu99
+AM_CFLAGS = -pedantic -Wall -std=gnu99 -ggdb
 
 DISTCLEANFILES = datadir.h
 
