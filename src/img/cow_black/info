@@ -1,4 +1,4 @@
-FILES: 3
+FILES: 4
 # SYNTAX:
 # filename of the frame,
 # milliseconds to pause afterwards,
@@ -7,3 +7,4 @@ FILES: 3
 1.png       50    -1 255 0
 2.png       50    -1 255 0
 3.png       50    -1 255 0
+4.png       50    -1 255 0
