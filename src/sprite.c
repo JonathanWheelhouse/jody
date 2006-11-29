@@ -3,16 +3,14 @@
 #include "sprite.h"
 #include "gamedefs.h"
 
+struct SDL_Surface *frame(char *buffer, const char *dir, int *pause);
+
 struct sprite_base *base_init(const char *dir)
 {
-	char buffer[255];
 	char filename[255];
-	char name[255];
-	int pause=0, r=0, g=0, b=0;
-	FILE *fp;
-
 	sprintf(filename, "%s/info", dir);
 
+	FILE *fp;
 	if ((fp=fopen(filename, "r")) == NULL) {
 		fprintf(stderr, "ERROR opening file %s\n\n", filename);
 		return NULL;
@@ -22,11 +20,13 @@ struct sprite_base *base_init(const char *dir)
 	struct sprite_base *base = malloc(sizeof(struct sprite_base));
 	base->is_built = base->frames_count = base->image_width = base->image_height = 0;
 
+	char buffer[255];
 	fgets(buffer, 255, fp);
 	sscanf(buffer, "FILES: %d", &base->frames_count);
 
-	struct sprite_frame *frames = malloc(base->frames_count * sizeof(struct sprite_frame));
-  
+	base->frames = (struct sprite_frame **)calloc(base->frames_count, sizeof(struct sprite_frame *));
+	if (!base->frames)
+		return NULL;
 
 	base->is_built = 1;
 	int count = 0;
@@ -35,35 +35,47 @@ struct sprite_base *base_init(const char *dir)
 		fgets(buffer, 255, fp);
 		if (buffer[0] != '#' && buffer[0] != '\r' && buffer[0] != '\0' && buffer[0] != '\n' && strlen(buffer) != 0) {
 
-			int match = sscanf(buffer, "%s %d %d %d %d", name, &pause, &r, &g, &b);
-			if (match != 5)
+			struct sprite_frame *sprite_frame = (struct sprite_frame *)calloc(1, sizeof(struct sprite_frame));
+			base->frames[count] = sprite_frame;																	  
+
+			int pause=0;
+			base->frames[count]->image = frame(buffer, dir, &pause);
+			if (!base->frames[count]->image)
 				return NULL;
+			base->frames[count]->pause = pause;
 
-			sprintf(filename, "%s/%s", dir, name);
-
-			SDL_Surface *temp;
-			if((temp = IMG_Load(filename)) == NULL)
-				return NULL;
-			if(r >= 0)
-				SDL_SetColorKey(temp, SDL_SRCCOLORKEY, SDL_MapRGB(temp->format, r, g, b));
-
-/* 			frames[count].image = SDL_DisplayFormat(temp); */
-			frames[count].image = temp;
-/* 			SDL_FreeSurface(temp); */
-
-			frames[count].pause = pause;
 			if (!base->image_width)
-				base->image_width = frames[count].image->w;
+				base->image_width = base->frames[count]->image->w;
 			if (!base->image_height)
-				base->image_height = frames[count].image->w;
+				base->image_height = base->frames[count]->image->w;
 
 			count++;
 		}
 	}
+
 	fclose(fp);
 
-	base->frames = frames;
 	return base;
+}
+
+struct SDL_Surface *frame(char *buffer, const char *dir, int *pause)
+{
+	char name[255];
+	int r=0, g=0, b=0;
+	int match = sscanf(buffer, "%s %d %d %d %d", name, pause, &r, &g, &b);
+	if (match != 5)
+		return NULL;
+
+	char filename[255];
+	sprintf(filename, "%s/%s", dir, name);
+
+	SDL_Surface *surface;
+	if((surface = IMG_Load(filename)) == NULL)
+		return NULL;
+	if(r >= 0)
+		SDL_SetColorKey(surface, SDL_SRCCOLORKEY, SDL_MapRGB(surface->format, r, g, b));
+
+	return surface;
 }
 
 struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen)
@@ -94,15 +106,19 @@ void free_sprite(struct sprite *sprite)
 	if (sprite) {
 		struct sprite_base *sprite_base = sprite->sprite_base;
 		if (sprite_base) {
-			struct sprite_frame *frames = sprite_base->frames;
-			if (frames)
+			struct sprite_frame **frames = sprite_base->frames;
+			if (frames) {
 				for (int i = 0; i < sprite_base->frames_count; i++) {
-					SDL_Surface *image = (frames + i)->image;
-/*FIXME - dunno why but SDL_FreeSurface gets a segmentation fault although gdb shows image is valid */
-/* 					if (image) */
-/* 						SDL_FreeSurface(image); */
+					if (sprite_base->frames[i]) {
+						struct sprite_frame *sprite_frame = sprite_base->frames[i];
+						SDL_Surface *image = sprite_frame->image;
+						if (image)
+							SDL_FreeSurface(image) ;
+						free(sprite_frame);
+					}
 				}
 				free(frames);
+			}
 			free(sprite_base);
 		}
 		free(sprite);
@@ -112,7 +128,7 @@ void free_sprite(struct sprite *sprite)
 void draw(struct sprite *sprite)
 {
 	if (sprite->is_animating == 1) {
-		if (sprite->last_update + sprite->sprite_base->frames[sprite->frame_index].pause * sprite->speed < SDL_GetTicks()) {
+		if (sprite->last_update + sprite->sprite_base->frames[sprite->frame_index]->pause * sprite->speed < SDL_GetTicks()) {
 			sprite->frame_index++;
 			if (sprite->frame_index > sprite->sprite_base->frames_count - 1)
 				sprite->frame_index = 0;
@@ -125,7 +141,7 @@ void draw(struct sprite *sprite)
 
 	SDL_Rect dest;
 	dest.x = sprite->x; dest.y = sprite->y;
-	SDL_BlitSurface(sprite->sprite_base->frames[sprite->frame_index].image, NULL, sprite->screen, &dest);
+	SDL_BlitSurface(sprite->sprite_base->frames[sprite->frame_index]->image, NULL, sprite->screen, &dest);
 }
 
 void set_frame_index(struct sprite *sprite, int frame_index) { sprite->frame_index = frame_index; }

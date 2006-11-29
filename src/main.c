@@ -106,8 +106,6 @@ struct map
 	unsigned char	hitinfo[256];	/* Collision info for the tiles */
 };
 
-struct sprite_base *cow_black_base;
-struct sprite *cow_black;
 
 double time_scale = 0;
 
@@ -120,19 +118,14 @@ static void usage(int ret);
 static struct gamestate *setup(int fullscreen);
 static struct engine *open_engine(SDL_Surface *screen);
 static void close_engine(struct engine *engine);
-/* static void setup_sprites(struct engine *engine); */
 static void play_game(struct engine *engine);
 static void handle_events(struct engine *engine);
 static void main_draw(SDL_Rect *src, struct engine *engine);
-
-/* static SDL_Rect calc_dest(struct image *image); */
 
 static void seticon(void);
 static void setup_img(struct engine *engine);
 static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigned int y_scale);
 
-/* static SDL_Surface *image_load(char *file); */
-/* static SDL_Surface *init_images(); */
 static void draw_image(SDL_Surface *img, SDL_Surface *screen, int x, int y);
 static void draw_background(SDL_Surface *back, SDL_Surface *screen);
 
@@ -234,8 +227,6 @@ static struct gamestate *setup(int fullscreen)
 
 	setup_img(engine);
 
-/* 	setup_sprites(engine); */
-
 	gs->engine = engine;
 	return gs;
 }
@@ -284,8 +275,9 @@ static void close_engine(struct engine *engine)
 {
 	if(engine->screen)
 		SDL_FreeSurface(engine->screen);
-	if(engine->back)
-		SDL_FreeSurface(engine->back);
+
+	/* No need to free the background; it's the first sprite */
+
 	if(engine->map)
 		free(engine->map);
 
@@ -307,6 +299,7 @@ static void close_engine(struct engine *engine)
 		SDL_FreeCursor(engine->cursor_wheelhouse_inverted);
 	if(engine->cursor_wheelhouse_black_with_white_lines)
 		SDL_FreeCursor(engine->cursor_wheelhouse_black_with_white_lines);
+	
 	free(engine);
 }
 
@@ -350,7 +343,7 @@ void setup_img(struct engine *engine)
 		load_img(i, engine, x_scale, y_scale);
 
 	/* first image = background */
-	engine->back = engine->sprites[0]->sprite_base->frames[0].image;
+	engine->back = engine->sprites[0]->sprite_base->frames[0]->image;
 }
 
 static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigned int y_scale)

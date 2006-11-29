@@ -5,13 +5,13 @@
 
 struct sprite_frame
 {
-  SDL_Surface *image;
   int pause;
+  SDL_Surface *image;
 };
 
 struct sprite_base
 {
-  struct sprite_frame *frames;
+  struct sprite_frame **frames;
   int is_built, frames_count, image_width, image_height;
 };
 
