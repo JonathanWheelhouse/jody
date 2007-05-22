@@ -5,6 +5,7 @@
 #include <time.h>
 #include <math.h>
 #include <assert.h>
+#include <stdbool.h>
 
 #include "gamedefs.h"
 #include "cursor.h"
@@ -20,7 +21,7 @@
 
 struct gamestate
 {
-	int fullscreen;
+	bool fullscreen;
 
 	struct engine *engine;
 
@@ -106,23 +107,22 @@ struct map
 	unsigned char	hitinfo[256];	/* Collision info for the tiles */
 };
 
-
-double time_scale = 0;
+double TIME_SCALE_FACTOR = 50;
 
 /* Prototypes */
 static struct gamestate *init(int argc, char *argv[]);
 static void close(struct gamestate *gamestate);
 
-static int getargs(int argc, char *argv[]);
-static void usage(int ret);
-static struct gamestate *setup(int fullscreen);
+static bool is_fullscreen(int argc, char *argv[]);
+static void print_help();
+static void print_usage();
 static struct engine *open_engine(SDL_Surface *screen);
 static void close_engine(struct engine *engine);
 static void play_game(struct engine *engine);
 static void handle_events(struct engine *engine);
-static void main_draw(SDL_Rect *src, struct engine *engine);
+static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale);
 
-static void seticon(void);
+static void set_icon(void);
 static void setup_img(struct engine *engine);
 static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigned int y_scale);
 
@@ -146,57 +146,8 @@ static struct gamestate *init(int argc, char *argv[])
 {
 	srand(time(0));
 
-	int fullscreen = getargs(argc, argv);
-	return setup(fullscreen);
-}
+	bool fullscreen = is_fullscreen(argc, argv);
 
-static void close(struct gamestate *gs)
-{
-	close_engine(gs->engine);
-	free(gs);
-}
-
-static int getargs(int argc, char *argv[])
-{
-	int i, fullscreen;
-	fullscreen = 0;
-
-	for (i = 1; i < argc; i++) {
-		if (strcmp(argv[i], "--fullscreen") == 0 || strcmp(argv[i], "-f") == 0) {
-			fullscreen = 1;
-		} else if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0) {
-			printf(
-				"\njody\n"
-				"Version " VERSION "\n"
-				"Copyright 2006 Jonathan Wheelhouse\n"
-				"\n"
-				"Game controls:\n"
-				"  Keys:\n"
-				"    ESC or q       - quit\n"
-				"    SPACE or p     - toggle pause\n"
-				"    arrow keys     - move person\n"
-				"    f              - toggle fullscreen\n"
-				"    1              - arrow cursor\n"
-				"    2              - wheelhouse cursor\n"
-				"    3              - transparent wheelhouse cursor\n"
-				"    4              - inverted wheelhouse cursor\n"
-				"    5              - black with white lines wheelhouse cursor\n"
-				"  Mouse Movement   - Move branding iron.\n"
-				"  Any Mouse Button - Brand!\n"
-				"\n"
-				"Run with \"--usage or -u\" for command-line options...\n"
-				"\n");
-			exit(0);
-		} else if (strcmp(argv[i], "--usage") == 0 || strcmp(argv[i], "-u") == 0)
-			usage(0);
-		else
-			usage(1);
-	}
-	return fullscreen;
-}
-
-static struct gamestate *setup(int fullscreen)
-{
 	struct gamestate *gs = (struct gamestate *)calloc(1, sizeof(struct gamestate));
 	if(!gs)
 		return NULL;
@@ -211,7 +162,7 @@ static struct gamestate *setup(int fullscreen)
 	atexit(SDL_Quit);
 
 	SDL_WM_SetCaption("jody", "jody");
-	seticon();
+	set_icon();
 
 	if (SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF |
 						 (fullscreen ? SDL_FULLSCREEN : 0)) == NULL) {
@@ -228,7 +179,35 @@ static struct gamestate *setup(int fullscreen)
 	setup_img(engine);
 
 	gs->engine = engine;
+
 	return gs;
+}
+
+static void close(struct gamestate *gs)
+{
+	close_engine(gs->engine);
+	free(gs);
+}
+
+static bool is_fullscreen(int argc, char *argv[])
+{
+	bool fullscreen = false;
+
+	for (int i = 1; i < argc; i++) {
+		if (strcmp(argv[i], "--fullscreen") == 0 || strcmp(argv[i], "-f") == 0) {
+			fullscreen = true;
+		} else if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0) {
+			print_help();
+			exit(EXIT_SUCCESS);
+		} else if (strcmp(argv[i], "--usage") == 0 || strcmp(argv[i], "-u") == 0) {
+			print_usage();
+			exit(EXIT_SUCCESS);
+		} else {
+			print_usage();
+			exit(EXIT_FAILURE);
+		}
+	}
+	return fullscreen;
 }
 
 static struct engine *open_engine(SDL_Surface *screen)
@@ -303,7 +282,7 @@ static void close_engine(struct engine *engine)
 	free(engine);
 }
 
-void seticon(void)
+void set_icon(void)
 {
 	 SDL_Surface *icon = IMG_Load(IMG_DIR "icon.png");
 	 if (icon == NULL) {
@@ -338,8 +317,7 @@ void setup_img(struct engine *engine)
 	unsigned int x_scale = RAND_MAX / SCREEN_WIDTH;
 	unsigned int y_scale = RAND_MAX / SCREEN_HEIGHT;
 
-	int i;
-	for (i = 0; i < NUM_IMAGES; i++)
+	for (int i = 0; i < NUM_IMAGES; i++)
 		load_img(i, engine, x_scale, y_scale);
 
 	/* first image = background */
@@ -382,11 +360,11 @@ static void play_game(struct engine *engine)
 
 	/* keep track of frames and time */
 	int prev_ticks = 0, cur_ticks = 0;
-	int start_time, end_time;
-	int frames_drawn = 0;
 	prev_ticks = SDL_GetTicks();
-	start_time = time(NULL);
 
+	int start_time, end_time;
+	start_time = time(NULL);
+	int frames_drawn = 0;
 
 	/* 126 = width of 1 cow of the 3 cow tile; 95 = height of cow */
 	SDL_Rect src;
@@ -403,13 +381,14 @@ static void play_game(struct engine *engine)
 
 		prev_ticks = cur_ticks;
 		cur_ticks = SDL_GetTicks();
-		time_scale = (double)(cur_ticks-prev_ticks)/50.0;
+
+		double time_scale = (double)(cur_ticks-prev_ticks)/TIME_SCALE_FACTOR;
 
 		handle_events(engine);
 
 		draw_background(engine->back, engine->screen);
 
-		main_draw(&src, engine);
+		main_draw(&src, engine, time_scale);
 
 		SDL_Flip(engine->screen);
 
@@ -428,16 +407,36 @@ static void play_game(struct engine *engine)
 
 }
 
-static void usage(int ret)
+static void print_help()
 {
-	FILE *fs;
-  
-	fs = (ret == 1) ? stderr : stdout;
-	fprintf(fs,
-			"\nUsage: jody [--fullscreen] | [--help (-h) | --usage (-u)]\n\n"
-			" --fullscreen or -f - Display in full screen instead of a window, if possible.\n"
-			"\n");
-	exit(ret);
+	printf(
+		"\njody\n"
+		"Version " VERSION "\n"
+		"Copyright 2006 Jonathan Wheelhouse\n"
+		"\n"
+		"Game controls:\n"
+		"  Keys:\n"
+		"    ESC or q       - quit\n"
+		"    SPACE or p     - toggle pause\n"
+		"    arrow keys     - move person\n"
+		"    f              - toggle fullscreen\n"
+		"    1              - arrow cursor\n"
+		"    2              - wheelhouse cursor\n"
+		"    3              - transparent wheelhouse cursor\n"
+		"    4              - inverted wheelhouse cursor\n"
+		"    5              - black with white lines wheelhouse cursor\n"
+		"  Mouse Movement   - Move branding iron.\n"
+		"  Any Mouse Button - Brand!\n"
+		"\n"
+		"Run with \"--usage or -u\" for command-line options...\n"
+		"\n");
+}
+
+static void print_usage()
+{
+	printf("\nUsage: jody [--fullscreen] | [--help (-h) | --usage (-u)]\n\n"
+		   " --fullscreen or -f - Display in full screen instead of a window, if possible.\n"
+		   "\n");
 }
 
 static void handle_events(struct engine *engine)
@@ -481,7 +480,7 @@ static void handle_events(struct engine *engine)
 	}
 }
 
-static void main_draw(SDL_Rect *src, struct engine *engine)
+static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale)
 {
 	/* SDL_Rect dest; */
 
@@ -523,7 +522,7 @@ static void main_draw(SDL_Rect *src, struct engine *engine)
 /* 		SDL_BlitSurface(image->surface, NULL, engine->screen, &dest); */
 
 		if (!engine->pause)
-			xadd(engine->sprites[i], X_DIST);
+			xadd(engine->sprites[i], X_DIST * time_scale);
 		draw(engine->sprites[i]);
 	}
 

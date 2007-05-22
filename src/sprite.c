@@ -3,7 +3,7 @@
 #include "sprite.h"
 #include "gamedefs.h"
 
-struct SDL_Surface *frame(char *buffer, const char *dir, int *pause);
+struct SDL_Surface *image_frame(char *buffer, const char *dir, int *pause);
 
 struct sprite_base *base_init(const char *dir)
 {
@@ -39,7 +39,7 @@ struct sprite_base *base_init(const char *dir)
 			base->frames[count] = sprite_frame;																	  
 
 			int pause=0;
-			base->frames[count]->image = frame(buffer, dir, &pause);
+			base->frames[count]->image = image_frame(buffer, dir, &pause);
 			if (!base->frames[count]->image)
 				return NULL;
 			base->frames[count]->pause = pause;
@@ -58,7 +58,7 @@ struct sprite_base *base_init(const char *dir)
 	return base;
 }
 
-struct SDL_Surface *frame(char *buffer, const char *dir, int *pause)
+struct SDL_Surface *image_frame(char *buffer, const char *dir, int *pause)
 {
 	char name[255];
 	int r=0, g=0, b=0;
@@ -128,7 +128,7 @@ void free_sprite(struct sprite *sprite)
 void draw(struct sprite *sprite)
 {
 	if (sprite->is_animating == 1) {
-		if (sprite->last_update + sprite->sprite_base->frames[sprite->frame_index]->pause * sprite->speed < SDL_GetTicks()) {
+		if (sprite->last_update + TIME_SCALE_FACTOR * sprite->speed < SDL_GetTicks()) {
 			sprite->frame_index++;
 			if (sprite->frame_index > sprite->sprite_base->frames_count - 1)
 				sprite->frame_index = 0;

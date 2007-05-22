@@ -1,0 +1,148 @@
+-*-Outline-*-
+
+* Requirements
+
+These describe the requirements of the game, Jody.  Really should be
+called Wheelhouse as that will be the central theme.
+
+** Background
+
+Outback, of course.  Dry dusty plain with a shimmer of trees in the
+distance and above the big blue sky.  Crows may fly across it
+occasionally.  Big white clouds and little ones can scud across the
+sky.
+
+*** Later
+
+And sometimes it pours.  The plain then turns to rivulets of mud.
+
+Animals will slide in the mud but that's later.
+
+** levels
+
+Yes, but not initially.  This is also related to scrolling.  Should
+that happen also?  Scrolling to the right.  A later feature as well
+but it will come after the levels.
+
+Each level will be harder.  The animals will be faster; there will be
+more of them.
+
+Backgrounds will be different.  Maybe a water scene.  A mountain top.
+Bush fire.  Jungle. Snow and ice - Mount Kosciusko.  Wet season up
+north.
+
+The types of animals to brand will change.  Perhaps change countries?
+
+** Player
+
+A thin skinny brown man or woman.
+
+** Animals
+
+A list: kangaroo, emu, crow, dingo, echidna, crocodile, red back
+spider, brown snake, steer and other fauna of Australia.
+
+Initially, have 1 steer and 1 bird - an emu.
+
+The cow will move its legs; the bird will flap its wings.
+
+The birds fly in the sky, not the animals.
+
+The game will not scroll; it will be a set scene initially.  When the
+animals touch the top and bottom they will "bounce" off.  They will
+pass through the sides and come through the other side.
+
+Specifically, you will see portions of an animal disappearing on one side.
+When all of the animal has disappeared it will then start to appear on
+the other side going the same direction as when it disappeared from
+view.
+
+When an animal touches another animal it will change direction. 
+
+*** Later
+
+Have the animals move their legs perhaps bellow in pain when branded.
+
+Flying birds will be able to land and walk.
+
+To hurt/kill player:
+
+All birds peck.
+
+Crocodiles and dingos bite.
+
+Spiders and snakes poison.
+
+Kangaroos and steers kick.
+
+** Objects
+
+Branding iron - shape of wheelhouse.
+
+*** Later
+
+Whip.
+
+Boots.
+
+Billy.
+
+Camp fire.
+
+Cattle yard.
+
+Outback dunny.
+
+Opals.
+
+** game play
+
+This is the important one.  The game play has got to feel right so
+it's simple to learn and a lot of fun.  That's at the start but to
+keep people coming back there should be some complexity, some hidden
+gems.
+
+That could be a pun or more specifically, opals, for the player
+to find.  Maybe they give the player extra power: a more potent iron
+or a longer whip.
+
+Animals chase player; player can move via arrow keys; player can stop animals
+via branding; they stop and get in the way of other animals.
+
+The animals reduce the health of the player via their respective violent
+acts.  For example, a steer will kick the player.  An emu will peck the
+player.
+
+For the steer to kick the player, it has to turn around quickly to kick
+as it will be approaching the player head first.
+
+Of course, the steer can charge the player; if it's close enough it will
+toss him with its horns.
+
+To brand an animal the player clicks with the mouse (which is in the
+shape of a branding iron) on the animal.
+
+When an animal is branded, the brand will appear prominently for a
+frame or two on the animal (later the animal may make a noise of
+pain).
+
+The animal, once branded, will move away from the player.
+
+When all of the animals are branded the game will move to the next
+level.
+
+No score is kept.  The level number is displayed along with the number
+of men.
+
+Initially there will be only 1 player.
+
+*** Later
+
+- dog?
+
+- what about side scrolling: player moves to right; animals come from
+  right to left; player has to avoid +/or brand them
+
+- remap keyboard + mouse; save settings per user
+
+- menu?

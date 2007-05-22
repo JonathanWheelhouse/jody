@@ -1,0 +1,219 @@
+-*-Outline-*-
+* Architecture
+
+** cc2e
+*** Chapter 9: Pseudocode Programming Process
+
+Have you checked that the prerequisites have been satisfied?
+
+Have you defined the problem that the class will solve?
+
+Is the high level design clear enough to give the class and each of
+its routines a good name?
+
+Have you thought about how to test the class and each of its routines?
+
+Have you checked the standard libraries and other code libraries for
+applicable routines or components?
+
+Have you designed each routine using detailed pseudocode?
+
+Have you mentally checked the pseudocode? Is it easy to understand?
+
+Have you paid attention to warnings that would send you back to design
+(use of global data, operations that seem better suited to another
+class or another routine, and so on)?
+
+Did you translate the pseudocode to code accurately?
+
+Did you apply the PPP recursively, breaking routines into smaller
+routines when needed?
+
+Did you document assumptions as you made them?
+
+Did you remove comments that turned out to be redundant?
+
+Have you chosen the best of several iterations, rather than merely
+stopping after your first iteration?
+
+Do you thoroughly understand your code? Is it easy to understand?
+
+** Chapter 7: High Quality Routines
+*** Big-Picture Issues
+
+Is the reason for creating the routine sufficient?
+
+Have all parts of the routine that would benefit from being put into
+routines of their own been put into routines of their own?
+
+Is the routine's name a strong, clear verb-plus-object name for a
+procedure or a description of the return value for a function?
+
+Does the routine's name describe everything the routine does?
+
+Have you established naming conventions for common operations?
+
+Does the routine have strong, functional cohesion-doing one and only
+one thing and doing it well?
+
+Do the routines have loose coupling-are the routine's connections to
+other routines small, intimate, visible, and flexible?
+
+Is the length of the routine determined naturally by its function and
+logic, rather than by an artificial coding standard?
+
+
+*** Parameter-Passing Issues
+
+Does the routine's parameter list, taken as a whole, present a
+consistent interface abstraction?
+
+Are the routine's parameters in a sensible order, including matching
+the order of parameters in similar routines?
+
+Are interface assumptions documented?
+
+Does the routine have seven or fewer parameters?
+
+Is each input parameter used?
+
+Is each output parameter used?
+
+Does the routine avoid using input parameters as working variables?
+
+If the routine is a function, does it return a valid value under all
+possible circumstances?
+
+** main.c
+
+- controller
+
+*** sprite
+- data:
+  - sprite_base: collection of frames|images
+  - sprite: link to sprite_base, position
+- load sprite_base & sprite
+- draw
+- set location
+- free
+
+*** cursor
+- create and draw cursors
+
+*** gamedefs.h
+- screen_width & height; mentions TIME_SCALE_FACTOR
+
+*** util.c
+unused variables and macros
+- xalloc routines; unused at present
+
+
+** Data structures
+
+*** Problems:
+- pointing 1 struct at another:
+  - harder to understand with all the pointers
+  - passing more than is required to routines
+  - bad names
+
+*** struct gamestate
+- pointer to struct engine
+
+- indicators:
+  running
+  level
+  score etc.
+
+
+*** struct engine
+- pointers to SDL_Surface's back, screen
+
+- pointer to struct map
+
+- pointer to array sprites
+
+- pointers to various cursors
+
+*** map (unused so far)
+	pointer back to struct engine ...
+
+*** struct sprite
+- pointer to struct sprite_base
+
+- pointer to SDL_Surface screen (? - duplicate with struct engine;
+  makes it harder to free)
+
+- data about location, speed, whether animating etc.
+
+*** struct sprite_base
+- pointer to array of sprite_frame's
+
+- whether build, frame count, image width and height
+
+*** struct sprite_frame
+- pause number (FIX: get rid of this? for the animation? - should be
+scalable so if animals are moving faster then less time between frames)
+
+- pointer to SDL_Surface (actual image)
+
+** Design
+
+*** initialise
+- process args; set flags; display usage if args wrong
+- determine if user wants the full screen
+
+- init video
+- set video mode
+- get surface to write to
+
+- set icon
+- set caption
+
+- set up gamestate
+
+- create cursors
+- load background
+- load sprites
+
+- set up engine
+
+*** sprite
+- load sprites from file
+
+- allow manipulation of sprites; ie movement
+
+*** cursor
+- create cursors
+
+*** sound
+- load sounds
+- play appropriate sound for events
+
+*** collision detection
+
+*** calculate movement
+
+*** maps
+
+*** levels
+
+*** move sprites
+
+*** load background
+change background for level
+
+*** player
+
+- detect keys
+
+- move player depending on keys
+do things (movement; branding; explosion) sprites depending on keys
+(these are events - different things correspond to events)
+
+*** mouse detection
+
+*** print usage
+
+*** gameplay
+- kill player if beat touches
+- check bounds of sprites eg clouds stay in the sky?
