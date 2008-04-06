@@ -1,6 +1,35 @@
 -*-Outline-*-
 * Architecture
 
+How to rotate sprites?
+
+use the SDL_gfx library. You can use the function
+	rotozoomSurface(SDL_Surface* surface, double zoom, double angle, int smooth)
+to easily rotate and zoom in on your sprites.
+
+Don't use rotozoomSurface in realtime. It's extremely slow and if you
+call it a bunch of times in your main loop, your framerate will drop
+quite fast. It would be a better idea to cache the rotation and then
+use it when needed. This will dramatically speed up the framerate and
+ensure you don't loose any frames.
+
+Yes, do precache the surfaces... But just so you know, that would use
+a lot of memory because you might end up having 359 surfaces for 360
+degrees (considering you can use the 0 degrees one for a 360 degrees
+one)... Which means creating 359 surfaces and then using pixel-access
+(slow-also) to rotate... What you can do is, to have approximate
+degreess... For example, rotate in 4 directions and estimate the
+angle... Or maybe 8 to make it a little more realistic... Just a few
+tips..
+
+How do I get the spaceship to go in the direction it's facing when I press the up arrow?
+How do I get the bullets to move in that direction when I press the fire button?
+
+Think back to your trigonomtery.
+- on up increase angle, on down decrease angle.
+- on fire shoot bullet at cosine of angle * velocity and sine of angle *
+velocity.
+
 ** cc2e
 *** Chapter 9: Pseudocode Programming Process
 

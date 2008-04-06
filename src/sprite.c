@@ -3,12 +3,13 @@
 #include "sprite.h"
 #include "gamedefs.h"
 
-struct SDL_Surface *image_frame(char *buffer, const char *dir, int *pause);
+struct SDL_Surface *image_frame(char *line, const char *dir, int *pause);
 
 struct sprite_base *base_init(const char *dir)
 {
-	char filename[255];
-	sprintf(filename, "%s/info", dir);
+	char *filename;
+	if (asprintf(&filename, "%s/info", dir) < 0)
+		return NULL;
 
 	FILE *fp;
 	if ((fp=fopen(filename, "r")) == NULL) {
@@ -20,9 +21,13 @@ struct sprite_base *base_init(const char *dir)
 	struct sprite_base *base = malloc(sizeof(struct sprite_base));
 	base->is_built = base->frames_count = base->image_width = base->image_height = 0;
 
-	char buffer[255];
-	fgets(buffer, 255, fp);
-	sscanf(buffer, "FILES: %d", &base->frames_count);
+	char *line = NULL;
+	size_t N = 0;
+	if (getline(&line, &N, fp) == -1) {
+		fprintf(stderr, "ERROR reading first line of file %s\n\n", filename);
+		return NULL;
+	}
+	sscanf(line, "FILES: %d", &base->frames_count);
 
 	base->frames = (struct sprite_frame **)calloc(base->frames_count, sizeof(struct sprite_frame *));
 	if (!base->frames)
@@ -31,15 +36,16 @@ struct sprite_base *base_init(const char *dir)
 	base->is_built = 1;
 	int count = 0;
 
+	N = 0;
 	while (!feof(fp) && count < base->frames_count) {
-		fgets(buffer, 255, fp);
-		if (buffer[0] != '#' && buffer[0] != '\r' && buffer[0] != '\0' && buffer[0] != '\n' && strlen(buffer) != 0) {
+		getline(&line, &N, fp);
+		if (line[0] != '#' && line[0] != '\r' && line[0] != '\0' && line[0] != '\n' && strlen(line) != 0) {
 
 			struct sprite_frame *sprite_frame = (struct sprite_frame *)calloc(1, sizeof(struct sprite_frame));
 			base->frames[count] = sprite_frame;																	  
 
 			int pause=0;
-			base->frames[count]->image = image_frame(buffer, dir, &pause);
+			base->frames[count]->image = image_frame(line, dir, &pause);
 			if (!base->frames[count]->image)
 				return NULL;
 			base->frames[count]->pause = pause;
@@ -58,11 +64,11 @@ struct sprite_base *base_init(const char *dir)
 	return base;
 }
 
-struct SDL_Surface *image_frame(char *buffer, const char *dir, int *pause)
+struct SDL_Surface *image_frame(char *line, const char *dir, int *pause)
 {
 	char name[255];
 	int r=0, g=0, b=0;
-	int match = sscanf(buffer, "%s %d %d %d %d", name, pause, &r, &g, &b);
+	int match = sscanf(line, "%s %d %d %d %d", name, pause, &r, &g, &b);
 	if (match != 5)
 		return NULL;
 
@@ -130,7 +136,9 @@ void draw(struct sprite *sprite)
 	if (sprite->is_animating == 1) {
 		if (sprite->last_update + TIME_SCALE_FACTOR * sprite->speed < SDL_GetTicks()) {
 			sprite->frame_index++;
-			if (sprite->frame_index > sprite->sprite_base->frames_count - 1)
+			/* Make the animal face the direction it is going. */
+			int half = (sprite->sprite_base->frames_count - 1) / 2;
+			if (sprite->frame_index > half)
 				sprite->frame_index = 0;
 			sprite->last_update = SDL_GetTicks();
 		}

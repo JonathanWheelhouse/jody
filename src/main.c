@@ -98,12 +98,12 @@ struct map
 {
 	struct engine *owner;
 
-	int		w, h;		/* Size of map (tiles) */
-	unsigned char	*map;		/* 2D aray of tile indices */
-	unsigned char	*hit;		/* 2D aray of collision flags */
+	int		w, h;					/* Size of map (tiles) */
+	unsigned char	*map;			/* 2D aray of tile indices */
+	unsigned char	*hit;			/* 2D aray of collision flags */
 
-	int		tw, th;		/* Size of one tile (pixels) */
-	SDL_Surface	*tiles;		/* Tile palette image */
+	int		tw, th;					/* Size of one tile (pixels) */
+	SDL_Surface	*tiles;				/* Tile palette image */
 	unsigned char	hitinfo[256];	/* Collision info for the tiles */
 };
 
@@ -133,13 +133,13 @@ int main(int argc, char *argv[])
 {
 	struct gamestate *gs = init(argc, argv);
 	if(!gs)
-		exit(1);
+		exit(EXIT_FAILURE);
 
 	play_game(gs->engine);
 
 	close(gs);
 
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 static struct gamestate *init(int argc, char *argv[])
@@ -350,6 +350,23 @@ static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigne
 	unsigned int y = random();
 	y /= y_scale;
 
+
+	/* Put clouds in the sky; animals on the ground. */
+	int half = SCREEN_HEIGHT / 2; 
+	printf("half\t%d", half);
+	printf("\timage_names[i]\t%s", image_names[i]);
+	if (i == IMG_CLOUD) {
+		printf("\tmatched!");
+		if (y > half) ;
+			y = base->image_height;
+	} else 
+		if (y < half)
+			y = SCREEN_HEIGHT - base->image_height;
+
+		
+	printf("\ty\t%d\n", y);
+
+
 	set(sprite, x, y);
 	set_speed(sprite, 1);
 	engine->sprites[i] = sprite;
@@ -385,6 +402,8 @@ static void play_game(struct engine *engine)
 		double time_scale = (double)(cur_ticks-prev_ticks)/TIME_SCALE_FACTOR;
 
 		handle_events(engine);
+
+		/* ai logic - calc moves */
 
 		draw_background(engine->back, engine->screen);
 
