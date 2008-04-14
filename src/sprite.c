@@ -3,7 +3,7 @@
 #include "sprite.h"
 #include "gamedefs.h"
 
-struct SDL_Surface *image_frame(char *line, const char *dir, int *pause);
+struct SDL_Surface *image_frame(char *line, const char *dir);
 
 struct sprite_base *base_init(const char *dir)
 {
@@ -44,11 +44,9 @@ struct sprite_base *base_init(const char *dir)
 			struct sprite_frame *sprite_frame = (struct sprite_frame *)calloc(1, sizeof(struct sprite_frame));
 			base->frames[count] = sprite_frame;																	  
 
-			int pause=0;
-			base->frames[count]->image = image_frame(line, dir, &pause);
+			base->frames[count]->image = image_frame(line, dir);
 			if (!base->frames[count]->image)
 				return NULL;
-			base->frames[count]->pause = pause;
 
 			if (!base->image_width)
 				base->image_width = base->frames[count]->image->w;
@@ -64,12 +62,12 @@ struct sprite_base *base_init(const char *dir)
 	return base;
 }
 
-struct SDL_Surface *image_frame(char *line, const char *dir, int *pause)
+struct SDL_Surface *image_frame(char *line, const char *dir)
 {
 	char name[255];
 	int r=0, g=0, b=0;
-	int match = sscanf(line, "%s %d %d %d %d", name, pause, &r, &g, &b);
-	if (match != 5)
+	int match = sscanf(line, "%s %d %d %d", name, &r, &g, &b);
+	if (match != 4)
 		return NULL;
 
 	char filename[255];

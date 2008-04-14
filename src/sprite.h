@@ -5,7 +5,6 @@
 
 struct sprite_frame
 {
-  int pause;
   SDL_Surface *image;
 };
 
