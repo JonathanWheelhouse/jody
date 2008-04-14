@@ -1,6 +1,7 @@
 -*-Outline-*-
 * Architecture
 
+** Rotation
 How to rotate sprites?
 
 use the SDL_gfx library. You can use the function
@@ -29,6 +30,11 @@ Think back to your trigonomtery.
 - on up increase angle, on down decrease angle.
 - on fire shoot bullet at cosine of angle * velocity and sine of angle *
 velocity.
+
+** Constant Framerate
+SDL_gfx
+
+The framerate functions are used to insert delays into the graphics loop to maintain a constant framerate.
 
 ** cc2e
 *** Chapter 9: Pseudocode Programming Process
