@@ -107,8 +107,6 @@ struct map
 	unsigned char	hitinfo[256];	/* Collision info for the tiles */
 };
 
-double TIME_SCALE_FACTOR = 50;
-
 /* Prototypes */
 static struct gamestate *init(int argc, char *argv[]);
 static void close(struct gamestate *gamestate);
@@ -120,7 +118,7 @@ static struct engine *open_engine(SDL_Surface *screen);
 static void close_engine(struct engine *engine);
 static void play_game(struct engine *engine);
 static void handle_events(struct engine *engine);
-static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale);
+static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale, double time_scale_factor);
 
 static void set_icon(void);
 static void setup_img(struct engine *engine);
@@ -399,7 +397,8 @@ static void play_game(struct engine *engine)
 		prev_ticks = cur_ticks;
 		cur_ticks = SDL_GetTicks();
 
-		double time_scale = (double)(cur_ticks-prev_ticks)/TIME_SCALE_FACTOR;
+		double time_scale_factor = 50;
+		double time_scale = (double) (cur_ticks - prev_ticks) / time_scale_factor;
 
 		handle_events(engine);
 
@@ -407,7 +406,7 @@ static void play_game(struct engine *engine)
 
 		draw_background(engine->back, engine->screen);
 
-		main_draw(&src, engine, time_scale);
+		main_draw(&src, engine, time_scale, time_scale_factor);
 
 		SDL_Flip(engine->screen);
 
@@ -499,7 +498,7 @@ static void handle_events(struct engine *engine)
 	}
 }
 
-static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale)
+static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale, double time_scale_factor)
 {
 	/* SDL_Rect dest; */
 
@@ -542,7 +541,7 @@ static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale)
 
 		if (!engine->pause)
 			xadd(engine->sprites[i], X_DIST * time_scale);
-		draw(engine->sprites[i]);
+		draw(engine->sprites[i], time_scale_factor);
 	}
 
 }

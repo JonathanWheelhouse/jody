@@ -129,10 +129,10 @@ void free_sprite(struct sprite *sprite)
 	}
 }
 
-void draw(struct sprite *sprite)
+void draw(struct sprite *sprite, double time_scale_factor)
 {
 	if (sprite->is_animating == 1) {
-		if (sprite->last_update + TIME_SCALE_FACTOR * sprite->speed < SDL_GetTicks()) {
+		if (sprite->last_update + time_scale_factor * sprite->speed < SDL_GetTicks()) {
 			sprite->frame_index++;
 			/* Make the animal face the direction it is going. */
 			int half = (sprite->sprite_base->frames_count - 1) / 2;
