@@ -4,4 +4,4 @@ FILES: 1
 # milliseconds to pause afterwards,
 # the RGB of the transparent part,
 # if R < 0 then SDL_SetColorKey not done (ie no transparency)
-1.png       50    -1 255 0
+1.png -1 255 0

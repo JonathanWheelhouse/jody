@@ -107,8 +107,6 @@ struct map
 	unsigned char	hitinfo[256];	/* Collision info for the tiles */
 };
 
-double TIME_SCALE_FACTOR = 50;
-
 /* Prototypes */
 static struct gamestate *init(int argc, char *argv[]);
 static void close(struct gamestate *gamestate);
@@ -164,8 +162,7 @@ static struct gamestate *init(int argc, char *argv[])
 	SDL_WM_SetCaption("jody", "jody");
 	set_icon();
 
-	if (SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF |
-						 (fullscreen ? SDL_FULLSCREEN : 0)) == NULL) {
+	if (SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF | (fullscreen ? SDL_FULLSCREEN : 0)) == NULL) {
 		printf("Unable to set video mode: %s\n", SDL_GetError());
 		free(gs);
 		exit(1);
@@ -399,7 +396,8 @@ static void play_game(struct engine *engine)
 		prev_ticks = cur_ticks;
 		cur_ticks = SDL_GetTicks();
 
-		double time_scale = (double)(cur_ticks-prev_ticks)/TIME_SCALE_FACTOR;
+		double time_scale_factor = 50;
+		double time_scale = (double) (cur_ticks - prev_ticks) / time_scale_factor;
 
 		handle_events(engine);
 

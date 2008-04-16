@@ -8,11 +8,4 @@
 
 #define PI (3.141592654F)
 
-/* Our time scaling factor. This is defined in main.c, but
-   it needs to be accessible to the other game modules. 
-extern double time_scale;
-*/
-extern double TIME_SCALE_FACTOR;
-
-
 #endif
