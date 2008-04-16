@@ -118,7 +118,7 @@ static struct engine *open_engine(SDL_Surface *screen);
 static void close_engine(struct engine *engine);
 static void play_game(struct engine *engine);
 static void handle_events(struct engine *engine);
-static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale, double time_scale_factor);
+static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale);
 
 static void set_icon(void);
 static void setup_img(struct engine *engine);
@@ -162,8 +162,7 @@ static struct gamestate *init(int argc, char *argv[])
 	SDL_WM_SetCaption("jody", "jody");
 	set_icon();
 
-	if (SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF |
-						 (fullscreen ? SDL_FULLSCREEN : 0)) == NULL) {
+	if (SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF | (fullscreen ? SDL_FULLSCREEN : 0)) == NULL) {
 		printf("Unable to set video mode: %s\n", SDL_GetError());
 		free(gs);
 		exit(1);
@@ -406,7 +405,7 @@ static void play_game(struct engine *engine)
 
 		draw_background(engine->back, engine->screen);
 
-		main_draw(&src, engine, time_scale, time_scale_factor);
+		main_draw(&src, engine, time_scale);
 
 		SDL_Flip(engine->screen);
 
@@ -498,7 +497,7 @@ static void handle_events(struct engine *engine)
 	}
 }
 
-static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale, double time_scale_factor)
+static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale)
 {
 	/* SDL_Rect dest; */
 
@@ -541,7 +540,7 @@ static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale, d
 
 		if (!engine->pause)
 			xadd(engine->sprites[i], X_DIST * time_scale);
-		draw(engine->sprites[i], time_scale_factor);
+		draw(engine->sprites[i]);
 	}
 
 }
