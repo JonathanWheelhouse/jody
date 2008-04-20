@@ -2,11 +2,15 @@
 * Architecture
 
 ** Rotation
+Have example now but won't use it as it shouldn't be used in a loop.
+ie Have to pre load and then work out how to use them.  So why not use
+the GIMP?
+
 How to rotate sprites?
 
-use the SDL_gfx library. You can use the function
-	rotozoomSurface(SDL_Surface* surface, double zoom, double angle, int smooth)
-to easily rotate and zoom in on your sprites.
+Use the SDL_gfx library. You can use the function
+rotozoomSurface(SDL_Surface* surface, double zoom, double angle, int
+smooth) to easily rotate and zoom in on your sprites.
 
 Don't use rotozoomSurface in realtime. It's extremely slow and if you
 call it a bunch of times in your main loop, your framerate will drop
@@ -23,13 +27,20 @@ degreess... For example, rotate in 4 directions and estimate the
 angle... Or maybe 8 to make it a little more realistic... Just a few
 tips..
 
-How do I get the spaceship to go in the direction it's facing when I press the up arrow?
-How do I get the bullets to move in that direction when I press the fire button?
+How do I get the spaceship to go in the direction it's facing when I
+press the up arrow?  How do I get the bullets to move in that
+direction when I press the fire button?
 
 Think back to your trigonomtery.
 - on up increase angle, on down decrease angle.
 - on fire shoot bullet at cosine of angle * velocity and sine of angle *
 velocity.
+
+** Flip
+
+Rotation is not really what I want; flipping is.  Found some c++ code
+that does it but same story as rotation.  Just flip via GIMP.
+
 
 ** Constant Framerate
 SDL_gfx

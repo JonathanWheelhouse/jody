@@ -13,6 +13,9 @@
 #include "sprite.h"
 #include "datadir.h"
 
+/* macros */
+#define streq(a, b) (!strcmp((a),(b)))
+
 /* constants */
 #define X_DIST 10
 #define Y_DIST 1
@@ -191,12 +194,12 @@ static bool is_fullscreen(int argc, char *argv[])
 	bool fullscreen = false;
 
 	for (int i = 1; i < argc; i++) {
-		if (strcmp(argv[i], "--fullscreen") == 0 || strcmp(argv[i], "-f") == 0) {
+		if (streq(argv[i], "--fullscreen") || streq(argv[i], "-f")) {
 			fullscreen = true;
-		} else if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0) {
+		} else if (streq(argv[i], "--help") || streq(argv[i], "-h")) {
 			print_help();
 			exit(EXIT_SUCCESS);
-		} else if (strcmp(argv[i], "--usage") == 0 || strcmp(argv[i], "-u") == 0) {
+		} else if (streq(argv[i], "--usage") || streq(argv[i], "-u")) {
 			print_usage();
 			exit(EXIT_SUCCESS);
 		} else {
