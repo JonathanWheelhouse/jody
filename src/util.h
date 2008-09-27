@@ -23,7 +23,8 @@
 #endif
 #define UNUSED(x) (void)(x)
 
-void *xalloc(int size);
+void *xmalloc(size_t size);
+void *xcalloc(size_t nmemb, size_t size);
 void fatal(const char *format, ...);
 
 #endif

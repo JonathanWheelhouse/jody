@@ -1,6 +1,5 @@
 #include <SDL.h>
 #include <SDL_image.h>
-#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <math.h>
@@ -93,7 +92,6 @@ struct engine
 	SDL_Cursor *cursor_wheelhouse_transparent;
 	SDL_Cursor *cursor_wheelhouse_inverted;
 	SDL_Cursor *cursor_wheelhouse_black_with_white_lines;
-
 };
 
 /* Level map */
@@ -149,9 +147,7 @@ static struct gamestate *init(int argc, char *argv[])
 
 	bool fullscreen = is_fullscreen(argc, argv);
 
-	struct gamestate *gs = (struct gamestate *)calloc(1, sizeof(struct gamestate));
-	if(!gs)
-		return NULL;
+	struct gamestate *gs = xcalloc(1, sizeof(struct gamestate));
 
 	gs->fullscreen = fullscreen;
 
@@ -212,10 +208,7 @@ static bool is_fullscreen(int argc, char *argv[])
 
 static struct engine *open_engine(SDL_Surface *screen)
 {
-	struct engine *engine = (struct engine *)calloc(1, sizeof(struct engine));
-	if (!engine) {
-		return NULL;
-	}
+	struct engine *engine = xcalloc(1, sizeof(struct engine));
 	engine->screen = screen;
 
 /* FIXME */
@@ -294,7 +287,7 @@ void set_icon(void)
 	 }
   
 	 int masklen = (((icon -> w) + 7) / 8) * (icon -> h);
-	 Uint8 *mask = malloc(masklen * sizeof(Uint8));
+	 Uint8 *mask = xmalloc(masklen * sizeof(Uint8));
 	 memset(mask, 0xFF, masklen);
     
 	 SDL_WM_SetIcon(icon, mask);
@@ -305,13 +298,7 @@ void set_icon(void)
 
 void setup_img(struct engine *engine)
 {
-	engine->sprites = (struct sprite **)calloc(NUM_IMAGES, sizeof(struct sprite *));
-	if(!engine->sprites)
-	{
-		close_engine(engine);
-		fprintf(stderr, "\nError: I couldn't allocate memory for engine-sprites.\n");
-		exit(1);
-	}
+	engine->sprites = xcalloc(NUM_IMAGES, sizeof(struct sprite *));
 
 	srand (time(0));
 	unsigned int x_scale = RAND_MAX / SCREEN_WIDTH;
@@ -390,6 +377,7 @@ static void play_game(struct engine *engine)
 	src.x = 0;
 	src.y = 0;
 
+	/* game loop logic: events, logic and rendering */
 	engine->quit = engine->pause = 0;
 	while (engine->quit == 0) {
 

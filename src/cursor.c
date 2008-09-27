@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <SDL_image.h>
 #include <time.h>
+#include "util.h"
 #include "gamedefs.h"
 #include "datadir.h"
 

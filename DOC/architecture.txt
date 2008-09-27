@@ -1,7 +1,7 @@
 -*-Outline-*-
 * Architecture
 
-** Rotation
+** Rotation,
 Have example now but won't use it as it shouldn't be used in a loop.
 ie Have to pre load and then work out how to use them.  So why not use
 the GIMP?

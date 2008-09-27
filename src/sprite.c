@@ -17,7 +17,7 @@ struct sprite_base *base_init(const char *dir)
 		return NULL;
 	}
 
-	struct sprite_base *base = malloc(sizeof(struct sprite_base));
+	struct sprite_base *base = xmalloc(sizeof(struct sprite_base));
 	base->is_built = base->frames_count = base->image_width = base->image_height = 0;
 
 	char *line = NULL;
@@ -28,9 +28,7 @@ struct sprite_base *base_init(const char *dir)
 	}
 	sscanf(line, "FILES: %d", &base->frames_count);
 
-	base->frames = (struct sprite_frame **)calloc(base->frames_count, sizeof(struct sprite_frame *));
-	if (!base->frames)
-		return NULL;
+	base->frames = xcalloc(base->frames_count, sizeof(struct sprite_frame *));
 
 	base->is_built = 1;
 	int count = 0;
@@ -40,7 +38,7 @@ struct sprite_base *base_init(const char *dir)
 		getline(&line, &N, fp);
 		if (line[0] != '#' && line[0] != '\r' && line[0] != '\0' && line[0] != '\n' && strlen(line) != 0) {
 
-			struct sprite_frame *sprite_frame = (struct sprite_frame *)calloc(1, sizeof(struct sprite_frame));
+			struct sprite_frame *sprite_frame = xcalloc(1, sizeof(struct sprite_frame));
 			base->frames[count] = sprite_frame;																	  
 
 			base->frames[count]->image = image_frame(line, dir);
@@ -83,7 +81,7 @@ struct SDL_Surface *image_frame(char *line, const char *dir)
 
 struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen)
 {
-	struct sprite *sprite = malloc(sizeof(struct sprite));
+	struct sprite *sprite = xmalloc(sizeof(struct sprite));
 	sprite->frame_index = 0;
 	sprite->x = 0;
 	sprite->y = 0;

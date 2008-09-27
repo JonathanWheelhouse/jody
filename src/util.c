@@ -15,7 +15,7 @@ void fatal(const char *format, ...)
 	 exit(1);
 }
 
-void * xalloc(int size)
+void * xmalloc(size_t size)
 {
 	 void *p = malloc(size);
 	 if (p == NULL)
@@ -23,6 +23,14 @@ void * xalloc(int size)
 	 return p;
 }
 
+
+void * xcalloc(size_t nmemb, size_t size)
+{
+	void *p = calloc(nmemb, size);
+	if (p == NULL)
+		fatal("Out of memory");
+	return p;
+}
 
 static Sint32 seed = 0;
 
