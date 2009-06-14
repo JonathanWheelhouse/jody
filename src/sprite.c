@@ -2,6 +2,7 @@
 #include <string.h>
 #include "sprite.h"
 #include "gamedefs.h"
+#include "util.h"
 
 struct SDL_Surface *image_frame(char *line, const char *dir);
 
@@ -39,7 +40,7 @@ struct sprite_base *base_init(const char *dir)
 		if (line[0] != '#' && line[0] != '\r' && line[0] != '\0' && line[0] != '\n' && strlen(line) != 0) {
 
 			struct sprite_frame *sprite_frame = xcalloc(1, sizeof(struct sprite_frame));
-			base->frames[count] = sprite_frame;																	  
+			base->frames[count] = sprite_frame;
 
 			base->frames[count]->image = image_frame(line, dir);
 			if (!base->frames[count]->image)
@@ -71,12 +72,17 @@ struct SDL_Surface *image_frame(char *line, const char *dir)
 	sprintf(filename, "%s/%s", dir, name);
 
 	SDL_Surface *surface;
-	if((surface = IMG_Load(filename)) == NULL)
+	if ((surface = IMG_Load(filename)) == NULL)
 		return NULL;
-	if(r >= 0)
-		SDL_SetColorKey(surface, SDL_SRCCOLORKEY, SDL_MapRGB(surface->format, r, g, b));
 
-	return surface;
+	SDL_Surface *optimized_surface;
+	if ((optimized_surface = SDL_DisplayFormatAlpha(surface)) == NULL) {
+		SDL_FreeSurface(surface);
+		return NULL;
+	}
+	SDL_FreeSurface(surface);
+
+	return optimized_surface;
 }
 
 struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen)

@@ -16,7 +16,7 @@
 #define streq(a, b) (!strcmp((a),(b)))
 
 /* constants */
-#define X_DIST 10
+#define X_DIST 25
 #define Y_DIST 1
 
 /* global variables */
@@ -363,7 +363,7 @@ static void play_game(struct engine *engine)
 {
 
 	/* keep track of frames and time */
-	int prev_ticks = 0, cur_ticks = 0;
+	Uint32 prev_ticks = 0, cur_ticks = 0;
 	prev_ticks = SDL_GetTicks();
 
 	int start_time, end_time;
@@ -398,10 +398,10 @@ static void play_game(struct engine *engine)
 
 		main_draw(&src, engine, time_scale);
 
-		SDL_Flip(engine->screen);
-
 		frames_drawn++;
 
+		if (SDL_Flip(engine->screen) == -1)
+			engine->quit = 1;
 	}
 
 	end_time = time(NULL);
@@ -501,7 +501,6 @@ static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale)
 
 	int i;
 	for (i = 1; i < NUM_IMAGES; i++) {
-
 /* 		  /\* cow black tile *\/ */
 /* 		  /\* struct for storing game state like pig.c *\/ */
 /* 		  /\* struct for storing tile data per animal type */
