@@ -17,7 +17,7 @@ struct sprite_base
 struct sprite
 {
 	int frame_index;
-	int x, y, prev_x, prev_y;
+	double x, y, prev_x, prev_y;
 	int is_animating;
 	int is_drawn;
 	float speed;
@@ -44,10 +44,10 @@ extern void start_animating(struct sprite *sprite);
 extern void stop_animating(struct sprite *sprite);
 extern void rewind_frame(struct sprite *sprite);
 
-extern void xadd(struct sprite *sprite, int displacement);
-extern void yadd(struct sprite *sprite, int nr);
-extern void xset(struct sprite *sprite, int nr);
-extern void yset(struct sprite *sprite, int nr);
-extern void set(struct sprite *sprite, int x, int y);
+extern void xadd(struct sprite *sprite, double displacement);
+extern void yadd(struct sprite *sprite, double nr);
+extern void xset(struct sprite *sprite, double nr);
+extern void yset(struct sprite *sprite, double nr);
+extern void set(struct sprite *sprite, double x, double y);
 
 #endif

@@ -13,9 +13,11 @@
 #include "datadir.h"
 
 /* macros */
-#define streq(a, b) (!strcmp((a),(b)))
+#define STREQ(a, b) (!strcmp((a),(b)))
 
 /* constants */
+#define SPRITE_PIXELS_PER_SECOND 200
+#define NUM_MILLISECONDS_IN_A_SECOND 1000;
 #define X_DIST 25
 #define Y_DIST 1
 
@@ -119,7 +121,7 @@ static struct engine *open_engine(SDL_Surface *screen);
 static void close_engine(struct engine *engine);
 static void play_game(struct engine *engine);
 static void handle_events(struct engine *engine);
-static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale);
+static void main_draw(SDL_Rect *src, struct engine *engine, double elapsed_ticks);
 
 static void set_icon(void);
 static void setup_img(struct engine *engine);
@@ -190,12 +192,12 @@ static bool is_fullscreen(int argc, char *argv[])
 	bool fullscreen = false;
 
 	for (int i = 1; i < argc; i++) {
-		if (streq(argv[i], "--fullscreen") || streq(argv[i], "-f")) {
+		if (STREQ(argv[i], "--fullscreen") || STREQ(argv[i], "-f")) {
 			fullscreen = true;
-		} else if (streq(argv[i], "--help") || streq(argv[i], "-h")) {
+		} else if (STREQ(argv[i], "--help") || STREQ(argv[i], "-h")) {
 			print_help();
 			exit(EXIT_SUCCESS);
-		} else if (streq(argv[i], "--usage") || streq(argv[i], "-u")) {
+		} else if (STREQ(argv[i], "--usage") || STREQ(argv[i], "-u")) {
 			print_usage();
 			exit(EXIT_SUCCESS);
 		} else {
@@ -340,8 +342,8 @@ static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigne
 
 	/* Put clouds in the sky; animals on the ground. */
 	int half = SCREEN_HEIGHT / 2; 
-	printf("half\t%d", half);
-	printf("\timage_names[i]\t%s", image_names[i]);
+	/* printf("half\t%d", half); */
+	/* printf("\timage_names[i]\t%s", image_names[i]); */
 	if (i == IMG_CLOUD) {
 		printf("\tmatched!");
 		if (y > half) ;
@@ -381,22 +383,19 @@ static void play_game(struct engine *engine)
 	engine->quit = engine->pause = 0;
 	while (engine->quit == 0) {
 
+		handle_events(engine);
+
+		/* ai logic - calc moves */
 		/* Determine how many milliseconds have passed since
 		   the last frame, and update our motion scaling. */
 
 		prev_ticks = cur_ticks;
 		cur_ticks = SDL_GetTicks();
+		Uint32 elapsed_ticks = cur_ticks - prev_ticks;
 
-		double time_scale_factor = 50;
-		double time_scale = (double) (cur_ticks - prev_ticks) / time_scale_factor;
-
-		handle_events(engine);
-
-		/* ai logic - calc moves */
-
+		// render
 		draw_background(engine->back, engine->screen);
-
-		main_draw(&src, engine, time_scale);
+		main_draw(&src, engine, elapsed_ticks);
 
 		frames_drawn++;
 
@@ -488,7 +487,7 @@ static void handle_events(struct engine *engine)
 	}
 }
 
-static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale)
+static void main_draw(SDL_Rect *src, struct engine *engine, double elapsed_ticks)
 {
 	/* SDL_Rect dest; */
 
@@ -529,7 +528,13 @@ static void main_draw(SDL_Rect *src, struct engine *engine, double time_scale)
 /* 		SDL_BlitSurface(image->surface, NULL, engine->screen, &dest); */
 
 		if (!engine->pause)
-			xadd(engine->sprites[i], X_DIST * time_scale);
+		{
+			double distance = SPRITE_PIXELS_PER_SECOND * elapsed_ticks / NUM_MILLISECONDS_IN_A_SECOND;
+			/* double distance_rounded_up = ceil(distance); */
+			/* int x = (int) distance_rounded_up; */
+			/* printf("elapsed_ticks %f\t->x %i\n", elapsed_ticks, x); */
+			xadd(engine->sprites[i], distance);
+		}
 		draw(engine->sprites[i]);
 	}
 

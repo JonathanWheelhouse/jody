@@ -147,7 +147,7 @@ void draw(struct sprite *sprite)
 		sprite->is_drawn = 1;
 
 	SDL_Rect dest;
-	dest.x = sprite->x; dest.y = sprite->y;
+	dest.x = (int)sprite->x; dest.y = (int)sprite->y;
 	SDL_BlitSurface(sprite->sprite_base->frames[sprite->frame_index]->image, NULL, sprite->screen, &dest);
 }
 
@@ -162,14 +162,14 @@ void start_animating(struct sprite *sprite) { sprite->is_animating = 1; }
 void stop_animating(struct sprite *sprite) { sprite->is_animating = 0; }
 void rewind_frame(struct sprite *sprite) { sprite->frame_index = 0; }
 
-void xadd(struct sprite *sprite, int displacement)
+void xadd(struct sprite *sprite, double displacement)
 {
 	sprite->x += displacement;
 	if(sprite->x > SCREEN_WIDTH)
 		sprite->x = 0;
 }
 
-void yadd(struct sprite *sprite, int nr) { sprite->y += nr; }
-void xset(struct sprite *sprite, int nr) { sprite->x = nr; }
-void yset(struct sprite *sprite, int nr) { sprite->y = nr; }
-void set(struct sprite *sprite, int x, int y) { sprite->x = x; sprite->y = y; }
+void yadd(struct sprite *sprite, double nr) { sprite->y += nr; }
+void xset(struct sprite *sprite, double nr) { sprite->x = nr; }
+void yset(struct sprite *sprite, double nr) { sprite->y = nr; }
+void set(struct sprite *sprite, double x, double y) { sprite->x = x; sprite->y = y; }
