@@ -46,34 +46,34 @@ struct gamestate
 };
 
 enum image_idx {
-	 IMG_BACKGROUND,
-	 IMG_CLOUD,
-	 IMG_COW_BLACK,
-	 IMG_COW_BROWN,
-	 IMG_COW_ORANGE,
-	 IMG_COW_RED,
-	 IMG_COW_WHITE,
-	 IMG_COW_YELLOW,
-	 IMG_COW_YELLOW_WITH_RED_OUTLINE,
-	 IMG_KANGAROO_BLACK,
-	 IMG_KANGAROO_GREY,
-	 IMG_KANGAROO_RED,
-	 NUM_IMAGES
+	IMG_BACKGROUND,
+	IMG_CLOUD,
+	IMG_COW_BLACK,
+	IMG_COW_BROWN,
+	IMG_COW_ORANGE,
+	IMG_COW_RED,
+	IMG_COW_WHITE,
+	IMG_COW_YELLOW,
+	IMG_COW_YELLOW_WITH_RED_OUTLINE,
+	IMG_KANGAROO_BLACK,
+	IMG_KANGAROO_GREY,
+	IMG_KANGAROO_RED,
+	NUM_IMAGES
 };
 
 const char *image_names[NUM_IMAGES] = {
-	 IMG_DIR "background",
-	 IMG_DIR "cloud",
-	 IMG_DIR "cow_black",
-	 IMG_DIR "cow_brown",
-	 IMG_DIR "cow_orange",
-	 IMG_DIR "cow_red",
-	 IMG_DIR "cow_white",
-	 IMG_DIR "cow_yellow",
-	 IMG_DIR "cow_yellow_with_red_outline",
-	 IMG_DIR "kangaroo_black",
-	 IMG_DIR "kangaroo_grey",
-	 IMG_DIR "kangaroo_red"
+	IMG_DIR "background",
+	IMG_DIR "cloud",
+	IMG_DIR "cow_black",
+	IMG_DIR "cow_brown",
+	IMG_DIR "cow_orange",
+	IMG_DIR "cow_red",
+	IMG_DIR "cow_white",
+	IMG_DIR "cow_yellow",
+	IMG_DIR "cow_yellow_with_red_outline",
+	IMG_DIR "kangaroo_black",
+	IMG_DIR "kangaroo_grey",
+	IMG_DIR "kangaroo_red"
 };
 
 struct engine
@@ -122,7 +122,9 @@ static void close_engine(struct engine *engine);
 static void play_game(struct engine *engine);
 static void handle_events(struct engine *engine);
 static void move(SDL_Rect *src, struct engine *engine, double elapsed_ticks);
-static void main_draw(SDL_Rect *src, struct engine *engine, double elapsed_ticks);
+static Uint32 get_elapsed_ticks();
+static double elapsed_seconds(double elapsed_ticks);
+static void main_draw(SDL_Rect *src, struct engine *engine);
 
 static void set_icon(void);
 static void setup_img(struct engine *engine);
@@ -280,23 +282,23 @@ static void close_engine(struct engine *engine)
 
 void set_icon(void)
 {
-	 SDL_Surface *icon = IMG_Load(IMG_DIR "icon.png");
-	 if (icon == NULL) {
-		  fprintf(stderr,
-				  "\nError: I could not load the icon image: %s\n"
-				  "The Simple DirectMedia error that occurred was:\n"
-				  "%s\n\n", IMG_DIR "icon.png", SDL_GetError());
-		  exit(1);
-	 }
+	SDL_Surface *icon = IMG_Load(IMG_DIR "icon.png");
+	if (icon == NULL) {
+		fprintf(stderr,
+				"\nError: I could not load the icon image: %s\n"
+				"The Simple DirectMedia error that occurred was:\n"
+				"%s\n\n", IMG_DIR "icon.png", SDL_GetError());
+		exit(1);
+	}
   
-	 int masklen = (((icon -> w) + 7) / 8) * (icon -> h);
-	 Uint8 *mask = xmalloc(masklen * sizeof(Uint8));
-	 memset(mask, 0xFF, masklen);
+	int masklen = (((icon -> w) + 7) / 8) * (icon -> h);
+	Uint8 *mask = xmalloc(masklen * sizeof(Uint8));
+	memset(mask, 0xFF, masklen);
     
-	 SDL_WM_SetIcon(icon, mask);
+	SDL_WM_SetIcon(icon, mask);
   
-	 free(mask);
-	 SDL_FreeSurface(icon);
+	free(mask);
+	SDL_FreeSurface(icon);
 }
 
 void setup_img(struct engine *engine)
@@ -340,14 +342,13 @@ static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigne
 	unsigned int y = random();
 	y /= y_scale;
 
-
 	/* Put clouds in the sky; animals on the ground. */
 	int half = SCREEN_HEIGHT / 2; 
 	/* printf("half\t%d", half); */
 	/* printf("\timage_names[i]\t%s", image_names[i]); */
 	if (i == IMG_CLOUD) {
 		printf("\tmatched!");
-		if (y > half) ;
+		if (y > half)
 			y = base->image_height;
 	} else 
 		if (y < half)
@@ -366,9 +367,6 @@ static void play_game(struct engine *engine)
 {
 
 	/* keep track of frames and time */
-	Uint32 prev_ticks = 0, cur_ticks = 0;
-	prev_ticks = SDL_GetTicks();
-
 	int start_time, end_time;
 	start_time = time(NULL);
 	int frames_drawn = 0;
@@ -390,15 +388,12 @@ static void play_game(struct engine *engine)
 		/* Determine how many milliseconds have passed since
 		   the last frame, and update our motion scaling. */
 
-		prev_ticks = cur_ticks;
-		cur_ticks = SDL_GetTicks();
-		Uint32 elapsed_ticks = cur_ticks - prev_ticks;
-
+		Uint32 elapsed_ticks = get_elapsed_ticks();
 		move(&src, engine, elapsed_ticks);
 
 		// render
 		draw_background(engine->back, engine->screen);
-		main_draw(&src, engine, elapsed_ticks);
+		main_draw(&src, engine);
 
 		frames_drawn++;
 
@@ -494,13 +489,28 @@ static void move(SDL_Rect *src, struct engine *engine, double elapsed_ticks)
 {
 	for (int i = 1; i < NUM_IMAGES; i++) {
 		if (!engine->pause) {
-			double distance = SPRITE_PIXELS_PER_SECOND * elapsed_ticks / NUM_MILLISECONDS_IN_A_SECOND;
+			double distance = SPRITE_PIXELS_PER_SECOND * elapsed_seconds(elapsed_ticks);
 			xadd(engine->sprites[i], distance);
 		}
 	}
 }
 
-static void main_draw(SDL_Rect *src, struct engine *engine, double elapsed_ticks)
+static Uint32 get_elapsed_ticks()
+{
+	static Uint32 prev_ticks = 0;
+	static Uint32 cur_ticks = 0;
+	prev_ticks = cur_ticks;
+	cur_ticks = SDL_GetTicks();
+	Uint32 elapsed_ticks = cur_ticks - prev_ticks;
+	return elapsed_ticks;
+}
+
+static double elapsed_seconds(double elapsed_ticks)
+{
+	return elapsed_ticks / NUM_MILLISECONDS_IN_A_SECOND;
+}
+
+static void main_draw(SDL_Rect *src, struct engine *engine)
 {
 	for (int i = 1; i < NUM_IMAGES; i++) {
 		draw(engine->sprites[i]);
