@@ -121,6 +121,7 @@ static struct engine *open_engine(SDL_Surface *screen);
 static void close_engine(struct engine *engine);
 static void play_game(struct engine *engine);
 static void handle_events(struct engine *engine);
+static void move(SDL_Rect *src, struct engine *engine, double elapsed_ticks);
 static void main_draw(SDL_Rect *src, struct engine *engine, double elapsed_ticks);
 
 static void set_icon(void);
@@ -393,6 +394,8 @@ static void play_game(struct engine *engine)
 		cur_ticks = SDL_GetTicks();
 		Uint32 elapsed_ticks = cur_ticks - prev_ticks;
 
+		move(&src, engine, elapsed_ticks);
+
 		// render
 		draw_background(engine->back, engine->screen);
 		main_draw(&src, engine, elapsed_ticks);
@@ -487,57 +490,21 @@ static void handle_events(struct engine *engine)
 	}
 }
 
-static void main_draw(SDL_Rect *src, struct engine *engine, double elapsed_ticks)
+static void move(SDL_Rect *src, struct engine *engine, double elapsed_ticks)
 {
-	/* SDL_Rect dest; */
-
-	/* background */
-/* 	dest.x = 0; */
-/* 	dest.y = 0; */
-/* 	dest.w = (images[IMG_BACKGROUND].surface)->w; */
-/* 	dest.h = (images[IMG_BACKGROUND].surface)->h; */
-/* 	SDL_BlitSurface(images[IMG_BACKGROUND].surface, NULL, screen, &dest); */
-
-	int i;
-	for (i = 1; i < NUM_IMAGES; i++) {
-/* 		  /\* cow black tile *\/ */
-/* 		  /\* struct for storing game state like pig.c *\/ */
-/* 		  /\* struct for storing tile data per animal type */
-/* 			 method per animal type for moving */
-/* 			 struct per animal to store x & y coords */
-/* 			 calculate moves outside draw: */
-/* 			 - foreach animal type */
-/* 			 - foreach animal calculate move */
-/* 		  *\/ */
-/* 		  if (!*pause) { */
-/* 			   /\* Move to the next cow in the 3 cow tile *\/ */
-/* 			   int cow3_x = 252; */
-/* 			   int cow_width = 126; */
-/* 			   src->x += cow_width; */
-/* 			   if (src->x > cow3_x) */
-/* 					src->x = 0; */
-/* 		struct image *image = &images[i]; */
-/* 		dest.w = image->surface->w; */
-/* 		dest.h = image->surface->h; */
-/* 		if (engine->pause) { */
-/* 			dest.x = image->x; */
-/* 			dest.y = image->y; */
-/* 		} else */
-/* 			dest = calc_dest(image); */
-
-/* 		SDL_BlitSurface(image->surface, NULL, engine->screen, &dest); */
-
-		if (!engine->pause)
-		{
+	for (int i = 1; i < NUM_IMAGES; i++) {
+		if (!engine->pause) {
 			double distance = SPRITE_PIXELS_PER_SECOND * elapsed_ticks / NUM_MILLISECONDS_IN_A_SECOND;
-			/* double distance_rounded_up = ceil(distance); */
-			/* int x = (int) distance_rounded_up; */
-			/* printf("elapsed_ticks %f\t->x %i\n", elapsed_ticks, x); */
 			xadd(engine->sprites[i], distance);
 		}
+	}
+}
+
+static void main_draw(SDL_Rect *src, struct engine *engine, double elapsed_ticks)
+{
+	for (int i = 1; i < NUM_IMAGES; i++) {
 		draw(engine->sprites[i]);
 	}
-
 }
 
 /* static SDL_Rect calc_dest(struct image *image) */
