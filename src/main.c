@@ -114,7 +114,7 @@ struct map
 static struct gamestate *init(int argc, char *argv[]);
 static void close(struct gamestate *gamestate);
 
-static bool is_fullscreen(int argc, char *argv[]);
+static void handle_args(int argc, char *argv[], bool *fullscreen);
 static void print_help();
 static void print_usage();
 static struct engine *open_engine(SDL_Surface *screen);
@@ -124,7 +124,7 @@ static void handle_events(struct engine *engine);
 static void move(SDL_Rect *src, struct engine *engine, double elapsed_ticks);
 static Uint32 get_elapsed_ticks();
 static double elapsed_seconds(double elapsed_ticks);
-static void main_draw(SDL_Rect *src, struct engine *engine);
+static void main_draw(SDL_Rect *src, struct sprite **sprites);
 
 static void set_icon(void);
 static void setup_img(struct engine *engine);
@@ -150,7 +150,8 @@ static struct gamestate *init(int argc, char *argv[])
 {
 	srand(time(0));
 
-	bool fullscreen = is_fullscreen(argc, argv);
+	bool fullscreen;
+	handle_args(argc, argv, &fullscreen);
 
 	struct gamestate *gs = xcalloc(1, sizeof(struct gamestate));
 
@@ -190,13 +191,13 @@ static void close(struct gamestate *gs)
 	free(gs);
 }
 
-static bool is_fullscreen(int argc, char *argv[])
+static void handle_args(int argc, char *argv[], bool *fullscreen)
 {
-	bool fullscreen = false;
+	*fullscreen = false;
 
 	for (int i = 1; i < argc; i++) {
 		if (STREQ(argv[i], "--fullscreen") || STREQ(argv[i], "-f")) {
-			fullscreen = true;
+			*fullscreen = true;
 		} else if (STREQ(argv[i], "--help") || STREQ(argv[i], "-h")) {
 			print_help();
 			exit(EXIT_SUCCESS);
@@ -208,7 +209,6 @@ static bool is_fullscreen(int argc, char *argv[])
 			exit(EXIT_FAILURE);
 		}
 	}
-	return fullscreen;
 }
 
 static struct engine *open_engine(SDL_Surface *screen)
@@ -354,9 +354,7 @@ static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigne
 		if (y < half)
 			y = SCREEN_HEIGHT - base->image_height;
 
-		
 	printf("\ty\t%d\n", y);
-
 
 	set(sprite, x, y);
 	set_speed(sprite, 1);
@@ -393,7 +391,7 @@ static void play_game(struct engine *engine)
 
 		// render
 		draw_background(engine->back, engine->screen);
-		main_draw(&src, engine);
+		main_draw(&src, engine->sprites);
 
 		frames_drawn++;
 
@@ -510,10 +508,10 @@ static double elapsed_seconds(double elapsed_ticks)
 	return elapsed_ticks / NUM_MILLISECONDS_IN_A_SECOND;
 }
 
-static void main_draw(SDL_Rect *src, struct engine *engine)
+static void main_draw(SDL_Rect *src, struct sprite	**sprites)
 {
 	for (int i = 1; i < NUM_IMAGES; i++) {
-		draw(engine->sprites[i]);
+		draw(sprites[i]);
 	}
 }
 
