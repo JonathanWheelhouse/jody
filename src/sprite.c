@@ -1,5 +1,6 @@
 #include <SDL_image.h>
 #include <string.h>
+#include "surface.h"
 #include "sprite.h"
 #include "gamedefs.h"
 #include "util.h"
@@ -71,18 +72,7 @@ struct SDL_Surface *image_frame(char *line, const char *dir)
 	char filename[255];
 	sprintf(filename, "%s/%s", dir, name);
 
-	SDL_Surface *surface;
-	if ((surface = IMG_Load(filename)) == NULL)
-		return NULL;
-
-	SDL_Surface *optimized_surface;
-	if ((optimized_surface = SDL_DisplayFormatAlpha(surface)) == NULL) {
-		SDL_FreeSurface(surface);
-		return NULL;
-	}
-	SDL_FreeSurface(surface);
-
-	return optimized_surface;
+	return load_image(filename);
 }
 
 struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen)

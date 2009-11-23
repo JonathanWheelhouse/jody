@@ -9,6 +9,7 @@
 #include "gamedefs.h"
 #include "cursor.h"
 #include "util.h"
+#include "surface.h"
 #include "sprite.h"
 #include "datadir.h"
 
@@ -23,30 +24,7 @@
 
 /* global variables */
 
-struct gamestate
-{
-	bool fullscreen;
-
-	struct engine *engine;
-
-	/* Sprites */
-
-	/* Global game state */
-	int		running;
-	int		level;
-	int		lives;
-	int		score;
-	int		enemycount;
-
-	/* Objects */
-
-	/* Statistics */
-	int		logic_frames;
-	int		rendered_frames;
-};
-
 enum image_idx {
-	IMG_BACKGROUND,
 	IMG_CLOUD,
 	IMG_COW_BLACK,
 	IMG_COW_BROWN,
@@ -62,7 +40,6 @@ enum image_idx {
 };
 
 const char *image_names[NUM_IMAGES] = {
-	IMG_DIR "background",
 	IMG_DIR "cloud",
 	IMG_DIR "cow_black",
 	IMG_DIR "cow_brown",
@@ -76,19 +53,8 @@ const char *image_names[NUM_IMAGES] = {
 	IMG_DIR "kangaroo_red"
 };
 
-struct engine
+struct cursors
 {
-	SDL_Surface	*back, *screen;
-
-	int quit, pause;
-
-	/* Background graphics */
-	struct map *map;
-	
-	/* Sprites and stuff */
-	int		nsprites;
-	struct sprite	**sprites;
-
 	SDL_Cursor *cursor_arrow;
 	SDL_Cursor *cursor_wheelhouse;
 	SDL_Cursor *cursor_wheelhouse_transparent;
@@ -96,66 +62,55 @@ struct engine
 	SDL_Cursor *cursor_wheelhouse_black_with_white_lines;
 };
 
-/* Level map */
-struct map
-{
-	struct engine *owner;
-
-	int		w, h;					/* Size of map (tiles) */
-	unsigned char	*map;			/* 2D aray of tile indices */
-	unsigned char	*hit;			/* 2D aray of collision flags */
-
-	int		tw, th;					/* Size of one tile (pixels) */
-	SDL_Surface	*tiles;				/* Tile palette image */
-	unsigned char	hitinfo[256];	/* Collision info for the tiles */
-};
-
 /* Prototypes */
-static struct gamestate *init(int argc, char *argv[]);
-static void close(struct gamestate *gamestate);
-
+static void init_sdl(bool fullscreen);
 static void handle_args(int argc, char *argv[], bool *fullscreen);
-static void print_help();
-static void print_usage();
-static struct engine *open_engine(SDL_Surface *screen);
-static void close_engine(struct engine *engine);
-static void play_game(struct engine *engine);
-static void handle_events(struct engine *engine);
-static void move(SDL_Rect *src, struct engine *engine, double elapsed_ticks);
-static Uint32 get_elapsed_ticks();
+static void print_help(void);
+static void print_usage(void);
+static SDL_Surface *get_background();
+static struct cursors setup_cursors(void);
+static void close_sprites(struct sprite **sprites);
+static void play_game(SDL_Surface *back, SDL_Surface *screen, struct sprite **sprites, struct cursors *cursors);
+static void handle_events(SDL_Surface *screen, int *quit, int *pause, struct cursors *cursors);
+static void move(SDL_Rect *src, struct sprite *sprites[], int *pause, double elapsed_ticks);
+static Uint32 get_elapsed_ticks(void);
 static double elapsed_seconds(double elapsed_ticks);
 static void main_draw(SDL_Rect *src, struct sprite **sprites);
 
 static void set_icon(void);
-static void setup_img(struct engine *engine);
-static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigned int y_scale);
-
+static struct sprite **setup_img(SDL_Surface *screen);
+static struct sprite *load_img(int i, SDL_Surface *screen, unsigned int x_scale, unsigned int y_scale);
 static void draw_image(SDL_Surface *img, SDL_Surface *screen, int x, int y);
 static void draw_background(SDL_Surface *back, SDL_Surface *screen);
 
 int main(int argc, char *argv[])
 {
-	struct gamestate *gs = init(argc, argv);
-	if(!gs)
-		exit(EXIT_FAILURE);
+	bool fullscreen;
+	handle_args(argc, argv, &fullscreen);
 
-	play_game(gs->engine);
+	init_sdl(fullscreen);
 
-	close(gs);
+	struct cursors cursors = setup_cursors();
+
+	SDL_Surface *screen = SDL_GetVideoSurface();
+
+	struct sprite **sprites = setup_img(screen);
+
+	SDL_Surface *background = get_background();
+
+	play_game(background, screen, sprites, &cursors);
+
+	close_sprites(sprites);
+
+	SDL_FreeSurface(screen);
+	free(background);
 
 	exit(EXIT_SUCCESS);
 }
 
-static struct gamestate *init(int argc, char *argv[])
+static void init_sdl(bool fullscreen)
 {
 	srand(time(0));
-
-	bool fullscreen;
-	handle_args(argc, argv, &fullscreen);
-
-	struct gamestate *gs = xcalloc(1, sizeof(struct gamestate));
-
-	gs->fullscreen = fullscreen;
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		printf("Unable to initialize SDL: %s\n", SDL_GetError());
@@ -169,26 +124,23 @@ static struct gamestate *init(int argc, char *argv[])
 
 	if (SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF | (fullscreen ? SDL_FULLSCREEN : 0)) == NULL) {
 		printf("Unable to set video mode: %s\n", SDL_GetError());
-		free(gs);
 		exit(1);
 	}
-
-	SDL_Surface *screen = SDL_GetVideoSurface();
-	struct engine *engine = open_engine(screen);
-	if (!engine)
-		return NULL;
-
-	setup_img(engine);
-
-	gs->engine = engine;
-
-	return gs;
 }
 
-static void close(struct gamestate *gs)
+static SDL_Surface *get_background(void)
 {
-	close_engine(gs->engine);
-	free(gs);
+	char background_dir[] = {IMG_DIR "background"};
+	char *background_path;
+	if (asprintf(&background_path, "%s/1.png", background_dir) < 0) {
+		fprintf(stderr,
+				"\nError: I could not load the background image: %s\n"
+				"The Simple DirectMedia error that occurred was:\n"
+				"%s\n\n", background_dir, SDL_GetError());
+		exit(1);
+	}
+	SDL_Surface *background = load_image(background_path);
+	return background;
 }
 
 static void handle_args(int argc, char *argv[], bool *fullscreen)
@@ -211,73 +163,50 @@ static void handle_args(int argc, char *argv[], bool *fullscreen)
 	}
 }
 
-static struct engine *open_engine(SDL_Surface *screen)
+static struct cursors setup_cursors(void)
 {
-	struct engine *engine = xcalloc(1, sizeof(struct engine));
-	engine->screen = screen;
+	struct cursors cursors;
 
-/* FIXME */
-/* 	engine->map = NULL; */
+	cursors.cursor_arrow = create_cursor_arrow();
+	if (!cursors.cursor_arrow) {
+		printf("Unable to create_cursor_arrow\n");
+		exit(EXIT_FAILURE);
+	}
 
-	/* Setup the cursors. */
-	engine->cursor_arrow = create_cursor_arrow();
-	if (!engine->cursor_arrow) {
-		close_engine(engine);
-		return NULL;
+	cursors.cursor_wheelhouse = create_cursor_wheelhouse();
+	if (!cursors.cursor_wheelhouse) {
+		printf("Unable to create_cursor_arrow\n");
+		exit(EXIT_FAILURE);
 	}
-	engine->cursor_wheelhouse = create_cursor_wheelhouse();
-	if (!engine->cursor_wheelhouse) {
-		close_engine(engine);
-		return NULL;
+
+	cursors.cursor_wheelhouse_transparent = create_cursor_wheelhouse_transparent();
+	if (!cursors.cursor_wheelhouse_transparent) {
+		printf("Unable to create_cursor_arrow\n");
+		exit(EXIT_FAILURE);
 	}
-	engine->cursor_wheelhouse_transparent = create_cursor_wheelhouse_transparent();
-	if (!engine->cursor_wheelhouse_transparent) {
-		close_engine(engine);
-		return NULL;
+
+	cursors.cursor_wheelhouse_inverted = create_cursor_wheelhouse_inverted();
+	if (!cursors.cursor_wheelhouse_inverted) {
+		printf("Unable to create_cursor_wheelhouse_inverted\n");
+		exit(EXIT_FAILURE);
 	}
-	engine->cursor_wheelhouse_inverted = create_cursor_wheelhouse_inverted();
-	if (!engine->cursor_wheelhouse_inverted) {
-		close_engine(engine);
-		return NULL;
+
+	cursors.cursor_wheelhouse_black_with_white_lines = create_cursor_wheelhouse_black_with_white_lines();
+	if (!cursors.cursor_wheelhouse_black_with_white_lines) {
+		printf("Unable to create_cursor_wheelhouse_black_with_white_lines\n");
+		exit(EXIT_FAILURE);
 	}
-	engine->cursor_wheelhouse_black_with_white_lines = create_cursor_wheelhouse_black_with_white_lines();
-	if (!engine->cursor_wheelhouse_black_with_white_lines) {
-		close_engine(engine);
-		return NULL;
-	}
-	return engine;
+
+	return cursors;
 }
 
-static void close_engine(struct engine *engine)
+static void close_sprites(struct sprite **sprites)
 {
-	if(engine->screen)
-		SDL_FreeSurface(engine->screen);
-
-	/* No need to free the background; it's the first sprite */
-
-	if(engine->map)
-		free(engine->map);
-
-	if (engine->sprites) {
-		for (int i = 0; i < NUM_IMAGES; i++) {
-			if (engine->sprites[i])
-				free_sprite(engine->sprites[i]);
-		}
-		free(engine->sprites);
+	for (int i = 0; i < NUM_IMAGES; i++) {
+		if (sprites[i])
+			free_sprite(sprites[i]);
 	}
-	
-	if (engine->cursor_arrow)
-		SDL_FreeCursor(engine->cursor_arrow);
-	if (engine->cursor_wheelhouse)
-		SDL_FreeCursor(engine->cursor_wheelhouse);
-	if (engine->cursor_wheelhouse_transparent)
-		SDL_FreeCursor(engine->cursor_wheelhouse_transparent);
-	if(engine->cursor_wheelhouse_inverted)
-		SDL_FreeCursor(engine->cursor_wheelhouse_inverted);
-	if(engine->cursor_wheelhouse_black_with_white_lines)
-		SDL_FreeCursor(engine->cursor_wheelhouse_black_with_white_lines);
-	
-	free(engine);
+	free(sprites);
 }
 
 void set_icon(void)
@@ -301,23 +230,23 @@ void set_icon(void)
 	SDL_FreeSurface(icon);
 }
 
-void setup_img(struct engine *engine)
+static struct sprite **setup_img(SDL_Surface *screen)
 {
-	engine->sprites = xcalloc(NUM_IMAGES, sizeof(struct sprite *));
+	struct sprite **sprites = xcalloc(NUM_IMAGES, sizeof(struct sprite *));
 
 	srand (time(0));
 	unsigned int x_scale = RAND_MAX / SCREEN_WIDTH;
 	unsigned int y_scale = RAND_MAX / SCREEN_HEIGHT;
 
-	for (int i = 0; i < NUM_IMAGES; i++)
-		load_img(i, engine, x_scale, y_scale);
-
-	/* first image = background */
-	engine->back = engine->sprites[0]->sprite_base->frames[0]->image;
+	for (int i = 0; i < NUM_IMAGES; i++) {
+		sprites[i] = load_img(i, screen, x_scale, y_scale);
+	}
+	return sprites;
 }
 
-static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigned int y_scale)
+static struct sprite *load_img(int i, SDL_Surface *screen, unsigned int x_scale, unsigned int y_scale)
 {
+	printf("image_names[i] = [%s]\n", image_names[i]);
 	struct sprite_base *base = base_init(image_names[i]);
 	if (base == NULL) {
 		fprintf(stderr,
@@ -327,7 +256,7 @@ static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigne
 				"%s\n\n", image_names[i], SDL_GetError());
 		exit(1);
 	}
-	struct sprite *sprite = sprite_init(base, engine->screen);
+	struct sprite *sprite = sprite_init(base, screen);
 	if (sprite == NULL) {
 		fprintf(stderr,
 				"\nError: I couldn't initialise the sprite:\n"
@@ -358,10 +287,10 @@ static void load_img(int i, struct engine *engine, unsigned int x_scale, unsigne
 
 	set(sprite, x, y);
 	set_speed(sprite, 1);
-	engine->sprites[i] = sprite;
+	return sprite;
 }
 
-static void play_game(struct engine *engine)
+static void play_game(SDL_Surface *back, SDL_Surface *screen, struct sprite **sprites, struct cursors *cursors)
 {
 
 	/* keep track of frames and time */
@@ -377,26 +306,26 @@ static void play_game(struct engine *engine)
 	src.y = 0;
 
 	/* game loop logic: events, logic and rendering */
-	engine->quit = engine->pause = 0;
-	while (engine->quit == 0) {
-
-		handle_events(engine);
+	int quit = false;
+	int pause = false;
+	while (!quit) {
+		handle_events(screen, &quit, &pause, cursors);
 
 		/* ai logic - calc moves */
 		/* Determine how many milliseconds have passed since
 		   the last frame, and update our motion scaling. */
 
 		Uint32 elapsed_ticks = get_elapsed_ticks();
-		move(&src, engine, elapsed_ticks);
+		move(&src, sprites, &pause, elapsed_ticks);
 
 		// render
-		draw_background(engine->back, engine->screen);
-		main_draw(&src, engine->sprites);
+		draw_background(back, screen);
+		main_draw(&src, sprites);
 
 		frames_drawn++;
 
-		if (SDL_Flip(engine->screen) == -1)
-			engine->quit = 1;
+		if (SDL_Flip(screen) == -1)
+			quit = true;
 	}
 
 	end_time = time(NULL);
@@ -404,13 +333,10 @@ static void play_game(struct engine *engine)
 
 	/* Display the average framerate. */
 	printf("Drew %i frames in %i seconds, for a framerate of %.2f fps.\n",
-		   frames_drawn,
-		   end_time-start_time,
-		   (float)frames_drawn/(float)(end_time-start_time));
-
+		frames_drawn, end_time-start_time, (float)frames_drawn/(float)(end_time-start_time));
 }
 
-static void print_help()
+static void print_help(void)
 {
 	printf(
 		"\njody\n"
@@ -435,46 +361,46 @@ static void print_help()
 		"\n");
 }
 
-static void print_usage()
+static void print_usage(void)
 {
 	printf("\nUsage: jody [--fullscreen] | [--help (-h) | --usage (-u)]\n\n"
 		   " --fullscreen or -f - Display in full screen instead of a window, if possible.\n"
 		   "\n");
 }
 
-static void handle_events(struct engine *engine)
+static void handle_events(SDL_Surface *screen, int *quit, int *pause, struct cursors *cursors)
 {
 	SDL_Event event;
 	while (SDL_PollEvent(&event) > 0) {
 		if (event.type == SDL_QUIT) {
-			engine->quit = 1;
+			*quit = true;
 		} else if (event.type == SDL_KEYDOWN) {
 			switch (event.key.keysym.sym) {
 			case SDLK_ESCAPE:
 			case SDLK_q:
-				engine->quit = 1;
+				*quit = true;
 				break;
 			case SDLK_1:
-				SDL_SetCursor(engine->cursor_arrow);
+				SDL_SetCursor(cursors->cursor_arrow);
 				break;
 			case SDLK_2:
-				SDL_SetCursor(engine->cursor_wheelhouse);
+				SDL_SetCursor(cursors->cursor_wheelhouse);
 				break;
 			case SDLK_3:
-				SDL_SetCursor(engine->cursor_wheelhouse_transparent);
+				SDL_SetCursor(cursors->cursor_wheelhouse_transparent);
 				break;
 			case SDLK_4:
-				SDL_SetCursor(engine->cursor_wheelhouse_inverted);
+				SDL_SetCursor(cursors->cursor_wheelhouse_inverted);
 				break;
 			case SDLK_5:
-				SDL_SetCursor(engine->cursor_wheelhouse_black_with_white_lines);
+				SDL_SetCursor(cursors->cursor_wheelhouse_black_with_white_lines);
 				break;
 			case SDLK_f:
-				SDL_WM_ToggleFullScreen(engine->screen);
+				SDL_WM_ToggleFullScreen(screen);
 				break;
 			case SDLK_p:
 			case SDLK_SPACE:
-				engine->pause = !engine->pause;
+				*pause = !*pause;
 				break;
 			default:
 				break;
@@ -483,17 +409,17 @@ static void handle_events(struct engine *engine)
 	}
 }
 
-static void move(SDL_Rect *src, struct engine *engine, double elapsed_ticks)
+static void move(SDL_Rect *src, struct sprite *sprites[], int *pause, double elapsed_ticks)
 {
-	for (int i = 1; i < NUM_IMAGES; i++) {
-		if (!engine->pause) {
+	for (int i = 0; i < NUM_IMAGES; i++) {
+		if (!*pause) {
 			double distance = SPRITE_PIXELS_PER_SECOND * elapsed_seconds(elapsed_ticks);
-			xadd(engine->sprites[i], distance);
+			xadd(sprites[i], distance);
 		}
 	}
 }
 
-static Uint32 get_elapsed_ticks()
+static Uint32 get_elapsed_ticks(void)
 {
 	static Uint32 prev_ticks = 0;
 	static Uint32 cur_ticks = 0;
@@ -510,7 +436,7 @@ static double elapsed_seconds(double elapsed_ticks)
 
 static void main_draw(SDL_Rect *src, struct sprite	**sprites)
 {
-	for (int i = 1; i < NUM_IMAGES; i++) {
+	for (int i = 0; i < NUM_IMAGES; i++) {
 		draw(sprites[i]);
 	}
 }

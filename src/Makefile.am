@@ -6,6 +6,8 @@ bin_PROGRAMS = jody
 jody_SOURCES = \
 	main.c \
 	gamedefs.h \
+	surface.h \
+	surface.c \
 	sprite.h \
 	sprite.c \
 	cursor.h \

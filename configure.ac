@@ -1,7 +1,7 @@
 # Process this file with autoconf to produce a configure script.
 AC_INIT(jody, 0.1.0, jonathan dot wheelhouse at gmail.com)
 AC_CONFIG_SRCDIR(src/main.c)
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([-Wno-portability])
 
 AC_PROG_CC
 
