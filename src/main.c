@@ -18,7 +18,7 @@
 
 /* constants */
 #define SPRITE_PIXELS_PER_SECOND 200
-#define NUM_MILLISECONDS_IN_A_SECOND 1000;
+#define NUM_MILLISECONDS 1000;
 #define X_DIST 25
 #define Y_DIST 1
 
@@ -74,7 +74,6 @@ static void play_game(SDL_Surface *back, SDL_Surface *screen, struct sprite **sp
 static void handle_events(SDL_Surface *screen, int *quit, int *pause, struct cursors *cursors);
 static void move(SDL_Rect *src, struct sprite *sprites[], int *pause, double elapsed_ticks);
 static Uint32 get_elapsed_ticks(void);
-static double elapsed_seconds(double elapsed_ticks);
 static void main_draw(SDL_Rect *src, struct sprite **sprites);
 
 static void set_icon(void);
@@ -220,13 +219,8 @@ void set_icon(void)
 		exit(1);
 	}
   
-	int masklen = (((icon -> w) + 7) / 8) * (icon -> h);
-	Uint8 *mask = xmalloc(masklen * sizeof(Uint8));
-	memset(mask, 0xFF, masklen);
-    
-	SDL_WM_SetIcon(icon, mask);
-  
-	free(mask);
+	SDL_WM_SetIcon(icon, NULL);
+
 	SDL_FreeSurface(icon);
 }
 
@@ -413,7 +407,8 @@ static void move(SDL_Rect *src, struct sprite *sprites[], int *pause, double ela
 {
 	for (int i = 0; i < NUM_IMAGES; i++) {
 		if (!*pause) {
-			double distance = SPRITE_PIXELS_PER_SECOND * elapsed_seconds(elapsed_ticks);
+			double elapsed_seconds = elapsed_ticks / NUM_MILLISECONDS;
+			double distance = SPRITE_PIXELS_PER_SECOND * elapsed_seconds;
 			xadd(sprites[i], distance);
 		}
 	}
@@ -427,11 +422,6 @@ static Uint32 get_elapsed_ticks(void)
 	cur_ticks = SDL_GetTicks();
 	Uint32 elapsed_ticks = cur_ticks - prev_ticks;
 	return elapsed_ticks;
-}
-
-static double elapsed_seconds(double elapsed_ticks)
-{
-	return elapsed_ticks / NUM_MILLISECONDS_IN_A_SECOND;
 }
 
 static void main_draw(SDL_Rect *src, struct sprite	**sprites)
