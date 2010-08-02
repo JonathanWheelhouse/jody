@@ -1,4 +1,5 @@
 FILES: 2
+can_be_branded: n
 # SYNTAX:
 # filename of the frame,
 # milliseconds to pause afterwards,

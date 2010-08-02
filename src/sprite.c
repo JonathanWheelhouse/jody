@@ -1,5 +1,6 @@
 #include <SDL_image.h>
 #include <string.h>
+#include <stdbool.h>
 #include "surface.h"
 #include "sprite.h"
 #include "gamedefs.h"
@@ -21,6 +22,7 @@ struct sprite_base *base_init(const char *dir)
 
 	struct sprite_base *base = xmalloc(sizeof(struct sprite_base));
 	base->is_built = base->frames_count = base->image_width = base->image_height = 0;
+	base->can_be_branded = false;
 
 	char *line = NULL;
 	size_t N = 0;
@@ -29,8 +31,17 @@ struct sprite_base *base_init(const char *dir)
 		return NULL;
 	}
 	sscanf(line, "FILES: %d", &base->frames_count);
-
 	base->frames = xcalloc(base->frames_count, sizeof(struct sprite_frame *));
+
+	if (getline(&line, &N, fp) == -1) {
+		fprintf(stderr, "Error reading second line of file %s\n\n", filename);
+		return NULL;
+	}
+	
+	char can_be_branded[2];
+	if (sscanf(line, "can_be_branded: %s", can_be_branded) != -1)
+		if (can_be_branded[0] == 'y' || can_be_branded[0] == 'Y')
+			base->can_be_branded = true;
 
 	base->is_built = 1;
 	int count = 0;
@@ -50,13 +61,15 @@ struct sprite_base *base_init(const char *dir)
 			if (!base->image_width)
 				base->image_width = base->frames[count]->image->w;
 			if (!base->image_height)
-				base->image_height = base->frames[count]->image->w;
+				base->image_height = base->frames[count]->image->h;
 
 			count++;
 		}
 	}
 
 	fclose(fp);
+
+	printf("file [%s] base->image_width [%d] base->image_height [%d]\n", filename, base->image_width, base->image_height);
 
 	return base;
 }
@@ -83,8 +96,9 @@ struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen)
 	sprite->y = 0;
 	sprite->prev_x = 0;
 	sprite->prev_y = 0;
-	sprite->is_animating = 0;
-	sprite->is_drawn = 0;
+	sprite->is_animating = false;
+	sprite->is_drawn = false;
+	sprite->is_branded = false;
 	sprite->speed = 0;
 	sprite->last_update = 0;
 
@@ -92,7 +106,7 @@ struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen)
 
 	if (sprite->sprite_base->is_built) {
 		if (sprite->sprite_base->frames_count > 1)
-			sprite->is_animating = 1;
+			sprite->is_animating = true;
 	}
 	sprite->screen = screen;
 	return sprite;
@@ -101,6 +115,9 @@ struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen)
 void free_sprite(struct sprite *sprite)
 {
 	if (sprite) {
+		SDL_Surface *brand = sprite->brand;
+		if (brand)
+			SDL_FreeSurface(brand);
 		struct sprite_base *sprite_base = sprite->sprite_base;
 		if (sprite_base) {
 			struct sprite_frame **frames = sprite_base->frames;
@@ -122,9 +139,9 @@ void free_sprite(struct sprite *sprite)
 	}
 }
 
-void draw(struct sprite *sprite)
+void draw(struct sprite *sprite, SDL_Surface *brand)
 {
-	if (sprite->is_animating == 1) {
+	if (sprite->is_animating == true) {
 		sprite->frame_index++;
 		/* Make the animal face the direction it is going. */
 		int half = (sprite->sprite_base->frames_count - 1) / 2;
@@ -133,12 +150,25 @@ void draw(struct sprite *sprite)
 		sprite->last_update = SDL_GetTicks();
 	}
 
-	if(sprite->is_drawn == 0)
-		sprite->is_drawn = 1;
+	if (sprite->is_drawn == false)
+		sprite->is_drawn = true;
 
 	SDL_Rect dest;
 	dest.x = (int)sprite->x; dest.y = (int)sprite->y;
 	SDL_BlitSurface(sprite->sprite_base->frames[sprite->frame_index]->image, NULL, sprite->screen, &dest);
+	if (sprite->is_branded) {
+		SDL_Surface *brand_to_put = NULL;
+		if (sprite->brand != NULL)
+			brand_to_put = sprite->brand;
+		else if (brand != NULL) {
+			sprite->brand = brand;
+			brand_to_put = brand;
+		}
+		if (brand_to_put != NULL) {
+			dest.x += 20; dest.y += 20;
+			SDL_BlitSurface(brand_to_put, NULL, sprite->screen, &dest);
+		}
+	}
 }
 
 void set_frame_index(struct sprite *sprite, int frame_index) { sprite->frame_index = frame_index; }
@@ -148,14 +178,14 @@ void set_speed(struct sprite *sprite, float speed) { sprite->speed = speed; }
 float get_speed(struct sprite *sprite) { return sprite->speed; }
 
 void toggle_is_animating(struct sprite *sprite) { sprite->is_animating = !sprite->is_animating; }
-void start_animating(struct sprite *sprite) { sprite->is_animating = 1; }
-void stop_animating(struct sprite *sprite) { sprite->is_animating = 0; }
+void start_animating(struct sprite *sprite) { sprite->is_animating = true; }
+void stop_animating(struct sprite *sprite) { sprite->is_animating = false; }
 void rewind_frame(struct sprite *sprite) { sprite->frame_index = 0; }
 
 void xadd(struct sprite *sprite, double displacement)
 {
 	sprite->x += displacement;
-	if(sprite->x > SCREEN_WIDTH)
+	if (sprite->x > SCREEN_WIDTH)
 		sprite->x = 0;
 }
 

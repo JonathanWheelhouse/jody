@@ -130,7 +130,7 @@ const char *wheelhouse[] = {
 	"0,0"
 };
 
-SDL_Cursor *create_cursor_wheelhouse(void)
+SDL_Cursor *create_wheelhouse_cursor(void)
 {
 	int i, row, col;
 	Uint8 data[4*32];
@@ -163,7 +163,13 @@ SDL_Cursor *create_cursor_wheelhouse(void)
 	sscanf(wheelhouse[4+row], "%d,%d", &hot_x, &hot_y);
 	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
 }
-SDL_Cursor *create_cursor_wheelhouse_transparent(void)
+
+SDL_Surface *create_wheelhouse_image(void)
+{
+	return IMG_ReadXPMFromArray(&wheelhouse);
+}
+
+SDL_Cursor *create_wheelhouse_cursor_transparent(void)
 {
 	int i, row, col;
 	Uint8 data[4*32];
@@ -199,7 +205,8 @@ SDL_Cursor *create_cursor_wheelhouse_transparent(void)
 	sscanf(wheelhouse[4+row], "%d,%d", &hot_x, &hot_y);
 	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
 }
-SDL_Cursor *create_cursor_wheelhouse_inverted(void)
+
+SDL_Cursor *create_wheelhouse_cursor_inverted(void)
 {
 	int i, row, col;
 	Uint8 data[4*32];
@@ -232,7 +239,7 @@ SDL_Cursor *create_cursor_wheelhouse_inverted(void)
 	sscanf(wheelhouse[4+row], "%d,%d", &hot_x, &hot_y);
 	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
 }
-SDL_Cursor *create_cursor_wheelhouse_black_with_white_lines(void)
+SDL_Cursor *create_wheelhouse_cursor_black_with_white_lines(void)
 {
 	int i, row, col;
 	Uint8 data[4*32];

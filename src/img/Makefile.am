@@ -1,7 +1,10 @@
 imgdir = ${pkgdatadir}/img
 
 img_DATA = \
-	icon.png
+	icon.png \
+	wheelhouse_image_black_with_white_lines.png \
+	wheelhouse_image_inverted.png \
+	wheelhouse_image_transparent.png
 
 nobase_img_DATA = \
 	background/info \

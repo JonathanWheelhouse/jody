@@ -24,6 +24,12 @@
 
 /* global variables */
 
+/* TODO no global variables
+   Have a type in each file?
+   Then use that type to decide if it can be branded?
+   Or only be able to brand cows.
+*/
+
 enum image_idx {
 	IMG_CLOUD,
 	IMG_COW_BLACK,
@@ -62,6 +68,14 @@ struct cursors
 	SDL_Cursor *cursor_wheelhouse_black_with_white_lines;
 };
 
+struct brands
+{
+	SDL_Surface *brand_wheelhouse;
+	SDL_Surface *brand_wheelhouse_transparent;
+	SDL_Surface *brand_wheelhouse_inverted;
+	SDL_Surface *brand_wheelhouse_black_with_white_lines;
+};
+
 /* Prototypes */
 static void init_sdl(bool fullscreen);
 static void handle_args(int argc, char *argv[], bool *fullscreen);
@@ -69,12 +83,14 @@ static void print_help(void);
 static void print_usage(void);
 static SDL_Surface *get_background();
 static struct cursors setup_cursors(void);
+static struct brands setup_brands(void);
 static void close_sprites(struct sprite **sprites);
-static void play_game(SDL_Surface *back, SDL_Surface *screen, struct sprite **sprites, struct cursors *cursors);
-static void handle_events(SDL_Surface *screen, int *quit, int *pause, struct cursors *cursors);
-static void move(SDL_Rect *src, struct sprite *sprites[], int *pause, double elapsed_ticks);
+static void play_game(SDL_Surface *screen, SDL_Surface *back, struct sprite **sprites, struct cursors *cursors, struct brands *brands);
+static void handle_events(SDL_Surface *screen, int *quit, int *pause, bool *mouse_clicked, int *x_mouse, int *y_mouse, struct cursors *cursors, struct brands *brands, SDL_Surface **brand);
+static void move(struct sprite *sprites[], int *pause, double elapsed_ticks);
 static Uint32 get_elapsed_ticks(void);
-static void main_draw(SDL_Rect *src, struct sprite **sprites);
+static void main_draw(struct sprite **sprites, SDL_Surface *brand);
+static void check_branded(SDL_Rect *src, struct sprite **sprites, int x_mouse, int y_mouse);
 
 static void set_icon(void);
 static struct sprite **setup_img(SDL_Surface *screen);
@@ -90,19 +106,19 @@ int main(int argc, char *argv[])
 	init_sdl(fullscreen);
 
 	struct cursors cursors = setup_cursors();
+	struct brands brands = setup_brands();
 
 	SDL_Surface *screen = SDL_GetVideoSurface();
+	SDL_Surface *background = get_background();
 
 	struct sprite **sprites = setup_img(screen);
 
-	SDL_Surface *background = get_background();
-
-	play_game(background, screen, sprites, &cursors);
+	play_game(screen, background, sprites, &cursors, &brands);
 
 	close_sprites(sprites);
-
 	SDL_FreeSurface(screen);
-	free(background);
+	SDL_FreeSurface(background);
+	/* SDL_FreeSurface(brand); */
 
 	exit(EXIT_SUCCESS);
 }
@@ -172,31 +188,62 @@ static struct cursors setup_cursors(void)
 		exit(EXIT_FAILURE);
 	}
 
-	cursors.cursor_wheelhouse = create_cursor_wheelhouse();
+	cursors.cursor_wheelhouse = create_wheelhouse_cursor();
 	if (!cursors.cursor_wheelhouse) {
 		printf("Unable to create_cursor_arrow\n");
 		exit(EXIT_FAILURE);
 	}
 
-	cursors.cursor_wheelhouse_transparent = create_cursor_wheelhouse_transparent();
+	cursors.cursor_wheelhouse_transparent = create_wheelhouse_cursor_transparent();
 	if (!cursors.cursor_wheelhouse_transparent) {
 		printf("Unable to create_cursor_arrow\n");
 		exit(EXIT_FAILURE);
 	}
 
-	cursors.cursor_wheelhouse_inverted = create_cursor_wheelhouse_inverted();
+	cursors.cursor_wheelhouse_inverted = create_wheelhouse_cursor_inverted();
 	if (!cursors.cursor_wheelhouse_inverted) {
-		printf("Unable to create_cursor_wheelhouse_inverted\n");
+		printf("Unable to create_wheelhouse_cursor_inverted\n");
 		exit(EXIT_FAILURE);
 	}
 
-	cursors.cursor_wheelhouse_black_with_white_lines = create_cursor_wheelhouse_black_with_white_lines();
+	cursors.cursor_wheelhouse_black_with_white_lines = create_wheelhouse_cursor_black_with_white_lines();
 	if (!cursors.cursor_wheelhouse_black_with_white_lines) {
-		printf("Unable to create_cursor_wheelhouse_black_with_white_lines\n");
+		printf("Unable to create_wheelhouse_cursor_black_with_white_lines\n");
 		exit(EXIT_FAILURE);
 	}
 
 	return cursors;
+}
+
+static struct brands setup_brands(void)
+{
+	struct brands brands;
+
+	brands.brand_wheelhouse = create_wheelhouse_image();
+	if (!brands.brand_wheelhouse) {
+		printf("Unable to create brand_wheelhouse\n");
+		exit(EXIT_FAILURE);
+	}
+
+	brands.brand_wheelhouse_transparent = load_image(IMG_DIR "wheelhouse_image_transparent.png");
+	if (!brands.brand_wheelhouse_transparent) {
+		printf("Unable to load brand_wheelhouse_transparent\n");
+		exit(EXIT_FAILURE);
+	}
+
+	brands.brand_wheelhouse_inverted = load_image(IMG_DIR "wheelhouse_image_inverted.png");
+	if (!brands.brand_wheelhouse_inverted) {
+		printf("Unable to load brand_wheelhouse_inverted\n");
+		exit(EXIT_FAILURE);
+	}
+
+	brands.brand_wheelhouse_black_with_white_lines = load_image(IMG_DIR "wheelhouse_image_black_with_white_lines.png");
+	if (!brands.brand_wheelhouse_black_with_white_lines) {
+		printf("Unable to brand_wheelhouse_black_with_white_lines\n");
+		exit(EXIT_FAILURE);
+	}
+
+	return brands;
 }
 
 static void close_sprites(struct sprite **sprites)
@@ -218,7 +265,7 @@ void set_icon(void)
 				"%s\n\n", IMG_DIR "icon.png", SDL_GetError());
 		exit(1);
 	}
-  
+
 	SDL_WM_SetIcon(icon, NULL);
 
 	SDL_FreeSurface(icon);
@@ -266,14 +313,14 @@ static struct sprite *load_img(int i, SDL_Surface *screen, unsigned int x_scale,
 	y /= y_scale;
 
 	/* Put clouds in the sky; animals on the ground. */
-	int half = SCREEN_HEIGHT / 2; 
+	int half = SCREEN_HEIGHT / 2;
 	/* printf("half\t%d", half); */
 	/* printf("\timage_names[i]\t%s", image_names[i]); */
 	if (i == IMG_CLOUD) {
 		printf("\tmatched!");
 		if (y > half)
 			y = base->image_height;
-	} else 
+	} else
 		if (y < half)
 			y = SCREEN_HEIGHT - base->image_height;
 
@@ -284,7 +331,7 @@ static struct sprite *load_img(int i, SDL_Surface *screen, unsigned int x_scale,
 	return sprite;
 }
 
-static void play_game(SDL_Surface *back, SDL_Surface *screen, struct sprite **sprites, struct cursors *cursors)
+static void play_game(SDL_Surface *screen, SDL_Surface *back, struct sprite **sprites, struct cursors *cursors, struct brands *brands)
 {
 
 	/* keep track of frames and time */
@@ -302,19 +349,30 @@ static void play_game(SDL_Surface *back, SDL_Surface *screen, struct sprite **sp
 	/* game loop logic: events, logic and rendering */
 	int quit = false;
 	int pause = false;
+	bool mouse_clicked;
+	int x_mouse = 0;
+	int y_mouse = 0;
+	SDL_Surface *brand = NULL;
 	while (!quit) {
-		handle_events(screen, &quit, &pause, cursors);
+		mouse_clicked = false;
+		handle_events(screen, &quit, &pause, &mouse_clicked, &x_mouse, &y_mouse, cursors, brands, &brand);
 
-		/* ai logic - calc moves */
-		/* Determine how many milliseconds have passed since
-		   the last frame, and update our motion scaling. */
+		/* ai logic */
+		/* ... check branded */
+		if (mouse_clicked)
+			check_branded(&src, sprites, x_mouse, y_mouse);
 
+		/* ... handle collisions */
+
+		/* ... set statuses */
+
+		/* ... moves */
 		Uint32 elapsed_ticks = get_elapsed_ticks();
-		move(&src, sprites, &pause, elapsed_ticks);
+		move(sprites, &pause, elapsed_ticks);
 
 		// render
 		draw_background(back, screen);
-		main_draw(&src, sprites);
+		main_draw(sprites, brand);
 
 		frames_drawn++;
 
@@ -327,7 +385,7 @@ static void play_game(SDL_Surface *back, SDL_Surface *screen, struct sprite **sp
 
 	/* Display the average framerate. */
 	printf("Drew %i frames in %i seconds, for a framerate of %.2f fps.\n",
-		frames_drawn, end_time-start_time, (float)frames_drawn/(float)(end_time-start_time));
+		   frames_drawn, end_time-start_time, (float)frames_drawn/(float)(end_time-start_time));
 }
 
 static void print_help(void)
@@ -362,7 +420,7 @@ static void print_usage(void)
 		   "\n");
 }
 
-static void handle_events(SDL_Surface *screen, int *quit, int *pause, struct cursors *cursors)
+static void handle_events(SDL_Surface *screen, int *quit, int *pause, bool *mouse_clicked, int *x_mouse, int *y_mouse, struct cursors *cursors, struct brands *brands, SDL_Surface **brand)
 {
 	SDL_Event event;
 	while (SDL_PollEvent(&event) > 0) {
@@ -379,15 +437,19 @@ static void handle_events(SDL_Surface *screen, int *quit, int *pause, struct cur
 				break;
 			case SDLK_2:
 				SDL_SetCursor(cursors->cursor_wheelhouse);
+				*brand = brands->brand_wheelhouse;
 				break;
 			case SDLK_3:
 				SDL_SetCursor(cursors->cursor_wheelhouse_transparent);
+				*brand = brands->brand_wheelhouse_transparent;
 				break;
 			case SDLK_4:
 				SDL_SetCursor(cursors->cursor_wheelhouse_inverted);
+				*brand = brands->brand_wheelhouse_inverted;
 				break;
 			case SDLK_5:
 				SDL_SetCursor(cursors->cursor_wheelhouse_black_with_white_lines);
+				*brand = brands->brand_wheelhouse_black_with_white_lines;
 				break;
 			case SDLK_f:
 				SDL_WM_ToggleFullScreen(screen);
@@ -399,11 +461,29 @@ static void handle_events(SDL_Surface *screen, int *quit, int *pause, struct cur
 			default:
 				break;
 			}
+		} else if (event.type == SDL_MOUSEBUTTONDOWN) {
+			if (event.button.button == SDL_BUTTON_LEFT) { 
+				*mouse_clicked = true;
+				*x_mouse = event.button.x;
+				*y_mouse = event.button.y; 
+			}
 		}
 	}
 }
 
-static void move(SDL_Rect *src, struct sprite *sprites[], int *pause, double elapsed_ticks)
+static void check_branded(SDL_Rect *src, struct sprite **sprites, int x_mouse, int y_mouse)
+{
+	for (int i = 0; i < NUM_IMAGES; i++) {
+		double x_rhs = sprites[i]->x + src->w;
+		double y_bot = sprites[i]->y + src->h;
+
+		if (sprites[i]->sprite_base->can_be_branded && !sprites[i]->is_branded)
+			if (x_mouse >= sprites[i]->x && x_mouse <= x_rhs && y_mouse >= sprites[i]->y && y_mouse <= y_bot)
+				sprites[i]->is_branded = true;
+	}
+}
+
+static void move(struct sprite *sprites[], int *pause, double elapsed_ticks)
 {
 	for (int i = 0; i < NUM_IMAGES; i++) {
 		if (!*pause) {
@@ -424,10 +504,10 @@ static Uint32 get_elapsed_ticks(void)
 	return elapsed_ticks;
 }
 
-static void main_draw(SDL_Rect *src, struct sprite	**sprites)
+static void main_draw(struct sprite **sprites, SDL_Surface *brand)
 {
 	for (int i = 0; i < NUM_IMAGES; i++) {
-		draw(sprites[i]);
+		draw(sprites[i], brand);
 	}
 }
 
@@ -455,7 +535,7 @@ static void main_draw(SDL_Rect *src, struct sprite	**sprites)
 /* 	image->y += dist * time_scale; */
 /* 	if (image->y > SCREEN_HEIGHT || image->y < 0) */
 /* 		image->y = SCREEN_HEIGHT / 2; */
-	 
+
 /* 	dest.y = image->y; */
 
 /* 	return dest; */
