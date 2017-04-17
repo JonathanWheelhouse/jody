@@ -22,10 +22,9 @@ LDADD = $(SDL_LIBS) -lSDL_image
 
 AM_CPPFLAGS = $(shell sdl-config --cflags)
 
-AM_CFLAGS = -pedantic -Wall -std=gnu99 -ggdb
+AM_CFLAGS = -pedantic -Wall -std=gnu11 -ggdb
 
 DISTCLEANFILES = datadir.h
 
 datadir.h: Makefile
 	echo '#define IMG_DIR "$(pkgdatadir)/img/"' >$@
-
