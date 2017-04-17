@@ -87,7 +87,7 @@ SDL_Cursor *create_cursor_arrow(void)
 	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
 }
 
-const char *wheelhouse[] = {
+char *wheelhouse[] = {
 	/* width height num_colors chars_per_pixel */
 	"    32    32        3            1",
 	/* colors */
@@ -166,7 +166,7 @@ SDL_Cursor *create_wheelhouse_cursor(void)
 
 SDL_Surface *create_wheelhouse_image(void)
 {
-	return IMG_ReadXPMFromArray(&wheelhouse);
+	return IMG_ReadXPMFromArray(wheelhouse);
 }
 
 SDL_Cursor *create_wheelhouse_cursor_transparent(void)
