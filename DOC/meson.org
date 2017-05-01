@@ -1,0 +1,87 @@
+* meson build system
+** ninja -v install vs make install
+*** ninja -v install
+root@wheelhouse:/home/jonathan/dev/jody/build# ninja -v install
+[0/1] '/usr/bin/python3' '/usr/share/meson/meson' --internal regenerate '/home/jonathan/dev/jody' '/home/jonathan/dev/jody/build' --backend ninja
+The Meson build system
+Version: 0.39.1
+Source dir: /home/jonathan/dev/jody
+Build dir: /home/jonathan/dev/jody/build
+Build type: native build
+Project name: jody
+Native c compiler: cc (gcc 6.3.0)
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Build targets in project: 1
+[1/7] cc  '-Isrc/jody@exe' '-Isrc' '-I../src' '-I/usr/include/SDL' '-fdiagnostics-color=always' '-pipe' '-D_FILE_OFFSET_BITS=64' '-Wall' '-Winvalid-pch' '-O0' '-g' '-DVERSION="0.1.0"' '-D_GNU_SOURCE=1' '-D_REENTRANT' '-MMD' '-MQ' 'src/jody@exe/util.c.o' '-MF' 'src/jody@exe/util.c.o.d' -o 'src/jody@exe/util.c.o' -c ../src/util.c
+[2/7] cc  '-Isrc/jody@exe' '-Isrc' '-I../src' '-I/usr/include/SDL' '-fdiagnostics-color=always' '-pipe' '-D_FILE_OFFSET_BITS=64' '-Wall' '-Winvalid-pch' '-O0' '-g' '-DVERSION="0.1.0"' '-D_GNU_SOURCE=1' '-D_REENTRANT' '-MMD' '-MQ' 'src/jody@exe/cursor.c.o' '-MF' 'src/jody@exe/cursor.c.o.d' -o 'src/jody@exe/cursor.c.o' -c ../src/cursor.c
+[3/7] cc  '-Isrc/jody@exe' '-Isrc' '-I../src' '-I/usr/include/SDL' '-fdiagnostics-color=always' '-pipe' '-D_FILE_OFFSET_BITS=64' '-Wall' '-Winvalid-pch' '-O0' '-g' '-DVERSION="0.1.0"' '-D_GNU_SOURCE=1' '-D_REENTRANT' '-MMD' '-MQ' 'src/jody@exe/surface.c.o' '-MF' 'src/jody@exe/surface.c.o.d' -o 'src/jody@exe/surface.c.o' -c ../src/surface.c
+[4/7] cc  '-Isrc/jody@exe' '-Isrc' '-I../src' '-I/usr/include/SDL' '-fdiagnostics-color=always' '-pipe' '-D_FILE_OFFSET_BITS=64' '-Wall' '-Winvalid-pch' '-O0' '-g' '-DVERSION="0.1.0"' '-D_GNU_SOURCE=1' '-D_REENTRANT' '-MMD' '-MQ' 'src/jody@exe/sprite.c.o' '-MF' 'src/jody@exe/sprite.c.o.d' -o 'src/jody@exe/sprite.c.o' -c ../src/sprite.c
+[5/7] cc  '-Isrc/jody@exe' '-Isrc' '-I../src' '-I/usr/include/SDL' '-fdiagnostics-color=always' '-pipe' '-D_FILE_OFFSET_BITS=64' '-Wall' '-Winvalid-pch' '-O0' '-g' '-DVERSION="0.1.0"' '-D_GNU_SOURCE=1' '-D_REENTRANT' '-MMD' '-MQ' 'src/jody@exe/main.c.o' '-MF' 'src/jody@exe/main.c.o.d' -o 'src/jody@exe/main.c.o' -c ../src/main.c
+[6/7] cc  -o src/jody 'src/jody@exe/main.c.o' 'src/jody@exe/surface.c.o' 'src/jody@exe/sprite.c.o' 'src/jody@exe/cursor.c.o' 'src/jody@exe/util.c.o' '-Wl,--no-undefined' '-Wl,--as-needed' '-lSDL' '-lSDL_image' '-lSDL'
+[6/7] '/usr/bin/python3' '/usr/share/meson/meson' '--internal' 'install' '/home/jonathan/dev/jody/build/meson-private/install.dat'
+Installing src/jody to /usr/local/bin/jody
+root@wheelhouse:/home/jonathan/dev/jody/build# exit
+
+**** TODO missing data
+
+install_data or install_subdir
+
+*** make install
+jonathan@wheelhouse:~/dev/jody/build$ cd ..
+jonathan@wheelhouse:~/dev/jody$ su
+Password:
+root@wheelhouse:/home/jonathan/dev/jody# make install
+Making install in src
+make[1]: Entering directory '/home/jonathan/dev/jody/src'
+make  install-recursive
+make[2]: Entering directory '/home/jonathan/dev/jody/src'
+Making install in img
+make[3]: Entering directory '/home/jonathan/dev/jody/src/img'
+make[4]: Entering directory '/home/jonathan/dev/jody/src/img'
+make[4]: Nothing to be done for 'install-exec-am'.
+ /bin/mkdir -p '/usr/local/share/jody/img'
+ /usr/bin/install -c -m 644 icon.png wheelhouse_image_black_with_white_lines.png wheelhouse_image_inverted.png wheelhouse_image_transparent.png '/usr/local/share/jody/img'
+ /bin/mkdir -p '/usr/local/share/jody/img'
+ /bin/mkdir -p '/usr/local/share/jody/img/kangaroo_grey'
+ /usr/bin/install -c -m 644  kangaroo_grey/info kangaroo_grey/1.png kangaroo_grey/2.png '/usr/local/share/jody/img/kangaroo_grey'
+ /bin/mkdir -p '/usr/local/share/jody/img/cow_white'
+ /usr/bin/install -c -m 644  cow_white/info cow_white/1.png cow_white/2.png '/usr/local/share/jody/img/cow_white'
+ /bin/mkdir -p '/usr/local/share/jody/img/cow_orange'
+ /usr/bin/install -c -m 644  cow_orange/info cow_orange/1.png cow_orange/2.png '/usr/local/share/jody/img/cow_orange'
+ /bin/mkdir -p '/usr/local/share/jody/img/kangaroo_red'
+ /usr/bin/install -c -m 644  kangaroo_red/info kangaroo_red/1.png kangaroo_red/2.png '/usr/local/share/jody/img/kangaroo_red'
+ /bin/mkdir -p '/usr/local/share/jody/img/kangaroo_black'
+ /usr/bin/install -c -m 644  kangaroo_black/info kangaroo_black/1.png kangaroo_black/2.png '/usr/local/share/jody/img/kangaroo_black'
+ /bin/mkdir -p '/usr/local/share/jody/img/cow_yellow'
+ /usr/bin/install -c -m 644  cow_yellow/info cow_yellow/1.png cow_yellow/2.png '/usr/local/share/jody/img/cow_yellow'
+ /bin/mkdir -p '/usr/local/share/jody/img/cow_yellow_with_red_outline'
+ /usr/bin/install -c -m 644  cow_yellow_with_red_outline/info cow_yellow_with_red_outline/1.png cow_yellow_with_red_outline/2.png '/usr/local/share/jody/img/cow_yellow_with_red_outline'
+ /bin/mkdir -p '/usr/local/share/jody/img/cow_brown'
+ /usr/bin/install -c -m 644  cow_brown/info cow_brown/1.png cow_brown/2.png '/usr/local/share/jody/img/cow_brown'
+ /bin/mkdir -p '/usr/local/share/jody/img/cow_black'
+ /usr/bin/install -c -m 644  cow_black/info cow_black/1.png cow_black/2.png cow_black/3.png cow_black/4.png '/usr/local/share/jody/img/cow_black'
+ /bin/mkdir -p '/usr/local/share/jody/img/cloud'
+ /usr/bin/install -c -m 644  cloud/info cloud/1.png '/usr/local/share/jody/img/cloud'
+ /bin/mkdir -p '/usr/local/share/jody/img/background'
+ /usr/bin/install -c -m 644  background/info background/1.png '/usr/local/share/jody/img/background'
+ /bin/mkdir -p '/usr/local/share/jody/img/cow_red'
+ /usr/bin/install -c -m 644  cow_red/info cow_red/1.png cow_red/2.png '/usr/local/share/jody/img/cow_red'
+make[4]: Leaving directory '/home/jonathan/dev/jody/src/img'
+make[3]: Leaving directory '/home/jonathan/dev/jody/src/img'
+make[3]: Entering directory '/home/jonathan/dev/jody/src'
+make[4]: Entering directory '/home/jonathan/dev/jody/src'
+ /bin/mkdir -p '/usr/local/bin'
+  /usr/bin/install -c jody '/usr/local/bin'
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/jonathan/dev/jody/src'
+make[3]: Leaving directory '/home/jonathan/dev/jody/src'
+make[2]: Leaving directory '/home/jonathan/dev/jody/src'
+make[1]: Leaving directory '/home/jonathan/dev/jody/src'
+make[1]: Entering directory '/home/jonathan/dev/jody'
+make[2]: Entering directory '/home/jonathan/dev/jody'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/home/jonathan/dev/jody'
+make[1]: Leaving directory '/home/jonathan/dev/jody'
+root@wheelhouse:/home/jonathan/dev/jody#
