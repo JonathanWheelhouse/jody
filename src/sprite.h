@@ -30,27 +30,27 @@ struct sprite
 };
 
 
-extern struct sprite_base *base_init(const char *dir);
-extern struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen);
-extern void free_sprite(struct sprite *sprite);
+struct sprite_base *base_init(const char *dir);
+struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen);
+void free_sprite(struct sprite *sprite);
 
-extern void draw(struct sprite *sprite, SDL_Surface *brand);
+void draw(struct sprite *sprite, SDL_Surface *brand);
 
-extern void set_frame_index(struct sprite *sprite, int frame_index);
-extern int get_frame_index();
+void set_frame_index(struct sprite *sprite, int frame_index);
+int get_frame_index();
 
-extern void set_speed(struct sprite *sprite, float speed);
-extern float get_speed(struct sprite *sprite);
+void set_speed(struct sprite *sprite, float speed);
+float get_speed(struct sprite *sprite);
 
-extern void toggle_is_animating(struct sprite *sprite);
-extern void start_animating(struct sprite *sprite);
-extern void stop_animating(struct sprite *sprite);
-extern void rewind_frame(struct sprite *sprite);
+void toggle_is_animating(struct sprite *sprite);
+void start_animating(struct sprite *sprite);
+void stop_animating(struct sprite *sprite);
+void rewind_frame(struct sprite *sprite);
 
-extern void xadd(struct sprite *sprite, double displacement);
-extern void yadd(struct sprite *sprite, double nr);
-extern void xset(struct sprite *sprite, double nr);
-extern void yset(struct sprite *sprite, double nr);
-extern void set(struct sprite *sprite, double x, double y);
+void xadd(struct sprite *sprite, double displacement);
+void yadd(struct sprite *sprite, double nr);
+void xset(struct sprite *sprite, double nr);
+void yset(struct sprite *sprite, double nr);
+void set(struct sprite *sprite, double x, double y);
 
 #endif

@@ -3,6 +3,6 @@
 
 #include <SDL/SDL.h>
 
-extern struct SDL_Surface *load_image(const char *file_name);
+struct SDL_Surface *load_image(const char *file_name);
 
 #endif
