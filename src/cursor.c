@@ -6,6 +6,8 @@
 #include "gamedefs.h"
 #include "datadir.h"
 
+#include "cursor.h"
+
 SDL_Cursor *create_cursor_arrow(void)
 {
 	/* Stolen from the mailing list */
@@ -271,3 +273,42 @@ SDL_Cursor *create_wheelhouse_cursor_black_with_white_lines(void)
 	sscanf(wheelhouse[4+row], "%d,%d", &hot_x, &hot_y);
 	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
 }
+
+struct cursors *setup_cursors(void)
+{
+	struct cursors *cursors = xmalloc(sizeof(struct cursors));
+
+	cursors->cursor_arrow = create_cursor_arrow();
+	if (!cursors->cursor_arrow) {
+		printf("Unable to create_cursor_arrow\n");
+		exit(EXIT_FAILURE);
+	}
+
+	cursors->cursor_wheelhouse = create_wheelhouse_cursor();
+	if (!cursors->cursor_wheelhouse) {
+		printf("Unable to create_cursor_arrow\n");
+		exit(EXIT_FAILURE);
+	}
+
+	cursors->cursor_wheelhouse_transparent = create_wheelhouse_cursor_transparent();
+	if (!cursors->cursor_wheelhouse_transparent) {
+		printf("Unable to create_cursor_arrow\n");
+		exit(EXIT_FAILURE);
+	}
+
+	cursors->cursor_wheelhouse_inverted = create_wheelhouse_cursor_inverted();
+	if (!cursors->cursor_wheelhouse_inverted) {
+		printf("Unable to create_wheelhouse_cursor_inverted\n");
+		exit(EXIT_FAILURE);
+	}
+
+	cursors->cursor_wheelhouse_black_with_white_lines = create_wheelhouse_cursor_black_with_white_lines();
+	if (!cursors->cursor_wheelhouse_black_with_white_lines) {
+		printf("Unable to create_wheelhouse_cursor_black_with_white_lines\n");
+		exit(EXIT_FAILURE);
+	}
+
+	return cursors;
+}
+
+// TODO - add free cursor

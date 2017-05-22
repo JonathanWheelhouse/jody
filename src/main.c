@@ -59,14 +59,6 @@ const char *image_names[NUM_IMAGES] = {
 	IMG_DIR "kangaroo_red"
 };
 
-struct cursors
-{
-	SDL_Cursor *cursor_arrow;
-	SDL_Cursor *cursor_wheelhouse;
-	SDL_Cursor *cursor_wheelhouse_transparent;
-	SDL_Cursor *cursor_wheelhouse_inverted;
-	SDL_Cursor *cursor_wheelhouse_black_with_white_lines;
-};
 
 struct brands
 {
@@ -82,7 +74,6 @@ static void handle_args(int argc, char *argv[], bool *fullscreen);
 static void print_help(void);
 static void print_usage(void);
 static SDL_Surface *get_background();
-static struct cursors setup_cursors(void);
 static struct brands setup_brands(void);
 static void close_sprites(struct sprite **sprites);
 static void play_game(SDL_Surface *screen, SDL_Surface *back, struct sprite **sprites, struct cursors *cursors, struct brands *brands);
@@ -105,7 +96,7 @@ int main(int argc, char *argv[])
 
 	init_sdl(fullscreen);
 
-	struct cursors cursors = setup_cursors();
+	struct cursors *cursors = setup_cursors();
 	struct brands brands = setup_brands();
 
 	SDL_Surface *screen = SDL_GetVideoSurface();
@@ -176,43 +167,6 @@ static void handle_args(int argc, char *argv[], bool *fullscreen)
 			exit(EXIT_FAILURE);
 		}
 	}
-}
-
-static struct cursors setup_cursors(void)
-{
-	struct cursors cursors;
-
-	cursors.cursor_arrow = create_cursor_arrow();
-	if (!cursors.cursor_arrow) {
-		printf("Unable to create_cursor_arrow\n");
-		exit(EXIT_FAILURE);
-	}
-
-	cursors.cursor_wheelhouse = create_wheelhouse_cursor();
-	if (!cursors.cursor_wheelhouse) {
-		printf("Unable to create_cursor_arrow\n");
-		exit(EXIT_FAILURE);
-	}
-
-	cursors.cursor_wheelhouse_transparent = create_wheelhouse_cursor_transparent();
-	if (!cursors.cursor_wheelhouse_transparent) {
-		printf("Unable to create_cursor_arrow\n");
-		exit(EXIT_FAILURE);
-	}
-
-	cursors.cursor_wheelhouse_inverted = create_wheelhouse_cursor_inverted();
-	if (!cursors.cursor_wheelhouse_inverted) {
-		printf("Unable to create_wheelhouse_cursor_inverted\n");
-		exit(EXIT_FAILURE);
-	}
-
-	cursors.cursor_wheelhouse_black_with_white_lines = create_wheelhouse_cursor_black_with_white_lines();
-	if (!cursors.cursor_wheelhouse_black_with_white_lines) {
-		printf("Unable to create_wheelhouse_cursor_black_with_white_lines\n");
-		exit(EXIT_FAILURE);
-	}
-
-	return cursors;
 }
 
 static struct brands setup_brands(void)
