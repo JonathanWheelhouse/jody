@@ -75,7 +75,6 @@ static void print_help(void);
 static void print_usage(void);
 static SDL_Surface *get_background();
 static struct brands setup_brands(void);
-static void close_sprites(struct sprite **sprites);
 static void play_game(SDL_Surface *screen, SDL_Surface *back, struct sprite **sprites, struct cursors *cursors, struct brands *brands);
 static void handle_events(SDL_Surface *screen, int *quit, int *pause, bool *mouse_clicked, int *x_mouse, int *y_mouse, struct cursors *cursors, struct brands *brands, SDL_Surface **brand);
 static void move(struct sprite *sprites[], int *pause, double elapsed_ticks);
@@ -104,12 +103,7 @@ int main(int argc, char *argv[])
 
 	struct sprite **sprites = setup_img(screen);
 
-	play_game(screen, background, sprites, &cursors, &brands);
-
-	close_sprites(sprites);
-	SDL_FreeSurface(screen);
-	SDL_FreeSurface(background);
-	/* SDL_FreeSurface(brand); */
+	play_game(screen, background, sprites, cursors, &brands);
 
 	exit(EXIT_SUCCESS);
 }
@@ -198,15 +192,6 @@ static struct brands setup_brands(void)
 	}
 
 	return brands;
-}
-
-static void close_sprites(struct sprite **sprites)
-{
-	for (int i = 0; i < NUM_IMAGES; i++) {
-		if (sprites[i])
-			free_sprite(sprites[i]);
-	}
-	free(sprites);
 }
 
 void set_icon(void)
@@ -416,10 +401,10 @@ static void handle_events(SDL_Surface *screen, int *quit, int *pause, bool *mous
 				break;
 			}
 		} else if (event.type == SDL_MOUSEBUTTONDOWN) {
-			if (event.button.button == SDL_BUTTON_LEFT) { 
+			if (event.button.button == SDL_BUTTON_LEFT) {
 				*mouse_clicked = true;
 				*x_mouse = event.button.x;
-				*y_mouse = event.button.y; 
+				*y_mouse = event.button.y;
 			}
 		}
 	}
