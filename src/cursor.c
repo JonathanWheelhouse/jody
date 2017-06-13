@@ -5,6 +5,7 @@
 #include "util.h"
 #include "gamedefs.h"
 #include "datadir.h"
+#include "wheelhouse.h"
 
 #include "cursor.h"
 
@@ -89,48 +90,6 @@ SDL_Cursor *create_cursor_arrow(void)
 	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
 }
 
-char *wheelhouse[] = {
-	/* width height num_colors chars_per_pixel */
-	"    32    32        3            1",
-	/* colors */
-	"X c #000000",
-	". c #ffffff",
-	"  c None",
-	/* pixels */
-	"       X                X       ",
-	"     X.X.X            X...X     ",
-	"   X...X...X         X.....X    ",
-	" X.....X.....X      X.......X   ",
-	"X......X......X    X.........X  ",
-	"X......X......X   X...........X ",
-	"XXXXXXXXXXXXXXX  XXXXXXXXXXXXXXX",
-	"X......X......X  X.............X",
-	"X......X......X  X.............X",
-	" X.....X.....X   X.............X",
-	"   X...X...X     X.............X",
-	"     X.X.X       X.............X",
-	"       X         XXXXXXXXXXXXXXX",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"                                ",
-	"0,0"
-};
 
 SDL_Cursor *create_wheelhouse_cursor(void)
 {
@@ -166,10 +125,6 @@ SDL_Cursor *create_wheelhouse_cursor(void)
 	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
 }
 
-SDL_Surface *create_wheelhouse_image(void)
-{
-	return IMG_ReadXPMFromArray(wheelhouse);
-}
 
 SDL_Cursor *create_wheelhouse_cursor_transparent(void)
 {
@@ -310,5 +265,3 @@ struct cursors *setup_cursors(void)
 
 	return cursors;
 }
-
-// TODO - add free cursor

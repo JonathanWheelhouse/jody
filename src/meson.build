@@ -1,15 +1,19 @@
 exe = 'jody'
 sources = [
-    'main.c',
+    'brands.c',
+    'brands.h',
+    'cursor.c',
+    'cursor.h',
     'gamedefs.h',
-    'surface.h',
-    'surface.c',
+    'main.c',
     'sprite.h',
     'sprite.c',
-    'cursor.h',
-    'cursor.c',
+    'surface.c',
+    'surface.h',
+    'util.c',
     'util.h',
-    'util.c'
+    'wheelhouse.c',
+    'wheelhouse.h'
 ]
 executable(
     exe,
