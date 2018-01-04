@@ -241,13 +241,13 @@ struct cursors *setup_cursors(void)
 
 	cursors->cursor_wheelhouse = create_wheelhouse_cursor();
 	if (!cursors->cursor_wheelhouse) {
-		printf("Unable to create_cursor_arrow\n");
+		printf("Unable to create_wheelhouse_cursor\n");
 		exit(EXIT_FAILURE);
 	}
 
 	cursors->cursor_wheelhouse_transparent = create_wheelhouse_cursor_transparent();
 	if (!cursors->cursor_wheelhouse_transparent) {
-		printf("Unable to create_cursor_arrow\n");
+		printf("Unable to create_wheelhouse_cursor_transparent\n");
 		exit(EXIT_FAILURE);
 	}
 
