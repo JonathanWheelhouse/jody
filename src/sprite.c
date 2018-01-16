@@ -25,15 +25,16 @@ struct sprite_base *base_init(const char *dir)
 	base->can_be_branded = false;
 
 	char *line = NULL;
-	size_t N = 0;
-	if (getline(&line, &N, fp) == -1) {
+	size_t len = 0;
+	ssize_t nread;
+	if (getline(&line, &len, fp) == -1) {
 		fprintf(stderr, "ERROR reading first line of file %s\n\n", filename);
 		return NULL;
 	}
 	sscanf(line, "FILES: %d", &base->frames_count);
 	base->frames = xcalloc(base->frames_count, sizeof(struct sprite_frame *));
 
-	if (getline(&line, &N, fp) == -1) {
+	if (getline(&line, &len, fp) == -1) {
 		fprintf(stderr, "Error reading second line of file %s\n\n", filename);
 		return NULL;
 	}
@@ -46,9 +47,8 @@ struct sprite_base *base_init(const char *dir)
 	base->is_built = 1;
 	int count = 0;
 
-	N = 0;
-	while (!feof(fp) && count < base->frames_count) {
-		getline(&line, &N, fp);
+	len = 0;
+	while ((nread = getline(&line, &len, fp)) != -1 && count < base->frames_count) {
 		if (line[0] != '#' && line[0] != '\r' && line[0] != '\0' && line[0] != '\n' && strlen(line) != 0) {
 
 			struct sprite_frame *sprite_frame = xcalloc(1, sizeof(struct sprite_frame));
@@ -67,6 +67,7 @@ struct sprite_base *base_init(const char *dir)
 		}
 	}
 
+	free(line);
 	fclose(fp);
 
 	printf("file [%s] base->image_width [%d] base->image_height [%d]\n", filename, base->image_width, base->image_height);
