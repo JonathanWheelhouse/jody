@@ -1,7 +1,10 @@
 language: c
 
-dist: trusty
 sudo: required
+
+compiler:
+  - clang
+  - gcc
 
 before_install:
   - sudo apt-get -qq update
