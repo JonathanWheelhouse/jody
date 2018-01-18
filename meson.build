@@ -1,4 +1,4 @@
-project('jody', 'c', version : '0.1.0', license : 'GPL2+')
+project('jody', 'c', default_options : ['c_std=c99'], version : '0.1.0', license : 'GPL2+')
 
 add_global_arguments('-DVERSION="0.1.0"', language : 'c')
 
