@@ -16,4 +16,4 @@ install:
 
 script:
   - meson build
-  - ninja -C build
+  - ninja -v -C build
