@@ -1,0 +1,17 @@
+language: c
+
+dist: trusty
+sudo: required
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install ninja python-pip python-dev build-essential
+  - sudo pip install --upgrade pip
+  - sudo pip install meson
+
+install:
+  - sudo apt-get install -q -y libsdl2-dev libsdl2-image-dev
+
+script:
+  - meson build
+  - ninja -C build
