@@ -9,7 +9,7 @@ before_install:
   - sudo -H pip3 install meson
 
 install:
-  - sudo apt-get install -q -y libsdl2-dev libsdl2-image-dev
+  - sudo apt-get install -q -y libsdl-image1.2 libsdl-image1.2-dev libsdl1.2-dev libsdl1.2debian libsdl2-2.0-0
 
 script:
   - meson build
