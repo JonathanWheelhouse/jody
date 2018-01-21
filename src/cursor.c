@@ -9,7 +9,7 @@
 
 #include "cursor.h"
 
-SDL_Cursor *create_cursor_arrow(void)
+static SDL_Cursor *create_cursor_arrow(void)
 {
 	/* Stolen from the mailing list */
 	/* Creates a new mouse cursor from an XPM */
@@ -91,7 +91,7 @@ SDL_Cursor *create_cursor_arrow(void)
 }
 
 
-SDL_Cursor *create_wheelhouse_cursor(void)
+static SDL_Cursor *create_wheelhouse_cursor(void)
 {
 	int i, row, col;
 	Uint8 data[4*32];
@@ -126,7 +126,7 @@ SDL_Cursor *create_wheelhouse_cursor(void)
 }
 
 
-SDL_Cursor *create_wheelhouse_cursor_transparent(void)
+static SDL_Cursor *create_wheelhouse_cursor_transparent(void)
 {
 	int i, row, col;
 	Uint8 data[4*32];
@@ -163,7 +163,7 @@ SDL_Cursor *create_wheelhouse_cursor_transparent(void)
 	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
 }
 
-SDL_Cursor *create_wheelhouse_cursor_inverted(void)
+static SDL_Cursor *create_wheelhouse_cursor_inverted(void)
 {
 	int i, row, col;
 	Uint8 data[4*32];
@@ -196,7 +196,8 @@ SDL_Cursor *create_wheelhouse_cursor_inverted(void)
 	sscanf(wheelhouse[4+row], "%d,%d", &hot_x, &hot_y);
 	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
 }
-SDL_Cursor *create_wheelhouse_cursor_black_with_white_lines(void)
+
+static SDL_Cursor *create_wheelhouse_cursor_black_with_white_lines(void)
 {
 	int i, row, col;
 	Uint8 data[4*32];

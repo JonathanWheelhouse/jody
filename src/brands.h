@@ -12,6 +12,5 @@ struct brands
 };
 
 struct brands *setup_brands(void);
-SDL_Surface *create_wheelhouse_image(void);
 
 #endif

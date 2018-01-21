@@ -6,7 +6,19 @@
 #include "gamedefs.h"
 #include "util.h"
 
-struct SDL_Surface *image_frame(char *line, const char *dir);
+struct SDL_Surface *image_frame(char *line, const char *dir)
+{
+	char name[255];
+	int r=0, g=0, b=0;
+	int match = sscanf(line, "%s %d %d %d", name, &r, &g, &b);
+	if (match != 4)
+		return NULL;
+
+	char filename[255];
+	sprintf(filename, "%s/%s", dir, name);
+
+	return load_image(filename);
+}
 
 struct sprite_base *base_init(const char *dir)
 {
@@ -38,7 +50,7 @@ struct sprite_base *base_init(const char *dir)
 		fprintf(stderr, "Error reading second line of file %s\n\n", filename);
 		return NULL;
 	}
-	
+
 	char can_be_branded[2];
 	if (sscanf(line, "can_be_branded: %s", can_be_branded) != -1)
 		if (can_be_branded[0] == 'y' || can_be_branded[0] == 'Y')
@@ -73,20 +85,6 @@ struct sprite_base *base_init(const char *dir)
 	printf("file [%s] base->image_width [%d] base->image_height [%d]\n", filename, base->image_width, base->image_height);
 
 	return base;
-}
-
-struct SDL_Surface *image_frame(char *line, const char *dir)
-{
-	char name[255];
-	int r=0, g=0, b=0;
-	int match = sscanf(line, "%s %d %d %d", name, &r, &g, &b);
-	if (match != 4)
-		return NULL;
-
-	char filename[255];
-	sprintf(filename, "%s/%s", dir, name);
-
-	return load_image(filename);
 }
 
 struct sprite *sprite_init(struct sprite_base *base, SDL_Surface *screen)
@@ -172,16 +170,8 @@ void draw(struct sprite *sprite, SDL_Surface *brand)
 	}
 }
 
-void set_frame_index(struct sprite *sprite, int frame_index) { sprite->frame_index = frame_index; }
-int get_frame_index(struct sprite *sprite) { return sprite->frame_index; }
-
 void set_speed(struct sprite *sprite, float speed) { sprite->speed = speed; }
 float get_speed(struct sprite *sprite) { return sprite->speed; }
-
-void toggle_is_animating(struct sprite *sprite) { sprite->is_animating = !sprite->is_animating; }
-void start_animating(struct sprite *sprite) { sprite->is_animating = true; }
-void stop_animating(struct sprite *sprite) { sprite->is_animating = false; }
-void rewind_frame(struct sprite *sprite) { sprite->frame_index = 0; }
 
 void xadd(struct sprite *sprite, double displacement)
 {
@@ -190,7 +180,4 @@ void xadd(struct sprite *sprite, double displacement)
 		sprite->x = 0;
 }
 
-void yadd(struct sprite *sprite, double nr) { sprite->y += nr; }
-void xset(struct sprite *sprite, double nr) { sprite->x = nr; }
-void yset(struct sprite *sprite, double nr) { sprite->y = nr; }
 void set(struct sprite *sprite, double x, double y) { sprite->x = x; sprite->y = y; }

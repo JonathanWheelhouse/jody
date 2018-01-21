@@ -7,6 +7,11 @@
 
 #include "brands.h"
 
+static SDL_Surface *create_wheelhouse_image(void)
+{
+	return IMG_ReadXPMFromArray(wheelhouse);
+}
+
 struct brands *setup_brands(void)
 {
     struct brands *brands = xmalloc(sizeof(struct brands));
@@ -36,9 +41,4 @@ struct brands *setup_brands(void)
     }
 
     return brands;
-}
-
-SDL_Surface *create_wheelhouse_image(void)
-{
-	return IMG_ReadXPMFromArray(wheelhouse);
 }
