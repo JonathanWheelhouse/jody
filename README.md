@@ -1,7 +1,6 @@
-Idea
+# Jody
 
-* Brand cattle|other things? with wheelhouse images.  Something like
-  xbill?
+A Wheelhouse game.
 
 ***
 [![Build Status](https://travis-ci.org/JonathanWheelhouse/jody.svg?branch=master)](https://travis-ci.org/JonathanWheelhouse/jody)
