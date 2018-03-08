@@ -1,8 +1,5 @@
 language: c
 
-python:
-  - "3.4"
-
 sudo: required
 
 compiler:
@@ -10,8 +7,9 @@ compiler:
   - gcc
 
 before_install:
-  - wget -P /tmp https://github.com/mesonbuild/meson/releases/download/0.44.1/meson-0.44.1.tar.gz
-  - sudo -H pip install /tmp/meson-0.44.1.tar.gz
+  - sudo apt-get -qq update
+  - sudo apt-get install python3 python3-pip build-essential
+  - sudo -H pip3 install https://github.com/mesonbuild/meson/releases/download/0.44.1/meson-0.44.1.tar.gz
   - wget -P /tmp https://github.com/ninja-build/ninja/releases/download/v1.8.2/ninja-linux.zip
   - unzip /tmp/ninja-linux -d /tmp
   - sudo cp /tmp/ninja /usr/bin
