@@ -1,8 +1,5 @@
 language: c
 
-python:
-    - "3.6"
-
 sudo: required
 
 compiler:
