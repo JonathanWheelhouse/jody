@@ -10,7 +10,7 @@ compiler:
   - gcc
 
 before_install:
-  - wget -P https://github.com/mesonbuild/meson/releases/download/0.44.1/meson-0.44.1.tar.gz
+  - wget -P /tmp https://github.com/mesonbuild/meson/releases/download/0.44.1/meson-0.44.1.tar.gz
   - sudo -H pip install /tmp/meson-0.44.1.tar.gz
   - wget -P /tmp https://github.com/ninja-build/ninja/releases/download/v1.8.2/ninja-linux.zip
   - unzip /tmp/ninja-linux -d /tmp
