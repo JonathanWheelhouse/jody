@@ -29,6 +29,11 @@ jobs:
         # https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#overriding-automatic-language-detection
 
     steps:
+    - name: install ninja and meson
+      uses: ryankurte/action-apt@v0.1.0
+      with:
+        packages: ninja-build meson
+
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
@@ -53,12 +58,9 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Meson Build
-      uses: BSFishy/meson-build@v1.0.1
-      with:
-        action: build
-        directory: build
-        options: --verbose
-
+    - name: build
+    - run: meson build 
+    - run: ninja -v -C build
+      
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
