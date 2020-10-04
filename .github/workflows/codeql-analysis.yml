@@ -30,9 +30,7 @@ jobs:
 
     steps:
     - name: install ninja and meson
-      uses: ryankurte/action-apt@v0.1.0
-      with:
-        packages: ninja-build meson
+      run: sudo apt-get install ninja-build meson
 
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -56,9 +54,10 @@ jobs:
         # Prefix the list here with "+" to use these queries and those in the config file.
         # queries: ./path/to/local/query, your-org/your-repo/queries@main
 
-    - run: |
-       meson build 
-       ninja -v -C build
+    - name: build
+      run: |
+        meson build 
+        ninja -v -C build
       
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
