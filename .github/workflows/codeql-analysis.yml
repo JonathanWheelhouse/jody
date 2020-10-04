@@ -29,8 +29,8 @@ jobs:
         # https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#overriding-automatic-language-detection
 
     steps:
-    - name: install ninja and meson
-      run: sudo apt-get install ninja-build meson
+    - name: install ninja, meson and sdl
+      run: sudo apt-get -q -y install ninja-build meson libsdl-image1.2 libsdl-image1.2-dev libsdl1.2-dev libsdl1.2debian libsdl2-2.0-0
 
     - name: Checkout repository
       uses: actions/checkout@v2
