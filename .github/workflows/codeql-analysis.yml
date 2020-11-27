@@ -52,7 +52,7 @@ jobs:
         # queries: ./path/to/local/query, your-org/your-repo/queries@main
 
     - name: install ninja, meson and sdl
-      run: sudo apt-get -q -y install ninja-build meson libsdl-image1.2 libsdl-image1.2-dev libsdl1.2-dev libsdl1.2debian libsdl2-2.0-0
+      run: sudo apt-get -q -y --no-install-recommends --no-upgrade install ninja-build meson libsdl-image1.2 libsdl-image1.2-dev libsdl1.2-dev libsdl1.2debian libsdl2-2.0-0
 
     - name: build
       run: |
