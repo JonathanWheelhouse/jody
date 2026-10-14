@@ -9,21 +9,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: debian:bookworm
+    env:
+      DEBIAN_FRONTEND: noninteractive
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup apt deps
+      - name: Install apt deps (Debian)
         run: |
-          sudo apt-get update
-          sudo apt-get -y install --no-install-recommends \
-            ninja-build meson pkg-config build-essential \
+          apt-get update
+          apt-get -y install --no-install-recommends \
+            meson ninja-build pkg-config build-essential ca-certificates \
             libsdl3-dev libsdl3-image-dev
 
-      - name: Configure
-        run: meson setup build
+      - name: Sanity check SDL pkg-config
+        run: |
+          echo "sdl3:" $(pkg-config --modversion sdl3 2>/dev/null || echo "not-found")
+          echo "sdl3-image:" $(pkg-config --modversion sdl3-image 2>/dev/null || echo "not-found")
+
+      - name: Configure (meson)
+        run: meson setup build --reconfigure
 
       - name: Build
-        run: meson compile -C build
+        run: meson compile -C build --verbose
 
-      - name: Smoke test
+      - name: Smoke test (print usage)
         run: ./build/src/jody --usage || true
