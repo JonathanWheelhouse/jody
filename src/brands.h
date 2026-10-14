@@ -1,16 +1,17 @@
 #ifndef BRANDS_H
 #define BRANDS_H
 
-#include <SDL/SDL.h>
+#include <SDL3/SDL.h>
 
 struct brands
 {
-    SDL_Surface *brand_wheelhouse;
-    SDL_Surface *brand_wheelhouse_transparent;
-    SDL_Surface *brand_wheelhouse_inverted;
-    SDL_Surface *brand_wheelhouse_black_with_white_lines;
+    SDL_Texture *brand_wheelhouse;
+    SDL_Texture *brand_wheelhouse_transparent;
+    SDL_Texture *brand_wheelhouse_inverted;
+    SDL_Texture *brand_wheelhouse_black_with_white_lines;
 };
 
-struct brands *setup_brands(void);
+struct brands *setup_brands(SDL_Renderer *renderer);
+void cleanup_brands(struct brands *brands);
 
 #endif

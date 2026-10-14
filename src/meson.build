@@ -1,4 +1,31 @@
 exe = 'jody'
+
+project_source_root = meson.project_source_root()
+project_build_root = meson.project_build_root()
+
+source_img_dir = join_paths(project_source_root, 'src', 'img')
+
+install_img_dir = join_paths(
+  get_option('prefix'),
+  get_option('datadir'),
+  exe,
+  'img'
+)
+
+datadir_conf = configuration_data()
+datadir_conf.set('SOURCE_IMG_DIR', source_img_dir)
+datadir_conf.set('INSTALL_IMG_DIR', install_img_dir)
+
+datadir_conf.set('IMG_DIR', source_img_dir + '/')
+
+generated_datadir_h = configure_file(
+  input: 'datadir.h.in',
+  output: 'datadir.h',
+  configuration: datadir_conf
+)
+
+inc = include_directories('.')
+
 sources = [
     'brands.c',
     'brands.h',
@@ -13,7 +40,8 @@ sources = [
     'util.c',
     'util.h',
     'wheelhouse.c',
-    'wheelhouse.h'
+    'wheelhouse.h',
+    generated_datadir_h
 ]
 executable(
     exe,

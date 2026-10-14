@@ -1,268 +1,286 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include <SDL_image.h>
-#include <time.h>
+
+#include <SDL3/SDL.h>
+
 #include "util.h"
 #include "gamedefs.h"
-#include "datadir.h"
 #include "wheelhouse.h"
-
 #include "cursor.h"
 
-static SDL_Cursor *create_cursor_arrow(void)
+
+static SDL_Cursor *
+create_cursor_from_xpm(const char **xpm,
+                       int hot_x,
+                       int hot_y,
+                       int invert_data_mask)
 {
-	/* Stolen from the mailing list */
-	/* Creates a new mouse cursor from an XPM */
-	/* XPM */
-	static const char *arrow[] = {
-		/* width height num_colors chars_per_pixel */
-		"    32    32        3            1",
-		/* colors */
-		"X c #000000",
-		". c #ffffff",
-		"  c None",
-		/* pixels */
-		"X                               ",
-		"XX                              ",
-		"X.X                             ",
-		"X..X                            ",
-		"X...X                           ",
-		"X....X                          ",
-		"X.....X                         ",
-		"X......X                        ",
-		"X.......X                       ",
-		"X........X                      ",
-		"X.....XXXXX                     ",
-		"X..X..X                         ",
-		"X.X X..X                        ",
-		"XX  X..X                        ",
-		"X    X..X                       ",
-		"     X..X                       ",
-		"      X..X                      ",
-		"      X..X                      ",
-		"       XX                       ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"                                ",
-		"0,0"
-	};
+    enum {
+        WIDTH = 32,
+        HEIGHT = 32
+    };
 
+    SDL_Surface *surface =
+        SDL_CreateSurface(WIDTH, HEIGHT, SDL_PIXELFORMAT_RGBA32);
 
-	int i, row, col;
-	Uint8 data[4*32];
-	Uint8 mask[4*32];
-	int hot_x, hot_y;
+    if (!surface) {
+        SDL_LogError(
+            SDL_LOG_CATEGORY_APPLICATION,
+            "SDL_CreateSurface failed: %s",
+            SDL_GetError()
+        );
+        return NULL;
+    }
 
-	i = -1;
-	for (row=0; row<32; ++row) {
-		for (col=0; col<32; ++col) {
-			if ( col % 8 ) {
-				data[i] <<= 1;
-				mask[i] <<= 1;
-			} else {
-				++i;
-				data[i] = mask[i] = 0;
-			}
-			switch (arrow[4+row][col]) {
-			case 'X':
-				data[i] |= 0x01;
-				mask[i] |= 0x01;
-				break;
-			case '.':
-				mask[i] |= 0x01;
-				break;
-			case ' ':
-				break;
-			}
-		}
-	}
-	sscanf(arrow[4+row], "%d,%d", &hot_x, &hot_y);
-	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
+    if (SDL_MUSTLOCK(surface) && !SDL_LockSurface(surface)) {
+        SDL_LogError(
+            SDL_LOG_CATEGORY_APPLICATION,
+            "SDL_LockSurface failed: %s",
+            SDL_GetError()
+        );
+        SDL_DestroySurface(surface);
+        return NULL;
+    }
+
+    Uint32 *pixels = (Uint32 *)surface->pixels;
+    int pitch_pixels = surface->pitch / (int)sizeof(*pixels);
+
+    for (int y = 0; y < HEIGHT; ++y) {
+        const char *row = xpm[y];
+
+        if (!row) {
+            SDL_LogError(
+                SDL_LOG_CATEGORY_APPLICATION,
+                "Cursor row %d is NULL",
+                y
+            );
+
+            if (SDL_MUSTLOCK(surface)) {
+                SDL_UnlockSurface(surface);
+            }
+
+            SDL_DestroySurface(surface);
+            return NULL;
+        }
+
+        size_t row_length = strlen(row);
+
+        for (int x = 0; x < WIDTH; ++x) {
+            char c = (x < (int)row_length) ? row[x] : ' ';
+
+            Uint8 r = 0;
+            Uint8 g = 0;
+            Uint8 b = 0;
+            Uint8 a = 0;
+
+            switch (c) {
+            case 'X':
+                if (invert_data_mask) {
+                    /*
+                     * X is transparent in this mode.
+                     */
+                    a = 0;
+                } else {
+                    /*
+                     * X is black.
+                     */
+                    r = 0;
+                    g = 0;
+                    b = 0;
+                    a = 255;
+                }
+                break;
+
+            case '.':
+                /*
+                 * Dot is white.
+                 */
+                r = 255;
+                g = 255;
+                b = 255;
+                a = 255;
+                break;
+
+            case ' ':
+            default:
+                /*
+                 * Transparent.
+                 */
+                a = 0;
+                break;
+            }
+
+            pixels[y * pitch_pixels + x] =
+                SDL_MapSurfaceRGBA(surface, r, g, b, a);
+        }
+    }
+
+    if (SDL_MUSTLOCK(surface)) {
+        SDL_UnlockSurface(surface);
+    }
+
+    SDL_Cursor *cursor =
+        SDL_CreateColorCursor(surface, hot_x, hot_y);
+
+    if (!cursor) {
+        SDL_LogError(
+            SDL_LOG_CATEGORY_APPLICATION,
+            "SDL_CreateColorCursor failed: %s",
+            SDL_GetError()
+        );
+    }
+
+    SDL_DestroySurface(surface);
+    return cursor;
 }
 
 
-static SDL_Cursor *create_wheelhouse_cursor(void)
+static SDL_Cursor *
+create_cursor_arrow(void)
 {
-	int i, row, col;
-	Uint8 data[4*32];
-	Uint8 mask[4*32];
-	int hot_x, hot_y;
+    /*
+     * This array contains exactly 32 rows.
+     *
+     * Do not include the XPM header, colour definitions, or hotspot
+     * in this array.
+     */
+    static const char *arrow_pixels[32] = {
+        "X                               ",
+        "XX                              ",
+        "X.X                             ",
+        "X..X                            ",
+        "X...X                           ",
+        "X....X                          ",
+        "X.....X                         ",
+        "X......X                        ",
+        "X.......X                       ",
+        "X........X                      ",
+        "X.....XXXXX                     ",
+        "X..X..X                         ",
+        "X.X X..X                        ",
+        "XX  X..X                        ",
+        "X    X..X                       ",
+        "     X..X                       ",
+        "      X..X                      ",
+        "      X..X                      ",
+        "       XX                       ",
 
-	i = -1;
-	for (row=0; row<32; ++row) {
-		for (col=0; col<32; ++col) {
-			if ( col % 8 ) {
-				data[i] <<= 1;
-				mask[i] <<= 1;
-			} else {
-				++i;
-				data[i] = mask[i] = 0;
-			}
-			switch (wheelhouse[4+row][col]) {
-			case 'X':
-				data[i] |= 0x01;
-				mask[i] |= 0x01;
-				break;
-			case '.':
-				mask[i] |= 0x01;
-				break;
-			case ' ':
-				break;
-			}
-		}
-	}
-	sscanf(wheelhouse[4+row], "%d,%d", &hot_x, &hot_y);
-	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
+        "                                ",
+        "                                ",
+        "                                ",
+        "                                ",
+        "                                ",
+        "                                ",
+        "                                ",
+        "                                ",
+        "                                ",
+        "                                ",
+        "                                ",
+        "                                ",
+        "                                "
+    };
+
+    return create_cursor_from_xpm(
+        arrow_pixels,
+        0,      /* hot_x */
+        0,      /* hot_y */
+        0
+    );
 }
 
 
-static SDL_Cursor *create_wheelhouse_cursor_transparent(void)
+struct cursors *
+setup_cursors(void)
 {
-	int i, row, col;
-	Uint8 data[4*32];
-	Uint8 mask[4*32];
-	int hot_x, hot_y;
+    struct cursors *cursors = xmalloc(sizeof(*cursors));
 
-	i = -1;
-	for (row=0; row<32; ++row) {
-		for (col=0; col<32; ++col) {
-			if ( col % 8 ) {
-				data[i] <<= 1;
-				mask[i] <<= 1;
-			} else {
-				++i;
-				data[i] = mask[i] = 0;
-			}
-			switch (wheelhouse[4+row][col]) {
-			case 'X':
-				data[i] |= 0x01;
-				mask[i] |= 0x01;
-				break;
-			case '.':
-/*
- * Make it transparent rather than white.
- */
-/* 				mask[i] |= 0x01; */
-				break;
-			case ' ':
-				break;
-			}
-		}
-	}
-	sscanf(wheelhouse[4+row], "%d,%d", &hot_x, &hot_y);
-	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
+    cursors->cursor_arrow =
+        create_cursor_arrow();
+
+    /*
+     * wheelhouse must also contain exactly 32 image rows
+     * if it is passed to create_cursor_from_xpm().
+     */
+    cursors->cursor_wheelhouse =
+        create_cursor_from_xpm(
+            (const char **)wheelhouse,
+            0,      /* hot_x */
+            0,      /* hot_y */
+            0
+        );
+
+    cursors->cursor_wheelhouse_transparent =
+        create_cursor_from_xpm(
+            (const char **)wheelhouse,
+            0,
+            0,
+            2
+        );
+
+    cursors->cursor_wheelhouse_inverted =
+        create_cursor_from_xpm(
+            (const char **)wheelhouse,
+            0,
+            0,
+            0
+        );
+
+    cursors->cursor_wheelhouse_black_with_white_lines =
+        create_cursor_from_xpm(
+            (const char **)wheelhouse,
+            0,
+            0,
+            1
+        );
+
+    if (!cursors->cursor_arrow ||
+        !cursors->cursor_wheelhouse ||
+        !cursors->cursor_wheelhouse_transparent ||
+        !cursors->cursor_wheelhouse_inverted ||
+        !cursors->cursor_wheelhouse_black_with_white_lines) {
+        SDL_LogError(
+            SDL_LOG_CATEGORY_APPLICATION,
+            "Unable to create one or more cursors: %s",
+            SDL_GetError()
+        );
+
+        free_cursors(cursors);
+        return NULL;
+    }
+
+    return cursors;
 }
 
-static SDL_Cursor *create_wheelhouse_cursor_inverted(void)
+
+void
+free_cursors(struct cursors *cursors)
 {
-	int i, row, col;
-	Uint8 data[4*32];
-	Uint8 mask[4*32];
-	int hot_x, hot_y;
+    if (!cursors) {
+        return;
+    }
 
-	i = -1;
-	for (row=0; row<32; ++row) {
-		for (col=0; col<32; ++col) {
-			if ( col % 8 ) {
-				data[i] <<= 1;
-				mask[i] <<= 1;
-			} else {
-				++i;
-				data[i] = mask[i] = 0;
-			}
-			switch (wheelhouse[4+row][col]) {
-			case 'X':
-				data[i] |= 0x01;
-				mask[i] |= 0x01;
-				break;
-			case '.':
-				data[i] |= 0x01;
-				break;
-			case ' ':
-				break;
-			}
-		}
-	}
-	sscanf(wheelhouse[4+row], "%d,%d", &hot_x, &hot_y);
-	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
-}
+    if (cursors->cursor_arrow) {
+        SDL_DestroyCursor(cursors->cursor_arrow);
+    }
 
-static SDL_Cursor *create_wheelhouse_cursor_black_with_white_lines(void)
-{
-	int i, row, col;
-	Uint8 data[4*32];
-	Uint8 mask[4*32];
-	int hot_x, hot_y;
+    if (cursors->cursor_wheelhouse) {
+        SDL_DestroyCursor(cursors->cursor_wheelhouse);
+    }
 
-	i = -1;
-	for (row=0; row<32; ++row) {
-		for (col=0; col<32; ++col) {
-			if ( col % 8 ) {
-				data[i] <<= 1;
-				mask[i] <<= 1;
-			} else {
-				++i;
-				data[i] = mask[i] = 0;
-			}
-			switch (wheelhouse[4+row][col]) {
-			case 'X':
-				mask[i] |= 0x01;
-				break;
-			case '.':
-				data[i] |= 0x01;
-				break;
-			case ' ':
-				break;
-			}
-		}
-	}
-	sscanf(wheelhouse[4+row], "%d,%d", &hot_x, &hot_y);
-	return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
-}
+    if (cursors->cursor_wheelhouse_transparent) {
+        SDL_DestroyCursor(cursors->cursor_wheelhouse_transparent);
+    }
 
-struct cursors *setup_cursors(void)
-{
-	struct cursors *cursors = xmalloc(sizeof(struct cursors));
+    if (cursors->cursor_wheelhouse_inverted) {
+        SDL_DestroyCursor(cursors->cursor_wheelhouse_inverted);
+    }
 
-	cursors->cursor_arrow = create_cursor_arrow();
-	if (!cursors->cursor_arrow) {
-		printf("Unable to create_cursor_arrow\n");
-		exit(EXIT_FAILURE);
-	}
+    if (cursors->cursor_wheelhouse_black_with_white_lines) {
+        SDL_DestroyCursor(
+            cursors->cursor_wheelhouse_black_with_white_lines
+        );
+    }
 
-	cursors->cursor_wheelhouse = create_wheelhouse_cursor();
-	if (!cursors->cursor_wheelhouse) {
-		printf("Unable to create_wheelhouse_cursor\n");
-		exit(EXIT_FAILURE);
-	}
-
-	cursors->cursor_wheelhouse_transparent = create_wheelhouse_cursor_transparent();
-	if (!cursors->cursor_wheelhouse_transparent) {
-		printf("Unable to create_wheelhouse_cursor_transparent\n");
-		exit(EXIT_FAILURE);
-	}
-
-	cursors->cursor_wheelhouse_inverted = create_wheelhouse_cursor_inverted();
-	if (!cursors->cursor_wheelhouse_inverted) {
-		printf("Unable to create_wheelhouse_cursor_inverted\n");
-		exit(EXIT_FAILURE);
-	}
-
-	cursors->cursor_wheelhouse_black_with_white_lines = create_wheelhouse_cursor_black_with_white_lines();
-	if (!cursors->cursor_wheelhouse_black_with_white_lines) {
-		printf("Unable to create_wheelhouse_cursor_black_with_white_lines\n");
-		exit(EXIT_FAILURE);
-	}
-
-	return cursors;
+    free(cursors);
 }

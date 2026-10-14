@@ -2,7 +2,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <SDL.h>
+#include <SDL3/SDL.h>
+
+#include "datadir.h"
+#include "util.h"
+
+
+const char * jody_image_path(const char *filename)
+{
+    static char path[4096];
+
+    /*
+     * Prefer the source tree while developing.
+     */
+    snprintf(
+        path,
+        sizeof(path),
+        "%s/%s",
+        JODY_SOURCE_IMG_DIR,
+        filename
+    );
+
+    FILE *file = fopen(path, "rb");
+    if (file) {
+        fclose(file);
+        return path;
+    }
+
+    /*
+     * Fall back to the installed location.
+     */
+    snprintf(
+        path,
+        sizeof(path),
+        "%s/%s",
+        JODY_INSTALL_IMG_DIR,
+        filename
+    );
+
+    return path;
+}
+
 
 void fatal(const char *format, ...)
 {
@@ -38,4 +78,3 @@ void initrandom(void)
 {
 	 seed = time(NULL);
 }
-

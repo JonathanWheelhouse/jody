@@ -23,6 +23,8 @@
 #endif
 #define UNUSED(x) (void)(x)
 
+const char *jody_image_path(const char *filename);
+
 void *xmalloc(size_t size);
 void *xcalloc(size_t nmemb, size_t size);
 
