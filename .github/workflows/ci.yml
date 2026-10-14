@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup apt deps
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install --no-install-recommends \
+            ninja-build meson pkg-config build-essential \
+            libsdl3-dev libsdl3-image-dev
+
+      - name: Configure
+        run: meson setup build
+
+      - name: Build
+        run: meson compile -C build
+
+      - name: Smoke test
+        run: ./build/src/jody --usage || true
