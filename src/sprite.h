@@ -1,5 +1,4 @@
-#ifndef __SPRITE_H__
-#define __SPRITE_H__
+#pragma once
 
 #include <SDL3/SDL.h>
 #include <stdbool.h>
@@ -46,5 +45,3 @@ float get_speed(struct sprite *sprite);
 
 void xadd(struct sprite *sprite, double displacement);
 void set(struct sprite *sprite, double x, double y);
-
-#endif

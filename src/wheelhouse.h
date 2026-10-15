@@ -1,6 +1,3 @@
-#ifndef WHEELHOUSE_H
-#define WHEELHOUSE_H
+#pragma once
 
-extern char *wheelhouse[37];
-
-#endif
+extern char * const wheelhouse[37];

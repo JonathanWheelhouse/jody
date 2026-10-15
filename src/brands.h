@@ -1,5 +1,4 @@
-#ifndef BRANDS_H
-#define BRANDS_H
+#pragma once
 
 #include <SDL3/SDL.h>
 
@@ -13,5 +12,3 @@ struct brands
 
 struct brands *setup_brands(SDL_Renderer *renderer);
 void cleanup_brands(struct brands *brands);
-
-#endif

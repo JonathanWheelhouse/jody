@@ -1,6 +1,6 @@
 #include "wheelhouse.h"
 
-char *wheelhouse[] = {
+char * const wheelhouse[] = {
 	/* width height num_colors chars_per_pixel */
 	"    32    32        3            1",
 	/* colors */

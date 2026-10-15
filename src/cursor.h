@@ -1,5 +1,4 @@
-#ifndef CURSOR_H
-#define CURSOR_H
+#pragma once
 
 #include <SDL3/SDL.h>
 
@@ -14,5 +13,3 @@ struct cursors
 
 struct cursors *setup_cursors(void);
 void free_cursors(struct cursors *cursors);
-
-#endif

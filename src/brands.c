@@ -1,7 +1,6 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 
-#include "datadir.h"
 #include "surface.h"
 #include "util.h"
 #include "wheelhouse.h"
@@ -10,7 +9,7 @@
 
 static SDL_Texture *create_wheelhouse_image(SDL_Renderer *renderer)
 {
-    SDL_Surface *surface = IMG_ReadXPMFromArray(wheelhouse);
+    SDL_Surface *surface = IMG_ReadXPMFromArray((char **)wheelhouse);
     if (!surface) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Couldn't read wheelhouse XPM: %s", SDL_GetError());
