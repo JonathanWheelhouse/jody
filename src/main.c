@@ -11,7 +11,6 @@
 #include "datadir.h"
 #include "gamedefs.h"
 #include "sprite.h"
-#include "surface.h"
 #include "util.h"
 
 /* macros  & helper functions */
@@ -84,7 +83,7 @@ int main(int argc, char *argv[])
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Couldn't initialize SDL: %s", SDL_GetError());
-        return 1;
+        return EXIT_FAILURE;
     }
 
     srand((unsigned int)time(nullptr));
@@ -98,7 +97,7 @@ int main(int argc, char *argv[])
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Couldn't create window: %s", SDL_GetError());
         SDL_Quit();
-        return 1;
+        return EXIT_FAILURE;
     }
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window, nullptr);
@@ -214,7 +213,7 @@ int main(int argc, char *argv[])
     SDL_DestroyWindow(window);
     SDL_Quit();
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 static const unsigned char bg_png_bytes[] =

@@ -44,7 +44,7 @@ const char * jody_image_path(const char *filename)
 }
 
 
-void fatal(const char *format, ...)
+[[noreturn]] void fatal(const char *format, ...)
 {
 	 va_list args;
 
@@ -52,7 +52,7 @@ void fatal(const char *format, ...)
 	 vfprintf(stderr, format, args);
 	 va_end(args);
 	 fprintf(stderr, "\n");
-	 exit(1);
+	 exit(EXIT_FAILURE);
 }
 
 void * xmalloc(size_t size)
