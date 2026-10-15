@@ -19,7 +19,7 @@ const char * jody_image_path(const char *filename)
         path,
         sizeof(path),
         "%s/%s",
-        JODY_SOURCE_IMG_DIR,
+        SOURCE_IMG_DIR,
         filename
     );
 
@@ -36,7 +36,7 @@ const char * jody_image_path(const char *filename)
         path,
         sizeof(path),
         "%s/%s",
-        JODY_INSTALL_IMG_DIR,
+        INSTALL_IMG_DIR,
         filename
     );
 
