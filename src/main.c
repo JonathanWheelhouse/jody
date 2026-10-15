@@ -217,19 +217,18 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+static const unsigned char bg_png_bytes[] =
+{
+    #embed "img/background/1.png"
+};
+
 static SDL_Texture *get_background(SDL_Renderer *renderer)
 {
-    const char background_dir[] = IMG_DIR "background";
-    char *background_path = nullptr;
-
-    if (asprintf(&background_path, "%s/1.png", background_dir) < 0) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
-                     "Could not allocate background path\n");
+    SDL_IOStream *io = SDL_IOFromConstMem(bg_png_bytes, sizeof(bg_png_bytes));
+    if (!io)
         return nullptr;
-    }
 
-    SDL_Texture *background = load_image(renderer, background_path);
-    free(background_path); /* Fixed: leak */
+    SDL_Texture *background = IMG_LoadTexture_IO(renderer, io, true);
     return background;
 }
 

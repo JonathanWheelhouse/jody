@@ -21,7 +21,7 @@ jobs:
         run: |
           apt-get update
           apt-get -y install --no-install-recommends \
-            meson ninja-build pkg-config build-essential ca-certificates \
+            meson ninja-build clang-22 pkg-config build-essential ca-certificates \
             libsdl3-dev libsdl3-image-dev
 
       - name: Sanity check SDL pkg-config
@@ -30,7 +30,7 @@ jobs:
           echo "sdl3-image:" $(pkg-config --modversion sdl3-image 2>/dev/null || echo "not-found")
 
       - name: Configure (meson)
-        run: meson setup build --reconfigure
+        run: CC=clang-22 meson setup build
 
       - name: Build
         run: meson compile -C build --verbose

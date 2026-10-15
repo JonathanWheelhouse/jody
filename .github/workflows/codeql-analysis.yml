@@ -37,12 +37,12 @@ jobs:
         run: |
           apt-get update
           apt-get -y install --no-install-recommends \
-            ninja-build meson pkg-config build-essential ca-certificates \
+            ninja-build meson clang-22 pkg-config build-essential ca-certificates \
             libsdl3-dev libsdl3-image-dev
 
       - name: build
         run: |
-          meson setup build --reconfigure
+          meson CC=clang-22 setup build
           meson compile -C build
 
       - name: Perform CodeQL Analysis
