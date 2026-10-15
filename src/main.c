@@ -21,9 +21,9 @@ static inline bool streq(const char *s1, const char *s2)
 
 /* constants */
 constexpr double SPRITE_PIXELS_PER_SECOND = 200.0;
-#define NUM_MILLISECONDS 1000.0
-#define X_DIST 25
-#define Y_DIST 1
+constexpr double NUM_MILLISECONDS = 1000.0;
+[[maybe_unused]]constexpr int X_DIST = 25;
+[[maybe_unused]]constexpr int Y_DIST = 1;
 
 enum image_idx {
     IMG_CLOUD,

@@ -21,8 +21,6 @@
 /* C23 [[noreturn]] combined with GCC format checking */
 [[noreturn]] void fatal(const char *format, ...) ATTRIB_PRINTF(1, 2);
 
-#define UNUSED(x) (void)(x)
-
 /* Type-safe inline functions instead of side-effect prone macros */
 static inline int max_int(int a, int b) { return (a > b) ? a : b; }
 static inline int min_int(int a, int b) { return (a < b) ? a : b; }
