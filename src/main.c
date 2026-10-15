@@ -65,13 +65,11 @@ static void handle_events(int *quit, int *pause, bool *mouse_clicked,
                           SDL_Texture **brand);
 static void move(struct sprite *sprites[], int *pause, double elapsed_ticks);
 static Uint32 get_elapsed_ticks(void);
-static void main_draw(SDL_Renderer *renderer, struct sprite **sprites,
-                      SDL_Texture *brand);
+static void main_draw(SDL_Renderer *renderer, struct sprite **sprites, SDL_Texture *brand);
 static void check_branded(struct sprite **sprites, int x_mouse, int y_mouse);
 
 static struct sprite **setup_img(SDL_Renderer *renderer);
-static struct sprite *load_img(SDL_Renderer *renderer, int i,
-                               unsigned int x_scale, unsigned int y_scale);
+static struct sprite *load_img(SDL_Renderer *renderer, int i);
 static void free_sprites(struct sprite **sprites, int count);
 
 int main(int argc, char *argv[])
@@ -391,18 +389,17 @@ static struct sprite **setup_img(SDL_Renderer *renderer)
 {
     struct sprite **sprites = xcalloc(NUM_IMAGES, sizeof(struct sprite *));
 
-    srand((unsigned int)time(nullptr));
-    unsigned int x_scale = RAND_MAX / SCREEN_WIDTH;
-    unsigned int y_scale = RAND_MAX / SCREEN_HEIGHT;
-
     for (int i = 0; i < NUM_IMAGES; i++) {
-        sprites[i] = load_img(renderer, i, x_scale, y_scale);
+        sprites[i] = load_img(renderer, i);
+        if (!sprites[i]) {
+            free_sprites(sprites, i);
+            return nullptr;
+        }
     }
     return sprites;
 }
 
-static struct sprite *load_img(SDL_Renderer *renderer, int i,
-                               unsigned int x_scale, unsigned int y_scale)
+static struct sprite *load_img(SDL_Renderer *renderer, int i)
 {
     SDL_Log("image_names[%d] = [%s]\n", i, image_names[i]);
 
@@ -423,24 +420,23 @@ static struct sprite *load_img(SDL_Renderer *renderer, int i,
         return nullptr;
     }
 
-    unsigned int x = (unsigned int)rand();
-    x /= x_scale;
-    unsigned int y = (unsigned int)rand();
-    y /= y_scale;
+    /* Safe C23 floating-point range mapping [0.0, SCREEN_DIMENSION] */
+    double x = ((double)rand() / (double)RAND_MAX) * (double)SCREEN_WIDTH;
+    double y = ((double)rand() / (double)RAND_MAX) * (double)SCREEN_HEIGHT;
 
     /* Clouds stay in the sky (top half); animals on the ground (bottom half) */
-    int half = SCREEN_HEIGHT / 2;
+    double half = (double)SCREEN_HEIGHT / 2.0;
     if (i == IMG_CLOUD) {
-        if (y > (unsigned int)half)
-            y = (unsigned int)base->image_height;
+        if (y > half)
+            y = (double)base->image_height;
     } else {
-        if (y < (unsigned int)half)
-            y = (unsigned int)(SCREEN_HEIGHT - base->image_height);
+        if (y < half)
+            y = (double)(SCREEN_HEIGHT - base->image_height);
     }
 
     SDL_Log("\ty\t%d\n", (int)y);
 
-    set(sprite, (double)x, (double)y);
+    set(sprite, x, y);
     set_speed(sprite, 1.0f);
     return sprite;
 }
