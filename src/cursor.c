@@ -5,10 +5,8 @@
 #include <SDL3/SDL.h>
 
 #include "util.h"
-#include "gamedefs.h"
 #include "wheelhouse.h"
 #include "cursor.h"
-
 
 static SDL_Cursor *
 create_cursor_from_xpm(const char **xpm,
