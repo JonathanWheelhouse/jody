@@ -17,8 +17,11 @@
 #include "surface.h"
 #include "util.h"
 
-/* macros */
-#define STREQ(a, b) (!strcmp((a),(b)))
+/* macros  & helper functions */
+static inline bool streq(const char *s1, const char *s2)
+{
+    return strcmp(s1, s2) == 0;
+}
 
 /* constants */
 #define SPRITE_PIXELS_PER_SECOND 200.0
@@ -236,10 +239,10 @@ static SDL_Texture *get_background(SDL_Renderer *renderer)
 static void handle_args(int argc, char *argv[])
 {
     for (int i = 1; i < argc; i++) {
-        if (STREQ(argv[i], "--help") || STREQ(argv[i], "-h")) {
+        if (streq(argv[i], "--help") || streq(argv[i], "-h")) {
             print_help();
             exit(EXIT_SUCCESS);
-        } else if (STREQ(argv[i], "--usage") || STREQ(argv[i], "-u")) {
+        } else if (streq(argv[i], "--usage") || streq(argv[i], "-u")) {
             print_usage();
             exit(EXIT_SUCCESS);
         } else {
