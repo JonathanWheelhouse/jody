@@ -2,9 +2,7 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
-#include <assert.h>
 #include <stdio.h>
-#include <stdbool.h>
 #include <string.h>
 #include <time.h>
 
@@ -23,7 +21,7 @@ static inline bool streq(const char *s1, const char *s2)
 }
 
 /* constants */
-#define SPRITE_PIXELS_PER_SECOND 200.0
+constexpr double SPRITE_PIXELS_PER_SECOND = 200.0;
 #define NUM_MILLISECONDS 1000.0
 #define X_DIST 25
 #define Y_DIST 1

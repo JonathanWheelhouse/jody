@@ -5,7 +5,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 #include "sprite.h"
 #include "surface.h"
 #include "gamedefs.h"
