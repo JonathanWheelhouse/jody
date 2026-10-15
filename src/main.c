@@ -3,7 +3,6 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <assert.h>
-#include <math.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
