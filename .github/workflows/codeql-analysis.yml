@@ -42,7 +42,7 @@ jobs:
 
       - name: build
         run: |
-          meson CC=clang-22 setup build
+          CC=clang-22 meson setup build
           meson compile -C build
 
       - name: Perform CodeQL Analysis
