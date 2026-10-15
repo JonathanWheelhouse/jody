@@ -4,7 +4,7 @@ project('jody', 'c',
     license : 'GPL2+'
 )
 
-add_global_arguments('-DVERSION="0.1.0"', language : 'c')
+add_global_arguments(['-DVERSION="0.1.0"', '-D_GNU_SOURCE'], language : 'c')
 
 sdl = dependency('sdl3', version: '>=2')
 sdlimage = dependency('sdl3-image', version: '>=2')

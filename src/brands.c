@@ -20,10 +20,10 @@ static SDL_Texture *create_wheelhouse_image(SDL_Renderer *renderer)
     SDL_DestroySurface(surface); /* Fixed: leak */
     return texture;
 }
-
 struct brands *setup_brands(SDL_Renderer *renderer)
 {
     struct brands *brands = xmalloc(sizeof(struct brands));
+    char *path = nullptr;
 
     brands->brand_wheelhouse = create_wheelhouse_image(renderer);
     if (!brands->brand_wheelhouse) {
@@ -33,8 +33,11 @@ struct brands *setup_brands(SDL_Renderer *renderer)
         return nullptr;
     }
 
-    brands->brand_wheelhouse_transparent =
-        load_image(renderer, jody_image_path("wheelhouse_image_transparent.png"));
+    /* Transparent brand */
+    path = jody_image_path("wheelhouse_image_transparent.png");
+    brands->brand_wheelhouse_transparent = load_image(renderer, path);
+    free(path);
+
     if (!brands->brand_wheelhouse_transparent) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Unable to load brand_wheelhouse_transparent\n");
@@ -43,8 +46,11 @@ struct brands *setup_brands(SDL_Renderer *renderer)
         return nullptr;
     }
 
-    brands->brand_wheelhouse_inverted =
-        load_image(renderer, jody_image_path("wheelhouse_image_inverted.png"));
+    /* Inverted brand */
+    path = jody_image_path("wheelhouse_image_inverted.png");
+    brands->brand_wheelhouse_inverted = load_image(renderer, path);
+    free(path);
+
     if (!brands->brand_wheelhouse_inverted) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Unable to load brand_wheelhouse_inverted\n");
@@ -54,8 +60,11 @@ struct brands *setup_brands(SDL_Renderer *renderer)
         return nullptr;
     }
 
-    brands->brand_wheelhouse_black_with_white_lines =
-        load_image(renderer, jody_image_path("wheelhouse_image_black_with_white_lines.png"));
+    /* Black with white lines brand */
+    path = jody_image_path("wheelhouse_image_black_with_white_lines.png");
+    brands->brand_wheelhouse_black_with_white_lines = load_image(renderer, path);
+    free(path);
+
     if (!brands->brand_wheelhouse_black_with_white_lines) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Unable to load brand_wheelhouse_black_with_white_lines\n");

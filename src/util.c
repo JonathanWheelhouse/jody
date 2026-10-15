@@ -7,42 +7,32 @@
 #include "datadir.h"
 #include "util.h"
 
-
-const char * jody_image_path(const char *filename)
+char *jody_image_path(const char *filename)
 {
-    static char path[4096];
+    char *path = nullptr;
 
     /*
      * Prefer the source tree while developing.
      */
-    snprintf(
-        path,
-        sizeof(path),
-        "%s/%s",
-        SOURCE_IMG_DIR,
-        filename
-    );
+    if (asprintf(&path, "%s/%s", SOURCE_IMG_DIR, filename) < 0)
+        return nullptr;
 
     FILE *file = fopen(path, "rb");
     if (file) {
         fclose(file);
-        return path;
+        return path; /* Caller must free() */
     }
+
+    free(path);
 
     /*
      * Fall back to the installed location.
      */
-    snprintf(
-        path,
-        sizeof(path),
-        "%s/%s",
-        INSTALL_IMG_DIR,
-        filename
-    );
+    if (asprintf(&path, "%s/%s", INSTALL_IMG_DIR, filename) < 0)
+        return nullptr;
 
-    return path;
+    return path; /* Caller must free() */
 }
-
 
 [[noreturn]] void fatal(const char *format, ...)
 {

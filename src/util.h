@@ -26,7 +26,7 @@ static inline int max_int(int a, int b) { return (a > b) ? a : b; }
 static inline int min_int(int a, int b) { return (a < b) ? a : b; }
 static inline int rand_range(int lb, int ub) { return (rand() % ((ub) - (lb) + 1)) + (lb); }
 
-const char *jody_image_path(const char *filename);
+ATTRIB_WARN_UNUSED char *jody_image_path(const char *filename);
 
 ATTRIB_MALLOC ATTRIB_ALLOC_SIZE(1) ATTRIB_WARN_UNUSED
 void *xmalloc(size_t size);
