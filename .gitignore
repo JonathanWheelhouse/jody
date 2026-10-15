@@ -56,3 +56,6 @@ build/
 GPATH
 GRTAGS
 GTAGS
+
+.idea/
+.cache/
