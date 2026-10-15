@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    srand((unsigned int)time(NULL));
+    srand((unsigned int)time(nullptr));
 
     int window_width = SCREEN_WIDTH * 2;
     int window_height = SCREEN_HEIGHT * 2;
@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    SDL_Renderer *renderer = SDL_CreateRenderer(window, NULL);
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, nullptr);
     if (!renderer) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Couldn't create renderer: %s", SDL_GetError());
@@ -150,7 +150,7 @@ int main(int argc, char *argv[])
     /* Show splash screen for ~3 seconds */
     for (int i = 0; i < 3; ++i) {
         SDL_RenderClear(renderer);
-        SDL_RenderTexture(renderer, background, NULL, NULL);
+        SDL_RenderTexture(renderer, background, nullptr, nullptr);
         SDL_RenderPresent(renderer);
         SDL_Delay(1000);
     }
@@ -171,7 +171,7 @@ int main(int argc, char *argv[])
     int pause = 0;
     bool mouse_clicked;
     int x_mouse = 0, y_mouse = 0;
-    SDL_Texture *brand = NULL;
+    SDL_Texture *brand = nullptr;
     int frames_drawn = 0;
     Uint64 start_time = SDL_GetTicks();
 
@@ -190,7 +190,7 @@ int main(int argc, char *argv[])
         move(sprites, &pause, elapsed_ticks);
 
         SDL_RenderClear(renderer);
-        SDL_RenderTexture(renderer, background, NULL, NULL);
+        SDL_RenderTexture(renderer, background, nullptr, nullptr);
         main_draw(renderer, sprites, brand);
         SDL_RenderPresent(renderer);
 
@@ -220,12 +220,12 @@ int main(int argc, char *argv[])
 static SDL_Texture *get_background(SDL_Renderer *renderer)
 {
     const char background_dir[] = IMG_DIR "background";
-    char *background_path = NULL;
+    char *background_path = nullptr;
 
     if (asprintf(&background_path, "%s/1.png", background_dir) < 0) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Could not allocate background path\n");
-        return NULL;
+        return nullptr;
     }
 
     SDL_Texture *background = load_image(renderer, background_path);
@@ -393,7 +393,7 @@ static struct sprite **setup_img(SDL_Renderer *renderer)
 {
     struct sprite **sprites = xcalloc(NUM_IMAGES, sizeof(struct sprite *));
 
-    srand((unsigned int)time(NULL));
+    srand((unsigned int)time(nullptr));
     unsigned int x_scale = RAND_MAX / SCREEN_WIDTH;
     unsigned int y_scale = RAND_MAX / SCREEN_HEIGHT;
 
@@ -413,7 +413,7 @@ static struct sprite *load_img(SDL_Renderer *renderer, int i,
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Couldn't initialise base for: %s\n%s\n",
                      image_names[i], SDL_GetError());
-        return NULL;
+        return nullptr;
     }
 
     struct sprite *sprite = sprite_init(base);
@@ -422,7 +422,7 @@ static struct sprite *load_img(SDL_Renderer *renderer, int i,
                      "Couldn't initialise sprite for: %s\n%s\n",
                      image_names[i], SDL_GetError());
         free_sprite_base(base);
-        return NULL;
+        return nullptr;
     }
 
     unsigned int x = (unsigned int)rand();

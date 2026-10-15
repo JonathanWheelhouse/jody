@@ -58,7 +58,7 @@ void fatal(const char *format, ...)
 void * xmalloc(size_t size)
 {
 	 void *p = malloc(size);
-	 if (p == NULL)
+	 if (p == nullptr)
 		  fatal("Out of memory");
 	 return p;
 }
@@ -67,7 +67,7 @@ void * xmalloc(size_t size)
 void * xcalloc(size_t nmemb, size_t size)
 {
 	void *p = calloc(nmemb, size);
-	if (p == NULL)
+	if (p == nullptr)
 		fatal("Out of memory");
 	return p;
 }
@@ -76,5 +76,5 @@ static Sint32 seed = 0;
 
 void initrandom(void)
 {
-	 seed = time(NULL);
+	 seed = time(nullptr);
 }

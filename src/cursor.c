@@ -30,7 +30,7 @@ create_cursor_from_xpm(const char **xpm,
             "SDL_CreateSurface failed: %s",
             SDL_GetError()
         );
-        return NULL;
+        return nullptr;
     }
 
     if (SDL_MUSTLOCK(surface) && !SDL_LockSurface(surface)) {
@@ -40,7 +40,7 @@ create_cursor_from_xpm(const char **xpm,
             SDL_GetError()
         );
         SDL_DestroySurface(surface);
-        return NULL;
+        return nullptr;
     }
 
     Uint32 *pixels = (Uint32 *)surface->pixels;
@@ -61,7 +61,7 @@ create_cursor_from_xpm(const char **xpm,
             }
 
             SDL_DestroySurface(surface);
-            return NULL;
+            return nullptr;
         }
 
         size_t row_length = strlen(row);
@@ -246,7 +246,7 @@ setup_cursors(void)
         );
 
         free_cursors(cursors);
-        return NULL;
+        return nullptr;
     }
 
     return cursors;

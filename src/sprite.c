@@ -17,11 +17,11 @@ static SDL_Texture *image_frame(SDL_Renderer *renderer, const char *line,
     int r = 0, g = 0, b = 0;
     int match = sscanf(line, "%254s %d %d %d", name, &r, &g, &b);
     if (match < 1)
-        return NULL;
+        return nullptr;
 
-    char *filename = NULL;
+    char *filename = nullptr;
     if (asprintf(&filename, "%s/%s", dir, name) < 0)
-        return NULL;
+        return nullptr;
 
     SDL_Texture *tex = load_image(renderer, filename);
     free(filename);
@@ -30,16 +30,16 @@ static SDL_Texture *image_frame(SDL_Renderer *renderer, const char *line,
 
 struct sprite_base *base_init(SDL_Renderer *renderer, const char *dir)
 {
-    char *filename = NULL;
+    char *filename = nullptr;
     if (asprintf(&filename, "%s/info", dir) < 0)
-        return NULL;
+        return nullptr;
 
     FILE *fp = fopen(filename, "r");
     if (!fp) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "ERROR opening file %s\n", filename);
         free(filename);
-        return NULL;
+        return nullptr;
     }
 
     struct sprite_base *base = xmalloc(sizeof(struct sprite_base));
@@ -48,9 +48,9 @@ struct sprite_base *base_init(SDL_Renderer *renderer, const char *dir)
     base->image_width = 0;
     base->image_height = 0;
     base->can_be_branded = false;
-    base->frames = NULL;
+    base->frames = nullptr;
 
-    char *line = NULL;
+    char *line = nullptr;
     size_t len = 0;
     ssize_t nread;
 
@@ -147,7 +147,7 @@ error:
     free(base);
     if (fp) fclose(fp);
     free(filename);
-    return NULL;
+    return nullptr;
 }
 
 struct sprite *sprite_init(struct sprite_base *base)
@@ -161,7 +161,7 @@ struct sprite *sprite_init(struct sprite_base *base)
     sprite->is_animating = false;
     sprite->is_drawn = false;
     sprite->is_branded = false;
-    sprite->brand = NULL;
+    sprite->brand = nullptr;
     sprite->speed = 0.0f;
     sprite->last_update = 0;
     sprite->sprite_base = base;
@@ -224,7 +224,7 @@ void draw(SDL_Renderer *renderer, struct sprite *sprite, SDL_Texture *brand)
 
     SDL_RenderTexture(renderer,
         sprite->sprite_base->frames[sprite->frame_index]->image,
-        NULL, &dest);
+        nullptr, &dest);
 
     /* Draw brand overlay */
     if (sprite->is_branded) {
@@ -238,7 +238,7 @@ void draw(SDL_Renderer *renderer, struct sprite *sprite, SDL_Texture *brand)
             brand_dest.y = dest.y + 20.0f;
             brand_dest.w = bw;
             brand_dest.h = bh;
-            SDL_RenderTexture(renderer, brand_to_use, NULL, &brand_dest);
+            SDL_RenderTexture(renderer, brand_to_use, nullptr, &brand_dest);
         }
     }
 }

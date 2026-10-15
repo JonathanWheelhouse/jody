@@ -13,7 +13,7 @@ static SDL_Texture *create_wheelhouse_image(SDL_Renderer *renderer)
     if (!surface) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Couldn't read wheelhouse XPM: %s", SDL_GetError());
-        return NULL;
+        return nullptr;
     }
 
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
@@ -30,7 +30,7 @@ struct brands *setup_brands(SDL_Renderer *renderer)
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                      "Unable to create brand_wheelhouse\n");
         free(brands);
-        return NULL;
+        return nullptr;
     }
 
     brands->brand_wheelhouse_transparent =
@@ -40,7 +40,7 @@ struct brands *setup_brands(SDL_Renderer *renderer)
                      "Unable to load brand_wheelhouse_transparent\n");
         SDL_DestroyTexture(brands->brand_wheelhouse);
         free(brands);
-        return NULL;
+        return nullptr;
     }
 
     brands->brand_wheelhouse_inverted =
@@ -51,7 +51,7 @@ struct brands *setup_brands(SDL_Renderer *renderer)
         SDL_DestroyTexture(brands->brand_wheelhouse);
         SDL_DestroyTexture(brands->brand_wheelhouse_transparent);
         free(brands);
-        return NULL;
+        return nullptr;
     }
 
     brands->brand_wheelhouse_black_with_white_lines =
@@ -63,7 +63,7 @@ struct brands *setup_brands(SDL_Renderer *renderer)
         SDL_DestroyTexture(brands->brand_wheelhouse_transparent);
         SDL_DestroyTexture(brands->brand_wheelhouse_inverted);
         free(brands);
-        return NULL;
+        return nullptr;
     }
 
     return brands;
