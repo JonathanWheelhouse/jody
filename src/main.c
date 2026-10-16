@@ -142,13 +142,10 @@ int main(int argc, char *argv[])
         return 5;
     }
 
-    /* Show splash screen for ~3 seconds */
-    for (int i = 0; i < 3; ++i) {
-        SDL_RenderClear(renderer);
-        SDL_RenderTexture(renderer, background, nullptr, nullptr);
-        SDL_RenderPresent(renderer);
-        SDL_Delay(1000);
-    }
+    SDL_RenderClear(renderer);
+    SDL_RenderTexture(renderer, background, nullptr, nullptr);
+    SDL_RenderPresent(renderer);
+    SDL_Delay(1000);
 
     struct sprite **sprites = setup_img(renderer);
     if (!sprites) {
@@ -289,6 +286,7 @@ static void handle_events(int *quit, int *pause, bool *mouse_clicked,
                 break;
             case SDLK_1:
                 SDL_SetCursor(cursors->cursor_arrow);
+                *brand = nullptr;
                 break;
             case SDLK_2:
                 SDL_SetCursor(cursors->cursor_wheelhouse);

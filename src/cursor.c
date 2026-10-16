@@ -72,45 +72,38 @@ create_cursor_from_xpm(const char **xpm,
             Uint8 b = 0;
             Uint8 a = 0;
 
-            switch (c) {
-            case 'X':
-                if (invert_data_mask) {
-                    /*
-                     * X is transparent in this mode.
-                     */
-                    a = 0;
-                } else {
-                    /*
-                     * X is black.
-                     */
-                    r = 0;
-                    g = 0;
-                    b = 0;
-                    a = 255;
-                }
-                break;
+			switch (c) {
+			case 'X':
+				if (invert_data_mask == 1) {
+					/* Inverted mode: X becomes White */
+					r = 255; g = 255; b = 255; a = 255;
+				} else if (invert_data_mask == 2) {
+					/* Transparent mode: X becomes Transparent */
+					a = 0;
+				} else {
+					/* Standard mode: X is Black */
+					r = 0; g = 0; b = 0; a = 255;
+				}
+				break;
 
-            case '.':
-                /*
-                 * Dot is white.
-                 */
-                r = 255;
-                g = 255;
-                b = 255;
-                a = 255;
-                break;
+			case '.':
+				if (invert_data_mask == 1) {
+					/* Inverted mode: Dot becomes Black */
+					r = 0; g = 0; b = 0; a = 255;
+				} else {
+					/* Standard mode: Dot is White */
+					r = 255; g = 255; b = 255; a = 255;
+				}
+				break;
 
-            case ' ':
-            default:
-                /*
-                 * Transparent.
-                 */
-                a = 0;
-                break;
-            }
+			case ' ':
+			default:
+				/* Transparent background */
+				r = 0; g = 0; b = 0; a = 0;
+				break;
+			}
 
-            pixels[y * pitch_pixels + x] =
-                SDL_MapSurfaceRGBA(surface, r, g, b, a);
+            pixels[y * pitch_pixels + x] = SDL_MapSurfaceRGBA(surface, r, g, b, a);
         }
     }
 
@@ -193,44 +186,29 @@ setup_cursors(void)
 {
     struct cursors *cursors = xmalloc(sizeof(*cursors));
 
-    cursors->cursor_arrow =
-        create_cursor_arrow();
+    cursors->cursor_arrow = create_cursor_arrow();
 
     /*
      * wheelhouse must also contain exactly 32 image rows
      * if it is passed to create_cursor_from_xpm().
      */
     cursors->cursor_wheelhouse =
-        create_cursor_from_xpm(
-            (const char **)wheelhouse,
-            0,      /* hot_x */
-            0,      /* hot_y */
-            0
-        );
+        create_cursor_from_xpm((const char **)wheelhouse, 0, 0, 0);
 
+	/* Mode 0: Standard (Black X, White .) */
     cursors->cursor_wheelhouse_transparent =
         create_cursor_from_xpm(
-            (const char **)wheelhouse,
-            0,
-            0,
-            2
-        );
+            (const char **)wheelhouse, 0, 0, 2);
 
+	/* Mode 1: Inverted (White X, Black .) */
     cursors->cursor_wheelhouse_inverted =
         create_cursor_from_xpm(
-            (const char **)wheelhouse,
-            0,
-            0,
-            0
-        );
+            (const char **)wheelhouse, 0, 0, 1);
 
+	/* Mode 0: Standard */
     cursors->cursor_wheelhouse_black_with_white_lines =
         create_cursor_from_xpm(
-            (const char **)wheelhouse,
-            0,
-            0,
-            1
-        );
+            (const char **)wheelhouse, 0, 0, 0);
 
     if (!cursors->cursor_arrow ||
         !cursors->cursor_wheelhouse ||
