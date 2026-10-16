@@ -170,6 +170,9 @@ int main(int argc, char *argv[])
     /* Ensure first call to get_elapsed_ticks returns 0, not total uptime */
     (void)get_elapsed_ticks();
 
+    SDL_SetCursor(cursors->cursor_wheelhouse);
+    brand = brands->brand_wheelhouse;
+
     while (!quit) {
         mouse_clicked = false;
         handle_events(&quit, &pause, &mouse_clicked, &x_mouse, &y_mouse,
