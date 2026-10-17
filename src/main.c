@@ -1,4 +1,5 @@
 #include <SDL3/SDL.h>
+#include <SDL3/SDL_render.h>
 #include <SDL3_image/SDL_image.h>
 #include <stdio.h>
 #include <string.h>
@@ -316,6 +317,9 @@ static void handle_events(int *quit, int *pause, bool *mouse_clicked,
             }
         } else if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
             if (event.button.button == SDL_BUTTON_LEFT) {
+                SDL_Renderer *renderer = SDL_GetRenderer(SDL_GetWindowFromID(event.button.windowID));
+                SDL_ConvertEventToRenderCoordinates(renderer, &event);
+
                 *mouse_clicked = true;
                 *x_mouse = (int)event.button.x;
                 *y_mouse = (int)event.button.y;
