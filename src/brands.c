@@ -20,6 +20,7 @@ static SDL_Texture *create_wheelhouse_image(SDL_Renderer *renderer)
     SDL_DestroySurface(surface); /* Fixed: leak */
     return texture;
 }
+
 struct brands *setup_brands(SDL_Renderer *renderer)
 {
     struct brands *brands = xmalloc(sizeof(struct brands));

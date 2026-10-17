@@ -40,17 +40,17 @@ enum image_idx {
 };
 
 const char *image_names[NUM_IMAGES] = {
-    IMG_DIR "cloud",
-    IMG_DIR "cow_black",
-    IMG_DIR "cow_brown",
-    IMG_DIR "cow_orange",
-    IMG_DIR "cow_red",
-    IMG_DIR "cow_white",
-    IMG_DIR "cow_yellow",
-    IMG_DIR "cow_yellow_with_red_outline",
-    IMG_DIR "kangaroo_black",
-    IMG_DIR "kangaroo_grey",
-    IMG_DIR "kangaroo_red"
+    "cloud",
+    "cow_black",
+    "cow_brown",
+    "cow_orange",
+    "cow_red",
+    "cow_white",
+    "cow_yellow",
+    "cow_yellow_with_red_outline",
+    "kangaroo_black",
+    "kangaroo_grey",
+    "kangaroo_red"
 };
 
 /* Prototypes */

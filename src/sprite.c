@@ -9,7 +9,7 @@
 #include "util.h"
 
 static SDL_Texture *image_frame(SDL_Renderer *renderer, const char *line,
-                                 const char *dir)
+                                const char *dir)
 {
     char name[255];
     int r = 0, g = 0, b = 0;
@@ -17,19 +17,31 @@ static SDL_Texture *image_frame(SDL_Renderer *renderer, const char *line,
     if (match < 1)
         return nullptr;
 
-    char *filename = nullptr;
-    if (asprintf(&filename, "%s/%s", dir, name) < 0)
+    char *rel_path = nullptr;
+    if (asprintf(&rel_path, "%s/%s", dir, name) < 0)
         return nullptr;
 
-    SDL_Texture *tex = load_image(renderer, filename);
-    free(filename);
+    char *full_path = jody_image_path(rel_path);
+    free(rel_path);
+
+    if (!full_path)
+        return nullptr;
+
+    SDL_Texture *tex = load_image(renderer, full_path);
+    free(full_path);
     return tex;
 }
 
 struct sprite_base *base_init(SDL_Renderer *renderer, const char *dir)
 {
-    char *filename = nullptr;
-    if (asprintf(&filename, "%s/info", dir) < 0)
+    char *rel_path = nullptr;
+    if (asprintf(&rel_path, "%s/info", dir) < 0)
+        return nullptr;
+
+    char *filename = jody_image_path(rel_path);
+    free(rel_path);
+
+    if (!filename)
         return nullptr;
 
     FILE *fp = fopen(filename, "r");
@@ -85,7 +97,6 @@ struct sprite_base *base_init(SDL_Renderer *renderer, const char *dir)
     len = 0;
     while ((nread = getline(&line, &len, fp)) != -1 &&
            count < base->frames_count) {
-        /* Skip comments and blank lines */
         if (line[0] == '#' || line[0] == '\r' || line[0] == '\0' ||
             line[0] == '\n' || strlen(line) == 0)
             continue;
@@ -100,17 +111,13 @@ struct sprite_base *base_init(SDL_Renderer *renderer, const char *dir)
             goto error;
         }
 
-        /* Query texture dimensions */
-        {
-            float tw, th;
-            SDL_GetTextureSize(sprite_frame->image, &tw, &th);
-            sprite_frame->w = (int)tw;
-            sprite_frame->h = (int)th;
-        }
+        float tw, th;
+        SDL_GetTextureSize(sprite_frame->image, &tw, &th);
+        sprite_frame->w = (int)tw;
+        sprite_frame->h = (int)th;
 
         base->frames[count] = sprite_frame;
 
-        /* Capture dimensions from first frame */
         if (base->image_width == 0)
             base->image_width = sprite_frame->w;
         if (base->image_height == 0)
@@ -122,15 +129,10 @@ struct sprite_base *base_init(SDL_Renderer *renderer, const char *dir)
     base->is_built = 1;
     free(line);
     fclose(fp);
-
-    SDL_Log("file [%s] width [%d] height [%d]\n",
-            filename ? filename : dir, base->image_width, base->image_height);
-
     free(filename);
     return base;
 
 error:
-    /* Cleanup on any failure path */
     if (base->frames) {
         for (int i = 0; i < base->frames_count; i++) {
             if (base->frames[i]) {
@@ -191,9 +193,10 @@ void free_sprite(struct sprite *sprite)
 {
     if (!sprite) return;
 
-    /* The brand texture is borrowed — do NOT destroy it here.
-       It's owned by the brands struct. */
-    free_sprite_base(sprite->sprite_base);
+    /* Free sprite instance only. Shared sprite_base is freed separately. */
+    if (sprite->sprite_base) {
+        free_sprite_base(sprite->sprite_base);
+    }
     free(sprite);
 }
 
@@ -201,7 +204,6 @@ void draw(SDL_Renderer *renderer, struct sprite *sprite, SDL_Texture *brand)
 {
     if (!sprite || !sprite->sprite_base) return;
 
-    /* Animation */
     if (sprite->is_animating) {
         sprite->frame_index++;
         int half = (sprite->sprite_base->frames_count - 1) / 2;
@@ -213,7 +215,6 @@ void draw(SDL_Renderer *renderer, struct sprite *sprite, SDL_Texture *brand)
     if (!sprite->is_drawn)
         sprite->is_drawn = true;
 
-    /* Draw sprite frame */
     SDL_FRect dest;
     dest.x = (float)sprite->x;
     dest.y = (float)sprite->y;
@@ -224,7 +225,6 @@ void draw(SDL_Renderer *renderer, struct sprite *sprite, SDL_Texture *brand)
         sprite->sprite_base->frames[sprite->frame_index]->image,
         nullptr, &dest);
 
-    /* Draw brand overlay */
     if (sprite->is_branded) {
         SDL_Texture *brand_to_use = sprite->brand ? sprite->brand : brand;
         if (brand_to_use) {
