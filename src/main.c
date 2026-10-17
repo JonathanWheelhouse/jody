@@ -176,8 +176,7 @@ int main(int argc, char *argv[])
 
     while (!quit) {
         mouse_clicked = false;
-        handle_events(&quit, &pause, &mouse_clicked, &x_mouse, &y_mouse,
-                      cursors, brands, &brand);
+        handle_events(&quit, &pause, &mouse_clicked, &x_mouse, &y_mouse, cursors, brands, &brand);
 
         if (mouse_clicked)
             check_branded(sprites, x_mouse, y_mouse);
