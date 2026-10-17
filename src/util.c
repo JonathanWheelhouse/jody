@@ -61,10 +61,3 @@ void * xcalloc(size_t nmemb, size_t size)
 		fatal("Out of memory");
 	return p;
 }
-
-static Sint32 seed = 0;
-
-void initrandom(void)
-{
-	 seed = time(nullptr);
-}

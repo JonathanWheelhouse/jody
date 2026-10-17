@@ -7,7 +7,6 @@
 
 #include "brands.h"
 #include "cursor.h"
-#include "datadir.h"
 #include "gamedefs.h"
 #include "sprite.h"
 #include "util.h"
